@@ -1,13 +1,14 @@
-
 import './App.css'
+import NavBar from './Components/NavBar';
 import { CustomerName } from './Pages/customerName'
-import { Login } from './Pages/login';
+import { Login } from './Pages/Login';
 import { Register } from './Pages/register';
 import { RfqAttributes } from './Pages/RfqAttributes'
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 function App() {
   return (
     <>
+    <NavBar />
     <Router>
       <Routes>
         <Route path="/" element={<Login />} />

@@ -91,3 +91,10 @@
     top: 22px;
     width: 118px;
   }
+  .frameLogin .registerLine {
+    text-align: center;
+  }
+  .frameLogin .registerLine a{
+    text-decoration: none;
+    color: white;
+  }
