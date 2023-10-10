@@ -297,6 +297,29 @@ export  function RfqAttributes() {
         size="small"
       />
     </Grid>
+    <Grid item xs={12} sm={6} >
+    <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}} > First Sample Date * </Typography>
+      <TextField
+        required
+        id="First Sample Date *"
+        label="Enter Details"
+        variant="outlined"
+        fullWidth
+        size="small" 
+      />
+    </Grid>
+    <Grid item xs={12} sm={6}>
+    <Typography variant="subtitle1"  sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem'}} > PSW /PPAP Date * </Typography>
+
+      <TextField
+        required
+        id="PSW /PPAP Date *"
+        label="Enter Details  "
+        variant="outlined"
+        fullWidth
+        size="small"
+      />
+    </Grid>
     
   </Grid>
   <Stack direction="row" spacing={5} justifyContent="center"  mt={4} sx={{ mb: 4 }}>
