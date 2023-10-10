@@ -18,7 +18,7 @@ export  function RfqAttributes() {
       sx={{
         display: 'flex',
         justifyContent: 'center',
-        mt: 5,
+        mt: 30,
         mb:2,
       }}
     >
@@ -46,7 +46,7 @@ export  function RfqAttributes() {
       />
     </Grid>
     <Grid item xs={12} sm={6}>
-    <Typography variant="subtitle1"  sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem'}} > Part Number - MACH </Typography>
+    <Typography variant="subtitle1"  sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}} > Part Number - MACH </Typography>
 
       <TextField
         required
