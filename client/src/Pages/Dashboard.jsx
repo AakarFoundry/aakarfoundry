@@ -7,17 +7,20 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { Container } from '@mui/material';
+import { Container, Button } from '@mui/material';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: theme.palette.common.black,
+    backgroundColor: "#054470",
     color: theme.palette.common.white,
+    textAlign: 'center', // Center align the header cells
+    fontSize: '18px',
   },
   [`&.${tableCellClasses.body}`]: {
     fontSize: 14,
     border: `1px solid ${theme.palette.divider}`,
     padding: theme.spacing(1),
+    textAlign: 'center', // Center align the data cells
   },
 }));
 
@@ -31,16 +34,20 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-function createData(name, calories, fat, carbs) {
-  return { name, calories, fat, carbs };
+function createData(name, calories, status, views) {
+  return { name, calories, status, views };
 }
 
 const rows = [
-  createData('Customer 1', '12345', 'Active', '100'),
-  createData('Customer 2', '67890', 'Inactive', '50'),
-  createData('Customer 3', '54321', 'Active', '75'),
-  createData('Customer 4', '98765', 'Inactive', '30'),
-  createData('Customer 5', '11111', 'Active', '90'),
+  createData('Customer 1', '12345', 'Success', '100'),
+  createData('Customer 2', '67890', 'Incomplete', '50'),
+  createData('Customer 3', '54321', 'In Progress', '75'),
+  createData('Customer 4', '98765', 'Incomplete', '30'),
+  createData('Customer 5', '11111', 'Success', '90'),
+  createData('Customer 5', '11431', 'Success', '93'),
+  createData('Customer 6', '54646', 'Incomplete', '60'),
+  createData('Customer 7', '64566', 'In Progress', '80'),
+  createData('Customer 8', '23424', 'Success', '32'),
 ];
 
 export default function Dashboard() {
@@ -54,13 +61,13 @@ export default function Dashboard() {
       }}
     >
       <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 700 }} aria-label="customized table">
+        <Table sx={{ minWidth: 700}} aria-label="customized table">
           <TableHead>
             <TableRow>
-              <StyledTableCell>Customer Name</StyledTableCell>
-              <StyledTableCell align="right">Customer ID</StyledTableCell>
-              <StyledTableCell align="right">Status</StyledTableCell>
-              <StyledTableCell align="right">Views</StyledTableCell>
+              <StyledTableCell align="center">Customer Name</StyledTableCell>
+              <StyledTableCell align="center">Customer ID</StyledTableCell>
+              <StyledTableCell align="center">Status</StyledTableCell>
+              <StyledTableCell align="center">Details</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -69,9 +76,25 @@ export default function Dashboard() {
                 <StyledTableCell component="th" scope="row">
                   {row.name}
                 </StyledTableCell>
-                <StyledTableCell align="right">{row.calories}</StyledTableCell>
-                <StyledTableCell align="right">{row.fat}</StyledTableCell>
-                <StyledTableCell align="right">{row.carbs}</StyledTableCell>
+                <StyledTableCell align="center">{row.calories}</StyledTableCell>
+                <StyledTableCell align="center">
+                  <Button
+                    variant="contained"
+                    color={row.status === 'Success' ? 'success' : row.status === 'Incomplete' ? 'error' : 'primary'}
+                    style={{ minWidth: '8rem' }} // Set a fixed width for the button
+                  >
+                    {row.status}
+                  </Button>
+                </StyledTableCell>
+                <StyledTableCell align="center">
+                  <Button
+                    variant="contained"
+                
+                    style={{ background: '#3E5C72D9' ,minWidth: '100px' }} // Set a fixed width for the button
+                  >
+                    Views
+                  </Button>
+                </StyledTableCell>
               </StyledTableRow>
             ))}
           </TableBody>
