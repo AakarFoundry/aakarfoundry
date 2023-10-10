@@ -14,10 +14,10 @@ function App() {
   return (
     <>
     <Router>
-    {window.location.pathname !== "/" && window.location.pathname !== "/register" ?<NavBar/>:<></>}
+    { window.location.pathname !== "/" && window.location.pathname !== "/register" ? <NavBar/> : <> </> }
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path='/register' element = {<Register/>}/>
+        <Route path="/register" element = {<Register/>}/>
         <Route path ="/customer" element={<CustomerName />} />
         <Route path = "/rfq" element = { <RfqAttributes /> } />
         <Route path = "/dash" element = { <Dashboard /> } />

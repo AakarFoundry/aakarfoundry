@@ -45,6 +45,12 @@ export const Login = () => {
         </Typography>
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
           <TextField
+          sx={{
+            "& .MuiInputLabel-root": {color: 'white'},//styles the label
+            "& .MuiOutlinedInput-root": {
+              "& > fieldset": { border:0.5,borderColor: "white" },
+              },
+          }}
             margin="normal"
             required
             fullWidth
@@ -55,6 +61,12 @@ export const Login = () => {
             autoFocus
           />
           <TextField
+          sx={{
+            "& .MuiInputLabel-root": {color: 'white'},//styles the label
+            "& .MuiOutlinedInput-root": {
+              "& > fieldset": { border:0.5,borderColor: "white" },
+              },
+          }}          
             margin="normal"
             required
             fullWidth
@@ -68,7 +80,7 @@ export const Login = () => {
             type="submit"
             fullWidth
             variant="contained"
-            sx={{ mt: 3, mb: 2 }}
+            sx={{ mt: 3, mb: 2, backgroundColor:'#1565C0' }}
           >
             Log In
           
