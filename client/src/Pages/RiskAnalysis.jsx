@@ -5,6 +5,7 @@ import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import Stack from '@mui/material/Stack';
 import { Typography } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 
 
@@ -84,12 +85,16 @@ export function RiskAnalysis() {
     
   </Grid>
   <Stack direction="row" spacing={5} justifyContent="center"  mt={4} sx={{ mb: 4 }}>
-        <Button variant="contained"  size="large">
-          Back
-        </Button>
+  <Link to={"/rfq"}>
+  <Button variant="contained"  size="large">
+    Back
+  </Button>
+  </Link>
+        <Link to={"/design"}>
         <Button variant="contained" size="large" >
         Continue
         </Button>
+        </Link>
       </Stack>
 </Box>
 </Container>
