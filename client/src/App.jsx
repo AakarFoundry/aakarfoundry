@@ -13,6 +13,7 @@ import { NewProductDev } from './Pages/newproduct';
 function App() {
   return (
     <>
+    <NavBar />
     <Router>
     { window.location.pathname !== "/" && window.location.pathname !== "/register" ? <NavBar/> : <> </> }
       <Routes>
@@ -21,6 +22,7 @@ function App() {
         <Route path ="/customer" element={<CustomerName />} />
         <Route path = "/rfq" element = { <RfqAttributes /> } />
         <Route path = "/dash" element = { <Dashboard /> } />
+
         <Route path = "/risk" element = {<RiskAnalysis/>} />
         <Route path = "/design" element = {<DesignFoundary/>} />
         <Route path = "/machine" element = {<MachineQuality/>} />

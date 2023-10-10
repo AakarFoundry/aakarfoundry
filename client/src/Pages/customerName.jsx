@@ -13,7 +13,7 @@ export  function CustomerName() {
       sx={{
         display: 'flex',
         justifyContent: 'center',
-        mt: 5,
+        mt: 30,
         mb:2,
       }}
     >

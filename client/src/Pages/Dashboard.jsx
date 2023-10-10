@@ -57,6 +57,7 @@ export default function Dashboard() {
         justifyContent: 'center',
         alignItems: 'center',
         height: '100vh', // Make the container full height
+        marginTop: '2rem',
       }}
     >
       <TableContainer component={Paper}>
@@ -91,7 +92,7 @@ export default function Dashboard() {
                 
                     style={{ background: '#3E5C72D9' ,minWidth: '100px' }} // Set a fixed width for the button
                   >
-                    Views
+                    View
                   </Button>
                 </StyledTableCell>
               </StyledTableRow>
