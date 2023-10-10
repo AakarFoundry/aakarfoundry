@@ -5,6 +5,7 @@ import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import Stack from '@mui/material/Stack';
 import { Typography } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 
 
@@ -128,18 +129,32 @@ export function MachineQuality() {
         size="small"
       />
     </Grid>
+    <Grid item xs={12} sm={12}>
+  <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470', fontWeight: '650', fontSize: '1.2rem' }}> Remark </Typography>
+  <TextField
+  required
+  id="Remark"
+ variant="outlined"
+  fullWidth
+  size="small"
+  />
+</Grid>
     
     
     
     
   </Grid>
   <Stack direction="row" spacing={5} justifyContent="center"  mt={4} sx={{ mb: 4 }}>
-        <Button variant="contained"  size="large">
-          Back
-        </Button>
+  <Link to={"/design"}>
+  <Button variant="contained"  size="large">
+    Back
+  </Button>
+  </Link>
+        <Link to={"/prod"}>
         <Button variant="contained" size="large" >
         Continue
         </Button>
+        </Link>
       </Stack>
 </Box>
 </Container>
