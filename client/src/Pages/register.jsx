@@ -20,7 +20,6 @@ export const Register = () => {
   return (
     <div className={styles.frameRegister}>
       <div className={styles.div}>
-        <img className={styles.image} alt="Logo" src={logo} />
         <div className={styles.overlap}>
           <img className={styles.hexagons} alt="Hexagons" src={hexagons} />
           <img className={styles.cloudStorageImage} alt="Cloud storage icon" src={cloud} />
