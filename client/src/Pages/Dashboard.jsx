@@ -1,3 +1,4 @@
+import React from 'react';
 import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -6,20 +7,28 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { Container, Button } from '@mui/material';
+import Container from '@mui/material/Container';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import AddIcon from '@mui/icons-material/Add'; // Import the Add icon
+import { Link } from 'react-router-dom';
+import  { useState } from 'react';
+import { Menu } from '@mui/material';
+const settings = ['RFQ', 'ECN'];
+
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: "#054470",
+    backgroundColor: '#054470',
     color: theme.palette.common.white,
-    textAlign: 'center', // Center align the header cells
+    textAlign: 'center',
     fontSize: '18px',
   },
   [`&.${tableCellClasses.body}`]: {
     fontSize: 14,
     border: `1px solid ${theme.palette.divider}`,
     padding: theme.spacing(1),
-    textAlign: 'center', // Center align the data cells
+    textAlign: 'center',
   },
 }));
 
@@ -27,11 +36,14 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   '&:nth-of-type(odd)': {
     backgroundColor: theme.palette.action.hover,
   },
-  // hide last border
   '&:last-child td, &:last-child th': {
     border: 0,
   },
 }));
+
+//Add Icon Function
+
+
 
 function createData(name, calories, status, views) {
   return { name, calories, status, views };
@@ -56,12 +68,29 @@ export default function Dashboard() {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        height: '100vh', // Make the container full height
-        marginTop: '2rem',
+        height: '100vh',
       }}
     >
+    <IconButton
+    sx={{
+      position: 'absolute',
+      top: '4.5rem',
+      left: '20px',
+      background: 'rgba(0, 0, 0, 0.3)',
+      '&:hover': {
+        background: 'rgba(0, 0, 0, 0.5)',
+      },
+    }}
+    color="primary"
+    aria-label="add"
+  >
+  <Link >
+  <AddIcon />
+  </Link>   
+  </IconButton>
+
       <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 700}} aria-label="customized table">
+        <Table sx={{ minWidth: 700 }} aria-label="customized table">
           <TableHead>
             <TableRow>
               <StyledTableCell align="center">Customer Name</StyledTableCell>
@@ -81,7 +110,7 @@ export default function Dashboard() {
                   <Button
                     variant="contained"
                     color={row.status === 'Success' ? 'success' : row.status === 'Incomplete' ? 'error' : 'primary'}
-                    style={{ minWidth: '8rem' }} // Set a fixed width for the button
+                    style={{ minWidth: '8rem' }}
                   >
                     {row.status}
                   </Button>
@@ -89,10 +118,9 @@ export default function Dashboard() {
                 <StyledTableCell align="center">
                   <Button
                     variant="contained"
-                
-                    style={{ background: '#3E5C72D9' ,minWidth: '100px' }} // Set a fixed width for the button
+                    style={{ background: '#3E5C72D9', minWidth: '100px' }}
                   >
-                    View
+                    Views
                   </Button>
                 </StyledTableCell>
               </StyledTableRow>
