@@ -98,9 +98,9 @@ function NavBar() {
                   width: '2.5rem',
                   position: 'absolute',
                   right: '4rem',
-                  background: 'rgb(0, 0, 0.3)',
+                  background: '#054470',
                   '&:hover': {
-                    background: 'rgb(0, 0, 0.5)',
+                    background: '#3f82b1',
                   },
                   '& svg': {
                     // mt: 0.7,
