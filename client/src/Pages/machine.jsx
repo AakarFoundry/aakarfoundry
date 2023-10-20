@@ -1,75 +1,135 @@
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
-import Button from "@mui/material/Button";
-import Stack from '@mui/material/Stack';
-import { Typography } from '@mui/material';
-import { Link } from 'react-router-dom';
+import Typography from '@mui/material/Typography';
+import IconButton from '@mui/material/IconButton';
+import RemoveIcon from '@mui/icons-material/Remove';
+import AddIcon from '@mui/icons-material/Add';
+import { Stack } from '@mui/material';
+const MachineQuality = (props) => {
+  const [fields, setFields] = useState([
+    {
+      id: 1,
+      label: 'Machine Type - CNC/VMC/HMC',
+      value: '',
+    },
+    {
+      id: 2,
+      label: 'Cycle time',
+      value: '',
+    },
+    {
+      id: 3,
+      label: 'Machining Fixture cost (One time Inv)',
+      value: '',
+    },
+  ]);
 
+  const addField = () => {
+    const newFields = [
+      ...fields,
+      {
+        id: fields.length + 1,
+        label: 'Next Machine Type - CNC/VMC/HMC',
+        value: '',
+      },
+      {
+        id: fields.length + 2,
+        label: 'Next Cycle time',
+        value: '',
+      },
+      {
+        id: fields.length + 3,
+        label: 'Next Machining Fixture cost',
+        value: '',
+      },
+    ];
+    setFields(newFields);
+  };
 
+  const removeField = (id) => {
+    // Find the index of the field within its group
+    const index = fields.findIndex((field) => field.id === id);
+    if (index !== -1) {
+      // Remove the entire group of fields (3 fields)
+      const newFields = fields.filter(
+        (_, i) => i < index || i >= index + 3
+      );
+      setFields(newFields);
+    }
+  };
 
+  const handleChange = (id, event) => {
+    const updatedFields = fields.map((field) =>
+      field.id === id ? { ...field, value: event.target.value } : field
+    );
+    setFields(updatedFields);
+  };
 
-const MachineQuality=(props)=> {
-
-  
   return (
     <Container
       sx={{
         display: 'flex',
         justifyContent: 'center',
         mt: 4,
-        mb:2,
+        mb: 2,
       }}
     >
-
-    <Box
-  component="form"
-  sx={{
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  }}
-  noValidate
-  autoComplete="on"
->
-  <Grid container spacing={4}>
-    <Grid item xs={12} sm={6} >
-    <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}} > Machine Type - CNC/VMC/HMC Please Specify  </Typography>
-      <TextField
-        required
-        id="Machine Type - CNC/VMC/HMC Please Specify "
-        label="Enter Details"
-        variant="outlined"
-        fullWidth
-        size="small" 
-      />
-    </Grid>
-    <Grid item xs={12} sm={6}>
-    <Typography variant="subtitle1"  sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}} > Cycle time  </Typography>
-
-      <TextField
-        required
-        id="Machining cycle time (Rs/Pc) "
-        label="Enter Details  "
-        variant="outlined"
-        fullWidth
-        size="small"
-      />
-    </Grid>
-    <Grid item xs={12} sm={6}>
-    <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}}  > Machining Fixture cost (One time Inv) </Typography>
-
-      <TextField
-        required
-        id="Machining Fixture cost (One time Inv) "
-        label="Enter Details"
-        variant="outlined"
-        fullWidth
-        size="small"
-      />
-    </Grid>
-    <Grid item xs={12} sm={6}>
+      <Box
+        component="form"
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}
+        noValidate
+        autoComplete="on"
+      >
+      
+        <Grid container spacing={4}>
+          {fields.map((field) => (
+            <Grid item xs={12} sm={4} key={field.id}>
+              <Typography
+                variant="subtitle1"
+                sx={{
+                  textAlign: 'left',
+                  color: '#054470',
+                  fontWeight: '650',
+                  fontSize: '1.2rem',
+                  padding: '0.3rem',
+                }}
+              >
+                {field.label}
+              </Typography>
+              <TextField
+                required
+                label="Enter Details"
+                variant="outlined"
+                fullWidth
+                size="small"
+                value={field.value}
+                onChange={(event) => handleChange(field.id, event)}
+              />
+              
+            </Grid>
+          ))}
+        </Grid>
+        <Stack direction="row" spacing={2}>
+        {fields.length > 3 && (
+          <IconButton onClick={() => removeField(fields[fields.length - 3].id)}>
+            <RemoveIcon />
+          </IconButton>
+        )}
+        {fields.length < 9 && (
+        <IconButton onClick={addField}>
+      <AddIcon />
+    </IconButton>
+        )}
+    </Stack>
+        <Grid container spacing={4}>
+        <Grid item xs={12} sm={6}>
     <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}}  >Inspection Gauges Cost </Typography>
 
       <TextField
@@ -139,26 +199,11 @@ const MachineQuality=(props)=> {
   size="small"
   />
 </Grid>
-    
-    
-    
-    
-  </Grid>
-  {/*<Stack direction="row" spacing={5} justifyContent="center" mt={4} sx={{ mb: 4 }}>
-           <Link to={"/dash"}>
-              <Button variant="contained" size="large">
-                Back
-              </Button>
-            </Link>
-            <Link to={"/rfq"}>
-              <Button variant="contained" size="large"  >
-                Continue
-              </Button>
-            </Link>
-
-          </Stack>*/}
-</Box>
-</Container>
+</Grid>
+        {/* Other fields and buttons */}
+      </Box>
+    </Container>
   );
-}
+};
+
 export default MachineQuality;
