@@ -1,7 +1,7 @@
 import './App.css'
 import NavBar from './Components/NavBar';
 import { CustomerName } from './Pages/customerName'
-import Dashboard from './Pages/dashBoard';
+import Dashboard from './Pages/Dashboard';
 import { Login } from './Pages/Login';
 import { Register } from './Pages/register';
 import { RfqAttributes } from './Pages/RfqAttributes'

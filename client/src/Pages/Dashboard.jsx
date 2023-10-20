@@ -8,9 +8,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
-import AddIcon from '@mui/icons-material/Add'; // Import the Add icon
-import { Link } from 'react-router-dom';
+
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -66,23 +64,8 @@ export default function Dashboard() {
         height: '100vh',
       }}
     >
-    <IconButton
-    sx={{
-      position: 'absolute',
-      bottom: '4.5rem',
-      right: '20px',
-      background: 'rgba(0, 0, 0, 0.3)',
-      '&:hover': {
-        background: 'rgba(0, 0, 0, 0.5)',
-      },
-    }}
-    color="primary"
-    aria-label="add"
-  >
-  <Link to={"/customer"}>
-  <AddIcon />
-  </Link>   
-  </IconButton>
+    
+
 
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 700 }} aria-label="customized table">

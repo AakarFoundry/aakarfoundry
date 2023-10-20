@@ -12,6 +12,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import logo from '../assets/img/Logo.png';
 import styles from '../assets/styles/NavBar.module.css'
+import AddIcon from '@mui/icons-material/Add'; // Import the Add icon
 const pages = [];
 const settings = ['Profile', 'Logout'];
 
@@ -90,6 +91,30 @@ function NavBar() {
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
               </IconButton>
             </Tooltip>
+            {window.location.pathname === '/dash' ? (
+              <IconButton
+                sx={{
+                  height: '2.5rem',
+                  width: '2.5rem',
+                  position: 'absolute',
+                  right: '4rem',
+                  background: 'rgb(0, 0, 0.3)',
+                  '&:hover': {
+                    background: 'rgb(0, 0, 0.5)',
+                  },
+                  '& svg': {
+                    // mt: 0.7,
+                    fontSize: '2rem',
+                    color: 'white',
+                  },
+                }}
+                color="ffffff"
+                aria-label="add"
+                href='/customer'
+              >
+                  <AddIcon />
+              </IconButton>
+            ) : null}
             <Menu
               sx={{ mt: '45px' }}
               id="menu-appbar"
