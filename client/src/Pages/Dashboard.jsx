@@ -69,8 +69,8 @@ export default function Dashboard() {
     <IconButton
     sx={{
       position: 'absolute',
-      top: '4.5rem',
-      left: '20px',
+      bottom: '4.5rem',
+      right: '20px',
       background: 'rgba(0, 0, 0, 0.3)',
       '&:hover': {
         background: 'rgba(0, 0, 0, 0.5)',
@@ -79,7 +79,7 @@ export default function Dashboard() {
     color="primary"
     aria-label="add"
   >
-  <Link >
+  <Link to={"/customer"}>
   <AddIcon />
   </Link>   
   </IconButton>
