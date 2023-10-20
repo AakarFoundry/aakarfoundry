@@ -110,7 +110,7 @@ function NavBar() {
                 }}
                 color="ffffff"
                 aria-label="add"
-                href='/customer'
+                href='/details'
               >
                   <AddIcon />
               </IconButton>

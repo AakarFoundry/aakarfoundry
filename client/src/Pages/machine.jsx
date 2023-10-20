@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 
 
 
-export function MachineQuality() {
+const MachineQuality=(props)=> {
 
   
   return (
@@ -18,7 +18,7 @@ export function MachineQuality() {
       sx={{
         display: 'flex',
         justifyContent: 'center',
-        mt: 30,
+        mt: 4,
         mb:2,
       }}
     >
@@ -144,19 +144,21 @@ export function MachineQuality() {
     
     
   </Grid>
-  <Stack direction="row" spacing={5} justifyContent="center"  mt={4} sx={{ mb: 4 }}>
-  <Link to={"/design"}>
-  <Button variant="contained"  size="large">
-    Back
-  </Button>
-  </Link>
-        <Link to={"/prod"}>
-        <Button variant="contained" size="large" >
-        Continue
-        </Button>
-        </Link>
-      </Stack>
+  {/*<Stack direction="row" spacing={5} justifyContent="center" mt={4} sx={{ mb: 4 }}>
+           <Link to={"/dash"}>
+              <Button variant="contained" size="large">
+                Back
+              </Button>
+            </Link>
+            <Link to={"/rfq"}>
+              <Button variant="contained" size="large"  >
+                Continue
+              </Button>
+            </Link>
+
+          </Stack>*/}
 </Box>
 </Container>
   );
 }
+export default MachineQuality;

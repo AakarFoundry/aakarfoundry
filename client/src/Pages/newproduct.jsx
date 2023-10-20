@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 
 
 
-export function NewProductDev() {
+const NewProductDev=(props)=> {
 
   
   return (
@@ -18,7 +18,7 @@ export function NewProductDev() {
       sx={{
         display: 'flex',
         justifyContent: 'center',
-        mt: 30,
+        mt: 4,
         mb:2,
       }}
     >
@@ -93,17 +93,22 @@ export function NewProductDev() {
   />
 </Grid>
 </Grid>
-  <Stack direction="row" spacing={5} justifyContent="center"  mt={4} sx={{ mb: 4 }}>
-  <Link to={"/machine"}>
-  <Button variant="contained"  size="large">
-    Back
-  </Button>
-  </Link>
-        <Button variant="contained" size="large" >
-        Continue
-        </Button>
-      </Stack>
+  {/*<Stack direction="row" spacing={5} justifyContent="center" mt={4} sx={{ mb: 4 }}>
+           <Link to={"/dash"}>
+              <Button variant="contained" size="large">
+                Back
+              </Button>
+            </Link>
+            <Link to={"/rfq"}>
+              <Button variant="contained" size="large"  >
+                Continue
+              </Button>
+            </Link>
+
+          </Stack>*/}
 </Box>
 </Container>
   );
 }
+
+export default NewProductDev;

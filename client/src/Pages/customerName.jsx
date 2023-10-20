@@ -1,26 +1,25 @@
+import React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
-import Button from "@mui/material/Button";
 import Stack from '@mui/material/Stack';
 import { MenuItem, Select, Typography } from '@mui/material';
-import { Link } from 'react-router-dom';
-import Stepper from '../Components/Stepper'
-export function CustomerName() {
 
+
+
+
+const CustomerName = (props) => {
   return (
-    <div>
-      <Stepper />
       <Container
         sx={{
+
           display: 'flex',
           justifyContent: 'center',
           mt: 4,
           mb: 2,
         }}
       >
-
         <Box
           component="form"
           sx={{
@@ -102,8 +101,9 @@ export function CustomerName() {
                 <MenuItem value="ECN">ECN</MenuItem>
               </Select>
             </Grid>
-          </Grid>  <Stack direction="row" spacing={5} justifyContent="center" mt={4} sx={{ mb: 4 }}>
-            <Link to={"/dash"}>
+          </Grid>  
+           {/*<Stack direction="row" spacing={5} justifyContent="center" mt={4} sx={{ mb: 4 }}>
+           <Link to={"/dash"}>
               <Button variant="contained" size="large">
                 Back
               </Button>
@@ -114,9 +114,10 @@ export function CustomerName() {
               </Button>
             </Link>
 
-          </Stack>
+          </Stack>*/}
         </Box>
       </Container>
-    </div>
+
   );
 }
+export default CustomerName;

@@ -6,21 +6,22 @@ import Button from "@mui/material/Button";
 import Stack from '@mui/material/Stack';
 import { Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
-import Stepper from '../Components/Stepper';
 
 
-export function RfqAttributes() {
+
+const RfqAttributes=(props)=> {
 
 
   return (
     <div>
-      <Stepper />
+
       <Container
         sx={{
           display: 'flex',
           justifyContent: 'center',
           mt: 4,
           mb: 2,
+        
         }}
       >
 
@@ -334,20 +335,23 @@ export function RfqAttributes() {
             </Grid>
 
           </Grid>
-          <Stack direction="row" spacing={5} justifyContent="center" mt={4} sx={{ mb: 4 }}>
-            <Link to={"/customer"}>
+          {/*<Stack direction="row" spacing={5} justifyContent="center" mt={4} sx={{ mb: 4 }}>
+           <Link to={"/dash"}>
               <Button variant="contained" size="large">
                 Back
               </Button>
             </Link>
-            <Link to={"/risk"}>
-              <Button variant="contained" size="large" >
+            <Link to={"/rfq"}>
+              <Button variant="contained" size="large"  >
                 Continue
               </Button>
             </Link>
-          </Stack>
+
+          </Stack>*/}
         </Box>
       </Container>
     </div>
   );
 }
+
+export default RfqAttributes;
