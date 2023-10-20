@@ -13,7 +13,7 @@ import { NewProductDev } from './Pages/newproduct';
 function App() {
   return (
     <>
-    <NavBar />
+
     <Router>
     { window.location.pathname !== "/" && window.location.pathname !== "/register" ? <NavBar/> : <> </> }
       <Routes>
