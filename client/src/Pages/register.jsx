@@ -94,40 +94,7 @@ export const Register = () => {
           id="number"
           autoComplete=""
         />
-        <TextField
-            sx={{
-              "& .MuiInputLabel-root": {color: 'white'},//styles the label
-              "& .MuiOutlinedInput-root": {
-                "& > fieldset": { border:0.5,borderColor: "white" },
-                },
-            }}
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="Password"
-            type="password"
-            id="password"
-            autoComplete="current-password"
-          />
-          <TextField
-            sx={{
-              "& .MuiInputLabel-root": {color: 'white'},//styles the label
-              "& .MuiOutlinedInput-root": {
-                "& > fieldset": { border:0.5,borderColor: "white" },
-                },
-            }}
-            variant="outlined" 
-            margin="normal"
-            required
-            fullWidth
-            name="confirmPassword"
-            label="Confirm Password"
-            type="password"
-            id="confirmPassword"
-            autoComplete="current-password"
-          />
+
           <Button
             type="submit"
             fullWidth

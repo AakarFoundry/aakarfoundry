@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 
 
 
-const DesignFoundary = (props) => {
+const DesignFoundry = (props) => {
 
 
   return (
@@ -221,4 +221,4 @@ const DesignFoundary = (props) => {
   );
 }
 
-export default DesignFoundary;
+export default DesignFoundry;

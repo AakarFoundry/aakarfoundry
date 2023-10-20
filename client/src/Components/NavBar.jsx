@@ -14,7 +14,7 @@ import logo from '../assets/img/Logo.png';
 import styles from '../assets/styles/NavBar.module.css'
 import AddIcon from '@mui/icons-material/Add'; // Import the Add icon
 const pages = [];
-const settings = ['Profile', 'Logout'];
+const settings = ['Change Password', 'Logout'];
 
 function NavBar() {
   const [anchorElUser, setAnchorElUser] = React.useState(null);

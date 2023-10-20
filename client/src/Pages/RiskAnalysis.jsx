@@ -37,7 +37,7 @@ const RiskAnalysis=(props)=> {
 >
   <Grid container spacing={4}>
     <Grid item xs={12} sm={6} >
-    <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}} > Is there any risk associated with : (ü/û) * </Typography>
+    <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}} > Is there any risk associated with : (ü/û)  </Typography>
       <TextField
         required
         id="Is there any risk associated with : (ü/û) *"
@@ -48,7 +48,7 @@ const RiskAnalysis=(props)=> {
       />
     </Grid>
     <Grid item xs={12} sm={6}>
-    <Typography variant="subtitle1"  sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}} > Manufacturing Requirement * </Typography>
+    <Typography variant="subtitle1"  sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}} > Manufacturing Requirement  </Typography>
 
       <TextField
         required
@@ -60,7 +60,7 @@ const RiskAnalysis=(props)=> {
       />
     </Grid>
     <Grid item xs={12} sm={6}>
-    <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}}  > Application *</Typography>
+    <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}}  > Application </Typography>
 
       <TextField
         required
@@ -88,7 +88,7 @@ const RiskAnalysis=(props)=> {
     <Grid item xs={12} sm={6}>
     <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.25rem', padding:'0.3rem'}}>Risk</Typography>
      <FormControl>
-      <FormLabel id="demo-row-radio-buttons-group-label" sx={{ textAlign: 'left', color: '#054470',fontWeight: '450', fontSize: '1.15rem', padding:'0.3rem'}}>Enviorment:</FormLabel>
+      <FormLabel id="demo-row-radio-buttons-group-label" sx={{ textAlign: 'left', color: '#054470',fontWeight: '450', fontSize: '1.15rem', padding:'0.3rem'}}>Environmental:</FormLabel>
       <RadioGroup
         row
         aria-labelledby="demo-row-radio-buttons-group-label"
@@ -147,7 +147,7 @@ const RiskAnalysis=(props)=> {
 <Grid item xs={12} sm={6}>
     <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.25rem', padding:'0.3rem'}}>Guidelines</Typography>
      <FormControl>
-      <FormLabel id="demo-row-radio-buttons-group-label" sx={{ textAlign: 'left', color: '#054470',fontWeight: '450', fontSize: '1.15rem', padding:'0.3rem'}}>Technical Feasibiltiy:</FormLabel>
+      <FormLabel id="demo-row-radio-buttons-group-label" sx={{ textAlign: 'left', color: '#054470',fontWeight: '450', fontSize: '1.15rem', padding:'0.3rem'}}>Technical Feasibility:</FormLabel>
       <RadioGroup
         row
         aria-labelledby="demo-row-radio-buttons-group-label"
@@ -185,7 +185,7 @@ const RiskAnalysis=(props)=> {
       />
 
 <FormControl>
-      <FormLabel id="demo-row-radio-buttons-group-label" sx={{ textAlign: 'left', color: '#054470',fontWeight: '450', fontSize: '1.1rem', padding:'0.3rem'}}>Regrade:</FormLabel>
+      <FormLabel id="demo-row-radio-buttons-group-label" sx={{ textAlign: 'left', color: '#054470',fontWeight: '450', fontSize: '1.1rem', padding:'0.3rem'}}>Regret:</FormLabel>
       <RadioGroup
         row
         aria-labelledby="demo-row-radio-buttons-group-label"
@@ -213,7 +213,6 @@ const RiskAnalysis=(props)=> {
  <Grid item xs={12} sm={12}>
   <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470', fontWeight: '650', fontSize: '1.2rem' }}> Remarks </Typography>
   <TextField
-  required
   id="Remark"
   label="Enter Remarks"
   variant="outlined"
