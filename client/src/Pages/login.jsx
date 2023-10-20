@@ -29,12 +29,11 @@ export const Login = () => {
         </div>
         <div className={styles.ellipse2} />
         <div className={styles.ellipse3} />
-
-      <Container component="main" maxWidth="xs" sx={{ marginLeft:15,display:"flex", alignItems: "left"}}>
+      <Container component="main" maxWidth="xs" sx={{'@media screen and (min-width: 64em)': {marginLeft:15
+      }, display:"flex", alignItems: "left"}}>
       <Box
         sx={{  
           marginTop: 20,
-          marginLeft:0,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",

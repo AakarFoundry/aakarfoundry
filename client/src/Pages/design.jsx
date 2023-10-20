@@ -35,10 +35,10 @@ export function DesignFoundary() {
 >
   <Grid container spacing={4}>
     <Grid item xs={12} sm={6} >
-    <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}} > Finished Wt (Machined) (Kg) * </Typography>
+    <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}} > Finished Wt (Machined) (Kg)  </Typography>
       <TextField
         required
-        id="Finished Wt (Machined) (Kg) *"
+        id="Finished Wt (Machined) (Kg) "
         label="Enter Details"
         variant="outlined"
         fullWidth
@@ -46,11 +46,11 @@ export function DesignFoundary() {
       />
     </Grid>
     <Grid item xs={12} sm={6}>
-    <Typography variant="subtitle1"  sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem' , padding:'0.3rem'}} > 2 Net Raw Casting Wt (Kg)   * </Typography>
+    <Typography variant="subtitle1"  sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem' , padding:'0.3rem'}} >Net Raw Casting Wt (Kg)    </Typography>
 
       <TextField
         required
-        id="2 Net Raw Casting Wt (Kg)   *"
+        id="2 Net Raw Casting Wt (Kg)   "
         label="Enter Details  "
         variant="outlined"
         fullWidth
@@ -58,11 +58,11 @@ export function DesignFoundary() {
       />
     </Grid>
     <Grid item xs={12} sm={6}>
-    <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}}  > Surface Area - in MM Square * </Typography>
+    <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}}  > Surface Area - in MM Square  </Typography>
 
       <TextField
         required
-        id="Surface Area - in MM Square *"
+        id="Surface Area - in MM Square "
         label="Enter Details"
         variant="outlined"
         fullWidth
@@ -70,11 +70,11 @@ export function DesignFoundary() {
       />
     </Grid>
     <Grid item xs={12} sm={6}>
-    <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}}  >Die-Casting Process *</Typography>
+    <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}}  >Die-Casting Process </Typography>
 
       <TextField
         required
-        id="Die-Casting Process *"
+        id="Die-Casting Process "
         label="Enter Details"
         variant="outlined"
         fullWidth
@@ -82,11 +82,11 @@ export function DesignFoundary() {
       />
     </Grid>
     <Grid item xs={12} sm={6}>
-    <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}}  >No. of Impressions or Cavities *</Typography>
+    <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}}  >No. of Impressions or Cavities </Typography>
 
       <TextField
         required
-        id="No. of Impressions or Cavities *"
+        id="No. of Impressions or Cavities "
         label=" Enter Details"
         variant="outlined"
         fullWidth
@@ -94,11 +94,11 @@ export function DesignFoundary() {
       />
     </Grid>
     <Grid item xs={12} sm={6}>
-    <Typography variant="subtitle1"  sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}}  > Alternative Raw Material Suggested By Aakar * </Typography>
+    <Typography variant="subtitle1"  sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}}  > Alternative Raw Material Suggested By Aakar  </Typography>
 
       <TextField
         required
-        id="Alternative Raw Material Suggested By Aakar *"
+        id="Alternative Raw Material Suggested By Aakar "
         label="Enter Details"
         variant="outlined"
         fullWidth
@@ -106,11 +106,11 @@ export function DesignFoundary() {
       />
     </Grid>
     <Grid item xs={12} sm={6}>
-    <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}} > Die cost (Rs Lakhs) * </Typography>
+    <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}} > Die cost (Rs Lakhs)  </Typography>
 
       <TextField
         required
-        id="Die cost (Rs Lakhs) *"
+        id="Die cost (Rs Lakhs) "
         label="Enter Details"
         variant="outlined"
         fullWidth
@@ -118,11 +118,11 @@ export function DesignFoundary() {
       />
     </Grid>
     <Grid item xs={12} sm={6}>
-    <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}}  > Core Box Cost * </Typography>
+    <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}}  > Core Box Cost  </Typography>
 
       <TextField
         required
-        id="Core Box Cost *"
+        id="Core Box Cost "
         label="Enter Details"
         variant="outlined"
         fullWidth
@@ -130,11 +130,11 @@ export function DesignFoundary() {
       />
     </Grid>
     <Grid item xs={12} sm={6}>
-    <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}}  > Expected Die Life (Shots) *</Typography>
+    <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}}  > Expected Die Life (Shots) </Typography>
 
       <TextField
         required
-        id="Expected Die Life (Shots) *"
+        id="Expected Die Life (Shots) "
         label=" Enter Details"
         variant="outlined"
         fullWidth
@@ -142,11 +142,11 @@ export function DesignFoundary() {
       />
     </Grid>
     <Grid item xs={12} sm={6}>
-    <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}} >Die Manufacturing Period in Weeks *</Typography>
+    <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}} >Die Manufacturing Period in Weeks </Typography>
 
       <TextField
         required
-        id="Die Manufacturing Period in Weeks *"
+        id="Die Manufacturing Period in Weeks "
         label=" Enter Details"
         variant="outlined"
         fullWidth
@@ -154,11 +154,11 @@ export function DesignFoundary() {
       />
     </Grid>
     <Grid item xs={12} sm={6}>
-    <Typography variant="subtitle1"  sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}}  > No of shots/Hr * </Typography>
+    <Typography variant="subtitle1"  sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}}  > No of shots/Hr  </Typography>
 
       <TextField
         required
-        id="No of shots/Hr *"
+        id="No of shots/Hr "
         label="Enter Details"
         variant="outlined"
         fullWidth
@@ -166,11 +166,11 @@ export function DesignFoundary() {
       />
     </Grid>
     <Grid item xs={12} sm={6}>
-    <Typography variant="subtitle1"  sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}} > No. of Sand Cores Required * </Typography>
+    <Typography variant="subtitle1"  sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}} > No. of Sand Cores Required  </Typography>
 
       <TextField
         required
-        id="No. of Sand Cores Required *"
+        id="No. of Sand Cores Required "
         label=" Enter Details"
         variant="outlined"
         fullWidth
@@ -178,11 +178,11 @@ export function DesignFoundary() {
       />
     </Grid>
     <Grid item xs={12} sm={6}>
-    <Typography variant="subtitle1"  sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}}  > Total Sand Weight (Kg) * </Typography>
+    <Typography variant="subtitle1"  sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}}  > Total Sand Weight (Kg)  </Typography>
 
       <TextField
         required
-        id="Total Sand Weight (Kg) *"
+        id="Total Sand Weight (Kg) "
         label=" Enter Details"
         variant="outlined"
         fullWidth
@@ -190,9 +190,9 @@ export function DesignFoundary() {
       />
     </Grid>
     <Grid item xs={12} sm={12}>
-  <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470', fontWeight: '650', fontSize: '1.2rem' }}> Remark </Typography>
+  <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470', fontWeight: '650', fontSize: '1.2rem' }}> Remarks </Typography>
   <TextField
-  required
+  label="Enter Remarks"
   id="Remark"
  variant="outlined"
   fullWidth

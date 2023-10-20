@@ -35,11 +35,11 @@ export function NewProductDev() {
 >
   <Grid container spacing={4}>
    <Grid item xs={12} sm={6}>
-    <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}}  > Capital Investment for machines *</Typography>
+    <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}}  > Capital Investment for machines </Typography>
 
       <TextField
         required
-        id="Capital Investment for machines *"
+        id="Capital Investment for machines "
         label="Enter Details"
         variant="outlined"
         fullWidth
@@ -47,11 +47,11 @@ export function NewProductDev() {
       />
     </Grid>
     <Grid item xs={12} sm={6}>
-    <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}}  >Part Feasible *</Typography>
+    <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}}  >Part Feasible </Typography>
 
       <TextField
         required
-        id="Part Feasible *"
+        id="Part Feasible "
         label="Enter Details"
         variant="outlined"
         fullWidth
@@ -59,11 +59,11 @@ export function NewProductDev() {
       />
     </Grid>
     <Grid item xs={12} sm={6}>
-    <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}}  >Feasible with changes *</Typography>
+    <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}}  >Feasible with changes </Typography>
 
       <TextField
         required
-        id="Feasible with changes *"
+        id="Feasible with changes "
         label=" Enter Details"
         variant="outlined"
         fullWidth
@@ -71,11 +71,11 @@ export function NewProductDev() {
       />
     </Grid>
     <Grid item xs={12} sm={6}>
-    <Typography variant="subtitle1"  sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}}  > Part Not Feasible Design and Foundry Machine and Quality New Product Development*</Typography>
+    <Typography variant="subtitle1"  sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}}  > Part Not Feasible Design and Foundry Machine and Quality New Product Development</Typography>
 
       <TextField
         required
-        id="Part Not Feasible Design and Foundry Machine and Quality New Product Development *"
+        id="Part Not Feasible Design and Foundry Machine and Quality New Product Development "
         label="Enter Details"
         variant="outlined"
         fullWidth
@@ -83,9 +83,9 @@ export function NewProductDev() {
       />
     </Grid>
     <Grid item xs={12} sm={12}>
-  <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470', fontWeight: '650', fontSize: '1.2rem' }}> Remark </Typography>
+  <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470', fontWeight: '650', fontSize: '1.2rem' }}> Remarks </Typography>
   <TextField
-  required
+  label="Enter Remarks"
   id="Remark"
  variant="outlined"
   fullWidth

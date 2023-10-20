@@ -32,7 +32,7 @@ export function CustomerName() {
           autoComplete="on"
         >
           <Grid container spacing={4}>
-            <Grid item xs={12} sm={12} > {/* Use xs={12} sm={12} for single column */}
+            <Grid item xs={12} sm={12} >
               <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470', fontWeight: '650', fontSize: '1.2rem' }}> Customer Name </Typography>
               <TextField
                 required

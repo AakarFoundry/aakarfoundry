@@ -26,34 +26,34 @@
     left: 57rem;
     position: absolute;
     top: 3rem;
-    width: 471px;
+    width: 29.43rem;
   }
   
   .frameLogin .hexagons {
-    height: 255px;
-    left: 9px;
+    height: 15.93rem;
+    left: 0.56rem;
     position: absolute;
-    top: 212px;
-    width: 434px;
+    top: 13.25rem;
+    width: 27.12rem;
   }
   
   .frameLogin .cloudStorageImage {
-    height: 364px;
-    left: 22px;
+    height: 22.75rem;
+    left: 1.37rem;
     object-fit: cover;
     position: absolute;
-    top: 90px;
-    width: 449px;
+    top: 5.62rem;
+    width: 28.06rem;
   }
   
   .frameLogin .ellipse {
     background: linear-gradient(180deg, rgb(5, 68, 112) 3.8%, rgba(89.02, 47.65, 243.31, 0.82) 100%);
-    border-radius: 61px;
-    height: 122px;
+    border-radius: 3.81rem;
+    height: 7.62rem;
     left: 0;
     position: absolute;
     top: 0;
-    width: 122px;
+    width: 7.62rem;
   }
   
   .frameLogin .ellipse2 {
@@ -84,12 +84,12 @@
   
   
   .frameLogin .image {
-    height: 78px;
-    left: 17px;
+    height: 4.87rem;
+    left: 1.06rem;
     object-fit: cover;
     position: absolute;
-    top: 22px;
-    width: 118px;
+    top: 1.37rem;
+    width: 7.37rem;
   }
   .frameLogin .registerLine {
     text-align: center;

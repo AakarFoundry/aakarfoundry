@@ -1,4 +1,3 @@
-import React from 'react';
 import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -12,10 +11,6 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import AddIcon from '@mui/icons-material/Add'; // Import the Add icon
 import { Link } from 'react-router-dom';
-import  { useState } from 'react';
-import { Menu } from '@mui/material';
-const settings = ['RFQ', 'ECN'];
-
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -120,7 +115,7 @@ export default function Dashboard() {
                     variant="contained"
                     style={{ background: '#3E5C72D9', minWidth: '100px' }}
                   >
-                    Views
+                    View Form
                   </Button>
                 </StyledTableCell>
               </StyledTableRow>

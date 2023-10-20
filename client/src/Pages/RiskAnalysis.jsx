@@ -35,10 +35,10 @@ export function RiskAnalysis() {
 >
   <Grid container spacing={4}>
     <Grid item xs={12} sm={6} >
-    <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}} > Is there any risk associated with : (ü/û) * </Typography>
+    <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}} > Is there any risk associated with : (ü/û)  </Typography>
       <TextField
         required
-        id="Is there any risk associated with : (ü/û) *"
+        id="Is there any risk associated with : (ü/û) "
         label="Enter Details"
         variant="outlined"
         fullWidth
@@ -46,11 +46,11 @@ export function RiskAnalysis() {
       />
     </Grid>
     <Grid item xs={12} sm={6}>
-    <Typography variant="subtitle1"  sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}} > Manufacturing Requirement * </Typography>
+    <Typography variant="subtitle1"  sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}} > Manufacturing Requirement  </Typography>
 
       <TextField
         required
-        id=" Manufacturing Requirement *"
+        id=" Manufacturing Requirement "
         label="Enter Details  "
         variant="outlined"
         fullWidth
@@ -58,11 +58,11 @@ export function RiskAnalysis() {
       />
     </Grid>
     <Grid item xs={12} sm={6}>
-    <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}}  > Application *</Typography>
+    <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}}  > Application </Typography>
 
       <TextField
         required
-        id="Application *"
+        id="Application "
         label="Enter Details"
         variant="outlined"
         fullWidth
@@ -70,11 +70,11 @@ export function RiskAnalysis() {
       />
     </Grid>
     <Grid item xs={12} sm={6}>
-    <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}}  >Internal Estimation *</Typography>
+    <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}}  >Internal Estimation </Typography>
 
       <TextField
         required
-        id="Internal Estimation *"
+        id="Internal Estimation "
         label="Enter Details"
         variant="outlined"
         fullWidth
@@ -82,10 +82,10 @@ export function RiskAnalysis() {
       />
     </Grid>
     <Grid item xs={12} sm={12}>
-  <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470', fontWeight: '650', fontSize: '1.2rem' }}> Remark </Typography>
+  <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470', fontWeight: '650', fontSize: '1.2rem' }}> Remarks </Typography>
   <TextField
-  required
-  id="Remark"
+  label="Enter Remarks"
+  id="Remarks"
  variant="outlined"
   fullWidth
   size="small"

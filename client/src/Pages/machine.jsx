@@ -35,10 +35,10 @@ export function MachineQuality() {
 >
   <Grid container spacing={4}>
     <Grid item xs={12} sm={6} >
-    <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}} > Machine Type - CNC/VMC/HMC Please Specify * </Typography>
+    <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}} > Machine Type - CNC/VMC/HMC Please Specify  </Typography>
       <TextField
         required
-        id="Machine Type - CNC/VMC/HMC Please Specify *"
+        id="Machine Type - CNC/VMC/HMC Please Specify "
         label="Enter Details"
         variant="outlined"
         fullWidth
@@ -46,11 +46,11 @@ export function MachineQuality() {
       />
     </Grid>
     <Grid item xs={12} sm={6}>
-    <Typography variant="subtitle1"  sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}} > Machining cycle time (Rs/Pc) * </Typography>
+    <Typography variant="subtitle1"  sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}} > Cycle time  </Typography>
 
       <TextField
         required
-        id="Machining cycle time (Rs/Pc) *"
+        id="Machining cycle time (Rs/Pc) "
         label="Enter Details  "
         variant="outlined"
         fullWidth
@@ -58,11 +58,11 @@ export function MachineQuality() {
       />
     </Grid>
     <Grid item xs={12} sm={6}>
-    <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}}  > Machining Fixture cost (One time Inv) *</Typography>
+    <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}}  > Machining Fixture cost (One time Inv) </Typography>
 
       <TextField
         required
-        id="Machining Fixture cost (One time Inv) *"
+        id="Machining Fixture cost (One time Inv) "
         label="Enter Details"
         variant="outlined"
         fullWidth
@@ -70,11 +70,11 @@ export function MachineQuality() {
       />
     </Grid>
     <Grid item xs={12} sm={6}>
-    <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}}  >Inspection Gauges Cost *</Typography>
+    <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}}  >Inspection Gauges Cost </Typography>
 
       <TextField
         required
-        id="Inspection Gauges Cost *"
+        id="Inspection Gauges Cost "
         label="Enter Details"
         variant="outlined"
         fullWidth
@@ -82,11 +82,11 @@ export function MachineQuality() {
       />
     </Grid>
     <Grid item xs={12} sm={6}>
-    <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}}  >Leak testing fixture cost *</Typography>
+    <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}}  >Leak testing fixture cost </Typography>
 
       <TextField
         required
-        id="Leak testing fixture cost *"
+        id="Leak testing fixture cost "
         label=" Enter Details"
         variant="outlined"
         fullWidth
@@ -94,11 +94,11 @@ export function MachineQuality() {
       />
     </Grid>
     <Grid item xs={12} sm={6}>
-    <Typography variant="subtitle1"  sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}}  > Washing fixture cost *</Typography>
+    <Typography variant="subtitle1"  sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}}  > Washing fixture cost </Typography>
 
       <TextField
         required
-        id="Washing fixture cost *"
+        id="Washing fixture cost "
         label="Enter Details"
         variant="outlined"
         fullWidth
@@ -106,11 +106,11 @@ export function MachineQuality() {
       />
     </Grid>
     <Grid item xs={12} sm={6}>
-    <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}} > Plastic Protection Cap Costs (Specify Quantity & Cost) * </Typography>
+    <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}} > Plastic Protection Cap Costs (Specify Quantity & Cost)  </Typography>
 
       <TextField
         required
-        id="Plastic Protection Cap Costs (Specify Quantity & Cost) *"
+        id="Plastic Protection Cap Costs (Specify Quantity & Cost) "
         label="Enter Details"
         variant="outlined"
         fullWidth
@@ -118,11 +118,11 @@ export function MachineQuality() {
       />
     </Grid>
     <Grid item xs={12} sm={6}>
-    <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}}  > Packaging Cost-(Corrugated/PP/Plastic/Exports Grade) * </Typography>
+    <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470',fontWeight: '650', fontSize: '1.2rem', padding:'0.3rem'}}  > Packaging Cost-(Corrugated/PP/Plastic/Exports Grade)  </Typography>
 
       <TextField
         required
-        id="Packaging Cost-(Corrugated/PP/Plastic/Exports Grade) *"
+        id="Packaging Cost-(Corrugated/PP/Plastic/Exports Grade) "
         label="Enter Details"
         variant="outlined"
         fullWidth
@@ -130,9 +130,9 @@ export function MachineQuality() {
       />
     </Grid>
     <Grid item xs={12} sm={12}>
-  <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470', fontWeight: '650', fontSize: '1.2rem' }}> Remark </Typography>
+  <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470', fontWeight: '650', fontSize: '1.2rem' }}> Remarks </Typography>
   <TextField
-  required
+  label="Enter Remarks"
   id="Remark"
  variant="outlined"
   fullWidth

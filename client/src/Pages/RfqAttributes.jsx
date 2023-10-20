@@ -300,10 +300,10 @@ export function RfqAttributes() {
               />
             </Grid>
             <Grid item xs={12} sm={6} >
-              <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470', fontWeight: '650', fontSize: '1.2rem', padding: '0.3rem' }} > First Sample Date * </Typography>
+              <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470', fontWeight: '650', fontSize: '1.2rem', padding: '0.3rem' }} > First Sample Date  </Typography>
               <TextField
                 required
-                id="First Sample Date *"
+                id="First Sample Date "
                 label="Enter Details"
                 variant="outlined"
                 fullWidth
@@ -311,11 +311,11 @@ export function RfqAttributes() {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470', fontWeight: '650', fontSize: '1.2rem' }} > PSW /PPAP Date * </Typography>
+              <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470', fontWeight: '650', fontSize: '1.2rem' }} > PSW /PPAP Date  </Typography>
 
               <TextField
                 required
-                id="PSW /PPAP Date *"
+                id="PSW /PPAP Date "
                 label="Enter Details  "
                 variant="outlined"
                 fullWidth
@@ -323,9 +323,9 @@ export function RfqAttributes() {
               />
             </Grid>
             <Grid item xs={12} sm={12}>
-              <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470', fontWeight: '650', fontSize: '1.2rem' }}> Remark </Typography>
+              <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470', fontWeight: '650', fontSize: '1.2rem' }}> Remarks </Typography>
               <TextField
-                required
+              label="Enter Remarks"
                 id="Remark"
                 variant="outlined"
                 fullWidth
