@@ -8,8 +8,53 @@ import Container from "@mui/material/Container";
 import Link from "@mui/material/Link";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
+import { useState,useEffect } from "react";
 
 export const Login = () => {
+
+  const handleEvent = (e) => {
+    setForm({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const [formData, setForm] = useState({});
+  const [isEmailValid, setIsEmailValid] = useState(true);
+  const [isNumberValid, setIsNumberValid] = useState(true);
+
+  function isMail(val) {
+    var mail = /^\w+([\.-]?\w+)*@aakarfoundry\.com$/;
+    const isValid = mail.test(val);
+    setIsEmailValid(isValid); 
+    return isValid;
+  }
+
+  function isNumber(val) {
+    var phoneNo = /^\d{4}$/;
+    const isValid = phoneNo.test(val);
+    setIsNumberValid(isValid); // Set the validity based on the validation result
+    return isValid;
+  }
+
+  function onFormSubmit(e) {
+    e.preventDefault();
+
+    var email = isMail(formData.email);
+    var password = isNumber(formData.password);
+    if (email && password) {
+      console.log(formData);
+      alert("Done");
+    } else {
+      alert("Failed");
+
+    }
+  }
+
+  useEffect(() => {
+    setForm({
+      email: "",
+      passowrd:"",
+    });
+  }, []);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -17,11 +62,16 @@ export const Login = () => {
       email: data.get("email"),
       password: data.get("password"),
     });
+
+
+
+
+
   };
   return (
     <div className={styles.frameLogin}>
       <div className={styles.div}>
-      <img className={styles.image} alt="Logo" src={logo} />
+        <img className={styles.image} alt="Logo" src={logo} />
         <div className={styles.overlap}>
           <img className={styles.hexagons} alt="Hexagons" src={hexagons} />
           <img className={styles.cloudStorageImage} alt="Cloud storage icon" src={cloud} />
@@ -29,69 +79,79 @@ export const Login = () => {
         </div>
         <div className={styles.ellipse2} />
         <div className={styles.ellipse3} />
-      <Container component="main" maxWidth="xs" sx={{'@media screen and (min-width: 64em)': {marginLeft:15
-      }, display:"flex", alignItems: "left"}}>
-      <Box
-        sx={{  
-          marginTop: 20,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        <Typography component="h1" variant="h5" sx={{color : 'white' }}>
-          Log In
-        </Typography>
-        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-          <TextField
-          sx={{
-            "& .MuiInputLabel-root": {color: 'white'},//styles the label
-            "& .MuiOutlinedInput-root": {
-              "& > fieldset": { border:0.5,borderColor: "white" },
-              },
-          }}
-            margin="normal"
-            required
-            fullWidth
-            id="email"
-            label="Email Address"
-            name="email"
-            autoComplete="email"
-            autoFocus
-          />
-          <TextField
-          sx={{
-            "& .MuiInputLabel-root": {color: 'white'},//styles the label
-            "& .MuiOutlinedInput-root": {
-              "& > fieldset": { border:0.5,borderColor: "white" },
-              },
-          }}          
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="Password"
-            type="password"
-            id="password"
-            autoComplete="current-password"
-          />
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 3, mb: 2, backgroundColor:'#1565C0' }}
+        <Container component="main" maxWidth="xs" sx={{
+          '@media screen and (min-width: 64em)': {
+            marginLeft: 15
+          }, display: "flex", alignItems: "left"
+        }}>
+          <Box
+            sx={{
+              marginTop: 20,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
           >
-            Log In
-          
-          </Button>
-          <div className={styles.registerLine}> Don&apos;t have an account?&nbsp; 
-          <Link href="/register" variant="body2" >
-                { "\t\tCreate Account"}
-              </Link></div>
-        </Box>
-      </Box>
-    </Container>
-    </div>
+            <Typography component="h1" variant="h5" sx={{ color: 'white' }}>
+              Log In
+            </Typography>
+            <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+              <TextField
+                sx={{
+                  "& .MuiInputLabel-root": { color: 'white' },//styles the label
+                  "& .MuiOutlinedInput-root": {
+                    "& > fieldset": { border: 0.5, borderColor: "white" },
+                  },
+                }}
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+                autoFocus
+                onChange={handleEvent}
+                helperText={isEmailValid ? "" : "Invalid Email Address"}
+                error={!isEmailValid}
+              />
+              <TextField
+                sx={{
+                  "& .MuiInputLabel-root": { color: 'white' },//styles the label
+                  "& .MuiOutlinedInput-root": {
+                    "& > fieldset": { border: 0.5, borderColor: "white" },
+                  },
+                }}
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+                onChange={handleEvent}
+                helperText={isNumberValid ? "" : "Invalid Email Address"}
+                error={!isNumberValid}
+              />
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2, backgroundColor: '#1565C0' }}
+                onClick={onFormSubmit}
+              >
+                Log In
+
+              </Button>
+              <div className={styles.registerLine}> Don&apos;t have an account?&nbsp;
+                <Link href="/register" variant="body2" >
+                  {"\t\tCreate Account"}
+                </Link></div>
+            </Box>
+          </Box>
+        </Container>
+      </div>
     </div>
   );
 };

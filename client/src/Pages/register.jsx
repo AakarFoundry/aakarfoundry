@@ -20,31 +20,51 @@ export const Register = () => {
   const [formData, setForm] = useState({});
   const [isSuccess, setIsSuccess] = useState(false);
   const [isFailure, setIsFailure] = useState(false);
+  const [isNameValid, setIsNameValid] = useState(true);
+  const [isEmailValid, setIsEmailValid] = useState(true);
+  const [isNumberValid, setIsNumberValid] = useState(true);
+  const [isDepartmentValid, setIsDepartmentValid] = useState(true);
 
   function isfirstName(val) {
     var reg = /^[a-zA-Z\s]+$/;
-    if (reg.test(val) && val.trim().length > 0) return true;
-    return false;
+    const isValid = reg.test(val) && val.trim().length > 0;
+    setIsNameValid(isValid); // Set the validity based on the validation result
+    return isValid;
   }
 
   function isMail(val) {
-    var mail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    if (mail.test(val)) return true;
-    return false;
+    var mail = /^\w+([\.-]?\w+)*@aakarfoundry\.com$/;
+    const isValid = mail.test(val);
+    setIsEmailValid(isValid); // Set the validity based on the validation result
+    return isValid;
   }
-
+  
   function isNumber(val) {
-    var phoneNo = /^\d{10,10}$/;
-    if (phoneNo.test(val)) return true;
-    return false;
+    var phoneNo = /^\d{10}$/;
+    const isValid = phoneNo.test(val);
+    setIsNumberValid(isValid); // Set the validity based on the validation result
+    return isValid;
   }
+  
 
   function isDepartmentBox(val) {
     var regex = /^[a-zA-Z.-\s]*$/;
-    if (regex.test(val) && val.trim().length > 0) return true;
-    return false;
+    const isValid = regex.test(val) && val.trim().length > 0;
+    setIsDepartmentValid(isValid); // Set the validity based on the validation result
+    return isValid;
   }
 
+
+  useEffect(() => {
+    const closeAlerts = () => {
+      setIsSuccess(false);
+      setIsFailure(false);
+    };
+
+    const timer = setTimeout(closeAlerts, 2000);
+
+    return () => clearTimeout(timer);
+  }, [isSuccess, isFailure]);
   function onFormSubmit(e) {
     e.preventDefault();
     var name = isfirstName(formData.name);
@@ -53,11 +73,13 @@ export const Register = () => {
     var number = isNumber(formData.number);
     if (name && email && department && number) {
       console.log(formData);
-      setIsSuccess(true); // Set success alert to visible
-      setIsFailure(false); // Hide failure alert
+      setIsSuccess(true);
+      setIsFailure(false);
+
     } else {
-      setIsSuccess(false); // Hide success alert
-      setIsFailure(true); // Set failure alert to visible
+      setIsSuccess(false);
+      setIsFailure(true);
+
     }
   }
 
@@ -125,6 +147,8 @@ export const Register = () => {
                 autoComplete="name"
                 onChange={handleEvent}
                 autoFocus
+                helperText={isNameValid ? "" : "Invalid name"}
+                error={!isNameValid}
               />
               <TextField
                 sx={{
@@ -134,15 +158,17 @@ export const Register = () => {
                   },
                 }}
                 variant="outlined"
-                margin=" normal"
+                margin="normal"
                 required
                 fullWidth
-                name="email"
-                label="Work Email"
-                type="email"
                 id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
                 onChange={handleEvent}
-                autoComplete=""
+                autoFocus
+                helperText={isEmailValid ? "" : "Invalid name"}
+                error={!isEmailValid}
               />
               <TextField
                 sx={{
@@ -160,6 +186,8 @@ export const Register = () => {
                 id="number"
                 onChange={handleEvent}
                 autoComplete=""
+                helperText={isNumberValid ? "" : "Invalid phone number."}
+                error={!isNumberValid}
               />
 
               <TextField
@@ -178,6 +206,8 @@ export const Register = () => {
                 id="department"
                 onChange={handleEvent}
                 autoComplete=""
+                helperText={isDepartmentValid ? "" : "Invalid Department Name."}
+                error={!isDepartmentValid}
               />
 
               <Button
@@ -202,19 +232,19 @@ export const Register = () => {
               severity="success"
               color="info"
               style={{
-                backgroundColor: '#4CAF50', 
-                color: 'white', 
-                borderRadius: '0.25rem', 
-                width: '18%', 
-                position: 'fixed', 
+                backgroundColor: '#4CAF50',
+                color: 'white',
+                borderRadius: '0.25rem',
+                width: '18%',
+                position: 'fixed',
                 top: '2rem',
-                left: '50%', 
-                transform: 'translateX(-50%)', 
-                zIndex: 1000, 
+                left: '50%',
+                transform: 'translateX(-50%)',
+                zIndex: 1000,
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                height: '2rem', 
+                height: '2rem',
               }}
               onClose={() => setIsSuccess(false)}
             >
@@ -227,19 +257,19 @@ export const Register = () => {
               severity="error"
               color="info"
               style={{
-                backgroundColor: 'red', 
-                color: 'white', 
-                borderRadius: '0.25rem', 
-                width: '18%', 
-                position: 'fixed', 
-                top: '2rem', 
-                left: '50%', 
-                transform: 'translateX(-50%)', 
-                zIndex: 1000, 
+                backgroundColor: 'red',
+                color: 'white',
+                borderRadius: '0.25rem',
+                width: '18%',
+                position: 'fixed',
+                top: '2rem',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                zIndex: 1000,
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                height: '2rem', 
+                height: '2rem',
               }}
               onClose={() => setIsFailure(false)}
             >
