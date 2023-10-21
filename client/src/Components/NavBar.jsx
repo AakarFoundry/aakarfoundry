@@ -14,7 +14,7 @@ import logo from '../assets/img/Logo.png';
 import styles from '../assets/styles/NavBar.module.css'
 import AddIcon from '@mui/icons-material/Add'; // Import the Add icon
 const pages = [];
-const settings = ['Change Password', 'Logout'];
+const settings = ['Change Password', 'Approval','Logout'];
 
 function NavBar() {
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -25,11 +25,12 @@ function NavBar() {
   };
 
 
-
-  const handleCloseUserMenu = () => {
+  const handleCloseUserMenu = (path) => () => {
     setAnchorElUser(null);
+    if (path) {
+      window.location.href = '/approval'; // Redirect to the specified path
+    }
   };
-
   return (
     <AppBar position="fixed">
       <Container maxWidth="xl">
@@ -77,6 +78,7 @@ function NavBar() {
             {pages.map((page) => (
               <Button
                 key={page}
+                
                 onClick={handleCloseUserMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
@@ -129,11 +131,11 @@ function NavBar() {
                 horizontal: 'right',
               }}
               open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
+              onClose={handleCloseUserMenu(null)}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+                <MenuItem key={setting} onClick={handleCloseUserMenu(setting === 'Approval' ? '/approval' : null)}>
+                <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}
             </Menu>
