@@ -34,7 +34,7 @@ function NavBar() {
     } else if (selectedSetting === 'Logout') {
       window.location.href = '/'; // Redirect to the home page or the desired logout page
     } else{ 
-      
+      return null
     }
   };
   return (
