@@ -31,8 +31,10 @@ function NavBar() {
       window.location.href = '/change-password'; // Redirect to the Change Password page
     } else if (selectedSetting === 'Approval') {
       window.location.href = '/approval'; // Redirect to the Approval page
-    } else {
+    } else if (selectedSetting === 'Logout') {
       window.location.href = '/'; // Redirect to the home page or the desired logout page
+    } else{ 
+      
     }
   };
   return (
