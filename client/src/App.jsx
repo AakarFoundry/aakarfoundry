@@ -12,6 +12,7 @@ import MachineQuality from './Pages/machine';
 import NewProductDev from './Pages/newproduct';
 import Process from './Pages/Process';
 import HorizontalLinearStepper from './Components/Stepper';
+import Approval from './Pages/Approval';
 function App() {
   return (
     <>
@@ -29,6 +30,8 @@ function App() {
           <Route path="/design" element={<DesignFoundary />} />
           <Route path="/machine" element={<MachineQuality />} />
           <Route path="/prod" element={<NewProductDev />} /> */}
+          <Route path="/approval" element={<Approval />} />
+
 
         </Routes>
       </Router>
