@@ -3,7 +3,7 @@ import TextField from '@mui/material/TextField';
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 import { Typography } from '@mui/material';
-const Rfq = (props) => {
+const Ecn = (props) => {
   return (
     <div>
 
@@ -198,4 +198,4 @@ const Rfq = (props) => {
   );
 }
 
-export default Rfq;
+export default Ecn;
