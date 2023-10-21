@@ -25,10 +25,14 @@ function NavBar() {
   };
 
 
-  const handleCloseUserMenu = (path) => () => {
+  const handleCloseUserMenu = (selectedSetting) => () => {
     setAnchorElUser(null);
-    if (path) {
-      window.location.href = '/approval'; // Redirect to the specified path
+    if (selectedSetting === 'Change Password') {
+      window.location.href = '/change-password'; // Redirect to the Change Password page
+    } else if (selectedSetting === 'Approval') {
+      window.location.href = '/approval'; // Redirect to the Approval page
+    } else {
+      window.location.href = '/'; // Redirect to the home page or the desired logout page
     }
   };
   return (
@@ -134,9 +138,10 @@ function NavBar() {
               onClose={handleCloseUserMenu(null)}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu(setting === 'Approval' ? '/approval' : null)}>
-                <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
+    <MenuItem key={setting} onClick={handleCloseUserMenu(setting)}>
+      <Typography textAlign="center">{setting}</Typography>
+    </MenuItem>
+
               ))}
             </Menu>
           </Box>

@@ -13,6 +13,7 @@ import NewProductDev from './Pages/newproduct';
 import Process from './Pages/Process';
 import HorizontalLinearStepper from './Components/Stepper';
 import Approval from './Pages/Approval';
+import ChangePassword from './Pages/ChangePassword';
 function App() {
   return (
     <>
@@ -31,6 +32,8 @@ function App() {
           <Route path="/machine" element={<MachineQuality />} />
           <Route path="/prod" element={<NewProductDev />} /> */}
           <Route path="/approval" element={<Approval />} />
+          <Route path="/change-password" element={<ChangePassword />} />
+
 
 
         </Routes>
