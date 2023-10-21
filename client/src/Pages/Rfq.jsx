@@ -5,7 +5,7 @@ import Container from "@mui/material/Container";
 import { Typography } from '@mui/material';
 
 
-const RfqAttributes=(props)=> {
+const Rfq=(props)=> {
 
 
   return (
@@ -350,4 +350,4 @@ const RfqAttributes=(props)=> {
   );
 }
 
-export default RfqAttributes;
+export default Rfq;

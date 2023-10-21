@@ -1,15 +1,11 @@
-
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
-
 import { MenuItem, Select, Typography } from '@mui/material';
-
-
-
-
 const CustomerName = (props) => {
+  const { selectedOption, handleOptionChange } = props;
+
   return (
       <Container
         sx={{
@@ -95,6 +91,10 @@ const CustomerName = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                value={selectedOption} 
+                onChange={(e) => {
+                    handleOptionChange(e.target.value);
+            }}
               >
                 <MenuItem value="" >Select Category</MenuItem>
                 <MenuItem value="RFQ">RFQ</MenuItem>
@@ -102,19 +102,6 @@ const CustomerName = (props) => {
               </Select>
             </Grid>
           </Grid>  
-           {/*<Stack direction="row" spacing={5} justifyContent="center" mt={4} sx={{ mb: 4 }}>
-           <Link to={"/dash"}>
-              <Button variant="contained" size="large">
-                Back
-              </Button>
-            </Link>
-            <Link to={"/rfq"}>
-              <Button variant="contained" size="large"  >
-                Continue
-              </Button>
-            </Link>
-
-          </Stack>*/}
         </Box>
       </Container>
 
