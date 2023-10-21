@@ -1,45 +1,39 @@
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
-import { Typography } from '@mui/material';
+import { Typography } from "@mui/material";
 const Ecn = (props) => {
   return (
     <div>
-
       <Container
         sx={{
-          display: 'flex',
-          justifyContent: 'center',
+          display: "flex",
+          justifyContent: "center",
           mt: 4,
           mb: 2,
-
         }}
       >
-
         <Box
           component="form"
           sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
           }}
           noValidate
           autoComplete="on"
         >
-          <Grid
-            container
-            spacing={4}
-          >
-            <Grid item xs={12} sm={6} >
+          <Grid container spacing={4}>
+            <Grid item xs={12} sm={6}>
               <Typography
                 variant="subtitle1"
                 sx={{
-                  textAlign: 'left',
-                  color: '#054470',
-                  fontWeight: '650',
-                  fontSize: '1.2rem',
-                  padding: '0.3rem'
+                  textAlign: "left",
+                  color: "#054470",
+                  fontWeight: "650",
+                  fontSize: "1.2rem",
+                  padding: "0.3rem",
                 }}
               >
                 Aakar Foundry Enquiry No
@@ -57,11 +51,11 @@ const Ecn = (props) => {
               <Typography
                 variant="subtitle1"
                 sx={{
-                  textAlign: 'left',
-                  color: '#054470',
-                  fontWeight: '650',
-                  fontSize: '1.2rem',
-                  padding: '0.3rem'
+                  textAlign: "left",
+                  color: "#054470",
+                  fontWeight: "650",
+                  fontSize: "1.2rem",
+                  padding: "0.3rem",
                 }}
               >
                 Aakar Foundry Enquiry No - ECN
@@ -80,11 +74,11 @@ const Ecn = (props) => {
               <Typography
                 variant="subtitle1"
                 sx={{
-                  textAlign: 'left',
-                  color: '#054470',
-                  fontWeight: '650',
-                  fontSize: '1.2rem',
-                  padding: '0.3rem'
+                  textAlign: "left",
+                  color: "#054470",
+                  fontWeight: "650",
+                  fontSize: "1.2rem",
+                  padding: "0.3rem",
                 }}
               >
                 Part Name
@@ -103,11 +97,11 @@ const Ecn = (props) => {
               <Typography
                 variant="subtitle1"
                 sx={{
-                  textAlign: 'left',
-                  color: '#054470',
-                  fontWeight: '650',
-                  fontSize: '1.2rem',
-                  padding: '0.3rem'
+                  textAlign: "left",
+                  color: "#054470",
+                  fontWeight: "650",
+                  fontSize: "1.2rem",
+                  padding: "0.3rem",
                 }}
               >
                 Part Number - Finish
@@ -126,11 +120,11 @@ const Ecn = (props) => {
               <Typography
                 variant="subtitle1"
                 sx={{
-                  textAlign: 'left',
-                  color: '#054470',
-                  fontWeight: '650',
-                  fontSize: '1.2rem',
-                  padding: '0.3rem'
+                  textAlign: "left",
+                  color: "#054470",
+                  fontWeight: "650",
+                  fontSize: "1.2rem",
+                  padding: "0.3rem",
                 }}
               >
                 Finish Weight
@@ -149,11 +143,11 @@ const Ecn = (props) => {
               <Typography
                 variant="subtitle1"
                 sx={{
-                  textAlign: 'left',
-                  color: '#054470',
-                  fontWeight: '650',
-                  fontSize: '1.2rem',
-                  padding: '0.3rem'
+                  textAlign: "left",
+                  color: "#054470",
+                  fontWeight: "650",
+                  fontSize: "1.2rem",
+                  padding: "0.3rem",
                 }}
               >
                 Project Name/Other Details
@@ -172,11 +166,11 @@ const Ecn = (props) => {
               <Typography
                 variant="subtitle1"
                 sx={{
-                  textAlign: 'left',
-                  color: '#054470',
-                  fontWeight: '650',
-                  fontSize: '1.2rem',
-                  padding: '0.3rem'
+                  textAlign: "left",
+                  color: "#054470",
+                  fontWeight: "650",
+                  fontSize: "1.2rem",
+                  padding: "0.3rem",
                 }}
               >
                 What type of ECN (Change in)
@@ -196,6 +190,6 @@ const Ecn = (props) => {
       </Container>
     </div>
   );
-}
+};
 
 export default Ecn;

@@ -1,7 +1,7 @@
-import Alert from '@mui/material/Alert';
+import Alert from "@mui/material/Alert";
 import logo from "../assets/img/Logo.png";
 import hexagons from "../assets/img/login_hexagons@2x.png";
-import cloud from "../assets/img/login_cloud-storage.png"
+import cloud from "../assets/img/login_cloud-storage.png";
 import styles from "../assets/styles/Register.module.css";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -26,32 +26,30 @@ export const Register = () => {
   function isfirstName(val) {
     var reg = /^[a-zA-Z\s]+$/;
     const isValid = reg.test(val) && val.trim().length > 0;
-    setIsNameValid(isValid); // Set the validity based on the validation result
+    setIsNameValid(isValid); 
     return isValid;
   }
 
   function isMail(val) {
     var mail = /^\w+([\.-]?\w+)*@aakarfoundry\.com$/;
     const isValid = mail.test(val);
-    setIsEmailValid(isValid); // Set the validity based on the validation result
+    setIsEmailValid(isValid); 
     return isValid;
   }
-  
+
   function isNumber(val) {
     var phoneNo = /^\d{10}$/;
     const isValid = phoneNo.test(val);
-    setIsNumberValid(isValid); // Set the validity based on the validation result
+    setIsNumberValid(isValid); 
     return isValid;
   }
-  
 
   function isDepartmentBox(val) {
     var regex = /^[a-zA-Z.-\s]*$/;
     const isValid = regex.test(val) && val.trim().length > 0;
-    setIsDepartmentValid(isValid); // Set the validity based on the validation result
+    setIsDepartmentValid(isValid); 
     return isValid;
   }
-
 
   useEffect(() => {
     const closeAlerts = () => {
@@ -73,11 +71,9 @@ export const Register = () => {
       console.log(formData);
       setIsSuccess(true);
       setIsFailure(false);
-
     } else {
       setIsSuccess(false);
       setIsFailure(true);
-
     }
   }
 
@@ -105,16 +101,26 @@ export const Register = () => {
         <img className={styles.image} alt="Logo" src={logo} />
         <div className={styles.overlap}>
           <img className={styles.hexagons} alt="Hexagons" src={hexagons} />
-          <img className={styles.cloudStorageImage} alt="Cloud storage icon" src={cloud} />
+          <img
+            className={styles.cloudStorageImage}
+            alt="Cloud storage icon"
+            src={cloud}
+          />
           <div className={styles.ellipse} />
         </div>
         <div className={styles.ellipse2} />
         <div className={styles.ellipse3} />
-        <Container component="main" maxWidth="xs" sx={{
-          '@media screen and (min-width: 64em)': {
-            marginLeft: 15
-          }, display: "flex", alignItems: "left"
-        }}>
+        <Container
+          component="main"
+          maxWidth="xs"
+          sx={{
+            "@media screen and (min-width: 64em)": {
+              marginLeft: 15,
+            },
+            display: "flex",
+            alignItems: "left",
+          }}
+        >
           <Box
             sx={{
               marginTop: 15,
@@ -124,13 +130,18 @@ export const Register = () => {
               alignItems: "center",
             }}
           >
-            <Typography component="h1" variant="h5" sx={{ color: 'white' }}>
+            <Typography component="h1" variant="h5" sx={{ color: "white" }}>
               Create Account
             </Typography>
-            <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+            <Box
+              component="form"
+              onSubmit={handleSubmit}
+              noValidate
+              sx={{ mt: 1 }}
+            >
               <TextField
                 sx={{
-                  "& .MuiInputLabel-root": { color: 'white' }, // styles the label
+                  "& .MuiInputLabel-root": { color: "white" }, 
                   "& .MuiOutlinedInput-root": {
                     "& > fieldset": { border: 0.5, borderColor: "white" },
                   },
@@ -150,7 +161,7 @@ export const Register = () => {
               />
               <TextField
                 sx={{
-                  "& .MuiInputLabel-root": { color: 'white' }, // styles the label
+                  "& .MuiInputLabel-root": { color: "white" }, 
                   "& .MuiOutlinedInput-root": {
                     "& > fieldset": { border: 0.5, borderColor: "white" },
                   },
@@ -170,7 +181,7 @@ export const Register = () => {
               />
               <TextField
                 sx={{
-                  "& .MuiInputLabel-root": { color: 'white' }, // styles the label
+                  "& .MuiInputLabel-root": { color: "white" }, 
                   "& .MuiOutlinedInput-root": {
                     "& > fieldset": { border: 0.5, borderColor: "white" },
                   },
@@ -190,7 +201,7 @@ export const Register = () => {
 
               <TextField
                 sx={{
-                  "& .MuiInputLabel-root": { color: 'white' }, // styles the label
+                  "& .MuiInputLabel-root": { color: "white" }, 
                   "& .MuiOutlinedInput-root": {
                     "& > fieldset": { border: 0.5, borderColor: "white" },
                   },
@@ -212,13 +223,15 @@ export const Register = () => {
                 type="submit"
                 fullWidth
                 variant="contained"
-                sx={{ mt: 3, mb: 2, backgroundColor: '#1565C0' }}
+                sx={{ mt: 3, mb: 2, backgroundColor: "#1565C0" }}
                 onClick={onFormSubmit}
               >
                 Register
               </Button>
-              <div className={styles.registerLine}> Already a member?&nbsp;
-                <Link href="/" variant="body2" >
+              <div className={styles.registerLine}>
+                {" "}
+                Already a member?&nbsp;
+                <Link href="/" variant="body2">
                   {"Login"}
                 </Link>
               </div>
@@ -230,19 +243,19 @@ export const Register = () => {
               severity="success"
               color="info"
               style={{
-                backgroundColor: '#4CAF50',
-                color: 'white',
-                borderRadius: '0.25rem',
-                width: '18%',
-                position: 'fixed',
-                top: '2rem',
-                left: '50%',
-                transform: 'translateX(-50%)',
+                backgroundColor: "#4CAF50",
+                color: "white",
+                borderRadius: "0.25rem",
+                width: "18%",
+                position: "fixed",
+                top: "2rem",
+                left: "50%",
+                transform: "translateX(-50%)",
                 zIndex: 1000,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                height: '2rem',
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                height: "2rem",
               }}
               onClose={() => setIsSuccess(false)}
             >
@@ -255,19 +268,19 @@ export const Register = () => {
               severity="error"
               color="info"
               style={{
-                backgroundColor: 'red',
-                color: 'white',
-                borderRadius: '0.25rem',
-                width: '18%',
-                position: 'fixed',
-                top: '2rem',
-                left: '50%',
-                transform: 'translateX(-50%)',
+                backgroundColor: "red",
+                color: "white",
+                borderRadius: "0.25rem",
+                width: "18%",
+                position: "fixed",
+                top: "2rem",
+                left: "50%",
+                transform: "translateX(-50%)",
                 zIndex: 1000,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                height: '2rem',
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                height: "2rem",
               }}
               onClose={() => setIsFailure(false)}
             >
@@ -278,4 +291,4 @@ export const Register = () => {
       </div>
     </div>
   );
-}
+};

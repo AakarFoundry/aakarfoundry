@@ -8,13 +8,13 @@ import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const ChangePassword = () => {
   const [oldPassValidation, setOldPassValidation] = useState(true);
   const [confirmPassValidation, setConfirmPassValidation] = useState(false);
   const [newPass, setNewPass] = useState(false);
-  const [confirmPass, setConfirmPass] = useState('');
+  const [confirmPass, setConfirmPass] = useState("");
   const [showOldPassword, setShowOldPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -33,7 +33,7 @@ const ChangePassword = () => {
   };
 
   const handleOldPassword = (e) => {
-    if (e.target.value === '') {
+    if (e.target.value === "") {
       setOldPassValidation(false);
     } else {
       setOldPassValidation(true);
@@ -53,7 +53,15 @@ const ChangePassword = () => {
 
   return (
     <div className={styles.frameLogin}>
-      <Container component="main" maxWidth="xs" sx={{ '@media screen and (min-width: 64em)': { margincentre: 15 }, display: "flex", alignItems: "centre" }}>
+      <Container
+        component="main"
+        maxWidth="xs"
+        sx={{
+          "@media screen and (min-width: 64em)": { margincentre: 15 },
+          display: "flex",
+          alignItems: "centre",
+        }}
+      >
         <Box
           sx={{
             marginTop: 20,
@@ -62,13 +70,18 @@ const ChangePassword = () => {
             alignItems: "center",
           }}
         >
-          <Typography component="h1" variant="h5" sx={{ color: '#18234F' }}>
+          <Typography component="h1" variant="h5" sx={{ color: "#18234F" }}>
             Change Password
           </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <Box
+            component="form"
+            onSubmit={handleSubmit}
+            noValidate
+            sx={{ mt: 1 }}
+          >
             <TextField
               sx={{
-                "& .MuiInputLabel-root": { color: '#18234F' },
+                "& .MuiInputLabel-root": { color: "#18234F" },
                 "& .MuiOutlinedInput-root": {
                   "& > fieldset": { border: 0.5, borderColor: "#18234F" },
                 },
@@ -96,7 +109,7 @@ const ChangePassword = () => {
             />
             <TextField
               sx={{
-                "& .MuiInputLabel-root": { color: '#18234F' },
+                "& .MuiInputLabel-root": { color: "#18234F" },
                 "& .MuiOutlinedInput-root": {
                   "& > fieldset": { border: 0.5, borderColor: "#18234F" },
                 },
@@ -122,7 +135,7 @@ const ChangePassword = () => {
             />
             <TextField
               sx={{
-                "& .MuiInputLabel-root": { color: '#18234F' },
+                "& .MuiInputLabel-root": { color: "#18234F" },
                 "& .MuiOutlinedInput-root": {
                   "& > fieldset": { border: 0.5, borderColor: "#18234F" },
                 },
@@ -146,13 +159,19 @@ const ChangePassword = () => {
                 ),
               }}
             />
-            {(!confirmPassValidation && confirmPass !== '') && <p className={`${styles.textDanger}`}>Entered Password do not match </p>}
-            <Link to={(confirmPassValidation && oldPassValidation) ? "/dash" : ""}>
+            {!confirmPassValidation && confirmPass !== "" && (
+              <p className={`${styles.textDanger}`}>
+                Entered Password do not match{" "}
+              </p>
+            )}
+            <Link
+              to={confirmPassValidation && oldPassValidation ? "/dash" : ""}
+            >
               <Button
                 type="submit"
                 fullWidth
                 variant="contained"
-                sx={{ mt: 3, mb: 2, backgroundColor: '#1565C0' }}
+                sx={{ mt: 3, mb: 2, backgroundColor: "#1565C0" }}
               >
                 Submit
               </Button>

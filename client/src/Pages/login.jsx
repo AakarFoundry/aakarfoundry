@@ -1,6 +1,6 @@
 import logo from "../assets/img/Logo.png";
 import hexagons from "../assets/img/login_hexagons@2x.png";
-import cloud from "../assets/img/login_cloud-storage.png"
+import cloud from "../assets/img/login_cloud-storage.png";
 import styles from "../assets/styles/Login.module.css";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -8,10 +8,9 @@ import Container from "@mui/material/Container";
 import Link from "@mui/material/Link";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 
 export const Login = () => {
-
   const handleEvent = (e) => {
     setForm({ ...formData, [e.target.name]: e.target.value });
   };
@@ -23,14 +22,14 @@ export const Login = () => {
   function isMail(val) {
     var mail = /^\w+([\.-]?\w+)*@aakarfoundry\.com$/;
     const isValid = mail.test(val);
-    setIsEmailValid(isValid); 
+    setIsEmailValid(isValid);
     return isValid;
   }
 
   function isNumber(val) {
     var phoneNo = /^\d{4}$/;
     const isValid = phoneNo.test(val);
-    setIsNumberValid(isValid); // Set the validity based on the validation result
+    setIsNumberValid(isValid); 
     return isValid;
   }
 
@@ -44,14 +43,13 @@ export const Login = () => {
       alert("Done");
     } else {
       alert("Failed");
-
     }
   }
 
   useEffect(() => {
     setForm({
       email: "",
-      passowrd:"",
+      passowrd: "",
     });
   }, []);
 
@@ -62,11 +60,6 @@ export const Login = () => {
       email: data.get("email"),
       password: data.get("password"),
     });
-
-
-
-
-
   };
   return (
     <div className={styles.frameLogin}>
@@ -74,16 +67,26 @@ export const Login = () => {
         <img className={styles.image} alt="Logo" src={logo} />
         <div className={styles.overlap}>
           <img className={styles.hexagons} alt="Hexagons" src={hexagons} />
-          <img className={styles.cloudStorageImage} alt="Cloud storage icon" src={cloud} />
+          <img
+            className={styles.cloudStorageImage}
+            alt="Cloud storage icon"
+            src={cloud}
+          />
           <div className={styles.ellipse} />
         </div>
         <div className={styles.ellipse2} />
         <div className={styles.ellipse3} />
-        <Container component="main" maxWidth="xs" sx={{
-          '@media screen and (min-width: 64em)': {
-            marginLeft: 15
-          }, display: "flex", alignItems: "left"
-        }}>
+        <Container
+          component="main"
+          maxWidth="xs"
+          sx={{
+            "@media screen and (min-width: 64em)": {
+              marginLeft: 15,
+            },
+            display: "flex",
+            alignItems: "left",
+          }}
+        >
           <Box
             sx={{
               marginTop: 20,
@@ -92,13 +95,18 @@ export const Login = () => {
               alignItems: "center",
             }}
           >
-            <Typography component="h1" variant="h5" sx={{ color: 'white' }}>
+            <Typography component="h1" variant="h5" sx={{ color: "white" }}>
               Log In
             </Typography>
-            <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+            <Box
+              component="form"
+              onSubmit={handleSubmit}
+              noValidate
+              sx={{ mt: 1 }}
+            >
               <TextField
                 sx={{
-                  "& .MuiInputLabel-root": { color: 'white' },//styles the label
+                  "& .MuiInputLabel-root": { color: "white" }, 
                   "& .MuiOutlinedInput-root": {
                     "& > fieldset": { border: 0.5, borderColor: "white" },
                   },
@@ -117,7 +125,7 @@ export const Login = () => {
               />
               <TextField
                 sx={{
-                  "& .MuiInputLabel-root": { color: 'white' },//styles the label
+                  "& .MuiInputLabel-root": { color: "white" }, 
                   "& .MuiOutlinedInput-root": {
                     "& > fieldset": { border: 0.5, borderColor: "white" },
                   },
@@ -138,16 +146,18 @@ export const Login = () => {
                 type="submit"
                 fullWidth
                 variant="contained"
-                sx={{ mt: 3, mb: 2, backgroundColor: '#1565C0' }}
+                sx={{ mt: 3, mb: 2, backgroundColor: "#1565C0" }}
                 onClick={onFormSubmit}
               >
                 Log In
-
               </Button>
-              <div className={styles.registerLine}> Don&apos;t have an account?&nbsp;
-                <Link href="/register" variant="body2" >
+              <div className={styles.registerLine}>
+                {" "}
+                Don&apos;t have an account?&nbsp;
+                <Link href="/register" variant="body2">
                   {"\t\tCreate Account"}
-                </Link></div>
+                </Link>
+              </div>
             </Box>
           </Box>
         </Container>

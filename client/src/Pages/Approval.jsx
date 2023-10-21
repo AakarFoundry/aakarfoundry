@@ -9,7 +9,6 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
-
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: "#054470",
@@ -34,7 +33,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-//Add Icon Function
+
 
 function createData(name, id, status, department) {
   return { name, id, status, department };
@@ -94,9 +93,12 @@ export default function Approval() {
                   </Button>
                   <Button
                     variant="contained"
-                    style={{ background: "#c42222", minWidth: "100px" }}
+                    style={{ 
+                      background: "#c42222", 
+                      minWidth: "100px" 
+                    }}
                   >
-                    NO
+                    No
                   </Button>
                 </StyledTableCell>
               </StyledTableRow>

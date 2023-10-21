@@ -1,39 +1,45 @@
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
-import { Typography } from '@mui/material';
+import { Typography } from "@mui/material";
 
-
-const Rfq=(props)=> {
-
-
+const Rfq = (props) => {
   return (
     <div>
-
       <Container
         sx={{
-          display: 'flex',
-          justifyContent: 'center',
+          display: "flex",
+          justifyContent: "center",
           mt: 4,
           mb: 2,
-        
         }}
       >
-
         <Box
           component="form"
           sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
           }}
           noValidate
           autoComplete="on"
         >
           <Grid container spacing={4}>
-            <Grid item xs={12} sm={6} >
-              <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470', fontWeight: '650', fontSize: '1.2rem', padding: '0.3rem' }} > Part Name </Typography>
+            <Grid item xs={12} sm={6}>
+              <Typography
+                variant="subtitle1"
+                sx={{
+                  textAlign: "left",
+                  color: "#054470",
+                  fontWeight: "650",
+                  fontSize: "1.2rem",
+                  padding: "0.3rem",
+                }}
+              >
+                {" "}
+                Part Name{" "}
+              </Typography>
               <TextField
                 required
                 id="part-name"
@@ -44,7 +50,19 @@ const Rfq=(props)=> {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470', fontWeight: '650', fontSize: '1.2rem', padding: '0.3rem' }} > Part Number - MACH </Typography>
+              <Typography
+                variant="subtitle1"
+                sx={{
+                  textAlign: "left",
+                  color: "#054470",
+                  fontWeight: "650",
+                  fontSize: "1.2rem",
+                  padding: "0.3rem",
+                }}
+              >
+                {" "}
+                Part Number - MACH{" "}
+              </Typography>
 
               <TextField
                 required
@@ -56,7 +74,19 @@ const Rfq=(props)=> {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470', fontWeight: '650', fontSize: '1.2rem', padding: '0.3rem' }}  > Part Number - CAST </Typography>
+              <Typography
+                variant="subtitle1"
+                sx={{
+                  textAlign: "left",
+                  color: "#054470",
+                  fontWeight: "650",
+                  fontSize: "1.2rem",
+                  padding: "0.3rem",
+                }}
+              >
+                {" "}
+                Part Number - CAST{" "}
+              </Typography>
 
               <TextField
                 required
@@ -68,7 +98,18 @@ const Rfq=(props)=> {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470', fontWeight: '650', fontSize: '1.2rem', padding: '0.3rem' }}  >Project Name/Other Details</Typography>
+              <Typography
+                variant="subtitle1"
+                sx={{
+                  textAlign: "left",
+                  color: "#054470",
+                  fontWeight: "650",
+                  fontSize: "1.2rem",
+                  padding: "0.3rem",
+                }}
+              >
+                Project Name/Other Details
+              </Typography>
 
               <TextField
                 required
@@ -80,7 +121,18 @@ const Rfq=(props)=> {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470', fontWeight: '650', fontSize: '1.2rem', padding: '0.3rem' }}  >Aakar Foundry Enquiry No</Typography>
+              <Typography
+                variant="subtitle1"
+                sx={{
+                  textAlign: "left",
+                  color: "#054470",
+                  fontWeight: "650",
+                  fontSize: "1.2rem",
+                  padding: "0.3rem",
+                }}
+              >
+                Aakar Foundry Enquiry No
+              </Typography>
 
               <TextField
                 required
@@ -92,11 +144,23 @@ const Rfq=(props)=> {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470', fontWeight: '650', fontSize: '1.2rem', padding: '0.3rem' }}  > Qty Per Annum (Nos) </Typography>
+              <Typography
+                variant="subtitle1"
+                sx={{
+                  textAlign: "left",
+                  color: "#054470",
+                  fontWeight: "650",
+                  fontSize: "1.2rem",
+                  padding: "0.3rem",
+                }}
+              >
+                {" "}
+                Quantity Per Annum (Nos){" "}
+              </Typography>
 
               <TextField
                 required
-                id="qty-per-annum"
+                id="quantity-per-annum"
                 label="Enter Details"
                 variant="outlined"
                 fullWidth
@@ -104,7 +168,19 @@ const Rfq=(props)=> {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470', fontWeight: '650', fontSize: '1.2rem', padding: '0.3rem' }} > Product Life (in Years) </Typography>
+              <Typography
+                variant="subtitle1"
+                sx={{
+                  textAlign: "left",
+                  color: "#054470",
+                  fontWeight: "650",
+                  fontSize: "1.2rem",
+                  padding: "0.3rem",
+                }}
+              >
+                {" "}
+                Product Life (in Years){" "}
+              </Typography>
 
               <TextField
                 required
@@ -116,7 +192,19 @@ const Rfq=(props)=> {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470', fontWeight: '650', fontSize: '1.2rem', padding: '0.3rem' }}  > Process Reqd (HPDC, LPDC, GDC) </Typography>
+              <Typography
+                variant="subtitle1"
+                sx={{
+                  textAlign: "left",
+                  color: "#054470",
+                  fontWeight: "650",
+                  fontSize: "1.2rem",
+                  padding: "0.3rem",
+                }}
+              >
+                {" "}
+                Process Required (HPDC, LPDC, GDC){" "}
+              </Typography>
 
               <TextField
                 required
@@ -128,7 +216,19 @@ const Rfq=(props)=> {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470', fontWeight: '650', fontSize: '1.2rem', padding: '0.3rem' }}  > Aluminum Alloy Specification</Typography>
+              <Typography
+                variant="subtitle1"
+                sx={{
+                  textAlign: "left",
+                  color: "#054470",
+                  fontWeight: "650",
+                  fontSize: "1.2rem",
+                  padding: "0.3rem",
+                }}
+              >
+                {" "}
+                Aluminum Alloy Specification
+              </Typography>
 
               <TextField
                 required
@@ -140,7 +240,18 @@ const Rfq=(props)=> {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470', fontWeight: '650', fontSize: '1.2rem', padding: '0.3rem' }} >Requirements - Raw or Machined</Typography>
+              <Typography
+                variant="subtitle1"
+                sx={{
+                  textAlign: "left",
+                  color: "#054470",
+                  fontWeight: "650",
+                  fontSize: "1.2rem",
+                  padding: "0.3rem",
+                }}
+              >
+                Requirements - Raw or Machined
+              </Typography>
 
               <TextField
                 required
@@ -152,7 +263,19 @@ const Rfq=(props)=> {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470', fontWeight: '650', fontSize: '1.2rem', padding: '0.3rem' }}  > Shot Blasting </Typography>
+              <Typography
+                variant="subtitle1"
+                sx={{
+                  textAlign: "left",
+                  color: "#054470",
+                  fontWeight: "650",
+                  fontSize: "1.2rem",
+                  padding: "0.3rem",
+                }}
+              >
+                {" "}
+                Shot Blasting{" "}
+              </Typography>
 
               <TextField
                 required
@@ -164,7 +287,19 @@ const Rfq=(props)=> {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470', fontWeight: '650', fontSize: '1.2rem', padding: '0.3rem' }} > Specific Product & QC requirements </Typography>
+              <Typography
+                variant="subtitle1"
+                sx={{
+                  textAlign: "left",
+                  color: "#054470",
+                  fontWeight: "650",
+                  fontSize: "1.2rem",
+                  padding: "0.3rem",
+                }}
+              >
+                {" "}
+                Specific Product & QC Requirements{" "}
+              </Typography>
 
               <TextField
                 required
@@ -176,7 +311,19 @@ const Rfq=(props)=> {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470', fontWeight: '650', fontSize: '1.2rem', padding: '0.3rem' }}  > Anodizing Required/Chromotising Required? </Typography>
+              <Typography
+                variant="subtitle1"
+                sx={{
+                  textAlign: "left",
+                  color: "#054470",
+                  fontWeight: "650",
+                  fontSize: "1.2rem",
+                  padding: "0.3rem",
+                }}
+              >
+                {" "}
+                Anodizing Required/Chromotising Required?{" "}
+              </Typography>
 
               <TextField
                 required
@@ -189,7 +336,19 @@ const Rfq=(props)=> {
             </Grid>
 
             <Grid item xs={12} sm={6}>
-              <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470', fontWeight: '650', fontSize: '1.2rem', padding: '0.3rem' }}  > Power Coating Required? What Colour? </Typography>
+              <Typography
+                variant="subtitle1"
+                sx={{
+                  textAlign: "left",
+                  color: "#054470",
+                  fontWeight: "650",
+                  fontSize: "1.2rem",
+                  padding: "0.3rem",
+                }}
+              >
+                {" "}
+                Power Coating Required? What Colour?{" "}
+              </Typography>
 
               <TextField
                 required
@@ -201,7 +360,19 @@ const Rfq=(props)=> {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470', fontWeight: '650', fontSize: '1.2rem', padding: '0.3rem' }} > Bought Out Materials Details </Typography>
+              <Typography
+                variant="subtitle1"
+                sx={{
+                  textAlign: "left",
+                  color: "#054470",
+                  fontWeight: "650",
+                  fontSize: "1.2rem",
+                  padding: "0.3rem",
+                }}
+              >
+                {" "}
+                Bought Out Materials Details{" "}
+              </Typography>
 
               <TextField
                 required
@@ -213,7 +384,18 @@ const Rfq=(props)=> {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470', fontWeight: '650', fontSize: '1.2rem', padding: '0.3rem' }} >Leak testing & Pressure Requirement</Typography>
+              <Typography
+                variant="subtitle1"
+                sx={{
+                  textAlign: "left",
+                  color: "#054470",
+                  fontWeight: "650",
+                  fontSize: "1.2rem",
+                  padding: "0.3rem",
+                }}
+              >
+                Leak testing & Pressure Requirement
+              </Typography>
 
               <TextField
                 required
@@ -225,7 +407,18 @@ const Rfq=(props)=> {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470', fontWeight: '650', fontSize: '1.2rem', padding: '0.3rem' }}  >Impregnation Required? </Typography>
+              <Typography
+                variant="subtitle1"
+                sx={{
+                  textAlign: "left",
+                  color: "#054470",
+                  fontWeight: "650",
+                  fontSize: "1.2rem",
+                  padding: "0.3rem",
+                }}
+              >
+                Impregnation Required?{" "}
+              </Typography>
 
               <TextField
                 required
@@ -237,7 +430,19 @@ const Rfq=(props)=> {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470', fontWeight: '650', fontSize: '1.2rem', padding: '0.3rem' }} > Heat treatment Required?</Typography>
+              <Typography
+                variant="subtitle1"
+                sx={{
+                  textAlign: "left",
+                  color: "#054470",
+                  fontWeight: "650",
+                  fontSize: "1.2rem",
+                  padding: "0.3rem",
+                }}
+              >
+                {" "}
+                Heat treatment Required?
+              </Typography>
 
               <TextField
                 required
@@ -249,7 +454,19 @@ const Rfq=(props)=> {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470', fontWeight: '650', fontSize: '1.2rem', padding: '0.3rem' }}  > Packaging - Corrugated/PP/Plastic/Exports Grade?</Typography>
+              <Typography
+                variant="subtitle1"
+                sx={{
+                  textAlign: "left",
+                  color: "#054470",
+                  fontWeight: "650",
+                  fontSize: "1.2rem",
+                  padding: "0.3rem",
+                }}
+              >
+                {" "}
+                Packaging - Corrugated/PP/Plastic/Exports Grade?
+              </Typography>
 
               <TextField
                 required
@@ -261,7 +478,19 @@ const Rfq=(props)=> {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470', fontWeight: '650', fontSize: '1.2rem', padding: '0.3rem' }}  > Delivery Location & Basis</Typography>
+              <Typography
+                variant="subtitle1"
+                sx={{
+                  textAlign: "left",
+                  color: "#054470",
+                  fontWeight: "650",
+                  fontSize: "1.2rem",
+                  padding: "0.3rem",
+                }}
+              >
+                {" "}
+                Delivery Location & Basis
+              </Typography>
 
               <TextField
                 required
@@ -273,11 +502,23 @@ const Rfq=(props)=> {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470', fontWeight: '650', fontSize: '1.2rem', padding: '0.3rem' }}  > (Ex-Works /FOB/CIF/DDP/DDU) </Typography>
+              <Typography
+                variant="subtitle1"
+                sx={{
+                  textAlign: "left",
+                  color: "#054470",
+                  fontWeight: "650",
+                  fontSize: "1.2rem",
+                  padding: "0.3rem",
+                }}
+              >
+                {" "}
+                (Ex-Works /FOB/CIF/DDP/DDU){" "}
+              </Typography>
 
               <TextField
                 required
-                id="delivery-location-basis"
+                id="ex-works"
                 label="Enter Details"
                 variant="outlined"
                 fullWidth
@@ -285,7 +526,19 @@ const Rfq=(props)=> {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470', fontWeight: '650', fontSize: '1.2rem', padding: '0.3rem' }}  > Annual Tonnage - MT </Typography>
+              <Typography
+                variant="subtitle1"
+                sx={{
+                  textAlign: "left",
+                  color: "#054470",
+                  fontWeight: "650",
+                  fontSize: "1.2rem",
+                  padding: "0.3rem",
+                }}
+              >
+                {" "}
+                Annual Tonnage - MT{" "}
+              </Typography>
 
               <TextField
                 required
@@ -296,11 +549,23 @@ const Rfq=(props)=> {
                 size="small"
               />
             </Grid>
-            <Grid item xs={12} sm={6} >
-              <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470', fontWeight: '650', fontSize: '1.2rem', padding: '0.3rem' }} > First Sample Date  </Typography>
+            <Grid item xs={12} sm={6}>
+              <Typography
+                variant="subtitle1"
+                sx={{
+                  textAlign: "left",
+                  color: "#054470",
+                  fontWeight: "650",
+                  fontSize: "1.2rem",
+                  padding: "0.3rem",
+                }}
+              >
+                {" "}
+                First Sample Date{" "}
+              </Typography>
               <TextField
                 required
-                id="First Sample Date "
+                id="first-sample-date "
                 label="Enter Details"
                 variant="outlined"
                 fullWidth
@@ -308,7 +573,18 @@ const Rfq=(props)=> {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470', fontWeight: '650', fontSize: '1.2rem' }} > PSW /PPAP Date  </Typography>
+              <Typography
+                variant="subtitle1"
+                sx={{
+                  textAlign: "left",
+                  color: "#054470",
+                  fontWeight: "650",
+                  fontSize: "1.2rem",
+                }}
+              >
+                {" "}
+                PSW /PPAP Date{" "}
+              </Typography>
 
               <TextField
                 required
@@ -320,34 +596,31 @@ const Rfq=(props)=> {
               />
             </Grid>
             <Grid item xs={12} sm={12}>
-              <Typography variant="subtitle1" sx={{ textAlign: 'left', color: '#054470', fontWeight: '650', fontSize: '1.2rem' }}> Remarks </Typography>
+              <Typography
+                variant="subtitle1"
+                sx={{
+                  textAlign: "left",
+                  color: "#054470",
+                  fontWeight: "650",
+                  fontSize: "1.2rem",
+                }}
+              >
+                {" "}
+                Remarks{" "}
+              </Typography>
               <TextField
-              label="Enter Remarks"
-                id="Remark"
+                label="Enter Remarks"
+                id="rfq-remarks"
                 variant="outlined"
                 fullWidth
                 size="small"
               />
             </Grid>
-
           </Grid>
-          {/*<Stack direction="row" spacing={5} justifyContent="center" mt={4} sx={{ mb: 4 }}>
-           <Link to={"/dash"}>
-              <Button variant="contained" size="large">
-                Back
-              </Button>
-            </Link>
-            <Link to={"/rfq"}>
-              <Button variant="contained" size="large"  >
-                Continue
-              </Button>
-            </Link>
-
-          </Stack>*/}
         </Box>
       </Container>
     </div>
   );
-}
+};
 
 export default Rfq;
