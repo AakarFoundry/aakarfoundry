@@ -1,4 +1,5 @@
-import React from "react";
+import * as React from 'react';
+import Alert from '@mui/material/Alert';
 import logo from "../assets/img/Logo.png";
 import hexagons from "../assets/img/login_hexagons@2x.png";
 import cloud from "../assets/img/login_cloud-storage.png"
@@ -12,13 +13,13 @@ import Typography from "@mui/material/Typography";
 import { useEffect, useState } from "react";
 
 export const Register = () => {
-
   const handleEvent = (e) => {
     setForm({ ...formData, [e.target.name]: e.target.value });
   };
 
   const [formData, setForm] = useState({});
-
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [isFailure, setIsFailure] = useState(false);
 
   function isfirstName(val) {
     var reg = /^[a-zA-Z\s]+$/;
@@ -27,7 +28,6 @@ export const Register = () => {
   }
 
   function isMail(val) {
-
     var mail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     if (mail.test(val)) return true;
     return false;
@@ -38,15 +38,12 @@ export const Register = () => {
     if (phoneNo.test(val)) return true;
     return false;
   }
+
   function isDepartmentBox(val) {
     var regex = /^[a-zA-Z.-\s]*$/;
     if (regex.test(val) && val.trim().length > 0) return true;
     return false;
-
-    return true;
   }
-
-
 
   function onFormSubmit(e) {
     e.preventDefault();
@@ -56,9 +53,11 @@ export const Register = () => {
     var number = isNumber(formData.number);
     if (name && email && department && number) {
       console.log(formData);
-      alert("Register Successful");
+      setIsSuccess(true); // Set success alert to visible
+      setIsFailure(false); // Hide failure alert
     } else {
-      alert("Register Unsuccessful");
+      setIsSuccess(false); // Hide success alert
+      setIsFailure(true); // Set failure alert to visible
     }
   }
 
@@ -79,7 +78,6 @@ export const Register = () => {
       password: data.get("password"),
     });
   };
-
 
   return (
     <div className={styles.frameRegister}>
@@ -112,7 +110,7 @@ export const Register = () => {
             <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
               <TextField
                 sx={{
-                  "& .MuiInputLabel-root": { color: 'white' },//styles the label
+                  "& .MuiInputLabel-root": { color: 'white' }, // styles the label
                   "& .MuiOutlinedInput-root": {
                     "& > fieldset": { border: 0.5, borderColor: "white" },
                   },
@@ -130,13 +128,13 @@ export const Register = () => {
               />
               <TextField
                 sx={{
-                  "& .MuiInputLabel-root": { color: 'white' },//styles the label
+                  "& .MuiInputLabel-root": { color: 'white' }, // styles the label
                   "& .MuiOutlinedInput-root": {
                     "& > fieldset": { border: 0.5, borderColor: "white" },
                   },
                 }}
                 variant="outlined"
-                margin="normal"
+                margin=" normal"
                 required
                 fullWidth
                 name="email"
@@ -148,7 +146,7 @@ export const Register = () => {
               />
               <TextField
                 sx={{
-                  "& .MuiInputLabel-root": { color: 'white' },//styles the label
+                  "& .MuiInputLabel-root": { color: 'white' }, // styles the label
                   "& .MuiOutlinedInput-root": {
                     "& > fieldset": { border: 0.5, borderColor: "white" },
                   },
@@ -166,7 +164,7 @@ export const Register = () => {
 
               <TextField
                 sx={{
-                  "& .MuiInputLabel-root": { color: 'white' },//styles the label
+                  "& .MuiInputLabel-root": { color: 'white' }, // styles the label
                   "& .MuiOutlinedInput-root": {
                     "& > fieldset": { border: 0.5, borderColor: "white" },
                   },
@@ -194,11 +192,62 @@ export const Register = () => {
               <div className={styles.registerLine}> Already a member?&nbsp;
                 <Link href="/" variant="body2" >
                   {"Login"}
-                </Link></div>
+                </Link>
+              </div>
             </Box>
           </Box>
+
+          {isSuccess && (
+            <Alert
+              severity="success"
+              color="info"
+              style={{
+                backgroundColor: '#4CAF50', 
+                color: 'white', 
+                borderRadius: '0.25rem', 
+                width: '18%', 
+                position: 'fixed', 
+                top: '2rem',
+                left: '50%', 
+                transform: 'translateX(-50%)', 
+                zIndex: 1000, 
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                height: '2rem', 
+              }}
+              onClose={() => setIsSuccess(false)}
+            >
+              Registration successful!
+            </Alert>
+          )}
+
+          {isFailure && (
+            <Alert
+              severity="error"
+              color="info"
+              style={{
+                backgroundColor: 'red', 
+                color: 'white', 
+                borderRadius: '0.25rem', 
+                width: '18%', 
+                position: 'fixed', 
+                top: '2rem', 
+                left: '50%', 
+                transform: 'translateX(-50%)', 
+                zIndex: 1000, 
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                height: '2rem', 
+              }}
+              onClose={() => setIsFailure(false)}
+            >
+              Registration failed.
+            </Alert>
+          )}
         </Container>
       </div>
     </div>
   );
-};
+}
