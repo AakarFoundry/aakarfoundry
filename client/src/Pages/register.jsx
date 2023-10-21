@@ -1,3 +1,4 @@
+import React from "react";
 import logo from "../assets/img/Logo.png";
 import hexagons from "../assets/img/login_hexagons@2x.png";
 import cloud from "../assets/img/login_cloud-storage.png"
@@ -8,7 +9,68 @@ import Container from "@mui/material/Container";
 import Link from "@mui/material/Link";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
+import { useEffect, useState } from "react";
+
 export const Register = () => {
+
+  const handleEvent = (e) => {
+    setForm({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const [formData, setForm] = useState({});
+
+
+  function isfirstName(val) {
+    var reg = /^[a-zA-Z\s]+$/;
+    if (reg.test(val) && val.trim().length > 0) return true;
+    return false;
+  }
+
+  function isMail(val) {
+
+    var mail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (mail.test(val)) return true;
+    return false;
+  }
+
+  function isNumber(val) {
+    var phoneNo = /^\d{10,10}$/;
+    if (phoneNo.test(val)) return true;
+    return false;
+  }
+  function isDepartmentBox(val) {
+    var regex = /^[a-zA-Z.-\s]*$/;
+    if (regex.test(val) && val.trim().length > 0) return true;
+    return false;
+
+    return true;
+  }
+
+
+
+  function onFormSubmit(e) {
+    e.preventDefault();
+    var name = isfirstName(formData.name);
+    var email = isMail(formData.email);
+    var department = isDepartmentBox(formData.department);
+    var number = isNumber(formData.number);
+    if (name && email && department && number) {
+      console.log(formData);
+      alert("Register Successful");
+    } else {
+      alert("Register Unsuccessful");
+    }
+  }
+
+  useEffect(() => {
+    setForm({
+      name: "",
+      email: "",
+      number: "",
+      department: "",
+    });
+  }, []);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -17,10 +79,12 @@ export const Register = () => {
       password: data.get("password"),
     });
   };
+
+
   return (
     <div className={styles.frameRegister}>
       <div className={styles.div}>
-      <img className={styles.image} alt="Logo" src={logo} />
+        <img className={styles.image} alt="Logo" src={logo} />
         <div className={styles.overlap}>
           <img className={styles.hexagons} alt="Hexagons" src={hexagons} />
           <img className={styles.cloudStorageImage} alt="Cloud storage icon" src={cloud} />
@@ -28,88 +92,112 @@ export const Register = () => {
         </div>
         <div className={styles.ellipse2} />
         <div className={styles.ellipse3} />
-        <Container component="main" maxWidth="xs" sx={{ '@media screen and (min-width: 64em)': {marginLeft:15
-        },display:"flex", alignItems: "left"}}>
-      <Box
-        sx={{  
-          marginTop: 15,
-          marginLeft:0,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        <Typography component="h1" variant="h5" sx={{color : 'white' }}>
-          Create Account
-        </Typography>
-        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-          <TextField
+        <Container component="main" maxWidth="xs" sx={{
+          '@media screen and (min-width: 64em)': {
+            marginLeft: 15
+          }, display: "flex", alignItems: "left"
+        }}>
+          <Box
             sx={{
-              "& .MuiInputLabel-root": {color: 'white'},//styles the label
-              "& .MuiOutlinedInput-root": {
-                "& > fieldset": { border:0.5,borderColor: "white" },
-                },
+              marginTop: 15,
+              marginLeft: 0,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
             }}
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="name"
-            label="Full Name"
-            name="name"
-            autoComplete="name"
-            
-            autoFocus
-          />
-          <TextField
-            sx={{
-              "& .MuiInputLabel-root": {color: 'white'},//styles the label
-              "& .MuiOutlinedInput-root": {
-                "& > fieldset": { border:0.5,borderColor: "white" },
-                },
-            }}
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="email"
-            label="Work Email"
-            type="email"
-            id="email"
-            autoComplete=""
-          />
-          <TextField
-            sx={{
-              "& .MuiInputLabel-root": {color: 'white'},//styles the label
-              "& .MuiOutlinedInput-root": {
-                "& > fieldset": { border:0.5,borderColor: "white" },
-                },
-            }}
-          margin="normal"
-          required
-          fullWidth
-          name="number"
-          label="Phone Number"
-          type="text"
-          id="number"
-          autoComplete=""
-        />
-
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 3, mb: 2, backgroundColor:'#1565C0' }}
           >
-            Register          
-          </Button>
-          <div className={styles.registerLine}> Already a member?&nbsp; 
-          <Link href="/" variant="body2" >
-                { "Login"}
-              </Link></div>
-        </Box>
-      </Box>
-    </Container>
+            <Typography component="h1" variant="h5" sx={{ color: 'white' }}>
+              Create Account
+            </Typography>
+            <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+              <TextField
+                sx={{
+                  "& .MuiInputLabel-root": { color: 'white' },//styles the label
+                  "& .MuiOutlinedInput-root": {
+                    "& > fieldset": { border: 0.5, borderColor: "white" },
+                  },
+                }}
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                id="name"
+                label="Full Name"
+                name="name"
+                autoComplete="name"
+                onChange={handleEvent}
+                autoFocus
+              />
+              <TextField
+                sx={{
+                  "& .MuiInputLabel-root": { color: 'white' },//styles the label
+                  "& .MuiOutlinedInput-root": {
+                    "& > fieldset": { border: 0.5, borderColor: "white" },
+                  },
+                }}
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                name="email"
+                label="Work Email"
+                type="email"
+                id="email"
+                onChange={handleEvent}
+                autoComplete=""
+              />
+              <TextField
+                sx={{
+                  "& .MuiInputLabel-root": { color: 'white' },//styles the label
+                  "& .MuiOutlinedInput-root": {
+                    "& > fieldset": { border: 0.5, borderColor: "white" },
+                  },
+                }}
+                margin="normal"
+                required
+                fullWidth
+                name="number"
+                label="Phone Number"
+                type="text"
+                id="number"
+                onChange={handleEvent}
+                autoComplete=""
+              />
+
+              <TextField
+                sx={{
+                  "& .MuiInputLabel-root": { color: 'white' },//styles the label
+                  "& .MuiOutlinedInput-root": {
+                    "& > fieldset": { border: 0.5, borderColor: "white" },
+                  },
+                }}
+                margin="normal"
+                required
+                fullWidth
+                name="department"
+                label="Department"
+                type="text"
+                id="department"
+                onChange={handleEvent}
+                autoComplete=""
+              />
+
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2, backgroundColor: '#1565C0' }}
+                onClick={onFormSubmit}
+              >
+                Register
+              </Button>
+              <div className={styles.registerLine}> Already a member?&nbsp;
+                <Link href="/" variant="body2" >
+                  {"Login"}
+                </Link></div>
+            </Box>
+          </Box>
+        </Container>
       </div>
     </div>
   );
