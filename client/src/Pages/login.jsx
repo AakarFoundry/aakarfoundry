@@ -131,7 +131,7 @@ export const Login = () => {
                 id="password"
                 autoComplete="current-password"
                 onChange={handleEvent}
-                helperText={isNumberValid ? "" : "Invalid Email Address"}
+                helperText={isNumberValid ? "" : "Invalid Password"}
                 error={!isNumberValid}
               />
               <Button

@@ -165,7 +165,7 @@ export const Register = () => {
                 autoComplete="email"
                 onChange={handleEvent}
                 autoFocus
-                helperText={isEmailValid ? "" : "Invalid name"}
+                helperText={isEmailValid ? "" : "Invalid Email"}
                 error={!isEmailValid}
               />
               <TextField
