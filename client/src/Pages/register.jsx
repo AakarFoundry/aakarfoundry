@@ -1,4 +1,3 @@
-import * as React from 'react';
 import Alert from '@mui/material/Alert';
 import logo from "../assets/img/Logo.png";
 import hexagons from "../assets/img/login_hexagons@2x.png";
@@ -11,7 +10,6 @@ import Link from "@mui/material/Link";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import { useEffect, useState } from "react";
-
 export const Register = () => {
   const handleEvent = (e) => {
     setForm({ ...formData, [e.target.name]: e.target.value });

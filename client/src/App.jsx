@@ -1,10 +1,10 @@
 import './App.css'
 import NavBar from './Components/NavBar';
-import CustomerName from './Pages/customerName'
+import CustomerName from './Pages/CustomerName'
 import Dashboard from './Pages/Dashboard';
 import { Login } from './Pages/Login';
 import { Register } from './Pages/register';
-import RfqAttributes from './Pages/RfqAttributes'
+// import RfqAttributes from './Pages/RfqAttributes'
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import RiskAnalysis from './Pages/RiskAnalysis';
 import DesignFoundary from './Pages/design';
@@ -15,7 +15,7 @@ import HorizontalLinearStepper from './Components/Stepper';
 function App() {
   return (
     <>
-   
+
       <Router>
         {window.location.pathname !== "/" && window.location.pathname !== "/register" ? <NavBar /> : <> </>}
         <Routes>
@@ -23,7 +23,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/dash" element={<Dashboard />} />
           <Route path="/details" element={<Process />} />
-         {/* <Route path="/customer" element={<CustomerName />} />
+          {/* <Route path="/customer" element={<CustomerName />} />
           <Route path="/rfq" element={<RfqAttributes />} />
           <Route path="/risk" element={<RiskAnalysis />} />
           <Route path="/design" element={<DesignFoundary />} />
