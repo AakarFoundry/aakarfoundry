@@ -32,6 +32,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
   "&:last-child td, &:last-child th": {
     border: `1px solid ${theme.palette.divider}`,
+    
   },
 }));
 
@@ -40,15 +41,15 @@ function createData(name, id, status, views) {
 }
 
 const rows = [
-  createData("Customer 1", "12345", "Approve", "100"),
-  createData("Customer 2", "67890", "Pending", "50"),
-  createData("Customer 3", "54321", "Incomplete", "75"),
-  createData("Customer 4", "98765", "Rejected", "30"),
-  createData("Customer 5", "11111", "Success", "90"),
-  createData("Customer 6", "11431", "Rejected", "93"),
-  createData("Customer 7", "54646", "Pending", "60"),
-  createData("Customer 8", "64566", "Incomplete", "80"),
-  createData("Customer 9", "23424", "Success", "32"),
+  createData("Customer 1", "12345", "Approve"),
+  createData("Customer 2", "67890", "Pending"),
+  createData("Customer 3", "54321", "Incomplete"),
+  createData("Customer 4", "98765", "Rejected"),
+  createData("Customer 5", "11111", "Success"),
+  createData("Customer 6", "11431", "Rejected"),
+  createData("Customer 7", "54646", "Pending"),
+  createData("Customer 8", "64566", "Incomplete"),
+  createData("Customer 9", "23424", "Success"),
 ];
 
 export default function Dashboard() {
