@@ -1,3 +1,4 @@
+import * as React from "react";
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -8,6 +9,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
+import { TablePagination } from "@mui/material";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -29,13 +31,12 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     backgroundColor: theme.palette.action.hover,
   },
   "&:last-child td, &:last-child th": {
-    border: 0,
+    border: `1px solid ${theme.palette.divider}`,
   },
 }));
 
-
-function createData(name, calories, status, views) {
-  return { name, calories, status, views };
+function createData(name, id, status, views) {
+  return { name, id, status, views };
 }
 
 const rows = [
@@ -51,13 +52,35 @@ const rows = [
 ];
 
 export default function Dashboard() {
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(8);
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
+
+  const emptyRows =
+    rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
+
+  const slicedRows = rows.slice(
+    page * rowsPerPage,
+    page * rowsPerPage + rowsPerPage
+  );
+
   return (
     <Container
       sx={{
         display: "flex",
-        justifyContent: "center",
+        flexDirection: "column",
         alignItems: "center",
-        height: "100vh",
+        minHeight: "100vh",
+        justifyContent: "center",
+        mt: "3rem",
       }}
     >
       <TableContainer component={Paper}>
@@ -71,12 +94,12 @@ export default function Dashboard() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
+            {slicedRows.map((row) => (
               <StyledTableRow key={row.name}>
                 <StyledTableCell component="th" scope="row">
                   {row.name}
                 </StyledTableCell>
-                <StyledTableCell align="center">{row.calories}</StyledTableCell>
+                <StyledTableCell align="center">{row.id}</StyledTableCell>
                 <StyledTableCell align="center">
                   <Button
                     variant="contained"
@@ -91,7 +114,6 @@ export default function Dashboard() {
                         ? "error"
                         : "success"
                     }
-                    
                     style={{ minWidth: "8rem" }}
                   >
                     {row.status}
@@ -107,9 +129,29 @@ export default function Dashboard() {
                 </StyledTableCell>
               </StyledTableRow>
             ))}
+            {emptyRows > 0 && (
+              <TableRow style={{ height: 53 * emptyRows }}>
+                <StyledTableCell colSpan={4} />
+              </TableRow>
+            )}
           </TableBody>
         </Table>
       </TableContainer>
+      <TablePagination
+        rowsPerPageOptions={[8, 10, 25]}
+        component="div"
+        count={rows.length}
+        rowsPerPage={rowsPerPage}
+        page={page}
+        onPageChange={handleChangePage}
+        onRowsPerPageChange={handleChangeRowsPerPage}
+        labelRowsPerPage="Rows per page"
+        labelDisplayedRows={({ from, to, count }) =>
+          `${from}-${to} of ${count}`
+        }
+        backIconButtonText="Previous Page"
+        nextIconButtonText="Next Page"
+      />
     </Container>
   );
 }
