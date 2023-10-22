@@ -39,14 +39,14 @@ function createData(name, calories, status, views) {
 }
 
 const rows = [
-  createData("Customer 1", "12345", "Success", "100"),
-  createData("Customer 2", "67890", "Incomplete", "50"),
-  createData("Customer 3", "54321", "In Progress", "75"),
-  createData("Customer 4", "98765", "Incomplete", "30"),
+  createData("Customer 1", "12345", "Approve", "100"),
+  createData("Customer 2", "67890", "Pending", "50"),
+  createData("Customer 3", "54321", "Incomplete", "75"),
+  createData("Customer 4", "98765", "Rejected", "30"),
   createData("Customer 5", "11111", "Success", "90"),
-  createData("Customer 6", "11431", "Success", "93"),
-  createData("Customer 7", "54646", "Incomplete", "60"),
-  createData("Customer 8", "64566", "In Progress", "80"),
+  createData("Customer 6", "11431", "Rejected", "93"),
+  createData("Customer 7", "54646", "Pending", "60"),
+  createData("Customer 8", "64566", "Incomplete", "80"),
   createData("Customer 9", "23424", "Success", "32"),
 ];
 
@@ -81,12 +81,17 @@ export default function Dashboard() {
                   <Button
                     variant="contained"
                     color={
-                      row.status === "Success"
-                        ? "success"
+                      row.status === "Approved"
+                        ? "approve"
                         : row.status === "Incomplete"
+                        ? "primary"
+                        : row.status === "Pending"
+                        ? "warning"
+                        : row.status === "Rejected"
                         ? "error"
-                        : "primary"
+                        : "success"
                     }
+                    
                     style={{ minWidth: "8rem" }}
                   >
                     {row.status}
