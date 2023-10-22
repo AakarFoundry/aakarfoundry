@@ -8,12 +8,15 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 import { Stack } from "@mui/material";
 import { useState } from "react";
+import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 
 const MachineQuality = (props) => {
   const [fields, setFields] = useState([
     {
       id: 1,
       label: "Machine Type - CNC/VMC/HMC",
+      type: "select",
+      options: ['CNC', 'VMC', 'HMC'],
       value: "",
     },
     {
@@ -33,7 +36,9 @@ const MachineQuality = (props) => {
       ...fields,
       {
         id: fields.length + 1,
-        label: "Next Machine Type - CNC/VMC/HMC",
+        label: "Machine Type - CNC/VMC/HMC",
+        type: 'select',
+        options: ['CNC', 'VMC', 'HMC'],
         value: "",
       },
       {
@@ -92,24 +97,45 @@ const MachineQuality = (props) => {
               <Typography
                 variant="subtitle1"
                 sx={{
-                  textAlign: "left",
-                  color: "#054470",
-                  fontWeight: "650",
-                  fontSize: "1.2rem",
-                  padding: "0.3rem",
+                  textAlign: 'left',
+                  color: '#054470',
+                  fontWeight: '650',
+                  fontSize: '1.2rem',
+                  padding: '0.3rem',
                 }}
               >
                 {field.label}
               </Typography>
-              <TextField
-                required
-                label="Enter Details"
-                variant="outlined"
-                fullWidth
-                size="small"
-                value={field.value}
-                onChange={(event) => handleChange(field.id, event)}
-              />
+              {field.type === 'select' ? (
+                <FormControl variant="outlined" fullWidth size="small">
+                  <Select
+                    required
+                    labelId={`${field.id}-label`}
+                    id={field.id}
+                    variant="outlined"
+                    fullWidth
+                    value={field.value}
+                    onChange={(event) => handleChange(field.id, event)}
+                  >
+                    {field.options.map((option) => (
+                      <MenuItem key={option} value={option}>
+                        {option}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+              ) : (
+
+                <TextField
+                  required
+                  label="Enter Details"
+                  variant="outlined"
+                  fullWidth
+                  size="small"
+                  value={field.value}
+                  onChange={(event) => handleChange(field.id, event)}
+                />
+              )}
             </Grid>
           ))}
         </Grid>

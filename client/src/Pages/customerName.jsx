@@ -136,6 +136,31 @@ const CustomerName = (props) => {
               size="small"
             />
           </Grid>
+
+          <Grid item xs={12} sm={12}>
+            <Typography
+              variant="subtitle1"
+              sx={{
+                textAlign: "left",
+                color: "#054470",
+                fontWeight: "650",
+                fontSize: "1.2rem",
+              }}
+            >
+              
+           Path
+            </Typography>
+            <TextField
+              required
+              id="path"
+              label=" Enter Details"
+              variant="outlined"
+              fullWidth
+              size="small"
+            />
+          </Grid>
+
+
           <Grid item xs={12} sm={12}>
             <Typography
               variant="subtitle1"

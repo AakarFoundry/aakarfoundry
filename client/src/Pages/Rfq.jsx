@@ -2,9 +2,12 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
-import { Typography } from "@mui/material";
+import { MenuItem, Select, Typography } from "@mui/material";
+
 
 const Rfq = (props) => {
+
+  const { selectedOption, handleOptionChange } = props;
   return (
     <div>
       <Container
@@ -206,14 +209,19 @@ const Rfq = (props) => {
                 Process Required (HPDC, LPDC, GDC){" "}
               </Typography>
 
-              <TextField
-                required
-                id="process-required"
-                label="Enter Details"
-                variant="outlined"
-                fullWidth
-                size="small"
-              />
+              <Select
+              required
+              id="process-required"
+              label="Category"
+              variant="outlined"
+              fullWidth
+              size="small"
+              value={selectedOption}
+            >
+              <MenuItem value="HPDC">HPDC</MenuItem>
+              <MenuItem value="LPDC">LPDC</MenuItem>
+              <MenuItem value="GDC">GDC</MenuItem>
+            </Select>
             </Grid>
             <Grid item xs={12} sm={6}>
               <Typography
@@ -468,14 +476,20 @@ const Rfq = (props) => {
                 Packaging - Corrugated/PP/Plastic/Exports Grade?
               </Typography>
 
-              <TextField
-                required
-                id="packaging"
-                label=" Enter Details"
-                variant="outlined"
-                fullWidth
-                size="small"
-              />
+              <Select
+              required
+              id="packaging"
+              label="Category"
+              variant="outlined"
+              fullWidth
+              size="small"
+              value={selectedOption}
+            >
+              <MenuItem value="Corrugated">Corrugated</MenuItem>
+              <MenuItem value="PP">PP</MenuItem>
+              <MenuItem value="Plastic">Plastic</MenuItem>
+              <MenuItem value="Exports">Exports</MenuItem>
+            </Select>
             </Grid>
             <Grid item xs={12} sm={6}>
               <Typography
@@ -516,14 +530,20 @@ const Rfq = (props) => {
                 (Ex-Works /FOB/CIF/DDP/DDU){" "}
               </Typography>
 
-              <TextField
-                required
-                id="ex-works"
-                label="Enter Details"
-                variant="outlined"
-                fullWidth
-                size="small"
-              />
+              <Select
+              required
+              id="ex-works"
+              label="Category"
+              variant="outlined"
+              fullWidth
+              size="small"
+              value={selectedOption}
+            >
+              <MenuItem value="FOB">FOB</MenuItem>
+              <MenuItem value="CIF">CIF</MenuItem>
+              <MenuItem value="DDP">DDP</MenuItem>
+              <MenuItem value="DDU">DDU</MenuItem>
+            </Select>
             </Grid>
             <Grid item xs={12} sm={6}>
               <Typography
