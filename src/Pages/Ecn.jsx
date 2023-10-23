@@ -36,7 +36,7 @@ const Ecn = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                Aakar Foundry Enquiry No
+                Aakar Foundry Enquiry No <span style={{ color: "red" }}>*</span>
               </Typography>
               <TextField
                 required
@@ -59,7 +59,7 @@ const Ecn = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                Aakar Foundry Enquiry No - ECN
+                Aakar Foundry Enquiry No - ECN <span style={{ color: "red" }}>*</span>
               </Typography>
 
               <TextField
@@ -83,7 +83,7 @@ const Ecn = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                Part Name
+                Part Name <span style={{ color: "red" }}>*</span>
               </Typography>
 
               <TextField
@@ -107,7 +107,7 @@ const Ecn = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                Part Number - Finish
+                Part Number - Finish <span style={{ color: "red" }}>*</span>
               </Typography>
 
               <TextField
@@ -131,7 +131,7 @@ const Ecn = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                Finish Weight
+                Finish Weight <span style={{ color: "red" }}>*</span>
               </Typography>
 
               <TextField
@@ -155,7 +155,7 @@ const Ecn = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                Project Name/Other Details
+                Project Name/Other Details <span style={{ color: "red" }}>*</span>
               </Typography>
 
               <TextField
@@ -179,7 +179,7 @@ const Ecn = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                What type of ECN (Change in)
+                What type of ECN (Change in) <span style={{ color: "red" }}>*</span>
               </Typography>
 
               <TextField
