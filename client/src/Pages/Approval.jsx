@@ -40,14 +40,14 @@ function createData(name, id, status, department) {
 }
 
 const rows = [
-  createData("Vinayak Joshi 1", "12345", "9764617404", "IT"),
-  createData("Vinayak Joshi 2", "67890", "8169327734", "Marketing"),
-  createData("Vinayak Joshi 3", "54321", "98765 43210", "Marketing"),
-  createData("Vinayak Joshi 4", "98765", "91234 56789", "Marketing"),
-  createData("Vinayak Joshi 5", "11111", "87654 32109", "Marketing"),
-  createData("Vinayak Joshi 6", "118111", "87654 32109", "Marketing"),
-  createData("Vinayak Joshi 7", "116111", "87654 32109", "Marketing"),
-  createData("Vinayak Joshi 8", "111811", "87654 32109", "Marketing"),
+  createData("Vinayak Joshi 1", "12345", "54321 09876", "Information Technology"),
+  createData("Olivia Smith 2", "67890", "32109 87654", "Human Resources"),
+  createData("Liam Johnson 3", "54321", "98765 43210", "Finance"),
+  createData("Noah Davis 4", "98765", "91234 56789", "Research and Development"),
+  createData("Ava Miller 5", "11111", "87654 32109", "Sales"),
+  createData("Isabella Lee 6", "11115", "87651 23459", "Legal"),
+  createData("Sophia Martinez 7", "11616", "76512 34980", "Product Management"),
+  createData("Mason Clark 8", "11187", "65423 19802", "Customer Service"),
 ];
 
 export default function Approval() {
@@ -79,7 +79,7 @@ export default function Approval() {
         alignItems: "center",
         minHeight: "100vh",
         justifyContent: "center",
-        mt: "3rem",
+        mt: "5rem",
       }}
     >
       <TableContainer component={Paper}>
@@ -131,7 +131,7 @@ export default function Approval() {
 
             {emptyRows > 0 && (
               <TableRow style={{ height: 53 * emptyRows }}>
-                <StyledTableCell colSpan={4} />
+                <StyledTableCell colSpan={5} />
               </TableRow>
             )}
           </TableBody>
