@@ -40,14 +40,14 @@ function createData(name, id, status, department) {
 }
 
 const rows = [
-  createData("Vinayak Joshi 1", "12345", "54321 09876", "Information Technology"),
-  createData("Olivia Smith 2", "67890", "32109 87654", "Human Resources"),
-  createData("Liam Johnson 3", "54321", "98765 43210", "Finance"),
-  createData("Noah Davis 4", "98765", "91234 56789", "Research and Development"),
-  createData("Ava Miller 5", "11111", "87654 32109", "Sales"),
-  createData("Isabella Lee 6", "11115", "87651 23459", "Legal"),
-  createData("Sophia Martinez 7", "11616", "76512 34980", "Product Management"),
-  createData("Mason Clark 8", "11187", "65423 19802", "Customer Service"),
+  createData("Vinayak Joshi", "12345", "54321 09876", "Information Technology"),
+  createData("Olivia Smith", "67890", "32109 87654", "Human Resources"),
+  createData("Liam Johnson", "54321", "98765 43210", "Finance"),
+  createData("Noah Davis", "98765", "91234 56789", "Research and Development"),
+  createData("Ava Miller", "11111", "87654 32109", "Sales"),
+  createData("Isabella Lee", "11115", "87651 23459", "Legal"),
+  createData("Sophia Martinez", "11616", "76512 34980", "Product Management"),
+  createData("Mason Clark", "11187", "65423 19802", "Customer Service"),
 ];
 
 export default function Approval() {

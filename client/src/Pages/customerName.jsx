@@ -41,7 +41,8 @@ const CustomerName = (props) => {
             </Typography>
             <TextField
               required
-              id="customer-name"
+              name="customerName"
+              id="customerName"
               label="Enter Details"
               variant="outlined"
               fullWidth
@@ -63,7 +64,8 @@ const CustomerName = (props) => {
             </Typography>
             <TextField
               required
-              id="customer-reference"
+              name="customerReference"
+              id="customerReference"
               label="Enter Details "
               variant="outlined"
               fullWidth
@@ -85,7 +87,8 @@ const CustomerName = (props) => {
             </Typography>
             <TextField
               required
-              id="contact-person"
+              name="contact"
+              id="contact"
               label="Enter Details"
               variant="outlined"
               fullWidth
@@ -107,7 +110,8 @@ const CustomerName = (props) => {
             </Typography>
             <TextField
               required
-              id="delivery-address"
+              name="delivery"
+              id="delivery"
               label="Enter Details"
               variant="outlined"
               fullWidth
@@ -129,7 +133,8 @@ const CustomerName = (props) => {
             </Typography>
             <TextField
               required
-              id="enquiry-date"
+              name="enquiry"
+              id="enquiry"
               label=" Enter Details"
               variant="outlined"
               fullWidth
@@ -152,6 +157,7 @@ const CustomerName = (props) => {
             </Typography>
             <TextField
               required
+              name="path"
               id="path"
               label=" Enter Details"
               variant="outlined"
@@ -176,6 +182,7 @@ const CustomerName = (props) => {
             </Typography>
             <Select
               required
+              name="category"
               id="category"
               label="Category"
               variant="outlined"

@@ -65,13 +65,13 @@ export const Login = () => {
       password: data.get("password"),
     });
   };
-  const handlePassword = (e) => {
+{/*  const handlePassword = (e) => {
     if (e.target.value === "") {
       setConfirmPassValidation(false);
     } else {
       setConfirmPassValidation(true);
     }
-  };
+  };*/}
 
   return (
     <div className={styles.frameLogin}>
@@ -145,12 +145,12 @@ export const Login = () => {
                 margin="normal"
                 required
                 fullWidth
-                name="Password"
+                name="password"
                 label="Password"
                 type={showPassword ? "text" : "Password"}
                 id="password"
                 autoComplete="Password"
-                onChange={handlePassword}
+                // onChange={handlePassword}x
                 helperText={isNumberValid ? "" : "Invalid Password"}
                 error={!isNumberValid}
                 InputProps={{

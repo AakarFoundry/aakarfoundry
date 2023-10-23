@@ -7,7 +7,6 @@ import { MenuItem, Select, Typography } from "@mui/material";
 
 const Rfq = (props) => {
 
-  const { selectedOption, handleOptionChange } = props;
   return (
     <div>
       <Container
@@ -40,12 +39,13 @@ const Rfq = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                {" "}
-                Part Name{" "}
+                
+                Part Name
               </Typography>
               <TextField
                 required
-                id="part-name"
+                name="name"
+                id="name"
                 label="Enter Details"
                 variant="outlined"
                 fullWidth
@@ -63,13 +63,14 @@ const Rfq = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                {" "}
-                Part Number - MACH{" "}
+                
+                Part Number - MACH
               </Typography>
 
               <TextField
                 required
-                id="part-number-mach"
+                name="partMach"
+                id="partMach"
                 label="Enter Details  "
                 variant="outlined"
                 fullWidth
@@ -87,13 +88,13 @@ const Rfq = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                {" "}
-                Part Number - CAST{" "}
+                
+                Part Number - CAST
               </Typography>
 
               <TextField
                 required
-                id="part-number-cast"
+                id="partCast"
                 label="Enter Details"
                 variant="outlined"
                 fullWidth
@@ -116,7 +117,8 @@ const Rfq = (props) => {
 
               <TextField
                 required
-                id="project-details"
+                name="details"
+                id="details"
                 label="Enter Details"
                 variant="outlined"
                 fullWidth
@@ -139,7 +141,8 @@ const Rfq = (props) => {
 
               <TextField
                 required
-                id="enquiry-no"
+                name="enquiry"
+                id="enquiry"
                 label=" Enter Details"
                 variant="outlined"
                 fullWidth
@@ -157,13 +160,14 @@ const Rfq = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                {" "}
-                Quantity Per Annum (Nos){" "}
+                
+                Quantity Per Annum (Nos)
               </Typography>
 
               <TextField
                 required
-                id="quantity-per-annum"
+                name="quantity"
+                id="quantity"
                 label="Enter Details"
                 variant="outlined"
                 fullWidth
@@ -181,13 +185,14 @@ const Rfq = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                {" "}
-                Product Life (in Years){" "}
+                
+                Product Life (in Years)
               </Typography>
 
               <TextField
                 required
-                id="product-life"
+                name="life"
+                id="life"
                 label="Enter Details"
                 variant="outlined"
                 fullWidth
@@ -205,18 +210,18 @@ const Rfq = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                {" "}
-                Process Required (HPDC, LPDC, GDC){" "}
+                
+                Process Required (HPDC, LPDC, GDC)
               </Typography>
 
               <Select
               required
-              id="process-required"
+              name="processRequired"
+              id="processRequired"
               label="Category"
               variant="outlined"
               fullWidth
               size="small"
-              value={selectedOption}
             >
               <MenuItem value="HPDC">HPDC</MenuItem>
               <MenuItem value="LPDC">LPDC</MenuItem>
@@ -234,13 +239,14 @@ const Rfq = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                {" "}
+                
                 Aluminum Alloy Specification
               </Typography>
 
               <TextField
                 required
-                id="alloy-specification"
+                name="alloy"
+                id="alloy"
                 label=" Enter Details"
                 variant="outlined"
                 fullWidth
@@ -263,7 +269,8 @@ const Rfq = (props) => {
 
               <TextField
                 required
-                id="requirements-raw-or-machined"
+                name="machined"
+                id="machined"
                 label=" Enter Details"
                 variant="outlined"
                 fullWidth
@@ -281,13 +288,14 @@ const Rfq = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                {" "}
-                Shot Blasting{" "}
+                
+                Shot Blasting
               </Typography>
 
               <TextField
                 required
-                id="shot-blasting"
+                name="blasting"
+                id="blasting"
                 label="Enter Details"
                 variant="outlined"
                 fullWidth
@@ -305,13 +313,14 @@ const Rfq = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                {" "}
-                Specific Product & QC Requirements{" "}
+                
+                Specific Product & QC Requirements
               </Typography>
 
               <TextField
                 required
-                id="specific-product-qc-requirements"
+                name="productQc"
+                id="productQc"
                 label=" Enter Details"
                 variant="outlined"
                 fullWidth
@@ -329,13 +338,14 @@ const Rfq = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                {" "}
-                Anodizing Required/Chromotising Required?{" "}
+                
+                Anodizing Required/Chromotising Required?
               </Typography>
 
               <TextField
                 required
-                id="anodizing-required"
+                name="anodizing"
+                id="anodizing"
                 label=" Enter Details"
                 variant="outlined"
                 fullWidth
@@ -354,13 +364,14 @@ const Rfq = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                {" "}
-                Power Coating Required? What Colour?{" "}
+                
+                Power Coating Required? What Colour?
               </Typography>
 
               <TextField
                 required
-                id="power-coating-required"
+                name="coating"
+                id="coating"
                 label="Enter Details"
                 variant="outlined"
                 fullWidth
@@ -378,13 +389,14 @@ const Rfq = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                {" "}
-                Bought Out Materials Details{" "}
+                
+                Bought Out Materials Details
               </Typography>
 
               <TextField
                 required
-                id="bought-out-materials-details"
+                name="materials"
+                id="materials"
                 label="Enter Details"
                 variant="outlined"
                 fullWidth
@@ -407,7 +419,8 @@ const Rfq = (props) => {
 
               <TextField
                 required
-                id="leak-testing-pressure-requirement"
+                name="pressure"
+                id="pressure"
                 label=" Enter Details"
                 variant="outlined"
                 fullWidth
@@ -425,12 +438,13 @@ const Rfq = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                Impregnation Required?{" "}
+                Impregnation Required?
               </Typography>
 
               <TextField
                 required
-                id="impregnation-required"
+                name="impregnation"
+                id="impregnation"
                 label="Enter Details"
                 variant="outlined"
                 fullWidth
@@ -448,13 +462,14 @@ const Rfq = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                {" "}
+                
                 Heat treatment Required?
               </Typography>
 
               <TextField
                 required
-                id="heat-treatment-required"
+                name="treatment"
+                id="treatment"
                 label=" Enter Details"
                 variant="outlined"
                 fullWidth
@@ -472,18 +487,18 @@ const Rfq = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                {" "}
+                
                 Packaging - Corrugated/PP/Plastic/Exports Grade?
               </Typography>
 
               <Select
               required
+              name="packaging"
               id="packaging"
               label="Category"
               variant="outlined"
               fullWidth
               size="small"
-              value={selectedOption}
             >
               <MenuItem value="Corrugated">Corrugated</MenuItem>
               <MenuItem value="PP">PP</MenuItem>
@@ -502,13 +517,14 @@ const Rfq = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                {" "}
+                
                 Delivery Location & Basis
               </Typography>
 
               <TextField
                 required
-                id="delivery-location-basis"
+                name="delivery"
+                id="delivery"
                 label="Enter Details"
                 variant="outlined"
                 fullWidth
@@ -526,18 +542,18 @@ const Rfq = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                {" "}
-                (Ex-Works /FOB/CIF/DDP/DDU){" "}
+                
+                (Ex-Works /FOB/CIF/DDP/DDU)
               </Typography>
 
               <Select
               required
-              id="ex-works"
+              name="works"
+              id="works"
               label="Category"
               variant="outlined"
               fullWidth
               size="small"
-              value={selectedOption}
             >
               <MenuItem value="FOB">FOB</MenuItem>
               <MenuItem value="CIF">CIF</MenuItem>
@@ -556,13 +572,14 @@ const Rfq = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                {" "}
-                Annual Tonnage - MT{" "}
+                
+                Annual Tonnage - MT
               </Typography>
 
               <TextField
                 required
-                id="annual-tonnage"
+                name="tonnage"
+                id="tonnage"
                 label="Enter Details"
                 variant="outlined"
                 fullWidth
@@ -580,12 +597,13 @@ const Rfq = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                {" "}
-                First Sample Date{" "}
+                
+                First Sample Date
               </Typography>
               <TextField
                 required
-                id="first-sample-date "
+                name="sampleDate"
+                id="sampleDate"
                 label="Enter Details"
                 variant="outlined"
                 fullWidth
@@ -602,13 +620,14 @@ const Rfq = (props) => {
                   fontSize: "1.2rem",
                 }}
               >
-                {" "}
-                PSW /PPAP Date{" "}
+                
+                PSW /PPAP Date
               </Typography>
 
               <TextField
                 required
-                id="PSW /PPAP Date "
+                name="pswDate"
+                id="pswDate"
                 label="Enter Details  "
                 variant="outlined"
                 fullWidth
@@ -625,12 +644,13 @@ const Rfq = (props) => {
                   fontSize: "1.2rem",
                 }}
               >
-                {" "}
-                Remarks{" "}
+                
+                Remarks
               </Typography>
               <TextField
                 label="Enter Remarks"
-                id="rfq-remarks"
+                name="remarks"
+                id="remarks"
                 variant="outlined"
                 fullWidth
                 size="small"
