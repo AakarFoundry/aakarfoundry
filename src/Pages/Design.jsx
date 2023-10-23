@@ -40,7 +40,7 @@ const DesignFoundry = (props) => {
               Finished Weight (Machined) (Kg) <span style={{ color: "red" }}>*</span> 
             </Typography>
             <TextField
-              required
+              
               name="weight"
               id="weight"
               label="Enter Details"
@@ -64,7 +64,7 @@ const DesignFoundry = (props) => {
             </Typography>
 
             <TextField
-              required
+              
               name="casting"
               id="casting"
               label="Enter Details  "
@@ -89,7 +89,7 @@ const DesignFoundry = (props) => {
             </Typography>
 
             <TextField
-              required
+              
               name="area"
               id="area"
               label="Enter Details"
@@ -113,7 +113,7 @@ const DesignFoundry = (props) => {
             </Typography>
 
             <TextField
-              required
+              
               name="dieCasting"
               id="dieCasting"
               label="Enter Details"
@@ -137,7 +137,7 @@ const DesignFoundry = (props) => {
             </Typography>
 
             <TextField
-              required
+              
               name="impressions"
               id="impressions"
               label=" Enter Details"
@@ -162,7 +162,7 @@ const DesignFoundry = (props) => {
             </Typography>
 
             <TextField
-              required
+              
               name="rawMaterial"
               id="rawMaterial"
               label="Enter Details"
@@ -187,7 +187,7 @@ const DesignFoundry = (props) => {
             </Typography>
 
             <TextField
-              required
+              
               name="dieCost"
               id="dieCost"
               label="Enter Details"
@@ -212,7 +212,7 @@ const DesignFoundry = (props) => {
             </Typography>
 
             <TextField
-              required
+              
               name="coreCost"
               id="coreCost"
               label="Enter Details"
@@ -237,7 +237,7 @@ const DesignFoundry = (props) => {
             </Typography> 
 
             <TextField
-              required
+              
               name="dieLife"
               id="dieLife"
               label=" Enter Details"
@@ -261,7 +261,7 @@ const DesignFoundry = (props) => {
             </Typography>
 
             <TextField
-              required
+              
               name="diePeriod"
               id="diePeriod"
               label=" Enter Details"
@@ -286,7 +286,7 @@ const DesignFoundry = (props) => {
             </Typography>
 
             <TextField
-              required
+              
               name="shots"
               id="shots"
               label="Enter Details"
@@ -311,7 +311,7 @@ const DesignFoundry = (props) => {
             </Typography>
 
             <TextField
-              required
+              
               name="cores"
               id="cores"
               label=" Enter Details"
@@ -336,7 +336,7 @@ const DesignFoundry = (props) => {
             </Typography>
 
             <TextField
-              required
+              
               name="sandWeight"
               id="sandWeight"
               label=" Enter Details"

@@ -39,7 +39,7 @@ const Ecn = (props) => {
                 Aakar Foundry Enquiry No <span style={{ color: "red" }}>*</span>
               </Typography>
               <TextField
-                required
+                
                 name="enquiryNo"
                 id="enquiryNo"
                 label="Enter Details"
@@ -63,7 +63,7 @@ const Ecn = (props) => {
               </Typography>
 
               <TextField
-                required
+                
                 name="ecnNo"
                 id="ecnNo"
                 label="Enter Details  "
@@ -87,7 +87,7 @@ const Ecn = (props) => {
               </Typography>
 
               <TextField
-                required
+                
                 name="partName"
                 id="partName"
                 label="Enter Details"
@@ -111,7 +111,7 @@ const Ecn = (props) => {
               </Typography>
 
               <TextField
-                required
+                
                 name="number"
                 id="number"
                 label="Enter Details"
@@ -135,7 +135,7 @@ const Ecn = (props) => {
               </Typography>
 
               <TextField
-                required
+                
                 name="weight"
                 id="weight"
                 label=" Enter Details"
@@ -159,7 +159,7 @@ const Ecn = (props) => {
               </Typography>
 
               <TextField
-                required
+                
                 name="projectName"
                 id="projectName"
                 label="Enter Details"
@@ -183,9 +183,9 @@ const Ecn = (props) => {
               </Typography>
 
               <TextField
-                required
-                name="ecn"
-                id="type"
+                
+                name="ecnType"
+                id="ecnType"
                 label="Enter Details"
                 variant="outlined"
                 fullWidth
