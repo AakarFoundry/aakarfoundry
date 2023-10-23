@@ -6,7 +6,7 @@ const HorizontalLinearStepper = (props) => {
   const { activeStep } = props;
   const isMobile = window.innerWidth <= 768;
   const steps = isMobile
-    ? ["", "", "", "", "", ""]
+    ? ["", "", "", "", "", "", ""]
     : [
         "Details",
         "RFQ/ECN",
@@ -14,6 +14,7 @@ const HorizontalLinearStepper = (props) => {
         "Design & foundry",
         "Machine Quality",
         "NPD",
+        "Approval"
       ];
   return (
     <Box

@@ -5,11 +5,12 @@ import Typography from "@mui/material/Typography";
 import HorizontalLinearStepper from "../Components/Stepper";
 import CustomerName from "./CustomerName";
 import RiskAnalysis from "./RiskAnalysis";
-import DesignFoundry from "./design";
+import DesignFoundry from "./Design";
 import { Stack } from "@mui/material";
 import MachineQuality from "./machine";
 import styles from "../assets/styles/Form.module.css";
 import Inputs from "./Inputs";
+import NewProductDev from "./NewProduct";
 const Process = (props) => {
   const steps = [
     "Details",
@@ -83,7 +84,13 @@ const Process = (props) => {
             setActiveStep={setActiveStep}
           />
         )}
-        {activeStep === 5 ? (
+        {activeStep === 5 && (
+          <NewProductDev
+            activeStep={activeStep}
+            setActiveStep={setActiveStep}
+          />
+        )}
+        {activeStep === 6 ? (
           <React.Fragment>
             <Typography sx={{ mt: 2, mb: 1 }}>
               All steps completed - you&apos;re finished

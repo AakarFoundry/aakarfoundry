@@ -41,8 +41,8 @@ const NewProductDev = (props) => {
             </Typography>
 
             <TextField
-              
-              id="capital-investment-for-machines "
+              name="investment"
+              id="investment "
               label="Enter Details"
               variant="outlined"
               fullWidth
@@ -64,8 +64,8 @@ const NewProductDev = (props) => {
             </Typography>
 
             <TextField
-              
-              id="part-feasible "
+              name="partFeasible"
+              id="partFeasible"
               label="Enter Details"
               variant="outlined"
               fullWidth
@@ -87,8 +87,8 @@ const NewProductDev = (props) => {
             </Typography>
 
             <TextField
-              
-              id="feasible-with-changes "
+              name="changes"
+              id="changes"
               label=" Enter Details"
               variant="outlined"
               fullWidth
@@ -112,8 +112,8 @@ const NewProductDev = (props) => {
             </Typography>
 
             <TextField
-              
-              id="Part Not Feasible Design and Foundry Machine and Quality New Product Development "
+              name="development"
+              id="development"
               label="Enter Details"
               variant="outlined"
               fullWidth
@@ -135,7 +135,8 @@ const NewProductDev = (props) => {
             </Typography>
             <TextField
               label="Enter Remarks"
-              id="npd-remarks"
+              name="remarks"
+              id="remarks"
               variant="outlined"
               fullWidth
               size="small"
