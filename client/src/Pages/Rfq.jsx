@@ -7,7 +7,6 @@ import { MenuItem, Select, Typography } from "@mui/material";
 
 const Rfq = (props) => {
 
-  const { selectedOption, handleOptionChange } = props;
   return (
     <div>
       <Container
@@ -44,8 +43,9 @@ const Rfq = (props) => {
                 Part Name <span style={{ color: "red" }}>*</span> 
               </Typography>
               <TextField
-                
-                id="part-name"
+
+                name="name"
+                id="name"
                 label="Enter Details"
                 variant="outlined"
                 fullWidth
@@ -66,10 +66,10 @@ const Rfq = (props) => {
                 
                 Part Number - MACH <span style={{ color: "red" }}>*</span> 
               </Typography>
-
               <TextField
                 
-                id="part-number-mach"
+                name="partMach"
+                id="partMach"
                 label="Enter Details  "
                 variant="outlined"
                 fullWidth
@@ -91,9 +91,10 @@ const Rfq = (props) => {
                 Part Number - CAST <span style={{ color: "red" }}>*</span> 
               </Typography>
 
+
               <TextField
-                
-                id="part-number-cast"
+
+                id="partCast"
                 label="Enter Details"
                 variant="outlined"
                 fullWidth
@@ -115,8 +116,9 @@ const Rfq = (props) => {
               </Typography>
 
               <TextField
-                
-                id="project-details"
+                required
+                name="details"
+                id="details"
                 label="Enter Details"
                 variant="outlined"
                 fullWidth
@@ -138,8 +140,9 @@ const Rfq = (props) => {
               </Typography>
 
               <TextField
-                
-                id="enquiry-no"
+                required
+                name="enquiry"
+                id="enquiry"
                 label=" Enter Details"
                 variant="outlined"
                 fullWidth
@@ -160,10 +163,10 @@ const Rfq = (props) => {
                 
                 Quantity Per Annum (Nos) <span style={{ color: "red" }}>*</span> 
               </Typography>
-
               <TextField
-                
-                id="quantity-per-annum"
+
+                name="quantity"
+                id="quantity"
                 label="Enter Details"
                 variant="outlined"
                 fullWidth
@@ -185,9 +188,11 @@ const Rfq = (props) => {
                 Product Life (in Years) <span style={{ color: "red" }}>*</span> 
               </Typography>
 
+
               <TextField
-                
-                id="product-life"
+
+                name="life"
+                id="life"
                 label="Enter Details"
                 variant="outlined"
                 fullWidth
@@ -210,13 +215,12 @@ const Rfq = (props) => {
               </Typography>
 
               <Select
-              
-              id="process-required"
+              name="processRequired"
+              id="processRequired"
               label="Category"
               variant="outlined"
               fullWidth
               size="small"
-              value={selectedOption}
             >
               <MenuItem value="HPDC">HPDC</MenuItem>
               <MenuItem value="LPDC">LPDC</MenuItem>
@@ -237,10 +241,10 @@ const Rfq = (props) => {
                 {" "}
                 Aluminum Alloy Specification <span style={{ color: "red" }}>*</span> 
               </Typography>
-
               <TextField
                 
-                id="alloy-specification"
+                name="alloy"
+                id="alloy"
                 label=" Enter Details"
                 variant="outlined"
                 fullWidth
@@ -262,8 +266,9 @@ const Rfq = (props) => {
               </Typography>
 
               <TextField
-                
-                id="requirements-raw-or-machined"
+                required
+                name="machined"
+                id="machined"
                 label=" Enter Details"
                 variant="outlined"
                 fullWidth
@@ -285,9 +290,10 @@ const Rfq = (props) => {
                 Shot Blasting <span style={{ color: "red" }}>*</span> 
               </Typography>
 
+
               <TextField
-                
-                id="shot-blasting"
+                name="blasting"
+                id="blasting"
                 label="Enter Details"
                 variant="outlined"
                 fullWidth
@@ -310,8 +316,8 @@ const Rfq = (props) => {
               </Typography>
 
               <TextField
-                
-                id="specific-product-qc-requirements"
+                name="productQc"
+                id="productQc"
                 label=" Enter Details"
                 variant="outlined"
                 fullWidth
@@ -334,8 +340,9 @@ const Rfq = (props) => {
               </Typography>
 
               <TextField
-                
-                id="anodizing-required"
+
+                name="anodizing"
+                id="anodizing"
                 label=" Enter Details"
                 variant="outlined"
                 fullWidth
@@ -359,8 +366,8 @@ const Rfq = (props) => {
               </Typography>
 
               <TextField
-                
-                id="power-coating-required"
+                name="coating"
+                id="coating"
                 label="Enter Details"
                 variant="outlined"
                 fullWidth
@@ -383,8 +390,9 @@ const Rfq = (props) => {
               </Typography>
 
               <TextField
-                
-                id="bought-out-materials-details"
+
+                name="materials"
+                id="materials"
                 label="Enter Details"
                 variant="outlined"
                 fullWidth
@@ -406,8 +414,9 @@ const Rfq = (props) => {
               </Typography>
 
               <TextField
-                
-                id="leak-testing-pressure-requirement"
+                required
+                name="pressure"
+                id="pressure"
                 label=" Enter Details"
                 variant="outlined"
                 fullWidth
@@ -429,8 +438,8 @@ const Rfq = (props) => {
               </Typography>
 
               <TextField
-                
-                id="impregnation-required"
+                name="impregnation"
+                id="impregnation"
                 label="Enter Details"
                 variant="outlined"
                 fullWidth
@@ -451,10 +460,10 @@ const Rfq = (props) => {
                 {" "}
                 Heat treatment Required?<span style={{ color: "red" }}>*</span> 
               </Typography>
-
               <TextField
-                
-                id="heat-treatment-required"
+
+                name="treatment"
+                id="treatment"
                 label=" Enter Details"
                 variant="outlined"
                 fullWidth
@@ -477,13 +486,12 @@ const Rfq = (props) => {
               </Typography>
 
               <Select
-              
+              name="packaging"
               id="packaging"
               label="Category"
               variant="outlined"
               fullWidth
               size="small"
-              value={selectedOption}
             >
               <MenuItem value="Corrugated">Corrugated</MenuItem>
               <MenuItem value="PP">PP</MenuItem>
@@ -507,8 +515,9 @@ const Rfq = (props) => {
               </Typography>
 
               <TextField
-                
-                id="delivery-location-basis"
+
+                name="delivery"
+                id="delivery"
                 label="Enter Details"
                 variant="outlined"
                 fullWidth
@@ -529,15 +538,14 @@ const Rfq = (props) => {
                 
                 (Ex-Works /FOB/CIF/DDP/DDU) <span style={{ color: "red" }}>*</span> 
               </Typography>
-
               <Select
               
-              id="ex-works"
+              name="works"
+              id="works"
               label="Category"
               variant="outlined"
               fullWidth
               size="small"
-              value={selectedOption}
             >
               <MenuItem value="FOB">FOB</MenuItem>
               <MenuItem value="CIF">CIF</MenuItem>
@@ -561,8 +569,9 @@ const Rfq = (props) => {
               </Typography>
 
               <TextField
-                
-                id="annual-tonnage"
+
+                name="tonnage"
+                id="tonnage"
                 label="Enter Details"
                 variant="outlined"
                 fullWidth
@@ -583,9 +592,11 @@ const Rfq = (props) => {
                 
                 First Sample Date <span style={{ color: "red" }}>*</span> 
               </Typography>
+
               <TextField
-                
-                id="first-sample-date "
+
+                name="sampleDate"
+                id="sampleDate"
                 label="Enter Details"
                 variant="outlined"
                 fullWidth
@@ -607,8 +618,8 @@ const Rfq = (props) => {
               </Typography>
 
               <TextField
-                
-                id="PSW /PPAP Date "
+                name="pswDate"
+                id="pswDate"
                 label="Enter Details  "
                 variant="outlined"
                 fullWidth
@@ -630,7 +641,8 @@ const Rfq = (props) => {
               </Typography>
               <TextField
                 label="Enter Remarks"
-                id="rfq-remarks"
+                name="remarks"
+                id="remarks"
                 variant="outlined"
                 fullWidth
                 size="small"

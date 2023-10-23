@@ -13,6 +13,7 @@ import MenuItem from "@mui/material/MenuItem";
 import logo from "../assets/img/Logo.png";
 import styles from "../assets/styles/NavBar.module.css";
 import AddIcon from "@mui/icons-material/Add";
+import profile from "../assets/img/profie.png";
 const pages = [];
 const settings = ["Change Password", "Approval", "Logout"];
 function NavBar() {
@@ -83,7 +84,7 @@ function NavBar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt="Remy Sharp" src={profile} />
               </IconButton>
             </Tooltip>
             {window.location.pathname === "/dash" ? (

@@ -40,8 +40,9 @@ const CustomerName = (props) => {
               Customer Name <span style={{ color: "red" }}>*</span> 
             </Typography>
             <TextField
-              
-              id="customer-name"
+              required
+              name="customerName"
+              id="customerName"
               label="Enter Details"
               variant="outlined"
               fullWidth
@@ -62,8 +63,9 @@ const CustomerName = (props) => {
               Customer Reference <span style={{ color: "red" }}>*</span> 
             </Typography>
             <TextField
-              
-              id="customer-reference"
+              required
+              name="customerReference"
+              id="customerReference"
               label="Enter Details "
               variant="outlined"
               fullWidth
@@ -84,8 +86,9 @@ const CustomerName = (props) => {
               Contact Person <span style={{ color: "red" }}>*</span> 
             </Typography>
             <TextField
-              
-              id="contact-person"
+              required
+              name="contact"
+              id="contact"
               label="Enter Details"
               variant="outlined"
               fullWidth
@@ -106,8 +109,9 @@ const CustomerName = (props) => {
               Delivery Address <span style={{ color: "red" }}>*</span> 
             </Typography>
             <TextField
-              
-              id="delivery-address"
+              required
+              name="delivery"
+              id="delivery"
               label="Enter Details"
               variant="outlined"
               fullWidth
@@ -128,8 +132,9 @@ const CustomerName = (props) => {
               Enquiry Date <span style={{ color: "red" }}>*</span> 
             </Typography>
             <TextField
-              
-              id="enquiry-date"
+              required
+              name="enquiry"
+              id="enquiry"
               label=" Enter Details"
               variant="outlined"
               fullWidth
@@ -151,7 +156,8 @@ const CustomerName = (props) => {
            Path <span style={{ color: "red" }}>*</span> 
             </Typography>
             <TextField
-              
+              required
+              name="path"
               id="path"
               label=" Enter Details"
               variant="outlined"
@@ -175,7 +181,8 @@ const CustomerName = (props) => {
               Category <span style={{ color: "red" }}>*</span> 
             </Typography>
             <Select
-              
+              required
+              name="category"
               id="category"
               label="Category"
               variant="outlined"

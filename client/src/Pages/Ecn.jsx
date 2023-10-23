@@ -40,7 +40,8 @@ const Ecn = (props) => {
               </Typography>
               <TextField
                 required
-                id="enquiry-no"
+                name="enquiryNo"
+                id="enquiryNo"
                 label="Enter Details"
                 variant="outlined"
                 fullWidth
@@ -63,7 +64,8 @@ const Ecn = (props) => {
 
               <TextField
                 required
-                id="enquiry-no-ecn"
+                name="ecnNo"
+                id="ecnNo"
                 label="Enter Details  "
                 variant="outlined"
                 fullWidth
@@ -86,7 +88,8 @@ const Ecn = (props) => {
 
               <TextField
                 required
-                id="part-name"
+                name="partName"
+                id="partName"
                 label="Enter Details"
                 variant="outlined"
                 fullWidth
@@ -109,7 +112,8 @@ const Ecn = (props) => {
 
               <TextField
                 required
-                id="part-no-finish"
+                name="number"
+                id="number"
                 label="Enter Details"
                 variant="outlined"
                 fullWidth
@@ -132,7 +136,8 @@ const Ecn = (props) => {
 
               <TextField
                 required
-                id="finish-weight"
+                name="weight"
+                id="weight"
                 label=" Enter Details"
                 variant="outlined"
                 fullWidth
@@ -155,7 +160,8 @@ const Ecn = (props) => {
 
               <TextField
                 required
-                id="project-name"
+                name="projectName"
+                id="projectName"
                 label="Enter Details"
                 variant="outlined"
                 fullWidth
@@ -178,7 +184,8 @@ const Ecn = (props) => {
 
               <TextField
                 required
-                id="ecn-change"
+                name="ecn"
+                id="type"
                 label="Enter Details"
                 variant="outlined"
                 fullWidth

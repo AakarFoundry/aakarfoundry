@@ -40,8 +40,9 @@ const DesignFoundry = (props) => {
               Finished Weight (Machined) (Kg) <span style={{ color: "red" }}>*</span> 
             </Typography>
             <TextField
-              
-              id="finished-weight"
+              required
+              name="weight"
+              id="weight"
               label="Enter Details"
               variant="outlined"
               fullWidth
@@ -63,8 +64,9 @@ const DesignFoundry = (props) => {
             </Typography>
 
             <TextField
-              
-              id="casting-weight"
+              required
+              name="casting"
+              id="casting"
               label="Enter Details  "
               variant="outlined"
               fullWidth
@@ -87,8 +89,9 @@ const DesignFoundry = (props) => {
             </Typography>
 
             <TextField
-              
-              id="surface-area"
+              required
+              name="area"
+              id="area"
               label="Enter Details"
               variant="outlined"
               fullWidth
@@ -110,8 +113,9 @@ const DesignFoundry = (props) => {
             </Typography>
 
             <TextField
-              
-              id="die-casting-process "
+              required
+              name="dieCasting"
+              id="dieCasting"
               label="Enter Details"
               variant="outlined"
               fullWidth
@@ -133,8 +137,9 @@ const DesignFoundry = (props) => {
             </Typography>
 
             <TextField
-              
-              id=" impressions "
+              required
+              name="impressions"
+              id="impressions"
               label=" Enter Details"
               variant="outlined"
               fullWidth
@@ -157,8 +162,9 @@ const DesignFoundry = (props) => {
             </Typography>
 
             <TextField
-              
-              id="alternative-raw-material "
+              required
+              name="rawMaterial"
+              id="rawMaterial"
               label="Enter Details"
               variant="outlined"
               fullWidth
@@ -181,8 +187,9 @@ const DesignFoundry = (props) => {
             </Typography>
 
             <TextField
-              
-              id="die-cost "
+              required
+              name="dieCost"
+              id="dieCost"
               label="Enter Details"
               variant="outlined"
               fullWidth
@@ -205,8 +212,9 @@ const DesignFoundry = (props) => {
             </Typography>
 
             <TextField
-              
-              id="core-box-cost "
+              required
+              name="coreCost"
+              id="coreCost"
               label="Enter Details"
               variant="outlined"
               fullWidth
@@ -229,8 +237,9 @@ const DesignFoundry = (props) => {
             </Typography> 
 
             <TextField
-              
-              id="expected-die-life"
+              required
+              name="dieLife"
+              id="dieLife"
               label=" Enter Details"
               variant="outlined"
               fullWidth
@@ -252,8 +261,9 @@ const DesignFoundry = (props) => {
             </Typography>
 
             <TextField
-              
-              id="manufacturing-period"
+              required
+              name="diePeriod"
+              id="diePeriod"
               label=" Enter Details"
               variant="outlined"
               fullWidth
@@ -276,8 +286,9 @@ const DesignFoundry = (props) => {
             </Typography>
 
             <TextField
-              
-              id="shots-per-hour"
+              required
+              name="shots"
+              id="shots"
               label="Enter Details"
               variant="outlined"
               fullWidth
@@ -300,8 +311,9 @@ const DesignFoundry = (props) => {
             </Typography>
 
             <TextField
-              
-              id="sand-cores-required "
+              required
+              name="cores"
+              id="cores"
               label=" Enter Details"
               variant="outlined"
               fullWidth
@@ -324,8 +336,9 @@ const DesignFoundry = (props) => {
             </Typography>
 
             <TextField
-              
-              id="total-sand-weight"
+              required
+              name="sandWeight"
+              id="sandWeight"
               label=" Enter Details"
               variant="outlined"
               fullWidth
@@ -347,7 +360,8 @@ const DesignFoundry = (props) => {
             </Typography>
             <TextField
               label="Enter Remarks"
-              id="design-remarks"
+              name="remarks"
+              id="remarks"
               variant="outlined"
               fullWidth
               size="small"

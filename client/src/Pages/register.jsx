@@ -229,7 +229,7 @@ export const Register = () => {
                 Register
               </Button>
               <div className={styles.registerLine}>
-                {" "}
+                
                 Already a member?&nbsp;
                 <Link href="/" variant="body2">
                   {"Login"}

@@ -45,11 +45,13 @@ const RiskAnalysis = (props) => {
               }}
             >
               {" "}
-              Is there any risk associated with : (ü/û) <span style={{ color: "red" }}>*</span> 
+              Is there any risk associated with : (ü/û){" "}
+              <span style={{ color: "red" }}>*</span>
             </Typography>
+
             <TextField
-              
-              id="Is there any risk associated with : (ü/û) *"
+              name="risk"
+              id="risk"
               label="Enter Details"
               variant="outlined"
               fullWidth
@@ -67,13 +69,12 @@ const RiskAnalysis = (props) => {
                 padding: "0.3rem",
               }}
             >
-              
-              Manufacturing Requirement <span style={{ color: "red" }}>*</span> 
+              Manufacturing Requirement <span style={{ color: "red" }}>*</span>
             </Typography>
 
             <TextField
-              
-              id=" Manufacturing Requirement *"
+              name="requirement"
+              id="requirement"
               label="Enter Details  "
               variant="outlined"
               fullWidth
@@ -91,13 +92,12 @@ const RiskAnalysis = (props) => {
                 padding: "0.3rem",
               }}
             >
-              
-              Application <span style={{ color: "red" }}>*</span> 
+              Application <span style={{ color: "red" }}>*</span>
             </Typography>
 
             <TextField
-              
-              id="Application *"
+              name="application"
+              id="application"
               label="Enter Details"
               variant="outlined"
               fullWidth
@@ -115,11 +115,11 @@ const RiskAnalysis = (props) => {
                 padding: "0.3rem",
               }}
             >
-              Internal Estimation <span style={{ color: "red" }}>*</span> 
+              Internal Estimation <span style={{ color: "red" }}>*</span>
             </Typography>
             <TextField
-              
-              id="Internal Estimation *"
+              name="estimation"
+              id="estimation"
               label="Enter Details"
               variant="outlined"
               fullWidth
@@ -151,7 +151,7 @@ const RiskAnalysis = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                Environmental: <span style={{ color: "red" }}>*</span> 
+                Environmental: <span style={{ color: "red" }}>*</span>
               </FormLabel>
               <RadioGroup
                 row
@@ -180,7 +180,7 @@ const RiskAnalysis = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                Investment: <span style={{ color: "red" }}>*</span> 
+                Investment: <span style={{ color: "red" }}>*</span>
               </FormLabel>
               <RadioGroup
                 row
@@ -209,7 +209,7 @@ const RiskAnalysis = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                Manufacturing: <span style={{ color: "red" }}>*</span> 
+                Manufacturing: <span style={{ color: "red" }}>*</span>
               </FormLabel>
               <RadioGroup
                 row
@@ -239,7 +239,7 @@ const RiskAnalysis = (props) => {
                 padding: "0.3rem",
               }}
             >
-              Guidelines 
+              Guidelines
             </Typography>
             <FormControl>
               <FormLabel
@@ -252,7 +252,7 @@ const RiskAnalysis = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                Technical Feasibility: <span style={{ color: "red" }}>*</span> 
+                Technical Feasibility: <span style={{ color: "red" }}>*</span>
               </FormLabel>
               <RadioGroup
                 row
@@ -281,7 +281,7 @@ const RiskAnalysis = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                Estimation: <span style={{ color: "red" }}>*</span> 
+                Estimation: <span style={{ color: "red" }}>*</span>
               </FormLabel>
               <RadioGroup
                 row
@@ -310,7 +310,7 @@ const RiskAnalysis = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                Regret: <span style={{ color: "red" }}>*</span> 
+                Regret: <span style={{ color: "red" }}>*</span>
               </FormLabel>
               <RadioGroup
                 row
@@ -339,11 +339,11 @@ const RiskAnalysis = (props) => {
                 fontSize: "1.2rem",
               }}
             >
-              
-              Remarks 
+              Remarks
             </Typography>
             <TextField
-              id="risk-remarks"
+              name="remarks"
+              id="remarks"
               label="Enter Remarks"
               variant="outlined"
               fullWidth

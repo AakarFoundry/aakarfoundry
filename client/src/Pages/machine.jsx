@@ -174,7 +174,8 @@ const MachineQuality = (props) => {
 
             <TextField
               
-              id="inspection-gauges-cost "
+              name="gaugesCost"
+              id="gaugesCost"
               label="Enter Details"
               variant="outlined"
               fullWidth
@@ -194,11 +195,11 @@ const MachineQuality = (props) => {
             >
               Leak testing fixture cost <span style={{ color: "red" }}>*</span> 
             </Typography>
-
             <TextField
               
-              id="leak-testing-fixture-cost "
-              label=" Enter Details"
+              name="leakCost"
+              id="leakCost"
+              label="Enter Details"
               variant="outlined"
               fullWidth
               size="small"
@@ -218,10 +219,10 @@ const MachineQuality = (props) => {
               
               Washing fixture cost <span style={{ color: "red" }}>*</span> 
             </Typography>
-
             <TextField
               
-              id="washing-fixture-cost "
+              name="washingCost"
+              id="washingCost"
               label="Enter Details"
               variant="outlined"
               fullWidth
@@ -242,10 +243,10 @@ const MachineQuality = (props) => {
               
               Plastic Protection Cap Costs (Specify Quantity & Cost) <span style={{ color: "red" }}>*</span> 
             </Typography>
-
             <TextField
-              
-              id="plastic-protection-cap-costs"
+
+              name="capCost"
+              id="capCost"
               label="Enter Details"
               variant="outlined"
               fullWidth
@@ -268,8 +269,9 @@ const MachineQuality = (props) => {
             </Typography>
 
             <TextField
-              
-              id="packaging-cost"
+
+              name="packagingCost"
+              id="packagingCost"
               label="Enter Details"
               variant="outlined"
               fullWidth
@@ -286,12 +288,13 @@ const MachineQuality = (props) => {
                 fontSize: "1.2rem",
               }}
             >
-              {" "}
-              Remarks{" "}
+              
+              Remarks
             </Typography>
             <TextField
               label="Enter Remarks"
-              id="machine-remarks"
+              name="remarks"
+              id="remarks"
               variant="outlined"
               fullWidth
               size="small"

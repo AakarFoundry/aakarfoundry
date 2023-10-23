@@ -9,6 +9,10 @@ import Link from "@mui/material/Link";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import { useState, useEffect } from "react";
+import IconButton from "@mui/material/IconButton";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
+
 
 export const Login = () => {
   const handleEvent = (e) => {
@@ -52,7 +56,7 @@ export const Login = () => {
       passowrd: "",
     });
   }, []);
-
+  const [showPassword, setShowPassword] = useState(false);
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -61,6 +65,14 @@ export const Login = () => {
       password: data.get("password"),
     });
   };
+{/*  const handlePassword = (e) => {
+    if (e.target.value === "") {
+      setConfirmPassValidation(false);
+    } else {
+      setConfirmPassValidation(true);
+    }
+  };*/}
+
   return (
     <div className={styles.frameLogin}>
       <div className={styles.div}>
@@ -135,12 +147,22 @@ export const Login = () => {
                 fullWidth
                 name="password"
                 label="Password"
-                type="password"
+                type={showPassword ? "text" : "Password"}
                 id="password"
-                autoComplete="current-password"
-                onChange={handleEvent}
+                autoComplete="Password"
+                // onChange={handlePassword}x
                 helperText={isNumberValid ? "" : "Invalid Password"}
                 error={!isNumberValid}
+                InputProps={{
+                  endAdornment: (
+                    <IconButton
+                      onClick={() => setShowPassword(!showPassword)}
+                      edge="end"
+                    >
+                      {showPassword ? <Visibility /> : <VisibilityOff />}
+                    </IconButton>
+                  ),
+                }}
               />
               <Button
                 type="submit"
@@ -152,7 +174,7 @@ export const Login = () => {
                 Log In
               </Button>
               <div className={styles.registerLine}>
-                {" "}
+                
                 Don&apos;t have an account?&nbsp;
                 <Link href="/register" variant="body2">
                   {"\t\tCreate Account"}
@@ -165,3 +187,4 @@ export const Login = () => {
     </div>
   );
 };
+
