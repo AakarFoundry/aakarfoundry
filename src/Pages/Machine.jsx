@@ -81,7 +81,7 @@ const MachineQuality = (props) => {
       sx={{
         display: "flex",
         justifyContent: "center",
-        mt: 4,
+        mt: 8,
         mb: 2,
       }}
     >
