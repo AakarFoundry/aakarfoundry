@@ -165,12 +165,13 @@ const MachineQuality = (props) => {
                 padding: "0.3rem",
               }}
             >
-              Inspection Gauges Cost{" "}
+              Inspection Gauges Cost
             </Typography>
 
             <TextField
               required
-              id="inspection-gauges-cost "
+              name="gaugesCost"
+              id="gaugesCost"
               label="Enter Details"
               variant="outlined"
               fullWidth
@@ -188,36 +189,13 @@ const MachineQuality = (props) => {
                 padding: "0.3rem",
               }}
             >
-              Leak testing fixture cost{" "}
+              Leak testing fixture cost
             </Typography>
 
             <TextField
               required
-              id="leak-testing-fixture-cost "
-              label=" Enter Details"
-              variant="outlined"
-              fullWidth
-              size="small"
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <Typography
-              variant="subtitle1"
-              sx={{
-                textAlign: "left",
-                color: "#054470",
-                fontWeight: "650",
-                fontSize: "1.2rem",
-                padding: "0.3rem",
-              }}
-            >
-              {" "}
-              Washing fixture cost{" "}
-            </Typography>
-
-            <TextField
-              required
-              id="washing-fixture-cost "
+              name="leakCost"
+              id="leakCost"
               label="Enter Details"
               variant="outlined"
               fullWidth
@@ -235,13 +213,14 @@ const MachineQuality = (props) => {
                 padding: "0.3rem",
               }}
             >
-              {" "}
-              Plastic Protection Cap Costs (Specify Quantity & Cost){" "}
+              
+              Washing fixture cost
             </Typography>
 
             <TextField
               required
-              id="plastic-protection-cap-costs"
+              name="washingCost"
+              id="washingCost"
               label="Enter Details"
               variant="outlined"
               fullWidth
@@ -259,13 +238,39 @@ const MachineQuality = (props) => {
                 padding: "0.3rem",
               }}
             >
-              {" "}
-              Packaging Cost-(Corrugated/PP/Plastic/Exports Grade){" "}
+              
+              Plastic Protection Cap Costs (Specify Quantity & Cost)
             </Typography>
 
             <TextField
               required
-              id="packaging-cost"
+              name="capCost"
+              id="capCost"
+              label="Enter Details"
+              variant="outlined"
+              fullWidth
+              size="small"
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <Typography
+              variant="subtitle1"
+              sx={{
+                textAlign: "left",
+                color: "#054470",
+                fontWeight: "650",
+                fontSize: "1.2rem",
+                padding: "0.3rem",
+              }}
+            >
+              
+              Packaging Cost-(Corrugated/PP/Plastic/Exports Grade)
+            </Typography>
+
+            <TextField
+              required
+              name="packagingCost"
+              id="packagingCost"
               label="Enter Details"
               variant="outlined"
               fullWidth
@@ -282,12 +287,13 @@ const MachineQuality = (props) => {
                 fontSize: "1.2rem",
               }}
             >
-              {" "}
-              Remarks{" "}
+              
+              Remarks
             </Typography>
             <TextField
               label="Enter Remarks"
-              id="machine-remarks"
+              name="remarks"
+              id="remarks"
               variant="outlined"
               fullWidth
               size="small"

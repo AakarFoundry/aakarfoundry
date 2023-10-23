@@ -41,7 +41,8 @@ const DesignFoundry = (props) => {
             </Typography>
             <TextField
               required
-              id="finished-weight"
+              name="weight"
+              id="weight"
               label="Enter Details"
               variant="outlined"
               fullWidth
@@ -64,7 +65,8 @@ const DesignFoundry = (props) => {
 
             <TextField
               required
-              id="casting-weight"
+              name="casting"
+              id="casting"
               label="Enter Details  "
               variant="outlined"
               fullWidth
@@ -88,7 +90,8 @@ const DesignFoundry = (props) => {
 
             <TextField
               required
-              id="surface-area"
+              name="area"
+              id="area"
               label="Enter Details"
               variant="outlined"
               fullWidth
@@ -111,7 +114,8 @@ const DesignFoundry = (props) => {
 
             <TextField
               required
-              id="die-casting-process "
+              name="dieCasting"
+              id="dieCasting"
               label="Enter Details"
               variant="outlined"
               fullWidth
@@ -134,7 +138,8 @@ const DesignFoundry = (props) => {
 
             <TextField
               required
-              id=" impressions "
+              name="impressions"
+              id="impressions"
               label=" Enter Details"
               variant="outlined"
               fullWidth
@@ -158,7 +163,8 @@ const DesignFoundry = (props) => {
 
             <TextField
               required
-              id="alternative-raw-material "
+              name="rawMaterial"
+              id="rawMaterial"
               label="Enter Details"
               variant="outlined"
               fullWidth
@@ -182,7 +188,8 @@ const DesignFoundry = (props) => {
 
             <TextField
               required
-              id="die-cost "
+              name="dieCost"
+              id="dieCost"
               label="Enter Details"
               variant="outlined"
               fullWidth
@@ -206,7 +213,8 @@ const DesignFoundry = (props) => {
 
             <TextField
               required
-              id="core-box-cost "
+              name="coreCost"
+              id="coreCost"
               label="Enter Details"
               variant="outlined"
               fullWidth
@@ -230,7 +238,8 @@ const DesignFoundry = (props) => {
 
             <TextField
               required
-              id="expected-die-life"
+              name="dieLife"
+              id="dieLife"
               label=" Enter Details"
               variant="outlined"
               fullWidth
@@ -253,7 +262,8 @@ const DesignFoundry = (props) => {
 
             <TextField
               required
-              id="manufacturing-period"
+              name="diePeriod"
+              id="diePeriod"
               label=" Enter Details"
               variant="outlined"
               fullWidth
@@ -277,7 +287,8 @@ const DesignFoundry = (props) => {
 
             <TextField
               required
-              id="shots-per-hour"
+              name="shots"
+              id="shots"
               label="Enter Details"
               variant="outlined"
               fullWidth
@@ -301,7 +312,8 @@ const DesignFoundry = (props) => {
 
             <TextField
               required
-              id="sand-cores-required "
+              name="cores"
+              id="cores"
               label=" Enter Details"
               variant="outlined"
               fullWidth
@@ -325,7 +337,8 @@ const DesignFoundry = (props) => {
 
             <TextField
               required
-              id="total-sand-weight"
+              name="sandWeight"
+              id="sandWeight"
               label=" Enter Details"
               variant="outlined"
               fullWidth
@@ -347,7 +360,8 @@ const DesignFoundry = (props) => {
             </Typography>
             <TextField
               label="Enter Remarks"
-              id="design-remarks"
+              name="remarks"
+              id="remarks"
               variant="outlined"
               fullWidth
               size="small"

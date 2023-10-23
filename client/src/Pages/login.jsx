@@ -174,7 +174,7 @@ export const Login = () => {
                 Log In
               </Button>
               <div className={styles.registerLine}>
-                {" "}
+                
                 Don&apos;t have an account?&nbsp;
                 <Link href="/register" variant="body2">
                   {"\t\tCreate Account"}

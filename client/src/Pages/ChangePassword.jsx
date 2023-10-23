@@ -161,7 +161,7 @@ const ChangePassword = () => {
             />
             {!confirmPassValidation && confirmPass !== "" && (
               <p className={`${styles.textDanger}`}>
-                Entered Password do not match{" "}
+                Entered Password do not match
               </p>
             )}
             <Link

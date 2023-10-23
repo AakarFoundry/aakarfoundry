@@ -36,8 +36,8 @@ const NewProductDev = (props) => {
                 padding: "0.3rem",
               }}
             >
-              {" "}
-              Capital Investment for machines{" "}
+              
+              Capital Investment for machines
             </Typography>
 
             <TextField
@@ -60,7 +60,7 @@ const NewProductDev = (props) => {
                 padding: "0.3rem",
               }}
             >
-              Part Feasible{" "}
+              Part Feasible
             </Typography>
 
             <TextField
@@ -83,7 +83,7 @@ const NewProductDev = (props) => {
                 padding: "0.3rem",
               }}
             >
-              Feasible with changes{" "}
+              Feasible with changes
             </Typography>
 
             <TextField
@@ -106,7 +106,7 @@ const NewProductDev = (props) => {
                 padding: "0.3rem",
               }}
             >
-              {" "}
+              
               Part Not Feasible Design and Foundry Machine and Quality New
               Product Development
             </Typography>
@@ -130,8 +130,8 @@ const NewProductDev = (props) => {
                 fontSize: "1.2rem",
               }}
             >
-              {" "}
-              Remarks{" "}
+              
+              Remarks
             </Typography>
             <TextField
               label="Enter Remarks"

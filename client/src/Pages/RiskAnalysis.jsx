@@ -44,12 +44,13 @@ const RiskAnalysis = (props) => {
                 padding: "0.3rem",
               }}
             >
-              {" "}
-              Is there any risk associated with : (ü/û){" "}
+              
+              Is there any risk associated with : (ü/û)
             </Typography>
             <TextField
               required
-              id="Is there any risk associated with : (ü/û) *"
+              name="risk"
+              id="risk"
               label="Enter Details"
               variant="outlined"
               fullWidth
@@ -67,13 +68,14 @@ const RiskAnalysis = (props) => {
                 padding: "0.3rem",
               }}
             >
-              {" "}
-              Manufacturing Requirement{" "}
+              
+              Manufacturing Requirement
             </Typography>
 
             <TextField
               required
-              id=" Manufacturing Requirement *"
+              name="requirement"
+              id="requirement"
               label="Enter Details  "
               variant="outlined"
               fullWidth
@@ -91,13 +93,14 @@ const RiskAnalysis = (props) => {
                 padding: "0.3rem",
               }}
             >
-              {" "}
-              Application{" "}
+              
+              Application
             </Typography>
 
             <TextField
               required
-              id="Application *"
+              name="application"
+              id="application"
               label="Enter Details"
               variant="outlined"
               fullWidth
@@ -115,11 +118,12 @@ const RiskAnalysis = (props) => {
                 padding: "0.3rem",
               }}
             >
-              Internal Estimation{" "}
+              Internal Estimation
             </Typography>
             <TextField
               required
-              id="Internal Estimation *"
+              name="estimation"
+              id="estimation"
               label="Enter Details"
               variant="outlined"
               fullWidth
@@ -339,8 +343,8 @@ const RiskAnalysis = (props) => {
                 fontSize: "1.2rem",
               }}
             >
-              {" "}
-              Remarks{" "}
+              
+              Remarks
             </Typography>
             <TextField
               id="risk-remarks"
