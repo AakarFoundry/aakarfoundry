@@ -1,4 +1,5 @@
 import * as React from "react";
+import Button from "@mui/material/Button";
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -8,7 +9,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Container from "@mui/material/Container";
-import Button from "@mui/material/Button";
+
 import { TablePagination } from "@mui/material";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -45,11 +46,11 @@ const rows = [
   createData("Customer 2", "67890", "Pending"),
   createData("Customer 3", "54321", "Incomplete"),
   createData("Customer 4", "98765", "Rejected"),
-  createData("Customer 5", "11111", "Success"),
+  createData("Customer 5", "11111", "Approved"),
   createData("Customer 6", "11431", "Rejected"),
   createData("Customer 7", "54646", "Pending"),
   createData("Customer 8", "64566", "Incomplete"),
-  createData("Customer 9", "23424", "Success"),
+  createData("Customer 9", "23424", "Approved"),
 ];
 
 export default function Dashboard() {
@@ -105,9 +106,7 @@ export default function Dashboard() {
                   <Button
                     variant="contained"
                     color={
-                      row.status === "Approved"
-                        ? "approve"
-                        : row.status === "Incomplete"
+                      row.status === "Incomplete"
                         ? "primary"
                         : row.status === "Pending"
                         ? "warning"
