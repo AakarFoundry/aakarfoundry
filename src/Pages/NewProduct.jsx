@@ -37,7 +37,7 @@ const NewProductDev = (props) => {
               }}
             >
               
-              Capital Investment for machines
+              Capital Investment for machines <span style={{ color: "red" }}>*</span>
             </Typography>
 
             <TextField
@@ -60,7 +60,7 @@ const NewProductDev = (props) => {
                 padding: "0.3rem",
               }}
             >
-              Part Feasible
+              Part Feasible <span style={{ color: "red" }}>*</span>
             </Typography>
 
             <TextField
@@ -83,7 +83,7 @@ const NewProductDev = (props) => {
                 padding: "0.3rem",
               }}
             >
-              Feasible with changes
+              Feasible with changes <span style={{ color: "red" }}>*</span>
             </Typography>
 
             <TextField
@@ -108,7 +108,7 @@ const NewProductDev = (props) => {
             >
               
               Part Not Feasible Design and Foundry Machine and Quality New
-              Product Development 
+              Product Development <span style={{ color: "red" }}>*</span>
             </Typography>
 
             <TextField

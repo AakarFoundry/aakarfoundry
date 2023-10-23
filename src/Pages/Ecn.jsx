@@ -36,10 +36,10 @@ const Ecn = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                Aakar Foundry Enquiry No
+                Aakar Foundry Enquiry No <span style={{ color: "red" }}>*</span>
               </Typography>
               <TextField
-                required
+                
                 name="enquiryNo"
                 id="enquiryNo"
                 label="Enter Details"
@@ -59,11 +59,11 @@ const Ecn = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                Aakar Foundry Enquiry No - ECN
+                Aakar Foundry Enquiry No - ECN <span style={{ color: "red" }}>*</span>
               </Typography>
 
               <TextField
-                required
+                
                 name="ecnNo"
                 id="ecnNo"
                 label="Enter Details  "
@@ -83,11 +83,11 @@ const Ecn = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                Part Name
+                Part Name <span style={{ color: "red" }}>*</span>
               </Typography>
 
               <TextField
-                required
+                
                 name="partName"
                 id="partName"
                 label="Enter Details"
@@ -107,11 +107,11 @@ const Ecn = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                Part Number - Finish
+                Part Number - Finish <span style={{ color: "red" }}>*</span>
               </Typography>
 
               <TextField
-                required
+                
                 name="number"
                 id="number"
                 label="Enter Details"
@@ -131,11 +131,11 @@ const Ecn = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                Finish Weight
+                Finish Weight <span style={{ color: "red" }}>*</span>
               </Typography>
 
               <TextField
-                required
+                
                 name="weight"
                 id="weight"
                 label=" Enter Details"
@@ -155,11 +155,11 @@ const Ecn = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                Project Name/Other Details
+                Project Name/Other Details <span style={{ color: "red" }}>*</span>
               </Typography>
 
               <TextField
-                required
+                
                 name="projectName"
                 id="projectName"
                 label="Enter Details"
@@ -179,13 +179,13 @@ const Ecn = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                What type of ECN (Change in)
+                What type of ECN (Change in) <span style={{ color: "red" }}>*</span>
               </Typography>
 
               <TextField
-                required
-                name="ecn"
-                id="type"
+                
+                name="ecnType"
+                id="ecnType"
                 label="Enter Details"
                 variant="outlined"
                 fullWidth

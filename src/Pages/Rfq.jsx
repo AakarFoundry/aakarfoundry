@@ -93,7 +93,7 @@ const Rfq = (props) => {
 
 
               <TextField
-
+                name="partCast"
                 id="partCast"
                 label="Enter Details"
                 variant="outlined"
@@ -116,7 +116,7 @@ const Rfq = (props) => {
               </Typography>
 
               <TextField
-                required
+                
                 name="details"
                 id="details"
                 label="Enter Details"
@@ -140,7 +140,7 @@ const Rfq = (props) => {
               </Typography>
 
               <TextField
-                required
+                
                 name="enquiry"
                 id="enquiry"
                 label=" Enter Details"
@@ -266,7 +266,7 @@ const Rfq = (props) => {
               </Typography>
 
               <TextField
-                required
+                
                 name="machined"
                 id="machined"
                 label=" Enter Details"
@@ -414,7 +414,7 @@ const Rfq = (props) => {
               </Typography>
 
               <TextField
-                required
+                
                 name="pressure"
                 id="pressure"
                 label=" Enter Details"
