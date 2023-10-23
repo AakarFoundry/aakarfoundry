@@ -41,7 +41,7 @@ function createData(name, id, status, views) {
 }
 
 const rows = [
-  createData("Customer 1", "12345", "Approve"),
+  createData("Customer 1", "12345", "Approved"),
   createData("Customer 2", "67890", "Pending"),
   createData("Customer 3", "54321", "Incomplete"),
   createData("Customer 4", "98765", "Rejected"),

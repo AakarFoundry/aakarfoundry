@@ -9,6 +9,7 @@ import IconButton from "@mui/material/IconButton";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { Link } from "react-router-dom";
+import { Grid } from "@mui/material";
 
 const ChangePassword = () => {
   const [oldPassValidation, setOldPassValidation] = useState(true);
@@ -47,12 +48,12 @@ const ChangePassword = () => {
     console.log({
       OldPassword: data.get("Old password"),
       NewPassword: data.get("New password"),
-      ReEnterNewPassword: data.get("Re-enter New password"),
+      ConfirmNewPassword: data.get("Confirm New password"),
     });
   };
 
   return (
-    <div className={styles.frameLogin}>
+    
       <Container
         component="main"
         maxWidth="xs"
@@ -70,8 +71,8 @@ const ChangePassword = () => {
             alignItems: "center",
           }}
         >
-          <Typography component="h1" variant="h5" sx={{ color: "#18234F" }}>
-            Change Password
+          <Typography component="h1" variant="h5" sx={{ color: "#18234F", fontWeight: "600" }}>
+            Change Password 
           </Typography>
           <Box
             component="form"
@@ -79,6 +80,17 @@ const ChangePassword = () => {
             noValidate
             sx={{ mt: 1 }}
           >
+            <Typography
+              variant="subtitle1"
+              sx={{
+                textAlign: "left",
+                color: "#054470",
+                fontWeight: "540",
+                fontSize: "1.2rem",
+                paddingTop: "1rem",
+              }}
+            >
+              Enter old password <span style={{ color: "red" }}>*</span> 
             <TextField
               sx={{
                 "& .MuiInputLabel-root": { color: "#18234F" },
@@ -86,8 +98,8 @@ const ChangePassword = () => {
                   "& > fieldset": { border: 0.5, borderColor: "#18234F" },
                 },
               }}
-              margin="normal"
-              required
+              // margin="normal"
+              
               fullWidth
               id="Old password"
               onChange={handleOldPassword}
@@ -107,6 +119,22 @@ const ChangePassword = () => {
                 ),
               }}
             />
+            </Typography>
+          
+        
+          
+            <Typography
+              variant="subtitle1"
+              sx={{
+                textAlign: "left",
+                color: "#054470",
+                fontWeight: "540",
+                fontSize: "1.2rem",
+                paddingTop: "1rem",
+              }}
+            >
+              Enter New password <span style={{ color: "red" }}>*</span> 
+            
             <TextField
               sx={{
                 "& .MuiInputLabel-root": { color: "#18234F" },
@@ -114,8 +142,8 @@ const ChangePassword = () => {
                   "& > fieldset": { border: 0.5, borderColor: "#18234F" },
                 },
               }}
-              margin="normal"
-              required
+              // margin="normal"
+              
               fullWidth
               name="New password"
               onChange={handleNewPassword}
@@ -133,6 +161,22 @@ const ChangePassword = () => {
                 ),
               }}
             />
+            </Typography>
+          
+        
+          
+            <Typography
+              variant="subtitle1"
+              sx={{
+                textAlign: "left",
+                color: "#054470",
+                fontWeight: "540",
+                fontSize: "1.2rem",
+                paddingTop: "1rem",
+              }}
+            >
+              Confirm New password <span style={{ color: "red" }}>*</span> 
+            
             <TextField
               sx={{
                 "& .MuiInputLabel-root": { color: "#18234F" },
@@ -140,14 +184,14 @@ const ChangePassword = () => {
                   "& > fieldset": { border: 0.5, borderColor: "#18234F" },
                 },
               }}
-              margin="normal"
-              required
+              // margin="normal"
+              
               fullWidth
               onChange={handleConfirmPassword}
-              name="Re-enter new password"
-              label="Re-enter new password"
+              name="Confirm new password"
+              label="Confirm new password"
               type={showConfirmPassword ? "text" : "password"}
-              id="Re-enter new password"
+              id="Confirm new password"
               InputProps={{
                 endAdornment: (
                   <IconButton
@@ -159,6 +203,9 @@ const ChangePassword = () => {
                 ),
               }}
             />
+            </Typography>
+        
+         
             {!confirmPassValidation && confirmPass !== "" && (
               <p className={`${styles.textDanger}`}>
                 Entered Password do not match{" "}
@@ -179,7 +226,7 @@ const ChangePassword = () => {
           </Box>
         </Box>
       </Container>
-    </div>
+
   );
 };
 

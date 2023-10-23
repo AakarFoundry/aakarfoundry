@@ -37,10 +37,10 @@ const DesignFoundry = (props) => {
               }}
             >
               
-              Finished Weight (Machined) (Kg)
+              Finished Weight (Machined) (Kg) <span style={{ color: "red" }}>*</span> 
             </Typography>
             <TextField
-              required
+              
               id="finished-weight"
               label="Enter Details"
               variant="outlined"
@@ -59,11 +59,11 @@ const DesignFoundry = (props) => {
                 padding: "0.3rem",
               }}
             >
-              Net Raw Casting Weight (Kg)
+              Net Raw Casting Weight (Kg) <span style={{ color: "red" }}>*</span> 
             </Typography>
 
             <TextField
-              required
+              
               id="casting-weight"
               label="Enter Details  "
               variant="outlined"
@@ -83,11 +83,11 @@ const DesignFoundry = (props) => {
               }}
             >
               
-              Surface Area - in mm Square
+              Surface Area - in mm Square <span style={{ color: "red" }}>*</span> 
             </Typography>
 
             <TextField
-              required
+              
               id="surface-area"
               label="Enter Details"
               variant="outlined"
@@ -106,11 +106,11 @@ const DesignFoundry = (props) => {
                 padding: "0.3rem",
               }}
             >
-              Die-Casting Process
+              Die-Casting Process <span style={{ color: "red" }}>*</span> 
             </Typography>
 
             <TextField
-              required
+              
               id="die-casting-process "
               label="Enter Details"
               variant="outlined"
@@ -129,11 +129,11 @@ const DesignFoundry = (props) => {
                 padding: "0.3rem",
               }}
             >
-              No. of Impressions or Cavities
+              No. of Impressions or Cavities <span style={{ color: "red" }}>*</span> 
             </Typography>
 
             <TextField
-              required
+              
               id=" impressions "
               label=" Enter Details"
               variant="outlined"
@@ -153,11 +153,11 @@ const DesignFoundry = (props) => {
               }}
             >
               
-              Alternative Raw Material Suggested By Aakar
+              Alternative Raw Material Suggested By Aakar <span style={{ color: "red" }}>*</span> 
             </Typography>
 
             <TextField
-              required
+              
               id="alternative-raw-material "
               label="Enter Details"
               variant="outlined"
@@ -177,11 +177,11 @@ const DesignFoundry = (props) => {
               }}
             >
               
-              Die cost (Rs Lakhs)
+              Die cost (Rs Lakhs) <span style={{ color: "red" }}>*</span> 
             </Typography>
 
             <TextField
-              required
+              
               id="die-cost "
               label="Enter Details"
               variant="outlined"
@@ -201,11 +201,11 @@ const DesignFoundry = (props) => {
               }}
             >
               
-              Core Box Cost
+              Core Box Cost <span style={{ color: "red" }}>*</span> 
             </Typography>
 
             <TextField
-              required
+              
               id="core-box-cost "
               label="Enter Details"
               variant="outlined"
@@ -225,11 +225,11 @@ const DesignFoundry = (props) => {
               }}
             >
               
-              Expected Die Life (Shots)
-            </Typography>
+              Expected Die Life (Shots) <span style={{ color: "red" }}>*</span> 
+            </Typography> 
 
             <TextField
-              required
+              
               id="expected-die-life"
               label=" Enter Details"
               variant="outlined"
@@ -248,11 +248,11 @@ const DesignFoundry = (props) => {
                 padding: "0.3rem",
               }}
             >
-              Die Manufacturing Period in Weeks
+              Die Manufacturing Period in Weeks <span style={{ color: "red" }}>*</span> 
             </Typography>
 
             <TextField
-              required
+              
               id="manufacturing-period"
               label=" Enter Details"
               variant="outlined"
@@ -272,11 +272,11 @@ const DesignFoundry = (props) => {
               }}
             >
               
-              Number of Shots/hour
+              Number of Shots/hour <span style={{ color: "red" }}>*</span> 
             </Typography>
 
             <TextField
-              required
+              
               id="shots-per-hour"
               label="Enter Details"
               variant="outlined"
@@ -296,11 +296,11 @@ const DesignFoundry = (props) => {
               }}
             >
               
-              No. of Sand Cores Required
+              No. of Sand Cores Required <span style={{ color: "red" }}>*</span> 
             </Typography>
 
             <TextField
-              required
+              
               id="sand-cores-required "
               label=" Enter Details"
               variant="outlined"
@@ -319,12 +319,12 @@ const DesignFoundry = (props) => {
                 padding: "0.3rem",
               }}
             >
-              
-              Total Sand Weight (Kg)
+               
+              Total Sand Weight (Kg) <span style={{ color: "red" }}>*</span> 
             </Typography>
 
             <TextField
-              required
+              
               id="total-sand-weight"
               label=" Enter Details"
               variant="outlined"

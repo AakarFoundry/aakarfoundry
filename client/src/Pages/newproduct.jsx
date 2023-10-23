@@ -41,7 +41,7 @@ const NewProductDev = (props) => {
             </Typography>
 
             <TextField
-              required
+              
               id="capital-investment-for-machines "
               label="Enter Details"
               variant="outlined"
@@ -64,7 +64,7 @@ const NewProductDev = (props) => {
             </Typography>
 
             <TextField
-              required
+              
               id="part-feasible "
               label="Enter Details"
               variant="outlined"
@@ -87,7 +87,7 @@ const NewProductDev = (props) => {
             </Typography>
 
             <TextField
-              required
+              
               id="feasible-with-changes "
               label=" Enter Details"
               variant="outlined"
@@ -108,11 +108,11 @@ const NewProductDev = (props) => {
             >
               {" "}
               Part Not Feasible Design and Foundry Machine and Quality New
-              Product Development
+              Product Development 
             </Typography>
 
             <TextField
-              required
+              
               id="Part Not Feasible Design and Foundry Machine and Quality New Product Development "
               label="Enter Details"
               variant="outlined"

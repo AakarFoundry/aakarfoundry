@@ -37,10 +37,10 @@ const CustomerName = (props) => {
               }}
             >
               
-              Customer Name
+              Customer Name <span style={{ color: "red" }}>*</span> 
             </Typography>
             <TextField
-              required
+              
               id="customer-name"
               label="Enter Details"
               variant="outlined"
@@ -59,10 +59,10 @@ const CustomerName = (props) => {
               }}
             >
               
-              Customer Reference
+              Customer Reference <span style={{ color: "red" }}>*</span> 
             </Typography>
             <TextField
-              required
+              
               id="customer-reference"
               label="Enter Details "
               variant="outlined"
@@ -81,10 +81,10 @@ const CustomerName = (props) => {
               }}
             >
               
-              Contact Person
+              Contact Person <span style={{ color: "red" }}>*</span> 
             </Typography>
             <TextField
-              required
+              
               id="contact-person"
               label="Enter Details"
               variant="outlined"
@@ -103,10 +103,10 @@ const CustomerName = (props) => {
               }}
             >
               
-              Delivery Address
+              Delivery Address <span style={{ color: "red" }}>*</span> 
             </Typography>
             <TextField
-              required
+              
               id="delivery-address"
               label="Enter Details"
               variant="outlined"
@@ -125,10 +125,10 @@ const CustomerName = (props) => {
               }}
             >
               
-              Enquiry Date
+              Enquiry Date <span style={{ color: "red" }}>*</span> 
             </Typography>
             <TextField
-              required
+              
               id="enquiry-date"
               label=" Enter Details"
               variant="outlined"
@@ -148,10 +148,10 @@ const CustomerName = (props) => {
               }}
             >
               
-           Path
+           Path <span style={{ color: "red" }}>*</span> 
             </Typography>
             <TextField
-              required
+              
               id="path"
               label=" Enter Details"
               variant="outlined"
@@ -172,10 +172,10 @@ const CustomerName = (props) => {
               }}
             >
               
-              Category
+              Category <span style={{ color: "red" }}>*</span> 
             </Typography>
             <Select
-              required
+              
               id="category"
               label="Category"
               variant="outlined"

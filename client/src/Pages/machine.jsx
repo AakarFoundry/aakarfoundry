@@ -10,7 +10,11 @@ import { Stack } from "@mui/material";
 import { useState } from "react";
 import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 
-const MachineQuality = (props) => {
+const MachineQuality = (props) => { 
+  const redAsteriskStyle = {
+    color: 'red',
+  };
+
   const [fields, setFields] = useState([
     {
       id: 1,
@@ -26,7 +30,7 @@ const MachineQuality = (props) => {
     },
     {
       id: 3,
-      label: "Machining Fixture cost (One time Inv)",
+      label: "Machining Fixture cost(One time Inv)",
       value: "",
     },
   ]);
@@ -104,12 +108,12 @@ const MachineQuality = (props) => {
                   padding: '0.3rem',
                 }}
               >
-                {field.label}
+                {field.label}{field.label.includes('') && <span style={redAsteriskStyle}>*</span>}
               </Typography>
               {field.type === 'select' ? (
                 <FormControl variant="outlined" fullWidth size="small">
                   <Select
-                    required
+                    
                     labelId={`${field.id}-label`}
                     id={field.id}
                     variant="outlined"
@@ -127,7 +131,7 @@ const MachineQuality = (props) => {
               ) : (
 
                 <TextField
-                  required
+                  
                   label="Enter Details"
                   variant="outlined"
                   fullWidth
@@ -165,11 +169,11 @@ const MachineQuality = (props) => {
                 padding: "0.3rem",
               }}
             >
-              Inspection Gauges Cost{" "}
+              Inspection Gauges Cost <span style={{ color: "red" }}>*</span> 
             </Typography>
 
             <TextField
-              required
+              
               id="inspection-gauges-cost "
               label="Enter Details"
               variant="outlined"
@@ -188,11 +192,11 @@ const MachineQuality = (props) => {
                 padding: "0.3rem",
               }}
             >
-              Leak testing fixture cost{" "}
+              Leak testing fixture cost <span style={{ color: "red" }}>*</span> 
             </Typography>
 
             <TextField
-              required
+              
               id="leak-testing-fixture-cost "
               label=" Enter Details"
               variant="outlined"
@@ -211,12 +215,12 @@ const MachineQuality = (props) => {
                 padding: "0.3rem",
               }}
             >
-              {" "}
-              Washing fixture cost{" "}
+              
+              Washing fixture cost <span style={{ color: "red" }}>*</span> 
             </Typography>
 
             <TextField
-              required
+              
               id="washing-fixture-cost "
               label="Enter Details"
               variant="outlined"
@@ -235,12 +239,12 @@ const MachineQuality = (props) => {
                 padding: "0.3rem",
               }}
             >
-              {" "}
-              Plastic Protection Cap Costs (Specify Quantity & Cost){" "}
+              
+              Plastic Protection Cap Costs (Specify Quantity & Cost) <span style={{ color: "red" }}>*</span> 
             </Typography>
 
             <TextField
-              required
+              
               id="plastic-protection-cap-costs"
               label="Enter Details"
               variant="outlined"
@@ -259,12 +263,12 @@ const MachineQuality = (props) => {
                 padding: "0.3rem",
               }}
             >
-              {" "}
-              Packaging Cost-(Corrugated/PP/Plastic/Exports Grade){" "}
+              
+              Packaging Cost-(Corrugated/PP/Plastic/Exports Grade) <span style={{ color: "red" }}>*</span> 
             </Typography>
 
             <TextField
-              required
+              
               id="packaging-cost"
               label="Enter Details"
               variant="outlined"

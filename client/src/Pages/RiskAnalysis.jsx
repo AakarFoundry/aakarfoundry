@@ -45,10 +45,10 @@ const RiskAnalysis = (props) => {
               }}
             >
               {" "}
-              Is there any risk associated with : (ü/û){" "}
+              Is there any risk associated with : (ü/û) <span style={{ color: "red" }}>*</span> 
             </Typography>
             <TextField
-              required
+              
               id="Is there any risk associated with : (ü/û) *"
               label="Enter Details"
               variant="outlined"
@@ -67,12 +67,12 @@ const RiskAnalysis = (props) => {
                 padding: "0.3rem",
               }}
             >
-              {" "}
-              Manufacturing Requirement{" "}
+              
+              Manufacturing Requirement <span style={{ color: "red" }}>*</span> 
             </Typography>
 
             <TextField
-              required
+              
               id=" Manufacturing Requirement *"
               label="Enter Details  "
               variant="outlined"
@@ -91,12 +91,12 @@ const RiskAnalysis = (props) => {
                 padding: "0.3rem",
               }}
             >
-              {" "}
-              Application{" "}
+              
+              Application <span style={{ color: "red" }}>*</span> 
             </Typography>
 
             <TextField
-              required
+              
               id="Application *"
               label="Enter Details"
               variant="outlined"
@@ -115,10 +115,10 @@ const RiskAnalysis = (props) => {
                 padding: "0.3rem",
               }}
             >
-              Internal Estimation{" "}
+              Internal Estimation <span style={{ color: "red" }}>*</span> 
             </Typography>
             <TextField
-              required
+              
               id="Internal Estimation *"
               label="Enter Details"
               variant="outlined"
@@ -151,7 +151,7 @@ const RiskAnalysis = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                Environmental:
+                Environmental: <span style={{ color: "red" }}>*</span> 
               </FormLabel>
               <RadioGroup
                 row
@@ -180,7 +180,7 @@ const RiskAnalysis = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                Investment:
+                Investment: <span style={{ color: "red" }}>*</span> 
               </FormLabel>
               <RadioGroup
                 row
@@ -209,7 +209,7 @@ const RiskAnalysis = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                Manufacturing:
+                Manufacturing: <span style={{ color: "red" }}>*</span> 
               </FormLabel>
               <RadioGroup
                 row
@@ -239,7 +239,7 @@ const RiskAnalysis = (props) => {
                 padding: "0.3rem",
               }}
             >
-              Guidelines
+              Guidelines 
             </Typography>
             <FormControl>
               <FormLabel
@@ -252,7 +252,7 @@ const RiskAnalysis = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                Technical Feasibility:
+                Technical Feasibility: <span style={{ color: "red" }}>*</span> 
               </FormLabel>
               <RadioGroup
                 row
@@ -281,7 +281,7 @@ const RiskAnalysis = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                Estimation:
+                Estimation: <span style={{ color: "red" }}>*</span> 
               </FormLabel>
               <RadioGroup
                 row
@@ -310,7 +310,7 @@ const RiskAnalysis = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                Regret:
+                Regret: <span style={{ color: "red" }}>*</span> 
               </FormLabel>
               <RadioGroup
                 row
@@ -339,8 +339,8 @@ const RiskAnalysis = (props) => {
                 fontSize: "1.2rem",
               }}
             >
-              {" "}
-              Remarks{" "}
+              
+              Remarks 
             </Typography>
             <TextField
               id="risk-remarks"

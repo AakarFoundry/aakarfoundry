@@ -40,11 +40,11 @@ const Rfq = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                {" "}
-                Part Name{" "}
+                
+                Part Name <span style={{ color: "red" }}>*</span> 
               </Typography>
               <TextField
-                required
+                
                 id="part-name"
                 label="Enter Details"
                 variant="outlined"
@@ -63,12 +63,12 @@ const Rfq = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                {" "}
-                Part Number - MACH{" "}
+                
+                Part Number - MACH <span style={{ color: "red" }}>*</span> 
               </Typography>
 
               <TextField
-                required
+                
                 id="part-number-mach"
                 label="Enter Details  "
                 variant="outlined"
@@ -87,12 +87,12 @@ const Rfq = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                {" "}
-                Part Number - CAST{" "}
+                
+                Part Number - CAST <span style={{ color: "red" }}>*</span> 
               </Typography>
 
               <TextField
-                required
+                
                 id="part-number-cast"
                 label="Enter Details"
                 variant="outlined"
@@ -111,11 +111,11 @@ const Rfq = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                Project Name/Other Details
+                Project Name/Other Details <span style={{ color: "red" }}>*</span> 
               </Typography>
 
               <TextField
-                required
+                
                 id="project-details"
                 label="Enter Details"
                 variant="outlined"
@@ -134,11 +134,11 @@ const Rfq = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                Aakar Foundry Enquiry No
+                Aakar Foundry Enquiry No <span style={{ color: "red" }}>*</span> 
               </Typography>
 
               <TextField
-                required
+                
                 id="enquiry-no"
                 label=" Enter Details"
                 variant="outlined"
@@ -157,12 +157,12 @@ const Rfq = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                {" "}
-                Quantity Per Annum (Nos){" "}
+                
+                Quantity Per Annum (Nos) <span style={{ color: "red" }}>*</span> 
               </Typography>
 
               <TextField
-                required
+                
                 id="quantity-per-annum"
                 label="Enter Details"
                 variant="outlined"
@@ -181,12 +181,12 @@ const Rfq = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                {" "}
-                Product Life (in Years){" "}
+                
+                Product Life (in Years) <span style={{ color: "red" }}>*</span> 
               </Typography>
 
               <TextField
-                required
+                
                 id="product-life"
                 label="Enter Details"
                 variant="outlined"
@@ -206,11 +206,11 @@ const Rfq = (props) => {
                 }}
               >
                 {" "}
-                Process Required (HPDC, LPDC, GDC){" "}
+                Process Required (HPDC, LPDC, GDC) <span style={{ color: "red" }}>*</span> 
               </Typography>
 
               <Select
-              required
+              
               id="process-required"
               label="Category"
               variant="outlined"
@@ -235,11 +235,11 @@ const Rfq = (props) => {
                 }}
               >
                 {" "}
-                Aluminum Alloy Specification
+                Aluminum Alloy Specification <span style={{ color: "red" }}>*</span> 
               </Typography>
 
               <TextField
-                required
+                
                 id="alloy-specification"
                 label=" Enter Details"
                 variant="outlined"
@@ -258,11 +258,11 @@ const Rfq = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                Requirements - Raw or Machined
+                Requirements - Raw or Machined <span style={{ color: "red" }}>*</span> 
               </Typography>
 
               <TextField
-                required
+                
                 id="requirements-raw-or-machined"
                 label=" Enter Details"
                 variant="outlined"
@@ -281,12 +281,12 @@ const Rfq = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                {" "}
-                Shot Blasting{" "}
+                
+                Shot Blasting <span style={{ color: "red" }}>*</span> 
               </Typography>
 
               <TextField
-                required
+                
                 id="shot-blasting"
                 label="Enter Details"
                 variant="outlined"
@@ -305,12 +305,12 @@ const Rfq = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                {" "}
-                Specific Product & QC Requirements{" "}
+                
+                Specific Product & QC Requirements <span style={{ color: "red" }}>*</span> 
               </Typography>
 
               <TextField
-                required
+                
                 id="specific-product-qc-requirements"
                 label=" Enter Details"
                 variant="outlined"
@@ -329,12 +329,12 @@ const Rfq = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                {" "}
-                Anodizing Required/Chromotising Required?{" "}
+                
+                Anodizing Required/Chromotising Required? <span style={{ color: "red" }}>*</span> 
               </Typography>
 
               <TextField
-                required
+                
                 id="anodizing-required"
                 label=" Enter Details"
                 variant="outlined"
@@ -354,12 +354,12 @@ const Rfq = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                {" "}
-                Power Coating Required? What Colour?{" "}
+                
+                Power Coating Required? What Colour? <span style={{ color: "red" }}>*</span> 
               </Typography>
 
               <TextField
-                required
+                
                 id="power-coating-required"
                 label="Enter Details"
                 variant="outlined"
@@ -378,12 +378,12 @@ const Rfq = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                {" "}
-                Bought Out Materials Details{" "}
+                
+                Bought Out Materials Details <span style={{ color: "red" }}>*</span> 
               </Typography>
 
               <TextField
-                required
+                
                 id="bought-out-materials-details"
                 label="Enter Details"
                 variant="outlined"
@@ -402,11 +402,11 @@ const Rfq = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                Leak testing & Pressure Requirement
+                Leak testing & Pressure Requirement <span style={{ color: "red" }}>*</span> 
               </Typography>
 
               <TextField
-                required
+                
                 id="leak-testing-pressure-requirement"
                 label=" Enter Details"
                 variant="outlined"
@@ -425,11 +425,11 @@ const Rfq = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                Impregnation Required?{" "}
+                Impregnation Required? <span style={{ color: "red" }}>*</span> 
               </Typography>
 
               <TextField
-                required
+                
                 id="impregnation-required"
                 label="Enter Details"
                 variant="outlined"
@@ -449,11 +449,11 @@ const Rfq = (props) => {
                 }}
               >
                 {" "}
-                Heat treatment Required?
+                Heat treatment Required?<span style={{ color: "red" }}>*</span> 
               </Typography>
 
               <TextField
-                required
+                
                 id="heat-treatment-required"
                 label=" Enter Details"
                 variant="outlined"
@@ -472,12 +472,12 @@ const Rfq = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                {" "}
-                Packaging - Corrugated/PP/Plastic/Exports Grade?
+                
+                Packaging - Corrugated/PP/Plastic/Exports Grade? <span style={{ color: "red" }}>*</span> 
               </Typography>
 
               <Select
-              required
+              
               id="packaging"
               label="Category"
               variant="outlined"
@@ -502,12 +502,12 @@ const Rfq = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                {" "}
-                Delivery Location & Basis
+                
+                Delivery Location & Basis <span style={{ color: "red" }}>*</span> 
               </Typography>
 
               <TextField
-                required
+                
                 id="delivery-location-basis"
                 label="Enter Details"
                 variant="outlined"
@@ -526,12 +526,12 @@ const Rfq = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                {" "}
-                (Ex-Works /FOB/CIF/DDP/DDU){" "}
+                
+                (Ex-Works /FOB/CIF/DDP/DDU) <span style={{ color: "red" }}>*</span> 
               </Typography>
 
               <Select
-              required
+              
               id="ex-works"
               label="Category"
               variant="outlined"
@@ -556,12 +556,12 @@ const Rfq = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                {" "}
-                Annual Tonnage - MT{" "}
+              
+                Annual Tonnage - MT <span style={{ color: "red" }}>*</span> 
               </Typography>
 
               <TextField
-                required
+                
                 id="annual-tonnage"
                 label="Enter Details"
                 variant="outlined"
@@ -580,11 +580,11 @@ const Rfq = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                {" "}
-                First Sample Date{" "}
+                
+                First Sample Date <span style={{ color: "red" }}>*</span> 
               </Typography>
               <TextField
-                required
+                
                 id="first-sample-date "
                 label="Enter Details"
                 variant="outlined"
@@ -602,12 +602,12 @@ const Rfq = (props) => {
                   fontSize: "1.2rem",
                 }}
               >
-                {" "}
-                PSW /PPAP Date{" "}
+                
+                PSW /PPAP Date <span style={{ color: "red" }}>*</span> 
               </Typography>
 
               <TextField
-                required
+                
                 id="PSW /PPAP Date "
                 label="Enter Details  "
                 variant="outlined"
@@ -625,8 +625,8 @@ const Rfq = (props) => {
                   fontSize: "1.2rem",
                 }}
               >
-                {" "}
-                Remarks{" "}
+                
+                Remarks 
               </Typography>
               <TextField
                 label="Enter Remarks"
