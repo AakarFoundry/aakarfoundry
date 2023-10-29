@@ -12,34 +12,89 @@ import { Link } from "react-router-dom";
 import { Grid } from "@mui/material";
 
 const ChangePassword = () => {
-  const [oldPassValidation, setOldPassValidation] = useState(true);
+  const [oldPassValidation, setOldPassValidation] = useState(false);
   const [confirmPassValidation, setConfirmPassValidation] = useState(false);
   const [newPass, setNewPass] = useState(false);
   const [confirmPass, setConfirmPass] = useState("");
+  const [newPassValidation, setNewPassValidation] = useState(false);
   const [showOldPassword, setShowOldPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-
-  const handleNewPassword = (e) => {
-    setNewPass(e.target.value);
-  };
-
-  const handleConfirmPassword = (e) => {
-    setConfirmPass(e.target.value);
-    if (e.target.value !== newPass) {
-      setConfirmPassValidation(false);
-    } else {
-      setConfirmPassValidation(true);
-    }
-  };
+  const [showPasswordPolicy, setShowPasswordPolicy] = useState(false);
+  const [passwordPolicyError, setPasswordPolicyError] = useState("");
 
   const handleOldPassword = (e) => {
-    if (e.target.value === "") {
+    const oldPassword = e.target.value;
+    if (oldPassword.trim() === "") {
       setOldPassValidation(false);
     } else {
       setOldPassValidation(true);
     }
   };
+
+  const handleNewPassword = (e) => {
+    const newPassword = e.target.value;
+    setNewPass(newPassword);
+
+    // Password criteria validation logic
+    const lengthRegex = /.{8,}/;
+    const uppercaseRegex = /[A-Z]/;
+    const specialCharRegex = /[!@#$%^&*(),.?":{}|<>]/;
+    const numericRegex = /[0-9]/;
+
+    const isLengthValid = lengthRegex.test(newPassword);
+    const isUppercaseValid = uppercaseRegex.test(newPassword);
+    const isSpecialCharValid = specialCharRegex.test(newPassword);
+    const isNumericValid = numericRegex.test(newPassword);
+
+    setNewPassValidation(isLengthValid && isUppercaseValid && isSpecialCharValid && isNumericValid);
+  };
+
+  const handleConfirmPassword = (e) => {
+    const confirmPassword = e.target.value;
+    setConfirmPass(confirmPassword);
+  
+    // Password criteria validation logic
+    const lengthRegex = /.{8,}/;
+    const uppercaseRegex = /[A-Z]/;
+    const specialCharRegex = /[!@#$%^&*(),.?":{}|<>]/;
+    const numericRegex = /[0-9]/;
+  
+    const isLengthValid = lengthRegex.test(confirmPassword);
+    const isUppercaseValid = uppercaseRegex.test(confirmPassword);
+    const isSpecialCharValid = specialCharRegex.test(confirmPassword);
+    const isNumericValid = numericRegex.test(confirmPassword);
+  
+    // Enable confirm password validation only if the new password meets all criteria
+    const isNewPasswordValid = isLengthValid && isUppercaseValid && isSpecialCharValid && isNumericValid;
+    setNewPassValidation(isNewPasswordValid);
+  
+    // Handle error messages for mismatched passwords and missing password policies
+    let errorMessage = "";
+    if (!isNewPasswordValid) {
+      errorMessage += "Entered Passwords do not meet the criteria. ";
+    }
+    if (!isLengthValid) {
+      errorMessage += "Password must be at least 8 characters long. ";
+    }
+    if (!isUppercaseValid) {
+      errorMessage += "Password must include at least one uppercase character. ";
+    }
+    if (!isSpecialCharValid) {
+      errorMessage += "Password must include at least one special character. ";
+    }
+    if (!isNumericValid) {
+      errorMessage += "Password must include at least one numeric character. ";
+    }
+  
+    setPasswordPolicyError(errorMessage.trim());
+    
+    // Enable confirm password validation only if the new password and old password are valid
+    const isConfirmPasswordValid = confirmPassword === newPass && isNewPasswordValid && oldPassValidation;
+    setConfirmPassValidation(isConfirmPasswordValid);
+  };
+  
+  
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -52,6 +107,18 @@ const ChangePassword = () => {
     });
   };
 
+
+  
+
+  const passwordPolicyText = (
+    <Typography variant="body2" sx={{ mt: 2, color: "red" }}>
+      Password Policy * <br />
+      • Be a minimum length of eight (8) characters on all systems. <br />
+      • Must include minimum one uppercase character <br />
+      • Must include minimum of one special character <br />
+      • Must include minimum of one numeric character
+    </Typography>
+  );
   return (
     
       <Container
@@ -103,7 +170,6 @@ const ChangePassword = () => {
               fullWidth
               id="Old password"
               onChange={handleOldPassword}
-              label="Enter old password"
               name="Old password"
               type={showOldPassword ? "text" : "password"}
               autoComplete="Old password"
@@ -147,8 +213,9 @@ const ChangePassword = () => {
               fullWidth
               name="New password"
               onChange={handleNewPassword}
-              label="Enter new Password"
               type={showNewPassword ? "text" : "password"}
+              onFocus={() => setShowPasswordPolicy(true)}
+              onBlur={() => setShowPasswordPolicy(false)}
               id="New password"
               InputProps={{
                 endAdornment: (
@@ -189,9 +256,10 @@ const ChangePassword = () => {
               fullWidth
               onChange={handleConfirmPassword}
               name="Confirm new password"
-              label="Confirm new password"
               type={showConfirmPassword ? "text" : "password"}
               id="Confirm new password"
+              onFocus={() => setShowPasswordPolicy(true)}
+              onBlur={() => setShowPasswordPolicy(false)}
               InputProps={{
                 endAdornment: (
                   <IconButton
@@ -206,23 +274,30 @@ const ChangePassword = () => {
             </Typography>
         
          
-            {!confirmPassValidation && confirmPass !== "" && (
-              <p className={`${styles.textDanger}`}>
-                Entered Password do not match
-              </p>
-            )}
-            <Link
-              to={confirmPassValidation && oldPassValidation ? "/dash" : ""}
-            >
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2, backgroundColor: "#1565C0" }}
-              >
-                Submit
-              </Button>
-            </Link>
+            {confirmPass !== newPass && confirmPass !== "" && newPass !== "" && (
+  <p className={`${styles.textDanger}`}>
+    Entered Passwords do not match.
+  </p>
+)}
+
+            {passwordPolicyError && <p className={`${styles.textDanger}`}>{passwordPolicyError}</p>}
+            {showPasswordPolicy && passwordPolicyText}
+
+
+            <Link to={(confirmPassValidation && oldPassValidation) ? "/dash" : ""}>
+            <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2, backgroundColor: "#1565C0" }}
+           disabled={!confirmPassValidation || !oldPassValidation || !newPassValidation}
+  >
+    Submit
+  </Button>
+</Link>
+
+
+
           </Box>
         </Box>
       </Container>
