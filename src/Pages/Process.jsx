@@ -18,16 +18,25 @@ const Process = (props) => {
   const searchParams = new URLSearchParams(location.search);
   const activeStepFromQuery = parseInt(searchParams.get("step"), 10) || 0;
   const selectedOptionFromQuery = searchParams.get("option") || "RFQ";
-
   const [activeStep, setActiveStep] = useState(activeStepFromQuery);
   const [skipped, setSkipped] = useState(new Set());
   const [selectedOption, setSelectedOption] = useState(selectedOptionFromQuery); 
-
+  const [details, setDetails] = useState({
+      customerName: '',
+      customerReference: '',
+      contact: '',
+      delivery:'',
+      enquiry:'',
+      path:'',
+      category:''
+    }
+  );
   const isStepSkipped = (step) => {
     return skipped.has(step);
   };
 
   const handleNext = () => {
+    console.log(details);
     let newSkipped = skipped;
     if (isStepSkipped(activeStep)) {
       newSkipped = new Set(newSkipped.values());
@@ -54,6 +63,7 @@ const Process = (props) => {
     navigate(`/details?step=${activeStep}&option=${selectedOption}`); 
   }, [activeStep, selectedOption, navigate]);
 
+
   return (
     <div className={styles.process}>
       <HorizontalLinearStepper
@@ -65,6 +75,8 @@ const Process = (props) => {
           <CustomerName
             selectedOption={selectedOption}
             handleOptionChange={handleOptionChange}
+            details={details}
+            setDetails={setDetails}
           />
         )}
         {activeStep === 1 && <Inputs selectedOption={selectedOption} />}

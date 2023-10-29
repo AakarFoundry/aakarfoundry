@@ -129,7 +129,7 @@ const Quality = () => {
             }}
           >
             
-            Packaging Type-(Corrugated/PP/Plastic/Exports Grade) <span style={{ color: "red" }}>*</span> 
+            Packaging Type? <span style={{ color: "red" }}>*</span> 
           </Typography>
           <Select
           name="packagingType"

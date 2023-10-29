@@ -326,6 +326,7 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                defaultValue=''
               >
                 <MenuItem value="HPDC">HPDC</MenuItem>
                 <MenuItem value="LPDC">LPDC</MenuItem>

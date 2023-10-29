@@ -4,8 +4,26 @@ import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 import { Menu, MenuItem, Select, Typography } from "@mui/material";
 const CustomerName = (props) => {
-  const { selectedOption, handleOptionChange } = props;
+  const { selectedOption, handleOptionChange, details, setDetails } = props;
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
 
+    setDetails({
+      ...details,
+      [name]: value
+    });
+  };
+
+  const handleSelectChange = (e) => {
+    const value = e.target.value;
+
+    setDetails({
+      ...details,
+      category: value
+    });
+
+    handleOptionChange(value);
+  };
   return (
     <Container
       sx={{
@@ -36,17 +54,19 @@ const CustomerName = (props) => {
                 fontSize: "1.2rem",
               }}
             >
-              
-              Customer Name <span style={{ color: "red" }}>*</span> 
+
+              Customer Name <span style={{ color: "red" }}>*</span>
             </Typography>
             <TextField
-              
+
               name="customerName"
               id="customerName"
               label="Enter Details"
               variant="outlined"
               fullWidth
               size="small"
+              onChange={handleInputChange}
+
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -59,20 +79,23 @@ const CustomerName = (props) => {
                 fontSize: "1.2rem",
               }}
             >
-              
-              Customer Reference <span style={{ color: "red" }}>*</span> 
+
+              Customer Reference <span style={{ color: "red" }}>*</span>
             </Typography>
             <Select
-              
+
               name="customerReference"
               id="customerReference"
               label="Enter Details "
               variant="outlined"
               fullWidth
               size="small"
-              >
-            <MenuItem value='Existing'>Existing</MenuItem> 
-            <MenuItem value='New'>New</MenuItem>
+              value={details.customerReference}
+              onChange={handleInputChange}
+            >
+              <MenuItem value=''></MenuItem>
+              <MenuItem value='Existing'>Existing</MenuItem>
+              <MenuItem value='New'>New</MenuItem>
             </Select>
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -85,17 +108,19 @@ const CustomerName = (props) => {
                 fontSize: "1.2rem",
               }}
             >
-              
-              Contact Person <span style={{ color: "red" }}>*</span> 
+
+              Contact Person <span style={{ color: "red" }}>*</span>
             </Typography>
             <TextField
-              
+
               name="contact"
               id="contact"
               label="Enter Details"
               variant="outlined"
               fullWidth
               size="small"
+              onChange={handleInputChange}
+
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -108,17 +133,19 @@ const CustomerName = (props) => {
                 fontSize: "1.2rem",
               }}
             >
-              
-              Delivery Address <span style={{ color: "red" }}>*</span> 
+
+              Delivery Address <span style={{ color: "red" }}>*</span>
             </Typography>
             <TextField
-              
+
               name="delivery"
               id="delivery"
               label="Enter Details"
               variant="outlined"
               fullWidth
               size="small"
+              onChange={handleInputChange}
+
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -131,17 +158,19 @@ const CustomerName = (props) => {
                 fontSize: "1.2rem",
               }}
             >
-              
-              Enquiry Date <span style={{ color: "red" }}>*</span> 
+
+              Enquiry Date <span style={{ color: "red" }}>*</span>
             </Typography>
             <TextField
-              
+
               name="enquiry"
               id="enquiry"
               label=" Enter Details"
               variant="outlined"
               fullWidth
               size="small"
+              onChange={handleInputChange}
+
             />
           </Grid>
 
@@ -155,17 +184,19 @@ const CustomerName = (props) => {
                 fontSize: "1.2rem",
               }}
             >
-              
-           Design Data Path <span style={{ color: "red" }}>*</span> 
+
+              Design Data Path <span style={{ color: "red" }}>*</span>
             </Typography>
             <TextField
-              
+
               name="path"
               id="path"
               label=" Enter Details"
               variant="outlined"
               fullWidth
               size="small"
+              onChange={handleInputChange}
+
             />
           </Grid>
 
@@ -180,21 +211,19 @@ const CustomerName = (props) => {
                 fontSize: "1.2rem",
               }}
             >
-              
-              Category <span style={{ color: "red" }}>*</span> 
+
+              Category <span style={{ color: "red" }}>*</span>
             </Typography>
             <Select
-              
+
               name="category"
               id="category"
               label="Category"
               variant="outlined"
               fullWidth
               size="small"
-              value={selectedOption}
-              onChange={(e) => {
-                handleOptionChange(e.target.value);
-              }}
+              value={details.category}
+              onChange={handleSelectChange}
             >
               <MenuItem value="RFQ">Request For Quotation</MenuItem>
               <MenuItem value="ECN">Engineering Change Node</MenuItem>
