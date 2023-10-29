@@ -81,8 +81,8 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) =>  {
 
   const handleFinishWeightChange = (event) => {
     const inputValue = event.target.value;
-    // Validate input to allow only numeric values
-    if (/^\d*$/.test(inputValue)) {
+    // Validate input to allow numeric and decimal values
+    if (/^\d*\.?\d*$/.test(inputValue)) {
       setFinishWeight(inputValue);
     }
   };
@@ -90,8 +90,8 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) =>  {
 
   const handleQuantityChange = (event) => {
     const inputValue = event.target.value;
-    // Validate input to allow only numeric values
-    if (/^\d*$/.test(inputValue)) {
+    // Validate input to allow numeric and decimal values
+    if (/^\d*\.?\d*$/.test(inputValue)) {
       setQuantity(inputValue);
     }
   };
@@ -587,7 +587,7 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) =>  {
                   padding: "0.3rem",
                 }}
               >
-                Leak testing & Pressure Requirement <span style={{ color: "red" }}>*</span>
+                Leak Testing & Pressure Requirement <span style={{ color: "red" }}>*</span>
               </Typography>
 
               <TextField

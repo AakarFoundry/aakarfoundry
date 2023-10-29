@@ -164,7 +164,7 @@ const Ecn = (inputDetails, setInputDetails, handleInputChange) => {
                   padding: "0.3rem",
                 }}
               >
-                What type of ECN (Change in) <span style={{ color: "red" }}>*</span>
+                What Type Of ECN (Change in) <span style={{ color: "red" }}>*</span>
               </Typography>
 
               <TextField

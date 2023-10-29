@@ -49,7 +49,7 @@ const NewProductDev = (props) => {
               }}
             >
               
-              Capital Investment for machines <span style={{ color: "red" }}>*</span>
+              Capital Investment For Machines <span style={{ color: "red" }}>*</span>
             </Typography>
 
             <TextField

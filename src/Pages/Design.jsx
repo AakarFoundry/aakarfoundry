@@ -201,7 +201,7 @@ const DesignFoundry = (props) => {
               }}
             >
               
-              Die cost (Rs Lakhs) <span style={{ color: "red" }}>*</span> 
+              Die Cost (Rs Lakhs) <span style={{ color: "red" }}>*</span> 
             </Typography>
 
             <TextField

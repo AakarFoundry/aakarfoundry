@@ -81,7 +81,7 @@ const Quality = () => {
               }}
             >
               
-              Washing fixture cost <span style={{ color: "red" }}>*</span> 
+              Washing Fixture Cost <span style={{ color: "red" }}>*</span> 
             </Typography>
             <TextField
               
