@@ -1,3 +1,4 @@
+import React, { useState ,useEffect} from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
@@ -5,6 +6,28 @@ import Container from "@mui/material/Container";
 import { Typography } from "@mui/material";
 
 const NewProductDev = (props) => {
+  const [formData, setFormData] = useState({
+    investment: "",
+    partFeasible:"",
+    changes: "",
+    development: "",
+    remarks: "",
+  });
+
+  // Event handler for input field changes
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  // Effect to log form data whenever formData changes
+  useEffect(() => {
+    console.log("Form Data:", formData);
+  }, [formData]);
+
   return (
     <Container
       sx={{
@@ -47,6 +70,8 @@ const NewProductDev = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              value={formData.investment}
+              onChange={handleInputChange}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -70,6 +95,8 @@ const NewProductDev = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              value={formData.partFeasible}
+              onChange={handleInputChange}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -93,6 +120,8 @@ const NewProductDev = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              value={formData.changes}
+              onChange={handleInputChange}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -118,6 +147,8 @@ const NewProductDev = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              value={formData.development}
+              onChange={handleInputChange}
             />
           </Grid>
           <Grid item xs={12} sm={12}>
@@ -140,6 +171,8 @@ const NewProductDev = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              value={formData.remarks}
+              onChange={handleInputChange}
             />
           </Grid>
         </Grid>
