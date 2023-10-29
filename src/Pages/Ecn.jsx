@@ -36,30 +36,7 @@ const Ecn = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                Aakar Foundry Enquiry No <span style={{ color: "red" }}>*</span>
-              </Typography>
-              <TextField
-                
-                name="enquiryNo"
-                id="enquiryNo"
-                label="Enter Details"
-                variant="outlined"
-                fullWidth
-                size="small"
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <Typography
-                variant="subtitle1"
-                sx={{
-                  textAlign: "left",
-                  color: "#054470",
-                  fontWeight: "650",
-                  fontSize: "1.2rem",
-                  padding: "0.3rem",
-                }}
-              >
-                Aakar Foundry Enquiry No - ECN <span style={{ color: "red" }}>*</span>
+                ECN Enquiry No<span style={{ color: "red" }}>*</span>
               </Typography>
 
               <TextField

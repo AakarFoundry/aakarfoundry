@@ -2,7 +2,7 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
-import { Typography } from "@mui/material";
+import { Typography, Select, MenuItem } from "@mui/material";
 
 const NewProductDev = (props) => {
   return (
@@ -50,76 +50,32 @@ const NewProductDev = (props) => {
             />
           </Grid>
           <Grid item xs={12} sm={6}>
-            <Typography
-              variant="subtitle1"
-              sx={{
-                textAlign: "left",
-                color: "#054470",
-                fontWeight: "650",
-                fontSize: "1.2rem",
-                padding: "0.3rem",
-              }}
-            >
-              Part Feasible <span style={{ color: "red" }}>*</span>
-            </Typography>
+          <Typography
+            variant="subtitle1"
+            sx={{
+              textAlign: "left",
+              color: "#054470",
+              fontWeight: "650",
+              fontSize: "1.2rem",
+              padding: "0.3rem",
+            }}
+          >
+           Feasibility Conclusion <span style={{ color: "red" }}>*</span>
+          </Typography>
 
-            <TextField
-              name="partFeasible"
-              id="partFeasible"
-              label="Enter Details"
-              variant="outlined"
-              fullWidth
-              size="small"
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <Typography
-              variant="subtitle1"
-              sx={{
-                textAlign: "left",
-                color: "#054470",
-                fontWeight: "650",
-                fontSize: "1.2rem",
-                padding: "0.3rem",
-              }}
-            >
-              Feasible with changes <span style={{ color: "red" }}>*</span>
-            </Typography>
-
-            <TextField
-              name="changes"
-              id="changes"
-              label=" Enter Details"
-              variant="outlined"
-              fullWidth
-              size="small"
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <Typography
-              variant="subtitle1"
-              sx={{
-                textAlign: "left",
-                color: "#054470",
-                fontWeight: "650",
-                fontSize: "1.2rem",
-                padding: "0.3rem",
-              }}
-            >
-              
-              Part Not Feasible Design and Foundry Machine and Quality New
-              Product Development <span style={{ color: "red" }}>*</span>
-            </Typography>
-
-            <TextField
-              name="development"
-              id="development"
-              label="Enter Details"
-              variant="outlined"
-              fullWidth
-              size="small"
-            />
-          </Grid>
+          <Select
+            name="partFeasible"
+            id="partFeasible"
+            label="Enter Details"
+            variant="outlined"
+            fullWidth
+            size="small"
+          >
+          <MenuItem value='Feasible With Changes'>Feasible With Changes</MenuItem>
+          <MenuItem value='Part Feasible'>Part Feasible</MenuItem>
+          <MenuItem value='Part Not Feasible'>Part Not Feasible</MenuItem>
+          </Select>
+        </Grid>
           <Grid item xs={12} sm={12}>
             <Typography
               variant="subtitle1"

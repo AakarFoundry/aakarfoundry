@@ -1,11 +1,7 @@
-import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
-import Grid from "@mui/material/Grid";
-import Container from "@mui/material/Container";
-import { Menu, MenuItem, Select, Typography } from "@mui/material";
-const CustomerName = (props) => {
-  const { selectedOption, handleOptionChange } = props;
+import React from 'react'
+import { Container,Box,Grid,Typography,TextField, Select, MenuItem } from '@mui/material';
 
+const Quality = () => {
   return (
     <Container
       sx={{
@@ -25,7 +21,7 @@ const CustomerName = (props) => {
         noValidate
         autoComplete="on"
       >
-        <Grid container spacing={4}>
+      <Grid container spacing={4}>
           <Grid item xs={12} sm={6}>
             <Typography
               variant="subtitle1"
@@ -34,15 +30,16 @@ const CustomerName = (props) => {
                 color: "#054470",
                 fontWeight: "650",
                 fontSize: "1.2rem",
+                padding: "0.3rem",
               }}
             >
-              
-              Customer Name <span style={{ color: "red" }}>*</span> 
+              Inspection Gauges Cost <span style={{ color: "red" }}>*</span> 
             </Typography>
+
             <TextField
               
-              name="customerName"
-              id="customerName"
+              name="gaugesCost"
+              id="gaugesCost"
               label="Enter Details"
               variant="outlined"
               fullWidth
@@ -57,41 +54,15 @@ const CustomerName = (props) => {
                 color: "#054470",
                 fontWeight: "650",
                 fontSize: "1.2rem",
+                padding: "0.3rem",
               }}
             >
-              
-              Customer Reference <span style={{ color: "red" }}>*</span> 
-            </Typography>
-            <Select
-              
-              name="customerReference"
-              id="customerReference"
-              label="Enter Details "
-              variant="outlined"
-              fullWidth
-              size="small"
-              >
-            <MenuItem value='Existing'>Existing</MenuItem> 
-            <MenuItem value='New'>New</MenuItem>
-            </Select>
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <Typography
-              variant="subtitle1"
-              sx={{
-                textAlign: "left",
-                color: "#054470",
-                fontWeight: "650",
-                fontSize: "1.2rem",
-              }}
-            >
-              
-              Contact Person <span style={{ color: "red" }}>*</span> 
+              Leak testing fixture cost <span style={{ color: "red" }}>*</span> 
             </Typography>
             <TextField
               
-              name="contact"
-              id="contact"
+              name="leakCost"
+              id="leakCost"
               label="Enter Details"
               variant="outlined"
               fullWidth
@@ -106,15 +77,16 @@ const CustomerName = (props) => {
                 color: "#054470",
                 fontWeight: "650",
                 fontSize: "1.2rem",
+                padding: "0.3rem",
               }}
             >
               
-              Delivery Address <span style={{ color: "red" }}>*</span> 
+              Washing fixture cost <span style={{ color: "red" }}>*</span> 
             </Typography>
             <TextField
               
-              name="delivery"
-              id="delivery"
+              name="washingCost"
+              id="washingCost"
               label="Enter Details"
               variant="outlined"
               fullWidth
@@ -129,23 +101,76 @@ const CustomerName = (props) => {
                 color: "#054470",
                 fontWeight: "650",
                 fontSize: "1.2rem",
+                padding: "0.3rem",
               }}
             >
               
-              Enquiry Date <span style={{ color: "red" }}>*</span> 
+              Plastic Protection Cap Costs (Specify Quantity & Cost) <span style={{ color: "red" }}>*</span> 
             </Typography>
             <TextField
-              
-              name="enquiry"
-              id="enquiry"
-              label=" Enter Details"
+
+              name="capCost"
+              id="capCost"
+              label="Enter Details"
               variant="outlined"
               fullWidth
               size="small"
             />
           </Grid>
-
           <Grid item xs={12} sm={6}>
+          <Typography
+            variant="subtitle1"
+            sx={{
+              textAlign: "left",
+              color: "#054470",
+              fontWeight: "650",
+              fontSize: "1.2rem",
+              padding: "0.3rem",
+            }}
+          >
+            
+            Packaging Type-(Corrugated/PP/Plastic/Exports Grade) <span style={{ color: "red" }}>*</span> 
+          </Typography>
+          <Select
+          name="packagingType"
+          id="packagingType"
+          label="Category"
+          variant="outlined"
+          fullWidth
+          size="small"
+        >
+          <MenuItem value="Corrugated">Corrugated</MenuItem>
+          <MenuItem value="PP">PP</MenuItem>
+          <MenuItem value="Plastic">Plastic</MenuItem>
+          <MenuItem value="Exports Grade">Exports Grade</MenuItem>
+        </Select>
+        </Grid>
+          <Grid item xs={12} sm={6}>
+            <Typography
+              variant="subtitle1"
+              sx={{
+                textAlign: "left",
+                color: "#054470",
+                fontWeight: "650",
+                fontSize: "1.2rem",
+                padding: "0.3rem",
+              }}
+            >
+              
+              Packaging Cost <span style={{ color: "red" }}>*</span> 
+            </Typography>
+
+            <TextField
+
+              name="packagingCost"
+              id="packagingCost"
+              label="Enter Details"
+              variant="outlined"
+              fullWidth
+              size="small"
+            />
+          </Grid>
+          <Grid item xs={12} sm={12}>
             <Typography
               variant="subtitle1"
               sx={{
@@ -156,53 +181,21 @@ const CustomerName = (props) => {
               }}
             >
               
-           Design Data Path <span style={{ color: "red" }}>*</span> 
+              Remarks
             </Typography>
             <TextField
-              
-              name="path"
-              id="path"
-              label=" Enter Details"
+              label="Enter Remarks"
+              name="remarks"
+              id="remarks"
               variant="outlined"
               fullWidth
               size="small"
             />
-          </Grid>
-
-
-          <Grid item xs={12} sm={6}>
-            <Typography
-              variant="subtitle1"
-              sx={{
-                textAlign: "left",
-                color: "#054470",
-                fontWeight: "650",
-                fontSize: "1.2rem",
-              }}
-            >
-              
-              Category <span style={{ color: "red" }}>*</span> 
-            </Typography>
-            <Select
-              
-              name="category"
-              id="category"
-              label="Category"
-              variant="outlined"
-              fullWidth
-              size="small"
-              value={selectedOption}
-              onChange={(e) => {
-                handleOptionChange(e.target.value);
-              }}
-            >
-              <MenuItem value="RFQ">Request For Quotation</MenuItem>
-              <MenuItem value="ECN">Engineering Change Node</MenuItem>
-            </Select>
           </Grid>
         </Grid>
-      </Box>
-    </Container>
-  );
+        </Box>
+        </Container>
+  )
 };
-export default CustomerName;
+
+export default Quality;

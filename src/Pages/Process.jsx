@@ -7,19 +7,12 @@ import CustomerName from "./CustomerName";
 import RiskAnalysis from "./RiskAnalysis";
 import DesignFoundry from "./Design";
 import { Stack } from "@mui/material";
-import MachineQuality from "./machine";
+import Machine from "./machine";
 import styles from "../assets/styles/Form.module.css";
 import Inputs from "./Inputs";
 import NewProductDev from "./NewProduct";
+import Quality from "./Quality";
 const Process = (props) => {
-  const steps = [
-    "Details",
-    "RFQ",
-    "Risk Analysis",
-    "Design & foundry",
-    "Machine Quality",
-    "NPD",
-  ];
   const location = useLocation();
   const navigate = useNavigate();
   const searchParams = new URLSearchParams(location.search);
@@ -62,11 +55,10 @@ const Process = (props) => {
   }, [activeStep, selectedOption, navigate]);
 
   return (
-    <div>
+    <div className={styles.process}>
       <HorizontalLinearStepper
         activeStep={activeStep}
         setActiveStep={setActiveStep}
-        steps={steps}
       />
       <div className={styles.designForm}>
         {activeStep === 0 && (
@@ -78,19 +70,17 @@ const Process = (props) => {
         {activeStep === 1 && <Inputs selectedOption={selectedOption} />}
         {activeStep === 2 && <RiskAnalysis />}
         {activeStep === 3 && <DesignFoundry />}
-        {activeStep === 4 && (
-          <MachineQuality
-            activeStep={activeStep}
-            setActiveStep={setActiveStep}
-          />
-        )}
+        {activeStep === 4 &&  <Machine />}
         {activeStep === 5 && (
+          <Quality />
+        )}
+        {activeStep === 6 && (
           <NewProductDev
             activeStep={activeStep}
             setActiveStep={setActiveStep}
           />
         )}
-        {activeStep === 6 ? (
+        {activeStep === 7 ? (
           <React.Fragment>
             <Typography sx={{ mt: 2, mb: 1 }}>
               All steps completed - you&apos;re finished

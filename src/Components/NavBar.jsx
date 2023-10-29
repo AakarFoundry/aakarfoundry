@@ -33,7 +33,7 @@ function NavBar() {
   };
   return (
     <AppBar position="fixed">
-      <Container maxWidth="xl">
+      <Container maxWidth="">
         <Toolbar disableGutters>
           <a href="/dash">
             <img src={logo} className={styles.logoImage} alt="Logo" />

@@ -45,7 +45,7 @@ const RiskAnalysis = (props) => {
               }}
             >
               {" "}
-              Is there any risk associated with : (ü/û){" "}
+              Is there any risk associated?{" "}
               <span style={{ color: "red" }}>*</span>
             </Typography>
 

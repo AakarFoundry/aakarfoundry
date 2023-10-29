@@ -6,14 +6,15 @@ const HorizontalLinearStepper = (props) => {
   const { activeStep } = props;
   const isMobile = window.innerWidth <= 768;
   const steps = isMobile
-    ? ["", "", "", "", "", "", ""]
+    ? ["", "", "", "", "", "", "", ""]
     : [
         "Details",
         "RFQ/ECN",
         "Risk Analysis",
-        "Design & foundry",
-        "Machine Quality",
-        "NPD",
+        "Design & Foundry",
+        "Machining",
+        "Quality",
+        "New Product Development",
         "Approval"
       ];
   return (
@@ -21,10 +22,10 @@ const HorizontalLinearStepper = (props) => {
       sx={{
         width: "100%",
         marginTop: 16,
-        "@media screen and (min-width: 64em)": { marginLeft: 28, width: "70%" },
+        "@media screen and (min-width: 64em)": { margin: "auto", width: "70%" },
       }}
     >
-      <Stepper activeStep={props.activeStep}>
+      <Stepper activeStep={props.activeStep} alternativeLabel>
         {steps.map((label, index) => {
           const stepProps = {};
           const labelProps = {};

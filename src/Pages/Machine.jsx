@@ -10,7 +10,7 @@ import { Stack } from "@mui/material";
 import { useState } from "react";
 import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 
-const MachineQuality = (props) => { 
+const Machine = (props) => {
   const redAsteriskStyle = {
     color: 'red',
   };
@@ -18,9 +18,9 @@ const MachineQuality = (props) => {
   const [fields, setFields] = useState([
     {
       id: 1,
-      label: "Machine Type - CNC/VMC/HMC",
+      label: "Machine Type",
       type: "select",
-      options: ['CNC', 'VMC', 'HMC'],
+      options: ['CNC', 'VMC', 'HMC', 'As cast'],
       value: "",
     },
     {
@@ -30,7 +30,7 @@ const MachineQuality = (props) => {
     },
     {
       id: 3,
-      label: "Machining Fixture cost(One time Inv)",
+      label: "Machining Fixture cost",
       value: "",
     },
   ]);
@@ -40,9 +40,9 @@ const MachineQuality = (props) => {
       ...fields,
       {
         id: fields.length + 1,
-        label: "Machine Type - CNC/VMC/HMC",
+        label: "Machine Type",
         type: 'select',
-        options: ['CNC', 'VMC', 'HMC'],
+        options: ['CNC', 'VMC', 'HMC', 'As cast'],
         value: "",
       },
       {
@@ -113,7 +113,7 @@ const MachineQuality = (props) => {
               {field.type === 'select' ? (
                 <FormControl variant="outlined" fullWidth size="small">
                   <Select
-                    
+
                     labelId={`${field.id}-label`}
                     id={field.id}
                     variant="outlined"
@@ -131,7 +131,7 @@ const MachineQuality = (props) => {
               ) : (
 
                 <TextField
-                  
+
                   label="Enter Details"
                   variant="outlined"
                   fullWidth
@@ -142,8 +142,8 @@ const MachineQuality = (props) => {
               )}
             </Grid>
           ))}
-        </Grid>
-        <Stack direction="row" spacing={2}>
+          <Grid item xs={12} sm={12}>
+        <Stack direction="row" spacing={4} sx={{ justifyContent: 'center' }}>
           {fields.length > 3 && (
             <IconButton
               onClick={() => removeField(fields[fields.length - 3].id)}
@@ -151,133 +151,13 @@ const MachineQuality = (props) => {
               <RemoveIcon />
             </IconButton>
           )}
-          {fields.length < 9 && (
+          {fields.length < 21 && (
             <IconButton onClick={addField}>
               <AddIcon />
             </IconButton>
           )}
         </Stack>
-        <Grid container spacing={4}>
-          <Grid item xs={12} sm={6}>
-            <Typography
-              variant="subtitle1"
-              sx={{
-                textAlign: "left",
-                color: "#054470",
-                fontWeight: "650",
-                fontSize: "1.2rem",
-                padding: "0.3rem",
-              }}
-            >
-              Inspection Gauges Cost <span style={{ color: "red" }}>*</span> 
-            </Typography>
-
-            <TextField
-              
-              name="gaugesCost"
-              id="gaugesCost"
-              label="Enter Details"
-              variant="outlined"
-              fullWidth
-              size="small"
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <Typography
-              variant="subtitle1"
-              sx={{
-                textAlign: "left",
-                color: "#054470",
-                fontWeight: "650",
-                fontSize: "1.2rem",
-                padding: "0.3rem",
-              }}
-            >
-              Leak testing fixture cost <span style={{ color: "red" }}>*</span> 
-            </Typography>
-            <TextField
-              
-              name="leakCost"
-              id="leakCost"
-              label="Enter Details"
-              variant="outlined"
-              fullWidth
-              size="small"
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <Typography
-              variant="subtitle1"
-              sx={{
-                textAlign: "left",
-                color: "#054470",
-                fontWeight: "650",
-                fontSize: "1.2rem",
-                padding: "0.3rem",
-              }}
-            >
-              
-              Washing fixture cost <span style={{ color: "red" }}>*</span> 
-            </Typography>
-            <TextField
-              
-              name="washingCost"
-              id="washingCost"
-              label="Enter Details"
-              variant="outlined"
-              fullWidth
-              size="small"
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <Typography
-              variant="subtitle1"
-              sx={{
-                textAlign: "left",
-                color: "#054470",
-                fontWeight: "650",
-                fontSize: "1.2rem",
-                padding: "0.3rem",
-              }}
-            >
-              
-              Plastic Protection Cap Costs (Specify Quantity & Cost) <span style={{ color: "red" }}>*</span> 
-            </Typography>
-            <TextField
-
-              name="capCost"
-              id="capCost"
-              label="Enter Details"
-              variant="outlined"
-              fullWidth
-              size="small"
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <Typography
-              variant="subtitle1"
-              sx={{
-                textAlign: "left",
-                color: "#054470",
-                fontWeight: "650",
-                fontSize: "1.2rem",
-                padding: "0.3rem",
-              }}
-            >
-              
-              Packaging Cost-(Corrugated/PP/Plastic/Exports Grade) <span style={{ color: "red" }}>*</span> 
-            </Typography>
-
-            <TextField
-
-              name="packagingCost"
-              id="packagingCost"
-              label="Enter Details"
-              variant="outlined"
-              fullWidth
-              size="small"
-            />
-          </Grid>
+        </Grid>
           <Grid item xs={12} sm={12}>
             <Typography
               variant="subtitle1"
@@ -288,7 +168,7 @@ const MachineQuality = (props) => {
                 fontSize: "1.2rem",
               }}
             >
-              
+
               Remarks
             </Typography>
             <TextField
@@ -306,4 +186,4 @@ const MachineQuality = (props) => {
   );
 };
 
-export default MachineQuality;
+export default Machine;
