@@ -12,7 +12,10 @@ import styles from "../assets/styles/Form.module.css";
 import Inputs from "./Inputs";
 import NewProductDev from "./NewProduct";
 import Quality from "./Quality";
+
+
 const Process = (props) => {
+
   const location = useLocation();
   const navigate = useNavigate();
   const searchParams = new URLSearchParams(location.search);
@@ -20,30 +23,80 @@ const Process = (props) => {
   const selectedOptionFromQuery = searchParams.get("option") || "RFQ";
   const [activeStep, setActiveStep] = useState(activeStepFromQuery);
   const [skipped, setSkipped] = useState(new Set());
-  const [selectedOption, setSelectedOption] = useState(selectedOptionFromQuery); 
+  const [selectedOption, setSelectedOption] = useState(selectedOptionFromQuery);
+
+
   const [details, setDetails] = useState({
-      customerName: '',
-      customerReference: '',
-      contact: '',
-      delivery:'',
-      enquiry:'',
-      path:'',
-      category:''
-    }
+    customerName: '',
+    customerReference: '',
+    contact: '',
+    delivery: '',
+    enquiry: '',
+    path: '',
+    category: ''
+  }
   );
+
+  const initialInputDetails = selectedOption === "RFQ"
+  ? {
+    name: '',
+    partMach: '',
+    partCast: '',
+    details: '',
+    enquiry: '',
+    quantity: '',
+    life: '',
+    processRequired: '',
+    alloy: '',
+    machined: '',
+    blasting: '',
+    productQc: '',
+    anodizing: '',
+    coating: '',
+    materials: '',
+    pressure: '',
+    impregnation: '',
+    treatment: '',
+    packaging: '',
+    delivery: '',
+    works: '',
+    tonnage: '',
+    sampleDate: '',
+    pswDate: '',
+    remarks: ''
+  }
+  : {
+    enquiryNo: '',
+    ecnNo: '',
+    partName: '',
+    number: '',
+    weight: '',
+    projectName: '',
+    ecnType: '',
+    remarks: ''
+  };
+
+const [inputDetails, setInputDetails] = useState(initialInputDetails);
+
+
   const isStepSkipped = (step) => {
     return skipped.has(step);
   };
 
   const handleNext = () => {
-    console.log(details);
+      if (activeStep === 0) {
+      console.log(details);
+    } else if (activeStep === 1) {
+      console.log(inputDetails);
+    }
+
     let newSkipped = skipped;
     if (isStepSkipped(activeStep)) {
       newSkipped = new Set(newSkipped.values());
       newSkipped.delete(activeStep);
     }
     const nextStep = activeStep + 1;
-    navigate(`/details?step=${nextStep}&option=${selectedOption}`); 
+    navigate(`/details?step=${nextStep}&option=${selectedOption}`);
     setActiveStep(nextStep);
     setSkipped(newSkipped);
   };
@@ -51,7 +104,7 @@ const Process = (props) => {
   const handleBack = () => {
     const previousStep = activeStep - 1;
     if (previousStep >= 0) {
-      navigate(`/details?step=${previousStep}&option=${selectedOption}`); 
+      navigate(`/details?step=${previousStep}&option=${selectedOption}`);
       setActiveStep(previousStep);
     }
   };
@@ -60,7 +113,7 @@ const Process = (props) => {
     navigate(`/details?step=${activeStep}&option=${option}`);
   };
   useEffect(() => {
-    navigate(`/details?step=${activeStep}&option=${selectedOption}`); 
+    navigate(`/details?step=${activeStep}&option=${selectedOption}`);
   }, [activeStep, selectedOption, navigate]);
 
 
@@ -79,10 +132,16 @@ const Process = (props) => {
             setDetails={setDetails}
           />
         )}
-        {activeStep === 1 && <Inputs selectedOption={selectedOption} />}
+        {activeStep === 1 && 
+        < Inputs 
+            selectedOption={selectedOption}
+            inputDetails={inputDetails}
+            setInputDetails={setInputDetails}
+        
+        />}
         {activeStep === 2 && <RiskAnalysis />}
         {activeStep === 3 && <DesignFoundry />}
-        {activeStep === 4 &&  <Machine />}
+        {activeStep === 4 && <Machine />}
         {activeStep === 5 && (
           <Quality />
         )}

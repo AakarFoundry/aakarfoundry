@@ -13,6 +13,18 @@ import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 
 const RiskAnalysis = (props) => {
+
+  const { details, setDetails } = props;
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+
+    setDetails({
+      ...details,
+      [name]: value
+    });
+  };
+
+
   return (
     <Container
       sx={{
@@ -56,6 +68,7 @@ const RiskAnalysis = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              onChange={handleInputChange}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -79,6 +92,7 @@ const RiskAnalysis = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              onChange={handleInputChange}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -102,6 +116,7 @@ const RiskAnalysis = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              onChange={handleInputChange}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -124,6 +139,7 @@ const RiskAnalysis = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              onChange={handleInputChange}
             />
           </Grid>
 
@@ -168,6 +184,7 @@ const RiskAnalysis = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              onChange={handleInputChange}
             />
             <FormControl>
               <FormLabel
@@ -196,6 +213,7 @@ const RiskAnalysis = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              onChange={handleInputChange}
             />
 
             <FormControl>
@@ -225,6 +243,7 @@ const RiskAnalysis = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              onChange={handleInputChange}
             />
           </Grid>
 
@@ -269,6 +288,7 @@ const RiskAnalysis = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              onChange={handleInputChange}
             />
             <FormControl>
               <FormLabel
@@ -297,6 +317,7 @@ const RiskAnalysis = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              onChange={handleInputChange}
             />
 
             <FormControl>
@@ -326,6 +347,7 @@ const RiskAnalysis = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              onChange={handleInputChange}
             />
           </Grid>
 
@@ -348,6 +370,7 @@ const RiskAnalysis = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              onChange={handleInputChange}
             />
           </Grid>
         </Grid>

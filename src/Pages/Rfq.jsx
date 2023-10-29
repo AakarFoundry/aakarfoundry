@@ -1,15 +1,26 @@
+import React, {useState,useEffect} from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 import { FormControl, MenuItem, Select, Typography } from "@mui/material";
-import { useState } from "react";
+
 import { Stack } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 
-const Rfq = (props) => {
+
+
+const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) =>  {
+
+  const [quantity, setQuantity] = useState("");
+  const [finishWeight, setFinishWeight] = useState("");
+  const [annualTonnage, setAnnualTonnage] = useState("");
+  
+
+  
+
   const redAsteriskStyle = {
     color: 'red',
   };
@@ -58,12 +69,40 @@ const Rfq = (props) => {
     }
   };
 
+  useEffect(() => {
+    // Calculate Annual Tonnage whenever finishWeight or quantity changes
+    if (finishWeight && quantity) {
+      const calculatedTonnage = (finishWeight * quantity) / 1000;
+      setAnnualTonnage(calculatedTonnage.toFixed(2)); // Round to 2 decimal places
+    } else {
+      setAnnualTonnage(""); // Reset tonnage if either finishWeight or quantity is empty
+    }
+  }, [finishWeight, quantity]);
+
+  const handleFinishWeightChange = (event) => {
+    const inputValue = event.target.value;
+    // Validate input to allow only numeric values
+    if (/^\d*$/.test(inputValue)) {
+      setFinishWeight(inputValue);
+    }
+  };
+
+
+  const handleQuantityChange = (event) => {
+    const inputValue = event.target.value;
+    // Validate input to allow only numeric values
+    if (/^\d*$/.test(inputValue)) {
+      setQuantity(inputValue);
+    }
+  };
+
   const handleChange = (id, event) => {
     const updatedFields = fields.map((field) =>
       field.id === id ? { ...field, value: event.target.value } : field
     );
     setFields(updatedFields);
-  };
+  }; 
+
   return (
     <div>
       <Container
@@ -107,6 +146,7 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                onChange={handleInputChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -131,6 +171,7 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                onChange={handleInputChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -156,6 +197,7 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                onChange={handleInputChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -180,6 +222,9 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                value={finishWeight}
+                onChange={handleFinishWeightChange}
+                onChange={handleInputChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -204,6 +249,7 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                onChange={handleInputChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -228,6 +274,7 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                onChange={handleInputChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -252,6 +299,7 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                onChange={handleInputChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -276,6 +324,9 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                value={quantity}
+                onChange={handleQuantityChange}
+                onChange={handleInputChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -302,6 +353,7 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                onChange={handleInputChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -326,6 +378,7 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                onChange={handleInputChange}
                 defaultValue=''
               >
                 <MenuItem value="HPDC">HPDC</MenuItem>
@@ -355,6 +408,7 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                onChange={handleInputChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -379,6 +433,7 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                onChange={handleInputChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -404,6 +459,7 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                onChange={handleInputChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -428,6 +484,7 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                onChange={handleInputChange}
               />
             </Grid>
           </Grid>
@@ -516,6 +573,7 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                onChange={handleInputChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -540,6 +598,7 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                onChange={handleInputChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -563,6 +622,7 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                onChange={handleInputChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -587,6 +647,7 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                onChange={handleInputChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -611,6 +672,7 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                onChange={handleInputChange}
               >
                 <MenuItem value="Corrugated">Corrugated</MenuItem>
                 <MenuItem value="PP">PP</MenuItem>
@@ -641,6 +703,7 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                onChange={handleInputChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -666,6 +729,7 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                onChange={handleInputChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -690,6 +754,7 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                onChange={handleInputChange}
               >
                 <MenuItem value="FOB">FOB</MenuItem>
                 <MenuItem value="CIF">CIF</MenuItem>
@@ -716,11 +781,18 @@ const Rfq = (props) => {
 
                 name="tonnage"
                 id="tonnage"
-                label="Enter Details"
                 variant="outlined"
                 fullWidth
                 size="small"
+                disabled
+                style={{
+                  color: 'darkgray',
+                  borderColor: 'darkgray',
+                }}
+                value={annualTonnage}
+                onChange={handleInputChange}
               />
+              
             </Grid>
             <Grid item xs={12} sm={12}>
               <Typography
@@ -742,6 +814,7 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                onChange={handleInputChange}
               />
             </Grid>
           </Grid>

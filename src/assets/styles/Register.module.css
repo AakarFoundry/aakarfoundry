@@ -102,4 +102,8 @@
     border: 1px solid rgb(255, 255, 255);
     border-radius: 4px;
   }
-    
+  .disabled-textfield {
+    color: darkgray !important;
+    border-color: darkgray !important;
+  }
+  

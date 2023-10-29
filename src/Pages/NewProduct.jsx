@@ -5,6 +5,18 @@ import Container from "@mui/material/Container";
 import { Typography, Select, MenuItem } from "@mui/material";
 
 const NewProductDev = (props) => {
+
+  const { details, setDetails } = props;
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+
+    setDetails({
+      ...details,
+      [name]: value
+    });
+  };
+
+
   return (
     <Container
       sx={{
@@ -47,6 +59,7 @@ const NewProductDev = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              onChange={handleInputChange}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -70,6 +83,7 @@ const NewProductDev = (props) => {
             variant="outlined"
             fullWidth
             size="small"
+            onChange={handleInputChange}
           >
           <MenuItem value='Feasible With Changes'>Feasible With Changes</MenuItem>
           <MenuItem value='Part Feasible'>Part Feasible</MenuItem>
@@ -96,6 +110,7 @@ const NewProductDev = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              onChange={handleInputChange}
             />
           </Grid>
         </Grid>

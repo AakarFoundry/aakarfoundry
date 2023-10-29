@@ -2,12 +2,21 @@ import React from "react";
 import Rfq from "./Rfq"; 
 import Ecn from "./Ecn"; 
 
-const Inputs = ({ selectedOption }) => {
+const Inputs = ({ selectedOption, inputDetails, setInputDetails }) =>  {
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+
+    setInputDetails({
+      ...inputDetails,
+      [name]: value
+    });
+  };
 
   if (selectedOption === "RFQ") {
-    return <Rfq />;
-  } else if (selectedOption === "ECN") {
-    return <Ecn />;
+    return <Rfq inputDetails = {inputDetails} setInputDetails={setInputDetails} handleInputChange={handleInputChange}/>;
+  } else if (selectedOption === "ECN" ) {
+    return <Ecn inputDetails = {inputDetails} setInputDetails={setInputDetails} handleInputChange={handleInputChange} />;
   } else {
     return null; 
   }

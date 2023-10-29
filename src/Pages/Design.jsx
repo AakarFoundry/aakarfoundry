@@ -5,6 +5,18 @@ import Container from "@mui/material/Container";
 import { Typography } from "@mui/material";
 
 const DesignFoundry = (props) => {
+
+  const { data, formData } = props;
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+
+    setDetails({
+      ...data,
+      [name]: value
+    });
+  };
+
+
   return (
     <Container
       sx={{
@@ -47,6 +59,7 @@ const DesignFoundry = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              onChange={handleInputChange}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -71,6 +84,7 @@ const DesignFoundry = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              onChange={handleInputChange}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -96,6 +110,7 @@ const DesignFoundry = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              onChange={handleInputChange}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -120,6 +135,7 @@ const DesignFoundry = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              onChange={handleInputChange}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -144,6 +160,7 @@ const DesignFoundry = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              onChange={handleInputChange}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -169,6 +186,7 @@ const DesignFoundry = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              onChange={handleInputChange}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -194,6 +212,7 @@ const DesignFoundry = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              onChange={handleInputChange}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -219,6 +238,7 @@ const DesignFoundry = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              onChange={handleInputChange}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -244,6 +264,7 @@ const DesignFoundry = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              onChange={handleInputChange}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -268,6 +289,7 @@ const DesignFoundry = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              onChange={handleInputChange}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -293,6 +315,7 @@ const DesignFoundry = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              onChange={handleInputChange}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -318,6 +341,7 @@ const DesignFoundry = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              onChange={handleInputChange}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -343,6 +367,7 @@ const DesignFoundry = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              onChange={handleInputChange}
             />
           </Grid>
           <Grid item xs={12} sm={12}>
@@ -365,6 +390,7 @@ const DesignFoundry = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              onChange={handleInputChange}
             />
           </Grid>
         </Grid>

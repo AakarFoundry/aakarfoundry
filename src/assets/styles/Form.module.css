@@ -12,3 +12,8 @@
    .process {
     margin-top: 8rem;
    }
+   .disabled-textfield {
+    color: darkgray !important;
+    border-color: darkgray !important;
+  }
+  

@@ -11,6 +11,19 @@ import { useState } from "react";
 import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 
 const Machine = (props) => {
+
+  const { details, setDetails } = props;
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+
+    setDetails({
+      ...details,
+      [name]: value
+    });
+  };
+
+
+
   const redAsteriskStyle = {
     color: 'red',
   };
@@ -178,6 +191,7 @@ const Machine = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              onChange={handleInputChange}
             />
           </Grid>
         </Grid>

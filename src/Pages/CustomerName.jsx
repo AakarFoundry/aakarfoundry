@@ -4,6 +4,7 @@ import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 import { Menu, MenuItem, Select, Typography } from "@mui/material";
 const CustomerName = (props) => {
+  
   const { selectedOption, handleOptionChange, details, setDetails } = props;
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -92,8 +93,8 @@ const CustomerName = (props) => {
               size="small"
               value={details.customerReference}
               onChange={handleInputChange}
+              defaultValue=""
             >
-              <MenuItem value=''></MenuItem>
               <MenuItem value='Existing'>Existing</MenuItem>
               <MenuItem value='New'>New</MenuItem>
             </Select>
@@ -224,6 +225,7 @@ const CustomerName = (props) => {
               size="small"
               value={details.category}
               onChange={handleSelectChange}
+              defaultValue=""
             >
               <MenuItem value="RFQ">Request For Quotation</MenuItem>
               <MenuItem value="ECN">Engineering Change Node</MenuItem>
