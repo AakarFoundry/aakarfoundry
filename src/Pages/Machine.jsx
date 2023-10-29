@@ -19,6 +19,8 @@ const MachineQuality = (props) => {
     capCost: "",
     packagingCost: "",
     remarks: "",
+    nextCycleTime: "", 
+    nextFixtureCost: "",
   });
 
   // Event handler for input field changes
@@ -98,8 +100,15 @@ const MachineQuality = (props) => {
       field.id === id ? { ...field, value: event.target.value } : field
     );
     setFields(updatedFields);
+  
+    // Check if the changed field is the machine type
+    const changedField = updatedFields.find((field) => field.id === id);
+    if (changedField) {
+      if (changedField.label === "Machine Type - CNC/VMC/HMC") {
+        console.log(`Selected Machine Type: ${event.target.value}`);
+      }
+    }
   };
-
   return (
     <Container
       sx={{
@@ -160,8 +169,22 @@ const MachineQuality = (props) => {
                   variant="outlined"
                   fullWidth
                   size="small"
-                  value={field.value}
-                  onChange={(event) => handleChange(field.id, event)}
+                  name={
+                    field.id === fields[fields.length - 2].id
+                      ? "nextCycleTime"
+                      : field.id === fields[fields.length - 1].id
+                      ? "nextFixtureCost"
+                      : `field-${field.id}`
+                  }
+                  value={
+                    field.id === fields[fields.length - 2].id
+                      ? formData.nextCycleTime
+                      : field.id === fields[fields.length - 1].id
+                      ? formData.nextFixtureCost
+                      : formData[`field-${field.id}`]
+                  }
+                  onChange={handleInputChange}
+
                 />
               )}
             </Grid>
