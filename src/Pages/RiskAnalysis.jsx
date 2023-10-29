@@ -1,3 +1,4 @@
+import React, { useState ,useEffect} from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
@@ -13,6 +14,34 @@ import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 
 const RiskAnalysis = (props) => {
+  const [formData, setFormData] = useState({
+    risk: "",
+    requirement:"",
+    application: "",
+    estimation: "",
+    remarks: "",
+    rb1: "",
+    rb2: "",
+    rb3: "",
+    rb4: "",
+    rb5: "",
+    rb6: "",
+  });
+
+  // Event handler for input field changes
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  // Effect to log form data whenever formData changes
+  useEffect(() => {
+    console.log("Form Data:", formData);
+  }, [formData]); 
+  
   return (
     <Container
       sx={{
@@ -56,6 +85,8 @@ const RiskAnalysis = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              value={formData.risk}
+              onChange={handleInputChange}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -79,6 +110,8 @@ const RiskAnalysis = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              value={formData.requirement}
+              onChange={handleInputChange}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -102,6 +135,8 @@ const RiskAnalysis = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              value={formData.application}
+              onChange={handleInputChange}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -124,6 +159,8 @@ const RiskAnalysis = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              value={formData.estimation}
+              onChange={handleInputChange}
             />
           </Grid>
 
@@ -156,7 +193,12 @@ const RiskAnalysis = (props) => {
               <RadioGroup
                 row
                 aria-labelledby="demo-row-radio-buttons-group-label"
-                name="row-radio-buttons-group"
+                name="rb1"
+                value={formData.rb1}
+                onChange={handleInputChange}
+
+                
+                
               >
                 <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
                 <FormControlLabel value="NO" control={<Radio />} label="No" />
@@ -168,6 +210,7 @@ const RiskAnalysis = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              
             />
             <FormControl>
               <FormLabel
@@ -185,7 +228,9 @@ const RiskAnalysis = (props) => {
               <RadioGroup
                 row
                 aria-labelledby="demo-row-radio-buttons-group-label"
-                name="row-radio-buttons-group"
+                name="rb2"
+                value={formData.rb2}
+                onChange={handleInputChange}
               >
                 <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
                 <FormControlLabel value="NO" control={<Radio />} label="No" />
@@ -214,7 +259,9 @@ const RiskAnalysis = (props) => {
               <RadioGroup
                 row
                 aria-labelledby="demo-row-radio-buttons-group-label"
-                name="row-radio-buttons-group"
+                name="rb3"
+                value={formData.rb3}
+                onChange={handleInputChange}
               >
                 <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
                 <FormControlLabel value="NO" control={<Radio />} label="No" />
@@ -257,7 +304,9 @@ const RiskAnalysis = (props) => {
               <RadioGroup
                 row
                 aria-labelledby="demo-row-radio-buttons-group-label"
-                name="row-radio-buttons-group"
+                name="rb4"
+                value={formData.rb4}
+                onChange={handleInputChange}
               >
                 <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
                 <FormControlLabel value="NO" control={<Radio />} label="No" />
@@ -286,7 +335,9 @@ const RiskAnalysis = (props) => {
               <RadioGroup
                 row
                 aria-labelledby="demo-row-radio-buttons-group-label"
-                name="row-radio-buttons-group"
+                name="rb5"
+                value={formData.rb5}
+                onChange={handleInputChange}
               >
                 <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
                 <FormControlLabel value="NO" control={<Radio />} label="No" />
@@ -315,7 +366,9 @@ const RiskAnalysis = (props) => {
               <RadioGroup
                 row
                 aria-labelledby="demo-row-radio-buttons-group-label"
-                name="row-radio-buttons-group"
+                name="rb6"
+                value={formData.rb6}
+                onChange={handleInputChange}
               >
                 <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
                 <FormControlLabel value="NO" control={<Radio />} label="No" />
@@ -348,6 +401,8 @@ const RiskAnalysis = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              value={formData.remarks}
+              onChange={handleInputChange}
             />
           </Grid>
         </Grid>

@@ -8,13 +8,12 @@ import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import { Link } from "react-router-dom";
-import { Grid } from "@mui/material";
 
 const ChangePassword = () => {
   const [oldPassValidation, setOldPassValidation] = useState(false);
+  const [oldPass, setOldPass] = useState("")
   const [confirmPassValidation, setConfirmPassValidation] = useState(false);
-  const [newPass, setNewPass] = useState(false);
+  const [newPass, setNewPass] = useState("");
   const [confirmPass, setConfirmPass] = useState("");
   const [newPassValidation, setNewPassValidation] = useState(false);
   const [showOldPassword, setShowOldPassword] = useState(false);
@@ -25,6 +24,7 @@ const ChangePassword = () => {
 
   const handleOldPassword = (e) => {
     const oldPassword = e.target.value;
+    setOldPass(e.target.value)
     if (oldPassword.trim() === "") {
       setOldPassValidation(false);
     } else {
@@ -96,16 +96,20 @@ const ChangePassword = () => {
   
   
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+ // Log the values
+ console.log('Old Password:', oldPass);
+ console.log('New Password:', newPass);
+ console.log('Confirm New Password:', confirmPass);
+ if (confirmPassValidation && oldPassValidation) {
+   // Navigate to the new page
+   // history.push('/dash');
+   window.location.href = '/dash';
+ }
+ // Rest of your form submission logic
+}
 
-    const data = new FormData(event.currentTarget);
-    console.log({
-      OldPassword: data.get("Old password"),
-      NewPassword: data.get("New password"),
-      ConfirmNewPassword: data.get("Confirm New password"),
-    });
-  };
 
 
   
@@ -284,8 +288,7 @@ const ChangePassword = () => {
             {showPasswordPolicy && passwordPolicyText}
 
 
-            <Link to={(confirmPassValidation && oldPassValidation) ? "/dash" : ""}>
-            <Button
+{/* <Link to={(confirmPassValidation && oldPassValidation) ? "/dash" : ""}> */}            <Button
             type="submit"
             fullWidth
             variant="contained"
@@ -294,7 +297,7 @@ const ChangePassword = () => {
   >
     Submit
   </Button>
-</Link>
+{/* </Link> */}
 
 
 

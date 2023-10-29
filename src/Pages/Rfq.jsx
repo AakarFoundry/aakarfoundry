@@ -3,9 +3,50 @@ import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 import { MenuItem, Select, Typography } from "@mui/material";
-
+import React, { useState ,useEffect} from "react";
 
 const Rfq = (props) => {
+  const [formData, setFormData] = useState({
+    name: "",
+    partMach:"",
+    partCast: "",
+    details: "",
+    enquiry: "",
+    quantity: "",
+    life: "",
+    processRequired: "",
+    alloy: "",
+    machined: "",
+    blasting: "",
+    productQc: "",
+    anodizing: "",
+    coating: "",
+    materials: "",
+    pressure: "",
+    impregnation: "",
+    treatment:"",
+    packaging: "",
+    delivery: "",
+    works: "",
+    tonnage: "",
+    sampleDate: "",
+    pswDate: "",
+    remarks: "",
+  });
+
+  // Event handler for input field changes
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  // Effect to log form data whenever formData changes
+  useEffect(() => {
+    console.log("Form Data:", formData);
+  }, [formData]); 
 
   return (
     <div>
@@ -50,6 +91,8 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                value={formData.name}
+                onChange={handleInputChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -74,6 +117,8 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                value={formData.partMach}
+                onChange={handleInputChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -99,6 +144,8 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                value={formData.partCast}
+                onChange={handleInputChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -123,6 +170,8 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                value={formData.details}
+                onChange={handleInputChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -147,6 +196,8 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                value={formData.enquiry}
+                onChange={handleInputChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -171,6 +222,8 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                value={formData.quantity}
+                onChange={handleInputChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -197,6 +250,8 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                value={formData.life}
+                onChange={handleInputChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -221,6 +276,8 @@ const Rfq = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              value={formData.processRequired}
+              onChange={handleInputChange}
             >
               <MenuItem value="HPDC">HPDC</MenuItem>
               <MenuItem value="LPDC">LPDC</MenuItem>
@@ -249,6 +306,8 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                value={formData.alloy}
+                onChange={handleInputChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -273,6 +332,8 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                value={formData.machined}
+                onChange={handleInputChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -298,6 +359,8 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                value={formData.blasting}
+                onChange={handleInputChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -322,6 +385,8 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                value={formData.productQc}
+                onChange={handleInputChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -347,6 +412,8 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                value={formData.anodizing}
+                onChange={handleInputChange}
               />
             </Grid>
 
@@ -372,6 +439,8 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                value={formData.coating}
+                onChange={handleInputChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -397,6 +466,8 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                value={formData.materials}
+                onChange={handleInputChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -421,6 +492,8 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                value={formData.pressure}
+                onChange={handleInputChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -444,6 +517,8 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                value={formData.impregnation}
+                onChange={handleInputChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -468,6 +543,8 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                value={formData.treatment}
+                onChange={handleInputChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -492,6 +569,8 @@ const Rfq = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              value={formData.packaging}
+              onChange={handleInputChange}
             >
               <MenuItem value="Corrugated">Corrugated</MenuItem>
               <MenuItem value="PP">PP</MenuItem>
@@ -522,6 +601,8 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                value={formData.delivery}
+                onChange={handleInputChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -546,6 +627,8 @@ const Rfq = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              value={formData.works}
+              onChange={handleInputChange}
             >
               <MenuItem value="FOB">FOB</MenuItem>
               <MenuItem value="CIF">CIF</MenuItem>
@@ -576,6 +659,8 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                value={formData.tonnage}
+                onChange={handleInputChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -601,6 +686,8 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                value={formData.sampleDate}
+                onChange={handleInputChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -624,6 +711,8 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                value={formData.pswDate}
+                onChange={handleInputChange}
               />
             </Grid>
             <Grid item xs={12} sm={12}>
@@ -646,6 +735,8 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                value={formData.remarks}
+                onChange={handleInputChange}
               />
             </Grid>
           </Grid>
