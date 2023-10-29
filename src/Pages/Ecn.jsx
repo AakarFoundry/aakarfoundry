@@ -5,7 +5,6 @@ import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 import { Typography } from "@mui/material";
 
-
 const Ecn = (props) => {
   const [formData, setFormData] = useState({
     enquiryNo: "",

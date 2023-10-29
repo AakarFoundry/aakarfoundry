@@ -27,16 +27,6 @@ const CustomerName = (props) => {
     });
   };
 
-  // Event handler for category dropdown change
-  const handleCategoryChange = (e) => {
-    const categoryValue = e.target.value;
-    setFormData({
-      ...formData,
-      category: categoryValue,
-    });
-    handleOptionChange(categoryValue);
-  };
-
   // Log form data to the console
   console.log("Form Data:", formData);
 

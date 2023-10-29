@@ -1,3 +1,4 @@
+import React, { useEffect } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
@@ -11,6 +12,29 @@ import { useState } from "react";
 import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 
 const MachineQuality = (props) => { 
+  const [formData, setFormData] = useState({
+    gaugesCost: "",
+    leakCost:"",
+    washingCost: "",
+    capCost: "",
+    packagingCost: "",
+    remarks: "",
+  });
+
+  // Event handler for input field changes
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  // Effect to log form data whenever formData changes
+  useEffect(() => {
+    console.log("Form Data:", formData);
+  }, [formData]); 
+  
   const redAsteriskStyle = {
     color: 'red',
   };
@@ -180,6 +204,8 @@ const MachineQuality = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              value={formData.gaugesCost}
+              onChange={handleInputChange}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -203,6 +229,8 @@ const MachineQuality = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              value={formData.leakCost}
+              onChange={handleInputChange}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -227,6 +255,8 @@ const MachineQuality = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              value={formData.washingCost}
+              onChange={handleInputChange}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -251,6 +281,8 @@ const MachineQuality = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              value={formData.capCost}
+              onChange={handleInputChange}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -276,6 +308,8 @@ const MachineQuality = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              value={formData.packagingCost}
+              onChange={handleInputChange}
             />
           </Grid>
           <Grid item xs={12} sm={12}>
@@ -298,6 +332,8 @@ const MachineQuality = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              value={formData.remarks}
+              onChange={handleInputChange}
             />
           </Grid>
         </Grid>
