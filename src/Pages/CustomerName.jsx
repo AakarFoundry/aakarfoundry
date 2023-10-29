@@ -1,10 +1,45 @@
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 import { MenuItem, Select, Typography } from "@mui/material";
+
 const CustomerName = (props) => {
+
   const { selectedOption, handleOptionChange } = props;
+
+  const [formData, setFormData] = useState({
+    customerName: "",
+    customerReference: "",
+    contact: "",
+    delivery: "",
+    enquiry: "",
+    path: "",
+    category: "",
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  // Event handler for category dropdown change
+  const handleCategoryChange = (e) => {
+    const categoryValue = e.target.value;
+    setFormData({
+      ...formData,
+      category: categoryValue,
+    });
+    handleOptionChange(categoryValue);
+  };
+
+  // Log form data to the console
+  console.log("Form Data:", formData);
+
 
   return (
     <Container
@@ -47,6 +82,8 @@ const CustomerName = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              value={formData.customerName}
+              onChange={handleInputChange}
             />
           </Grid>
           <Grid item xs={12} sm={12}>
@@ -70,6 +107,8 @@ const CustomerName = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              value={formData.customerReference}
+              onChange={handleInputChange}
             />
           </Grid>
           <Grid item xs={12} sm={12}>
@@ -93,6 +132,8 @@ const CustomerName = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              value={formData.contact}
+              onChange={handleInputChange}
             />
           </Grid>
           <Grid item xs={12} sm={12}>
@@ -116,6 +157,8 @@ const CustomerName = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              value={formData.delivery}
+              onChange={handleInputChange}
             />
           </Grid>
           <Grid item xs={12} sm={12}>
@@ -139,6 +182,8 @@ const CustomerName = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              value={formData.enquiry}
+              onChange={handleInputChange}
             />
           </Grid>
 
@@ -163,6 +208,8 @@ const CustomerName = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              value={formData.path}
+              onChange={handleInputChange}
             />
           </Grid>
 

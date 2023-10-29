@@ -1,9 +1,39 @@
+import React, { useState ,useEffect} from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 import { Typography } from "@mui/material";
+
+
 const Ecn = (props) => {
+  const [formData, setFormData] = useState({
+    enquiryNo: "",
+    ecnNo:"",
+    partName: "",
+    number: "",
+    weight: "",
+    projectName: "",
+    ecnType: "",
+  });
+
+  // Event handler for input field changes
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  // Effect to log form data whenever formData changes
+  useEffect(() => {
+    console.log("Form Data:", formData);
+  }, [formData]); 
+   
+
+
+
   return (
     <div>
       <Container
@@ -46,6 +76,8 @@ const Ecn = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                value={formData.enquiryNo}
+                onChange={handleInputChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -70,6 +102,8 @@ const Ecn = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                value={formData.ecnNo}
+                onChange={handleInputChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -94,6 +128,8 @@ const Ecn = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                value={formData.partName}
+        onChange={handleInputChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -118,6 +154,8 @@ const Ecn = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                value={formData.number}
+        onChange={handleInputChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -142,6 +180,8 @@ const Ecn = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                value={formData.weight}
+        onChange={handleInputChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -166,6 +206,8 @@ const Ecn = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                value={formData.projectName}
+        onChange={handleInputChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -190,6 +232,8 @@ const Ecn = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                value={formData.ecnType}
+        onChange={handleInputChange}
               />
             </Grid>
           </Grid>
@@ -198,5 +242,6 @@ const Ecn = (props) => {
     </div>
   );
 };
+
 
 export default Ecn;
