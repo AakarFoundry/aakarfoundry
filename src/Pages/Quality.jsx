@@ -69,7 +69,7 @@ const Quality = (props) => {
                 padding: "0.3rem",
               }}
             >
-              Leak testing fixture cost <span style={{ color: "red" }}>*</span> 
+              Leak Testing Fixture Cost <span style={{ color: "red" }}>*</span> 
             </Typography>
             <TextField
               

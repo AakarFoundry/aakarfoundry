@@ -99,7 +99,7 @@ const DesignFoundry = (props) => {
               }}
             >
               
-              Surface Area - in mm Square <span style={{ color: "red" }}>*</span> 
+              Surface Area - In mm Square <span style={{ color: "red" }}>*</span> 
             </Typography>
 
             <TextField
@@ -149,7 +149,7 @@ const DesignFoundry = (props) => {
                 padding: "0.3rem",
               }}
             >
-              No. of Impressions or Cavities <span style={{ color: "red" }}>*</span> 
+              No. Of Impressions Or Cavities <span style={{ color: "red" }}>*</span> 
             </Typography>
 
             <TextField
@@ -278,7 +278,7 @@ const DesignFoundry = (props) => {
                 padding: "0.3rem",
               }}
             >
-              Die Manufacturing Period in Weeks <span style={{ color: "red" }}>*</span> 
+              Die Manufacturing Period In Weeks <span style={{ color: "red" }}>*</span> 
             </Typography>
 
             <TextField
@@ -304,7 +304,7 @@ const DesignFoundry = (props) => {
               }}
             >
               
-              Number of Shots/hour <span style={{ color: "red" }}>*</span> 
+              Number Of Shots/Hour <span style={{ color: "red" }}>*</span> 
             </Typography>
 
             <TextField
@@ -330,7 +330,7 @@ const DesignFoundry = (props) => {
               }}
             >
               
-              No. of Sand Cores Required <span style={{ color: "red" }}>*</span> 
+              No. Of Sand Cores Required <span style={{ color: "red" }}>*</span> 
             </Typography>
 
             <TextField
