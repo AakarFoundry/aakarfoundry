@@ -189,10 +189,17 @@ const Process = (props) => {
         stepDetails = designDetails;
       }
     } else if (activeStep === 4) {
+      const machineTypeLength = machineDetails.machineType.length;
+      const cycleTimeLength = machineDetails.cycleTime.length;
+      const fixtureCostLength = machineDetails.fixtureCost.length;
       if (
         Object.values(machineDetails).some((value) => value === '') ||
-        Object.values(machineDetails).some((value) => value === undefined)
-      ) {
+        Object.values(machineDetails).some((value) => value === undefined) ||
+        (machineTypeLength !== cycleTimeLength) ||
+         (cycleTimeLength !== fixtureCostLength) ||
+         (machineTypeLength !== fixtureCostLength)
+      )
+      {
         isStepValid = false;
       }
       else {
@@ -304,25 +311,25 @@ const Process = (props) => {
           />
         )}
         {activeStep === 7 ? (
-          
+
           <div>
             <Summary />
             <Stack
-            direction="column"
-            alignItems="center"
-            spacing={2}
-            sx={{ mt: 2 }}
-          >
-            <Button
-              variant="contained"
-              size="large"
-              onClick={() => {
-                navigate("/dash");
-              }}
+              direction="column"
+              alignItems="center"
+              spacing={2}
+              sx={{ mt: 2 }}
             >
-              Go to Dashboard
-            </Button>
-          </Stack>
+              <Button
+                variant="contained"
+                size="large"
+                onClick={() => {
+                  navigate("/dash");
+                }}
+              >
+                Go to Dashboard
+              </Button>
+            </Stack>
           </div>
         ) : (
           <div>
