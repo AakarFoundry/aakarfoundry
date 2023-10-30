@@ -55,6 +55,7 @@ const Machine = (props) => {
         id: fields.length + 2,
         label: 'Next Cycle time',
         value: '',
+        
       },
       {
         id: fields.length + 3,
@@ -168,6 +169,7 @@ const Machine = (props) => {
                     fullWidth
                     value={field.value}
                     onChange={(event) => handleChange(field.id, event)}
+                    defaultValue=""
                   >
                     {field.options.map((option) => (
                       <MenuItem key={option} value={option}>
