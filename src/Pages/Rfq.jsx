@@ -380,6 +380,7 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) =>  {
                 size="small"
                 onChange={handleInputChange}
                 defaultValue=''
+                value={inputDetails.processRequired}
               >
                 <MenuItem value="HPDC">HPDC</MenuItem>
                 <MenuItem value="LPDC">LPDC</MenuItem>
@@ -422,10 +423,10 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) =>  {
                   padding: "0.3rem",
                 }}
               >
-                Requirements - Raw or Machined <span style={{ color: "red" }}>*</span>
+                Requirements <span style={{ color: "red" }}>*</span>
               </Typography>
 
-              <TextField
+              <Select
 
                 name="machined"
                 id="machined"
@@ -434,7 +435,11 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) =>  {
                 fullWidth
                 size="small"
                 onChange={handleInputChange}
-              />
+                defaultValue=''
+              >
+                <MenuItem value="Raw">Raw</MenuItem>
+                <MenuItem value="Machined">Machined</MenuItem>
+              </Select>
             </Grid>
             <Grid item xs={12} sm={6}>
               <Typography
@@ -673,6 +678,7 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) =>  {
                 fullWidth
                 size="small"
                 onChange={handleInputChange}
+                value={inputDetails.packaging}
               >
                 <MenuItem value="Corrugated">Corrugated</MenuItem>
                 <MenuItem value="PP">PP</MenuItem>
@@ -755,6 +761,7 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) =>  {
                 fullWidth
                 size="small"
                 onChange={handleInputChange}
+                value={inputDetails.works}
               >
                 <MenuItem value="FOB">FOB</MenuItem>
                 <MenuItem value="CIF">CIF</MenuItem>

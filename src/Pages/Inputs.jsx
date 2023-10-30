@@ -16,7 +16,7 @@ const Inputs = ({ selectedOption, inputDetails, setInputDetails }) =>  {
   if (selectedOption === "RFQ") {
     return <Rfq inputDetails = {inputDetails} setInputDetails={setInputDetails} handleInputChange={handleInputChange}/>;
   } else if (selectedOption === "ECN" ) {
-    return <Ecn inputDetails = {inputDetails} setInputDetails={setInputDetails} handleInputChange={handleInputChange} />;
+    return <Ecn inputDetails = {inputDetails} setInputDetails={setInputDetails} handleInputChange={handleInputChange}/>;
   } else {
     return null; 
   }

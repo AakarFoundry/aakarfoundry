@@ -6,12 +6,12 @@ import { Typography } from "@mui/material";
 
 const DesignFoundry = (props) => {
 
-  const { data, formData } = props;
+  const { designDetails, setDesignDetails } = props;
   const handleInputChange = (e) => {
     const { name, value } = e.target;
 
-    setDetails({
-      ...data,
+    setDesignDetails({
+      ...designDetails,
       [name]: value
     });
   };

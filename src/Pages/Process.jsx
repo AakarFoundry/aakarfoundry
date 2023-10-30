@@ -37,58 +37,125 @@ const Process = (props) => {
   }
   );
 
+
+
   const initialInputDetails = selectedOption === "RFQ"
-  ? {
-    name: '',
-    partMach: '',
-    partCast: '',
-    details: '',
-    enquiry: '',
-    quantity: '',
-    life: '',
-    processRequired: '',
-    alloy: '',
-    machined: '',
-    blasting: '',
-    productQc: '',
-    anodizing: '',
-    coating: '',
-    materials: '',
-    pressure: '',
-    impregnation: '',
-    treatment: '',
-    packaging: '',
-    delivery: '',
-    works: '',
-    tonnage: '',
-    sampleDate: '',
-    pswDate: '',
-    remarks: ''
-  }
-  : {
-    enquiryNo: '',
-    ecnNo: '',
-    partName: '',
-    number: '',
+    ? {
+      name: '',
+      partMach: '',
+      partCast: '',
+      details: '',
+      enquiry: '',
+      quantity: '',
+      life: '',
+      processRequired: '',
+      alloy: '',
+      machined: '',
+      blasting: '',
+      productQc: '',
+      anodizing: '',
+      coating: '',
+      materials: '',
+      pressure: '',
+      impregnation: '',
+      treatment: '',
+      packaging: '',
+      delivery: '',
+      works: '',
+      tonnage: '',
+      sampleDate: '',
+      pswDate: '',
+      remarks: ''
+    }
+    : {
+      ecnNo: '',
+      partName: '',
+      number: '',
+      weight: '',
+      projectName: '',
+      ecnType: '',
+
+    };
+
+  const [inputDetails, setInputDetails] = useState(initialInputDetails);
+
+  const [designDetails, setDesignDetails] = useState({
     weight: '',
-    projectName: '',
-    ecnType: '',
-    remarks: ''
-  };
+    casting: '',
+    area: '',
+    dieCasting: '',
+    impressions: '',
+    rawMaterial: '',
+    dieCost: '',
+    coreCOst: '',
+    dieLife: '',
+    diePeriod: '',
+    shots: '',
+    cores: '',
+    sandWeight: '',
+    remarks: '',
+  }
+  );
 
-const [inputDetails, setInputDetails] = useState(initialInputDetails);
+  const [riskDetails, setRiskDetails] = useState({
+    risk: '',
+    requirement: '',
+    application: '',
+    internal:'',
+    estimation: '',
+    environment: '',
+    environment_remarks: '',
+    investment:'',
+    investment_remarks:'',
+    manufacturing:'',
+    manufacturing_remarks:'',
+    technical:'',
+    technical_remarks:'',
+    estimation:'',
+    estimation_remarks:'',
+    regret:'',
+    regret_remarks:'',
+    remarks_extra:'',
+  }
+  );
 
+  const [qualityDetails,setQualityDetails]= useState({
+    gaugesCost:'',
+    leakCost:'',
+    washingCost:'',
+    capCost:'',
+    packagingType:'',
+    packagingCost:'',
+    remarks:'',
+
+  });
+
+  const[npdDetails,setNpdDetails]=useState({
+      investment:'',
+      partFeasible:'',
+      remarks:'',
+  });
 
   const isStepSkipped = (step) => {
     return skipped.has(step);
   };
 
   const handleNext = () => {
-      if (activeStep === 0) {
+    if (activeStep === 0) {
       console.log(details);
+      console.log("Selected Option:", selectedOption);
     } else if (activeStep === 1) {
       console.log(inputDetails);
-    }
+    } else if (activeStep === 2) {
+      console.log(riskDetails);
+    } else if (activeStep === 3) {
+      console.log(designDetails);
+    }else if (activeStep === 5) {
+      console.log(qualityDetails);
+    }else if (activeStep === 6) {
+      console.log(npdDetails);
+  }
+
 
     let newSkipped = skipped;
     if (isStepSkipped(activeStep)) {
@@ -132,23 +199,36 @@ const [inputDetails, setInputDetails] = useState(initialInputDetails);
             setDetails={setDetails}
           />
         )}
-        {activeStep === 1 && 
-        < Inputs 
+        {activeStep === 1 &&
+          < Inputs
             selectedOption={selectedOption}
             inputDetails={inputDetails}
             setInputDetails={setInputDetails}
-        
-        />}
-        {activeStep === 2 && <RiskAnalysis />}
-        {activeStep === 3 && <DesignFoundry />}
+
+          />}
+        {activeStep === 2 &&
+          < RiskAnalysis
+            riskDetails={riskDetails}
+            setRiskDetails={setRiskDetails}
+          />}
+        {activeStep === 3 &&
+          <DesignFoundry
+            designDetails={designDetails}
+            setDesignDetails={setDesignDetails}
+          />}
         {activeStep === 4 && <Machine />}
         {activeStep === 5 && (
-          <Quality />
+          <Quality 
+            qualityDetails={qualityDetails}
+            setQualityDetails={setQualityDetails}
+          />
         )}
         {activeStep === 6 && (
           <NewProductDev
             activeStep={activeStep}
             setActiveStep={setActiveStep}
+            npdDetails={npdDetails}
+            setNpdDetails={setNpdDetails}
           />
         )}
         {activeStep === 7 ? (

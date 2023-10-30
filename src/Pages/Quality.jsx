@@ -1,7 +1,18 @@
 import React from 'react'
 import { Container,Box,Grid,Typography,TextField, Select, MenuItem } from '@mui/material';
 
-const Quality = () => {
+const Quality = (props) => {
+
+  const { qualityDetails, setQualityDetails } = props;
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+
+    setQualityDetails({
+      ...qualityDetails,
+      [name]: value
+    });
+  };
+
   return (
     <Container
       sx={{
@@ -44,6 +55,7 @@ const Quality = () => {
               variant="outlined"
               fullWidth
               size="small"
+              onChange={handleInputChange}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -67,6 +79,7 @@ const Quality = () => {
               variant="outlined"
               fullWidth
               size="small"
+              onChange={handleInputChange}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -91,6 +104,7 @@ const Quality = () => {
               variant="outlined"
               fullWidth
               size="small"
+              onChange={handleInputChange}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -115,6 +129,7 @@ const Quality = () => {
               variant="outlined"
               fullWidth
               size="small"
+              onChange={handleInputChange}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -138,6 +153,9 @@ const Quality = () => {
           variant="outlined"
           fullWidth
           size="small"
+          onChange={handleInputChange}
+          defaultValue=''
+          value={qualityDetails.packageType}
         >
           <MenuItem value="Corrugated">Corrugated</MenuItem>
           <MenuItem value="PP">PP</MenuItem>
@@ -168,6 +186,7 @@ const Quality = () => {
               variant="outlined"
               fullWidth
               size="small"
+              onChange={handleInputChange}
             />
           </Grid>
           <Grid item xs={12} sm={12}>
@@ -190,6 +209,7 @@ const Quality = () => {
               variant="outlined"
               fullWidth
               size="small"
+              onChange={handleInputChange}
             />
           </Grid>
         </Grid>

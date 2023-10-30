@@ -6,12 +6,12 @@ import { Typography, Select, MenuItem } from "@mui/material";
 
 const NewProductDev = (props) => {
 
-  const { details, setDetails } = props;
+  const { npdDetails,setNpdDetails} = props;
   const handleInputChange = (e) => {
     const { name, value } = e.target;
 
-    setDetails({
-      ...details,
+    setNpdDetails({
+      ...npdDetails,
       [name]: value
     });
   };
@@ -84,6 +84,8 @@ const NewProductDev = (props) => {
             fullWidth
             size="small"
             onChange={handleInputChange}
+            defaultValue=''
+            value = {npdDetails.partFeasible}
           >
           <MenuItem value='Feasible With Changes'>Feasible With Changes</MenuItem>
           <MenuItem value='Part Feasible'>Part Feasible</MenuItem>

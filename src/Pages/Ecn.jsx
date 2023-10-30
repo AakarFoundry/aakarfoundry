@@ -3,9 +3,8 @@ import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 import { Typography } from "@mui/material";
-const Ecn = (inputDetails, setInputDetails, handleInputChange) => {
 
-  
+const Ecn = (inputDetails, setInputDetails, handleInputChange) => {
 
   return (
     <div>

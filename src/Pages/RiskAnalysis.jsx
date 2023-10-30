@@ -11,15 +11,47 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
+import { useState } from "react";
 
 const RiskAnalysis = (props) => {
 
-  const { details, setDetails } = props;
+  const [selectedValue1, setSelectedValue1] = useState('');
+  const [selectedValue2, setSelectedValue2] = useState('');
+  const [selectedValue3, setSelectedValue3] = useState('');
+  const [selectedValue4, setSelectedValue4] = useState('');
+  const [selectedValue5, setSelectedValue5] = useState('');
+  const [selectedValue6, setSelectedValue6] = useState('');
+
+  const handleRadioChange1 = (event) => {
+    setSelectedValue1(event.target.value);
+  };
+
+  const handleRadioChange2 = (event) => {
+    setSelectedValue2(event.target.value);
+  };
+
+  const handleRadioChange3 = (event) => {
+    setSelectedValue3(event.target.value);
+  };
+
+  const handleRadioChange4 = (event) => {
+    setSelectedValue4(event.target.value);
+  };
+
+  const handleRadioChange5 = (event) => {
+    setSelectedValue5(event.target.value);
+  };
+
+  const handleRadioChange6 = (event) => {
+    setSelectedValue6(event.target.value);
+  };
+
+  const { riskDetails, setRiskDetails } = props;
   const handleInputChange = (e) => {
     const { name, value } = e.target;
 
-    setDetails({
-      ...details,
+    setRiskDetails({
+      ...riskDetails,
       [name]: value
     });
   };
@@ -133,8 +165,8 @@ const RiskAnalysis = (props) => {
               Internal Estimation <span style={{ color: "red" }}>*</span>
             </Typography>
             <TextField
-              name="estimation"
-              id="estimation"
+              name="internal"
+              id="internal"
               label="Enter Details"
               variant="outlined"
               fullWidth
@@ -172,7 +204,12 @@ const RiskAnalysis = (props) => {
               <RadioGroup
                 row
                 aria-labelledby="demo-row-radio-buttons-group-label"
-                name="row-radio-buttons-group"
+                name="environment"
+                value={selectedValue1}
+                onChange={(event) => {
+                  handleRadioChange1(event);
+                  handleInputChange(event);
+                }}
               >
                 <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
                 <FormControlLabel value="NO" control={<Radio />} label="No" />
@@ -180,11 +217,14 @@ const RiskAnalysis = (props) => {
             </FormControl>
 
             <TextField
+              name="environment_remarks"
+              id="environment_remarks"
               label="Add Remarks"
               variant="outlined"
               fullWidth
               size="small"
               onChange={handleInputChange}
+
             />
             <FormControl>
               <FormLabel
@@ -202,13 +242,21 @@ const RiskAnalysis = (props) => {
               <RadioGroup
                 row
                 aria-labelledby="demo-row-radio-buttons-group-label"
-                name="row-radio-buttons-group"
+                name="investment"
+                value={selectedValue2}
+                onChange={(event) => {
+                  handleRadioChange2(event);
+                  handleInputChange(event);
+                }}
+
               >
                 <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
                 <FormControlLabel value="NO" control={<Radio />} label="No" />
               </RadioGroup>
             </FormControl>
             <TextField
+              name="investment_remarks"
+              id="investment_remarks"
               label="Add Remarks"
               variant="outlined"
               fullWidth
@@ -232,13 +280,21 @@ const RiskAnalysis = (props) => {
               <RadioGroup
                 row
                 aria-labelledby="demo-row-radio-buttons-group-label"
-                name="row-radio-buttons-group"
+                name="manufacturing"
+                value={selectedValue3}
+                onChange={(event) => {
+                  handleRadioChange3(event);
+                  handleInputChange(event);
+                }}
               >
                 <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
                 <FormControlLabel value="NO" control={<Radio />} label="No" />
               </RadioGroup>
             </FormControl>
             <TextField
+              name="manufacturing_remarks"
+              id="manufacturing_remarks"
+
               label="Add Remarks"
               variant="outlined"
               fullWidth
@@ -276,7 +332,12 @@ const RiskAnalysis = (props) => {
               <RadioGroup
                 row
                 aria-labelledby="demo-row-radio-buttons-group-label"
-                name="row-radio-buttons-group"
+                name="technical"
+                value={selectedValue4}
+                onChange={(event) => {
+                  handleRadioChange4(event);
+                  handleInputChange(event);
+                }}
               >
                 <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
                 <FormControlLabel value="NO" control={<Radio />} label="No" />
@@ -284,6 +345,8 @@ const RiskAnalysis = (props) => {
             </FormControl>
 
             <TextField
+              name="technical_remarks"
+              id="technical_remarks"
               label="Add Remarks"
               variant="outlined"
               fullWidth
@@ -306,13 +369,20 @@ const RiskAnalysis = (props) => {
               <RadioGroup
                 row
                 aria-labelledby="demo-row-radio-buttons-group-label"
-                name="row-radio-buttons-group"
+                name="estimation"
+                value={selectedValue5}
+                onChange={(event) => {
+                  handleRadioChange5(event);
+                  handleInputChange(event);
+                }}
               >
                 <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
                 <FormControlLabel value="NO" control={<Radio />} label="No" />
               </RadioGroup>
             </FormControl>
             <TextField
+              name="estimation_remarks"
+              id="estimation_remarks"
               label="Add Remarks"
               variant="outlined"
               fullWidth
@@ -336,13 +406,20 @@ const RiskAnalysis = (props) => {
               <RadioGroup
                 row
                 aria-labelledby="demo-row-radio-buttons-group-label"
-                name="row-radio-buttons-group"
+                name="regret"
+                value={selectedValue6}
+                onChange={(event) => {
+                  handleRadioChange6(event);
+                  handleInputChange(event);
+                }}
               >
                 <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
                 <FormControlLabel value="NO" control={<Radio />} label="No" />
               </RadioGroup>
             </FormControl>
             <TextField
+              id="regret_remarks"
+              name="regret_remarks"
               label="Add Remarks"
               variant="outlined"
               fullWidth
@@ -364,8 +441,8 @@ const RiskAnalysis = (props) => {
               Remarks
             </Typography>
             <TextField
-              name="remarks"
-              id="remarks"
+              name="remarks_extra"
+              id="remarks_extra"
               label="Enter Remarks"
               variant="outlined"
               fullWidth
