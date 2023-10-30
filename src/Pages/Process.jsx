@@ -65,7 +65,7 @@ const Process = (props) => {
         delivery: '',
         works: '',
         tonnage: '',
-        remarks: ''
+        remarks: 'NA'
       };
     } else {
       return {
@@ -93,7 +93,7 @@ const Process = (props) => {
     shots: '',
     cores: '',
     sandWeight: '',
-    remarks: '',
+    remarks: 'NA',
   }
   );
 
@@ -103,25 +103,25 @@ const Process = (props) => {
     application: '',
     internal: '',
     environment: '',
-    environment_remarks: '',
+    environment_remarks: 'NA',
     investment: '',
-    investment_remarks: '',
+    investment_remarks: 'NA',
     manufacturing: '',
-    manufacturing_remarks: '',
+    manufacturing_remarks: 'NA',
     technical: '',
-    technical_remarks: '',
+    technical_remarks: 'NA',
     estimation: '',
-    estimation_remarks: '',
+    estimation_remarks: 'NA',
     regret: '',
-    regret_remarks: '',
-    remarks_extra: '',
+    regret_remarks: 'NA',
+    remarks_extra: 'NA',
   }
   );
   const [machineDetails, setMachineDetails] = useState({
     machineType: [],
     cycleTime: [],
     fixtureCost: [],
-    remarks: '',
+    remarks: 'NA',
   })
   const [qualityDetails, setQualityDetails] = useState({
     gaugesCost: '',
@@ -130,14 +130,14 @@ const Process = (props) => {
     capCost: '',
     packagingType: '',
     packagingCost: '',
-    remarks: '',
+    remarks: 'NA',
 
   });
 
   const [npdDetails, setNpdDetails] = useState({
     investment: '',
     partFeasible: '',
-    remarks: '',
+    remarks: 'NA',
   });
 
   const isStepSkipped = (step) => {
