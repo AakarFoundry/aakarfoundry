@@ -145,32 +145,94 @@ const Process = (props) => {
   };
 
   const handleNext = () => {
+    let isStepValid = true;
+    let stepDetails = null;
     if (activeStep === 0) {
-      console.log(details);
+      if (
+        Object.values(details).some((value) => value === '') ||
+        Object.values(details).some((value) => value === undefined)
+      ) {
+        isStepValid = false;
+      }
+      else {
+        stepDetails = details;
+      }
     } else if (activeStep === 1) {
-      console.log(inputDetails);
+      if (
+        (selectedOption === 'RFQ' && Object.values(inputDetails).some((value) => value === '')) ||
+        (selectedOption !== 'RFQ' && Object.values(inputDetails).some((value) => value === ''))
+      ) {
+        isStepValid = false;
+      }
+      else {
+        stepDetails = inputDetails;
+      }
     } else if (activeStep === 2) {
-      console.log(riskDetails);
+      if (
+        Object.values(riskDetails).some((value) => value === '') ||
+        Object.values(riskDetails).some((value) => value === undefined)
+      ) {
+        isStepValid = false;
+      }
+      else {
+        stepDetails = riskDetails;
+      }
     } else if (activeStep === 3) {
-      console.log(designDetails);
+      if (
+        Object.values(designDetails).some((value) => value === '') ||
+        Object.values(designDetails).some((value) => value === undefined)
+      ) {
+        isStepValid = false;
+      }
+      else {
+        stepDetails = designDetails;
+      }
     } else if (activeStep === 4) {
-      console.log(machineDetails);
+      if (
+        Object.values(machineDetails).some((value) => value === '') ||
+        Object.values(machineDetails).some((value) => value === undefined)
+      ) {
+        isStepValid = false;
+      }
+      else {
+        stepDetails = machineDetails;
+      }
     } else if (activeStep === 5) {
-      console.log(qualityDetails);
+      if (
+        Object.values(qualityDetails).some((value) => value === '') ||
+        Object.values(qualityDetails).some((value) => value === undefined)
+      ) {
+        isStepValid = false;
+      }
+      else {
+        stepDetails = qualityDetails;
+      }
     } else if (activeStep === 6) {
-      console.log(npdDetails);
+      if (
+        Object.values(npdDetails).some((value) => value === '') ||
+        Object.values(npdDetails).some((value) => value === undefined)
+      ) {
+        isStepValid = false;
+      }
+      else {
+        stepDetails = npdDetails;
+      }
     }
 
-
-    let newSkipped = skipped;
-    if (isStepSkipped(activeStep)) {
-      newSkipped = new Set(newSkipped.values());
-      newSkipped.delete(activeStep);
+    if (isStepValid) {
+      console.log(stepDetails);
+      let newSkipped = skipped;
+      if (isStepSkipped(activeStep)) {
+        newSkipped = new Set(newSkipped.values());
+        newSkipped.delete(activeStep);
+      }
+      const nextStep = activeStep + 1;
+      navigate(`/details?step=${nextStep}&option=${selectedOption}`);
+      setActiveStep(nextStep);
+      setSkipped(newSkipped);
+    } else {
+      alert("Please fill all fields.")
     }
-    const nextStep = activeStep + 1;
-    navigate(`/details?step=${nextStep}&option=${selectedOption}`);
-    setActiveStep(nextStep);
-    setSkipped(newSkipped);
   };
 
   const handleBack = () => {
