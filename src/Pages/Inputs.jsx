@@ -6,7 +6,6 @@ const Inputs = ({ selectedOption, inputDetails, setInputDetails }) =>  {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-
     setInputDetails({
       ...inputDetails,
       [name]: value

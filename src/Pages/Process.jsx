@@ -37,48 +37,47 @@ const Process = (props) => {
   }
   );
 
-
-
-  const initialInputDetails = selectedOption === "RFQ"
-    ? {
-      name: '',
-      partMach: '',
-      partCast: '',
-      finishWeight:'',
-      castingWeight:'',
-      details: '',
-      enquiry: '',
-      quantity: '',
-      life: '',
-      processRequired: '',
-      alloy: '',
-      machined: '',
-      blasting: '',
-      productQc: '',
-      surfaceTreatment: [],
-      treatmentSpecification:[],
-      materials: '',
-      pressure: '',
-      impregnation: '',
-      treatment: '',
-      packaging: '',
-      custom:'',
-      delivery: '',
-      works: '',
-      tonnage: '',
-      remarks: ''
+  const [inputDetails, setInputDetails] = useState(() => {
+    if (selectedOption === 'RFQ') {
+      return {
+        name: '',
+        partMach: '',
+        partCast: '',
+        finishWeight: '',
+        castingWeight: '',
+        details: '',
+        enquiry: '',
+        quantity: '',
+        life: '',
+        processRequired: '',
+        alloy: '',
+        machined: '',
+        blasting: '',
+        productQc: '',
+        surfaceTreatment: [],
+        treatmentSpecification: [],
+        materials: '',
+        pressure: '',
+        impregnation: '',
+        treatment: '',
+        packaging: '',
+        custom: '',
+        delivery: '',
+        works: '',
+        tonnage: '',
+        remarks: ''
+      };
+    } else {
+      return {
+        ecnNo: '',
+        partName: '',
+        number: '',
+        weight: '',
+        projectName: '',
+        ecnType: ''
+      };
     }
-    : {
-      ecnNo: '',
-      partName: '',
-      number: '',
-      weight: '',
-      projectName: '',
-      ecnType: '',
-
-    };
-
-  const [inputDetails, setInputDetails] = useState(initialInputDetails);
+  });
 
   const [designDetails, setDesignDetails] = useState({
     weight: '',
@@ -88,7 +87,7 @@ const Process = (props) => {
     impressions: '',
     rawMaterial: '',
     dieCost: '',
-    coreCOst: '',
+    coreCost: '',
     dieLife: '',
     diePeriod: '',
     shots: '',
@@ -102,39 +101,43 @@ const Process = (props) => {
     risk: '',
     requirement: '',
     application: '',
-    internal:'',
-    estimation: '',
+    internal: '',
     environment: '',
     environment_remarks: '',
-    investment:'',
-    investment_remarks:'',
-    manufacturing:'',
-    manufacturing_remarks:'',
-    technical:'',
-    technical_remarks:'',
-    estimation:'',
-    estimation_remarks:'',
-    regret:'',
-    regret_remarks:'',
-    remarks_extra:'',
+    investment: '',
+    investment_remarks: '',
+    manufacturing: '',
+    manufacturing_remarks: '',
+    technical: '',
+    technical_remarks: '',
+    estimation: '',
+    estimation_remarks: '',
+    regret: '',
+    regret_remarks: '',
+    remarks_extra: '',
   }
   );
-
-  const [qualityDetails,setQualityDetails]= useState({
-    gaugesCost:'',
-    leakCost:'',
-    washingCost:'',
-    capCost:'',
-    packagingType:'',
-    packagingCost:'',
-    remarks:'',
+  const [machineDetails, setMachineDetails] = useState({
+    machineType: [],
+    cycleTime: [],
+    fixtureCost: [],
+    remarks: '',
+  })
+  const [qualityDetails, setQualityDetails] = useState({
+    gaugesCost: '',
+    leakCost: '',
+    washingCost: '',
+    capCost: '',
+    packagingType: '',
+    packagingCost: '',
+    remarks: '',
 
   });
 
-  const[npdDetails,setNpdDetails]=useState({
-      investment:'',
-      partFeasible:'',
-      remarks:'',
+  const [npdDetails, setNpdDetails] = useState({
+    investment: '',
+    partFeasible: '',
+    remarks: '',
   });
 
   const isStepSkipped = (step) => {
@@ -150,11 +153,13 @@ const Process = (props) => {
       console.log(riskDetails);
     } else if (activeStep === 3) {
       console.log(designDetails);
-    }else if (activeStep === 5) {
+    } else if (activeStep === 4) {
+      console.log(machineDetails);
+    } else if (activeStep === 5) {
       console.log(qualityDetails);
-    }else if (activeStep === 6) {
+    } else if (activeStep === 6) {
       console.log(npdDetails);
-  }
+    }
 
 
     let newSkipped = skipped;
@@ -200,14 +205,14 @@ const Process = (props) => {
           />
         )}
         {activeStep === 1 &&
-          < Inputs
+          <Inputs
             selectedOption={selectedOption}
             inputDetails={inputDetails}
             setInputDetails={setInputDetails}
 
           />}
         {activeStep === 2 &&
-          < RiskAnalysis
+          <RiskAnalysis
             riskDetails={riskDetails}
             setRiskDetails={setRiskDetails}
           />}
@@ -216,9 +221,13 @@ const Process = (props) => {
             designDetails={designDetails}
             setDesignDetails={setDesignDetails}
           />}
-        {activeStep === 4 && <Machine />}
+        {activeStep === 4 &&
+          <Machine
+            machineDetails={machineDetails}
+            setMachineDetails={setMachineDetails}
+          />}
         {activeStep === 5 && (
-          <Quality 
+          <Quality
             qualityDetails={qualityDetails}
             setQualityDetails={setQualityDetails}
           />

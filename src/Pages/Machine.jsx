@@ -11,18 +11,7 @@ import { useState } from "react";
 import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 
 const Machine = (props) => {
-
-  const { details, setDetails } = props;
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-
-    setDetails({
-      ...details,
-      [name]: value
-    });
-  };
-
-
+  const { machineDetails, setMachineDetails } = props;
 
   const redAsteriskStyle = {
     color: 'red',
@@ -31,53 +20,57 @@ const Machine = (props) => {
   const [fields, setFields] = useState([
     {
       id: 1,
-      label: "Machine Type",
-      type: "select",
+      label: 'Machine Type',
+      type: 'select',
       options: ['CNC', 'VMC', 'HMC', 'As cast'],
-      value: "",
+      value: '',
     },
     {
       id: 2,
-      label: "Cycle time",
-      value: "",
+      label: 'Cycle time',
+      value: '',
     },
     {
       id: 3,
-      label: "Machining Fixture cost",
-      value: "",
+      label: 'Machining Fixture cost',
+      value: '',
     },
   ]);
+
+  const [machineTypes, setMachineTypes] = useState([]);
+  const [cycleTimes, setCycleTimes] = useState([]);
+  const [fixtureCosts, setFixtureCosts] = useState([]);
 
   const addField = () => {
     const newFields = [
       ...fields,
       {
         id: fields.length + 1,
-        label: "Machine Type",
+        label: 'Machine Type',
         type: 'select',
         options: ['CNC', 'VMC', 'HMC', 'As cast'],
-        value: "",
+        value: '',
       },
       {
         id: fields.length + 2,
-        label: "Next Cycle time",
-        value: "",
+        label: 'Next Cycle time',
+        value: '',
       },
       {
         id: fields.length + 3,
-        label: "Next Machining Fixture cost",
-        value: "",
+        label: 'Next Machining Fixture cost',
+        value: '',
       },
     ];
     setFields(newFields);
   };
 
   const removeField = (id) => {
-
     const index = fields.findIndex((field) => field.id === id);
     if (index !== -1) {
-
-      const newFields = fields.filter((_, i) => i < index || i >= index + 3);
+      const newFields = fields.filter(
+        (_, i) => i < index || i >= index + 3
+      );
       setFields(newFields);
     }
   };
@@ -86,7 +79,49 @@ const Machine = (props) => {
     const updatedFields = fields.map((field) =>
       field.id === id ? { ...field, value: event.target.value } : field
     );
+
+    const fieldIndex = fields.findIndex((field) => field.id === id);
+    if (fieldIndex !== -1) {
+      if (fieldIndex % 3 === 0) {
+        const machineTypeIndex = fieldIndex / 3;
+        const newMachineTypes = [...machineTypes];
+        newMachineTypes[machineTypeIndex] = event.target.value;
+        setMachineTypes(newMachineTypes);
+        setMachineDetails((prevMachineDetails) => ({
+          ...prevMachineDetails,
+          machineType: newMachineTypes,
+        }));
+      } else if (fieldIndex % 3 === 1) {
+        const cycleTimeIndex = (fieldIndex - 1) / 3;
+        const newCycleTimes = [...cycleTimes];
+        newCycleTimes[cycleTimeIndex] = event.target.value;
+        setCycleTimes(newCycleTimes);
+        setMachineDetails((prevMachineDetails) => ({
+          ...prevMachineDetails,
+          cycleTime: newCycleTimes,
+        }));
+      } else {
+        const fixtureCostIndex = (fieldIndex - 2) / 3;
+        const newFixtureCosts = [...fixtureCosts];
+        newFixtureCosts[fixtureCostIndex] = event.target.value;
+        setFixtureCosts(newFixtureCosts);
+        setMachineDetails((prevMachineDetails) => ({
+          ...prevMachineDetails,
+          fixtureCost: newFixtureCosts,
+        }));
+      }
+    }
+
     setFields(updatedFields);
+  };
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+
+    setMachineDetails({
+      ...machineDetails,
+      [name]: value
+    });
   };
 
   return (
@@ -156,21 +191,21 @@ const Machine = (props) => {
             </Grid>
           ))}
           <Grid item xs={12} sm={12}>
-        <Stack direction="row" spacing={4} sx={{ justifyContent: 'center' }}>
-          {fields.length > 3 && (
-            <IconButton
-              onClick={() => removeField(fields[fields.length - 3].id)}
-            >
-              <RemoveIcon />
-            </IconButton>
-          )}
-          {fields.length < 21 && (
-            <IconButton onClick={addField}>
-              <AddIcon />
-            </IconButton>
-          )}
-        </Stack>
-        </Grid>
+            <Stack direction="row" spacing={4} sx={{ justifyContent: 'center' }}>
+              {fields.length > 3 && (
+                <IconButton
+                  onClick={() => removeField(fields[fields.length - 3].id)}
+                >
+                  <RemoveIcon />
+                </IconButton>
+              )}
+              {fields.length < 21 && (
+                <IconButton onClick={addField}>
+                  <AddIcon />
+                </IconButton>
+              )}
+            </Stack>
+          </Grid>
           <Grid item xs={12} sm={12}>
             <Typography
               variant="subtitle1"
