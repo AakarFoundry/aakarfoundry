@@ -44,6 +44,8 @@ const Process = (props) => {
       name: '',
       partMach: '',
       partCast: '',
+      finishWeight:'',
+      castingWeight:'',
       details: '',
       enquiry: '',
       quantity: '',
@@ -53,18 +55,17 @@ const Process = (props) => {
       machined: '',
       blasting: '',
       productQc: '',
-      anodizing: '',
-      coating: '',
+      surfaceTreatment: [],
+      treatmentSpecification:[],
       materials: '',
       pressure: '',
       impregnation: '',
       treatment: '',
       packaging: '',
+      custom:'',
       delivery: '',
       works: '',
       tonnage: '',
-      sampleDate: '',
-      pswDate: '',
       remarks: ''
     }
     : {
@@ -143,7 +144,6 @@ const Process = (props) => {
   const handleNext = () => {
     if (activeStep === 0) {
       console.log(details);
-      console.log("Selected Option:", selectedOption);
     } else if (activeStep === 1) {
       console.log(inputDetails);
     } else if (activeStep === 2) {

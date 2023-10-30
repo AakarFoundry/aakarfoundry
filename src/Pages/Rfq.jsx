@@ -58,7 +58,8 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) =>  {
     ];
     setFields(newFields);
   };
-
+  const [surfaceTreatments, setSurfaceTreatments] = useState([]); 
+  const [surfaceTreatmentSpecs, setSurfaceTreatmentSpecs] = useState([]);
   const removeField = (id) => {
 
     const index = fields.findIndex((field) => field.id === id);
@@ -73,13 +74,22 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) =>  {
     // Calculate Annual Tonnage whenever finishWeight or quantity changes
     if (finishWeight && quantity) {
       const calculatedTonnage = (finishWeight * quantity) / 1000;
-      setAnnualTonnage(calculatedTonnage.toFixed(2)); // Round to 2 decimal places
+      setAnnualTonnage(calculatedTonnage.toFixed(2));
+      setInputDetails((prevInputDetails) => ({
+        ...prevInputDetails,
+        tonnage: calculatedTonnage.toFixed(2) 
+      }));
     } else {
-      setAnnualTonnage(""); // Reset tonnage if either finishWeight or quantity is empty
+      setAnnualTonnage(""); 
+      setInputDetails((prevInputDetails) => ({
+        ...prevInputDetails,
+        tonnage: ''
+      }));
     }
-  }, [finishWeight, quantity]);
+  }, [finishWeight, quantity, setInputDetails]);
 
   const handleFinishWeightChange = (event) => {
+    handleInputChange(event);
     const inputValue = event.target.value;
     // Validate input to allow numeric and decimal values
     if (/^\d*\.?\d*$/.test(inputValue)) {
@@ -89,6 +99,7 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) =>  {
 
 
   const handleQuantityChange = (event) => {
+    handleInputChange(event);
     const inputValue = event.target.value;
     // Validate input to allow numeric and decimal values
     if (/^\d*\.?\d*$/.test(inputValue)) {
@@ -97,11 +108,40 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) =>  {
   };
 
   const handleChange = (id, event) => {
-    const updatedFields = fields.map((field) =>
-      field.id === id ? { ...field, value: event.target.value } : field
-    );
+    const updatedFields = fields.map(field => {
+      if (field.id === id) {
+        return { ...field, value: event.target.value };
+      }
+      return field;
+    });
+  
+    // Update Surface Treatments and Surface Treatment Specifications
+    const fieldIndex = fields.findIndex(field => field.id === id);
+    if (fieldIndex !== -1) {
+      if (fieldIndex % 2 === 0) {
+        const surfaceTreatmentIndex = fieldIndex / 2;
+        const newSurfaceTreatments = [...surfaceTreatments];
+        newSurfaceTreatments[surfaceTreatmentIndex] = event.target.value;
+        setSurfaceTreatments(newSurfaceTreatments);
+        setInputDetails(prevInputDetails => ({
+          ...prevInputDetails,
+          surfaceTreatment: newSurfaceTreatments
+        }));
+      } else {
+
+        const surfaceTreatmentSpecIndex = (fieldIndex - 1) / 2;
+        const newSurfaceTreatmentSpecs = [...surfaceTreatmentSpecs];
+        newSurfaceTreatmentSpecs[surfaceTreatmentSpecIndex] = event.target.value;
+        setSurfaceTreatmentSpecs(newSurfaceTreatmentSpecs);
+        setInputDetails(prevInputDetails => ({
+          ...prevInputDetails,
+          treatmentSpecification: newSurfaceTreatmentSpecs
+        }));
+      }
+    }
+  
     setFields(updatedFields);
-  }; 
+  };
 
   return (
     <div>
@@ -224,7 +264,6 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) =>  {
                 size="small"
                 value={finishWeight}
                 onChange={handleFinishWeightChange}
-                onChange={handleInputChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -326,7 +365,6 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) =>  {
                 size="small"
                 value={quantity}
                 onChange={handleQuantityChange}
-                onChange={handleInputChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
