@@ -230,7 +230,7 @@ export const Register = () => {
               </Button>
               <div className={styles.registerLine}>
                 
-                Already a member?&nbsp;
+                Already a Member?&nbsp;
                 <Link href="/" variant="body2">
                   {"Login"}
                 </Link>
@@ -259,7 +259,7 @@ export const Register = () => {
               }}
               onClose={() => setIsSuccess(false)}
             >
-              Registration successful!
+              Registration Successful!
             </Alert>
           )}
 
@@ -284,7 +284,7 @@ export const Register = () => {
               }}
               onClose={() => setIsFailure(false)}
             >
-              Registration failed.
+              Registration Failed.
             </Alert>
           )}
         </Container>

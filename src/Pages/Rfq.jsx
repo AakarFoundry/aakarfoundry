@@ -379,7 +379,7 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) =>  {
                 }}
               >
 
-                Product Life (in Years) <span style={{ color: "red" }}>*</span>
+                Product Life (In Years) <span style={{ color: "red" }}>*</span>
               </Typography>
 
 
@@ -680,7 +680,7 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) =>  {
                 }}
               >
                 {" "}
-                Heat treatment Required?<span style={{ color: "red" }}>*</span>
+                Heat Treatment Required?<span style={{ color: "red" }}>*</span>
               </Typography>
               <TextField
 
@@ -705,7 +705,7 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) =>  {
                 }}
               >
 
-                Packaging type <span style={{ color: "red" }}>*</span>
+                Packaging Type <span style={{ color: "red" }}>*</span>
               </Typography>
 
               <Select
