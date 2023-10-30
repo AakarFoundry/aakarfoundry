@@ -12,6 +12,7 @@ import styles from "../assets/styles/Form.module.css";
 import Inputs from "./Inputs";
 import NewProductDev from "./NewProduct";
 import Quality from "./Quality";
+import Summary from "./Summary";
 
 
 const Process = (props) => {
@@ -303,11 +304,26 @@ const Process = (props) => {
           />
         )}
         {activeStep === 7 ? (
-          <React.Fragment>
-            <Typography sx={{ mt: 2, mb: 1 }}>
-              All steps completed - you&apos;re finished
-            </Typography>
-          </React.Fragment>
+          
+          <div>
+            <Summary />
+            <Stack
+            direction="column"
+            alignItems="center"
+            spacing={2}
+            sx={{ mt: 2 }}
+          >
+            <Button
+              variant="contained"
+              size="large"
+              onClick={() => {
+                navigate("/dash");
+              }}
+            >
+              Go to Dashboard
+            </Button>
+          </Stack>
+          </div>
         ) : (
           <div>
             <React.Fragment>
