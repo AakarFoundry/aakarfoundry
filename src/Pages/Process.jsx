@@ -159,9 +159,12 @@ const Process = (props) => {
         stepDetails = details;
       }
     } else if (activeStep === 1) {
+      const surfaceTreatmentLength = inputDetails.surfaceTreatment.length;
+      const treatmentSpecificationLength = inputDetails.treatmentSpecification.length;
       if (
         (selectedOption === 'RFQ' && Object.values(inputDetails).some((value) => value === '')) ||
-        (selectedOption !== 'RFQ' && Object.values(inputDetails).some((value) => value === ''))
+        (selectedOption !== 'RFQ' && Object.values(inputDetails).some((value) => value === '')) ||
+        (surfaceTreatmentLength !== treatmentSpecificationLength)
       ) {
         isStepValid = false;
       }
@@ -196,10 +199,9 @@ const Process = (props) => {
         Object.values(machineDetails).some((value) => value === '') ||
         Object.values(machineDetails).some((value) => value === undefined) ||
         (machineTypeLength !== cycleTimeLength) ||
-         (cycleTimeLength !== fixtureCostLength) ||
-         (machineTypeLength !== fixtureCostLength)
-      )
-      {
+        (cycleTimeLength !== fixtureCostLength) ||
+        (machineTypeLength !== fixtureCostLength)
+      ) {
         isStepValid = false;
       }
       else {
