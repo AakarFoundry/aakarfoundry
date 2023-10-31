@@ -11,6 +11,7 @@ import Paper from "@mui/material/Paper";
 import Container from "@mui/material/Container";
 
 import { TablePagination } from "@mui/material";
+import NavBar from './../Components/NavBar';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -75,6 +76,8 @@ export default function Dashboard() {
   );
 
   return (
+    <div>
+    <NavBar />
     <Container
       sx={{
         display: "flex",
@@ -153,5 +156,6 @@ export default function Dashboard() {
         nextIconButtonText="Next Page"
       />
     </Container>
+    </div>
   );
 }

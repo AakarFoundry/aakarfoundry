@@ -441,7 +441,7 @@ const RiskAnalysis = (props) => {
               Remarks
             </Typography>
             <TextField
-              name="remarks_extra"
+              name="remarks"
               id="remarks_extra"
               label="Enter Remarks"
               variant="outlined"

@@ -18,7 +18,6 @@ const CustomerName = (props) => {
 
   const handleSelectChange = (e) => {
     const value = e.target.value;
-
     setDetails({
       ...details,
       category: value

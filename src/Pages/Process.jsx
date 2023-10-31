@@ -12,6 +12,7 @@ import Inputs from "./Inputs";
 import NewProductDev from "./NewProduct";
 import Quality from "./Quality";
 import Summary from "./Summary";
+import NavBar from "../Components/NavBar";
 
 
 const Process = (props) => {
@@ -20,7 +21,7 @@ const Process = (props) => {
   const navigate = useNavigate();
   const searchParams = new URLSearchParams(location.search);
   const activeStepFromQuery = parseInt(searchParams.get("step"), 10) || 0;
-  const selectedOptionFromQuery = searchParams.get("option") || "RFQ";
+  const selectedOptionFromQuery = searchParams.get("option") || "";
   const [activeStep, setActiveStep] = useState(activeStepFromQuery);
   const [skipped, setSkipped] = useState(new Set());
   const [selectedOption, setSelectedOption] = useState(selectedOptionFromQuery);
@@ -110,6 +111,7 @@ const Process = (props) => {
     regret: '',
     regret_remarks: 'NA',
     remarks_extra: 'NA',
+    remarks:'',
   }
   );
   const [machineDetails, setMachineDetails] = useState({
@@ -134,7 +136,7 @@ const Process = (props) => {
     remarks: 'NA',
   });
   useEffect(() => {
-    if (id !== undefined && id !== 'undefined') {
+    if (id !== undefined) {
       fetch(`http://localhost:3001/customers`)
         .then((res, err) => {
           return res.json();
@@ -153,6 +155,7 @@ const Process = (props) => {
   const handleNext = () => {
     let isStepValid = true;
     let stepDetails = null;
+    let name = null;
     if (activeStep === 0) {
       if (
         Object.values(details).some((value) => value === '') ||
@@ -162,19 +165,32 @@ const Process = (props) => {
       }
       else {
         stepDetails = details;
+        name = 'customer';
       }
     } else if (activeStep === 1) {
-      const surfaceTreatmentLength = inputDetails.surfaceTreatment.length;
-      const treatmentSpecificationLength = inputDetails.treatmentSpecification.length;
+
       if (
-        (selectedOption === 'RFQ' && Object.values(inputDetails).some((value) => value === '')) ||
-        (selectedOption !== 'RFQ' && Object.values(inputDetails).some((value) => value === '')) ||
-        (surfaceTreatmentLength !== treatmentSpecificationLength)
+        ((selectedOption === 'RFQ' && Object.values(inputDetails).some((value) => value === ''))) ||
+        (selectedOption !== 'RFQ' && Object.values(inputDetails).some((value) => value === ''))
       ) {
         isStepValid = false;
       }
       else {
+        if (selectedOption === 'RFQ') {
+          const surfaceTreatmentLength = inputDetails.surfaceTreatment.length;
+          const treatmentSpecificationLength = inputDetails.treatmentSpecification.length;
+          if ((surfaceTreatmentLength !== treatmentSpecificationLength)) {
+            isStepValid = false;
+          }
+        }
         stepDetails = inputDetails;
+        if (selectedOption === 'RFQ') {
+          name = 'rfq';
+        }
+        else {
+          name = 'ecn';
+        }
+
       }
     } else if (activeStep === 2) {
       if (
@@ -184,6 +200,7 @@ const Process = (props) => {
         isStepValid = false;
       }
       else {
+        name = 'risk';
         stepDetails = riskDetails;
       }
     } else if (activeStep === 3) {
@@ -194,6 +211,7 @@ const Process = (props) => {
         isStepValid = false;
       }
       else {
+        name = 'design';
         stepDetails = designDetails;
       }
     } else if (activeStep === 4) {
@@ -210,6 +228,7 @@ const Process = (props) => {
         isStepValid = false;
       }
       else {
+        name = 'machine';
         stepDetails = machineDetails;
       }
     } else if (activeStep === 5) {
@@ -220,6 +239,7 @@ const Process = (props) => {
         isStepValid = false;
       }
       else {
+        name = 'quality';
         stepDetails = qualityDetails;
       }
     } else if (activeStep === 6) {
@@ -230,13 +250,14 @@ const Process = (props) => {
         isStepValid = false;
       }
       else {
+        name = 'npd';
         stepDetails = npdDetails;
       }
     }
 
     if (isStepValid) {
       console.log(stepDetails);
-      fetch('http://localhost:4000/customer/new', {
+      fetch(`http://localhost:4000/${name}/new`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -244,7 +265,7 @@ const Process = (props) => {
         body: JSON.stringify(stepDetails),
         credentials: 'include',
       })
-      
+
       let newSkipped = skipped;
       if (isStepSkipped(activeStep)) {
         newSkipped = new Set(newSkipped.values());
@@ -289,6 +310,7 @@ const Process = (props) => {
 
   return (
     <div className={styles.process}>
+    <NavBar />
       <HorizontalLinearStepper
         activeStep={activeStep}
         setActiveStep={setActiveStep}
