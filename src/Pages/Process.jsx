@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 import HorizontalLinearStepper from "../Components/Stepper";
 import CustomerName from "./CustomerName";
 import RiskAnalysis from "./RiskAnalysis";
@@ -13,20 +12,19 @@ import Inputs from "./Inputs";
 import NewProductDev from "./NewProduct";
 import Quality from "./Quality";
 import Summary from "./Summary";
+import NavBar from "../Components/NavBar";
 
 
 const Process = (props) => {
-
+  const { id } = useParams();
   const location = useLocation();
   const navigate = useNavigate();
   const searchParams = new URLSearchParams(location.search);
   const activeStepFromQuery = parseInt(searchParams.get("step"), 10) || 0;
-  const selectedOptionFromQuery = searchParams.get("option") || "RFQ";
+  const selectedOptionFromQuery = searchParams.get("option") || "";
   const [activeStep, setActiveStep] = useState(activeStepFromQuery);
   const [skipped, setSkipped] = useState(new Set());
   const [selectedOption, setSelectedOption] = useState(selectedOptionFromQuery);
-
-
   const [details, setDetails] = useState({
     customerName: '',
     customerReference: '',
@@ -37,7 +35,6 @@ const Process = (props) => {
     category: ''
   }
   );
-
   const [inputDetails, setInputDetails] = useState(() => {
     if (selectedOption === 'RFQ') {
       return {
@@ -79,7 +76,6 @@ const Process = (props) => {
       };
     }
   });
-
   const [designDetails, setDesignDetails] = useState({
     weight: '',
     casting: '',
@@ -97,7 +93,6 @@ const Process = (props) => {
     remarks: 'NA',
   }
   );
-
   const [riskDetails, setRiskDetails] = useState({
     risk: '',
     requirement: '',
@@ -116,6 +111,7 @@ const Process = (props) => {
     regret: '',
     regret_remarks: 'NA',
     remarks_extra: 'NA',
+    remarks:'',
   }
   );
   const [machineDetails, setMachineDetails] = useState({
@@ -134,20 +130,32 @@ const Process = (props) => {
     remarks: 'NA',
 
   });
-
   const [npdDetails, setNpdDetails] = useState({
     investment: '',
     partFeasible: '',
     remarks: 'NA',
   });
-
+  useEffect(() => {
+    if (id !== undefined) {
+      fetch(`http://localhost:3001/customers`)
+        .then((res, err) => {
+          return res.json();
+        })
+        .then((data) => {
+          setDetails(data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, [])
   const isStepSkipped = (step) => {
     return skipped.has(step);
   };
-
   const handleNext = () => {
     let isStepValid = true;
     let stepDetails = null;
+    let name = null;
     if (activeStep === 0) {
       if (
         Object.values(details).some((value) => value === '') ||
@@ -157,16 +165,32 @@ const Process = (props) => {
       }
       else {
         stepDetails = details;
+        name = 'customer';
       }
     } else if (activeStep === 1) {
+
       if (
-        (selectedOption === 'RFQ' && Object.values(inputDetails).some((value) => value === '')) ||
+        ((selectedOption === 'RFQ' && Object.values(inputDetails).some((value) => value === ''))) ||
         (selectedOption !== 'RFQ' && Object.values(inputDetails).some((value) => value === ''))
       ) {
         isStepValid = false;
       }
       else {
+        if (selectedOption === 'RFQ') {
+          const surfaceTreatmentLength = inputDetails.surfaceTreatment.length;
+          const treatmentSpecificationLength = inputDetails.treatmentSpecification.length;
+          if ((surfaceTreatmentLength !== treatmentSpecificationLength)) {
+            isStepValid = false;
+          }
+        }
         stepDetails = inputDetails;
+        if (selectedOption === 'RFQ') {
+          name = 'rfq';
+        }
+        else {
+          name = 'ecn';
+        }
+
       }
     } else if (activeStep === 2) {
       if (
@@ -176,6 +200,7 @@ const Process = (props) => {
         isStepValid = false;
       }
       else {
+        name = 'risk';
         stepDetails = riskDetails;
       }
     } else if (activeStep === 3) {
@@ -186,6 +211,7 @@ const Process = (props) => {
         isStepValid = false;
       }
       else {
+        name = 'design';
         stepDetails = designDetails;
       }
     } else if (activeStep === 4) {
@@ -196,13 +222,13 @@ const Process = (props) => {
         Object.values(machineDetails).some((value) => value === '') ||
         Object.values(machineDetails).some((value) => value === undefined) ||
         (machineTypeLength !== cycleTimeLength) ||
-         (cycleTimeLength !== fixtureCostLength) ||
-         (machineTypeLength !== fixtureCostLength)
-      )
-      {
+        (cycleTimeLength !== fixtureCostLength) ||
+        (machineTypeLength !== fixtureCostLength)
+      ) {
         isStepValid = false;
       }
       else {
+        name = 'machine';
         stepDetails = machineDetails;
       }
     } else if (activeStep === 5) {
@@ -213,6 +239,7 @@ const Process = (props) => {
         isStepValid = false;
       }
       else {
+        name = 'quality';
         stepDetails = qualityDetails;
       }
     } else if (activeStep === 6) {
@@ -223,19 +250,29 @@ const Process = (props) => {
         isStepValid = false;
       }
       else {
+        name = 'npd';
         stepDetails = npdDetails;
       }
     }
 
     if (isStepValid) {
       console.log(stepDetails);
+      fetch(`http://localhost:4000/${name}/new`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(stepDetails),
+        credentials: 'include',
+      })
+
       let newSkipped = skipped;
       if (isStepSkipped(activeStep)) {
         newSkipped = new Set(newSkipped.values());
         newSkipped.delete(activeStep);
       }
       const nextStep = activeStep + 1;
-      navigate(`/details?step=${nextStep}&option=${selectedOption}`);
+      navigate(`/details/${id}/?step=${nextStep}&option=${selectedOption}`);
       setActiveStep(nextStep);
       setSkipped(newSkipped);
     } else {
@@ -246,21 +283,34 @@ const Process = (props) => {
   const handleBack = () => {
     const previousStep = activeStep - 1;
     if (previousStep >= 0) {
-      navigate(`/details?step=${previousStep}&option=${selectedOption}`);
+      if (id !== undefined && id !== 'undefined') {
+        navigate(`/details/${id}/?step=${activeStep}&option=${selectedOption}`);
+      } else {
+        navigate(`/details/?step=${activeStep}&option=${selectedOption}`);
+      }
       setActiveStep(previousStep);
     }
   };
   const handleOptionChange = (option) => {
     setSelectedOption(option);
-    navigate(`/details?step=${activeStep}&option=${option}`);
+    if (id !== undefined && id !== 'undefined') {
+      navigate(`/details/${id}/?step=${activeStep}&option=${selectedOption}`);
+    } else {
+      navigate(`/details/?step=${activeStep}&option=${selectedOption}`);
+    }
   };
   useEffect(() => {
-    navigate(`/details?step=${activeStep}&option=${selectedOption}`);
-  }, [activeStep, selectedOption, navigate]);
+    if (id !== undefined && id !== 'undefined') {
+      navigate(`/details/${id}/?step=${activeStep}&option=${selectedOption}`);
+    } else {
+      navigate(`/details/?step=${activeStep}&option=${selectedOption}`);
+    }
+  }, [id, activeStep, selectedOption, navigate]);
 
 
   return (
     <div className={styles.process}>
+    <NavBar />
       <HorizontalLinearStepper
         activeStep={activeStep}
         setActiveStep={setActiveStep}

@@ -53,7 +53,7 @@ export const Login = () => {
   useEffect(() => {
     setForm({
       email: "",
-      passowrd: "",
+      password: "",
     });
   }, []);
   const [showPassword, setShowPassword] = useState(false);

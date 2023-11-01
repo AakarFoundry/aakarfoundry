@@ -10,6 +10,7 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { Link } from "react-router-dom";
 import { Grid } from "@mui/material";
+import NavBar from "../Components/NavBar";
 
 const ChangePassword = () => {
   const [oldPassValidation, setOldPassValidation] = useState(false);
@@ -53,22 +54,22 @@ const ChangePassword = () => {
   const handleConfirmPassword = (e) => {
     const confirmPassword = e.target.value;
     setConfirmPass(confirmPassword);
-  
+
     // Password criteria validation logic
     const lengthRegex = /.{8,}/;
     const uppercaseRegex = /[A-Z]/;
     const specialCharRegex = /[!@#$%^&*(),.?":{}|<>]/;
     const numericRegex = /[0-9]/;
-  
+
     const isLengthValid = lengthRegex.test(confirmPassword);
     const isUppercaseValid = uppercaseRegex.test(confirmPassword);
     const isSpecialCharValid = specialCharRegex.test(confirmPassword);
     const isNumericValid = numericRegex.test(confirmPassword);
-  
+
     // Enable confirm password validation only if the new password meets all criteria
     const isNewPasswordValid = isLengthValid && isUppercaseValid && isSpecialCharValid && isNumericValid;
     setNewPassValidation(isNewPasswordValid);
-  
+
     // Handle error messages for mismatched passwords and missing password policies
     let errorMessage = "";
     if (!isNewPasswordValid) {
@@ -86,15 +87,15 @@ const ChangePassword = () => {
     if (!isNumericValid) {
       errorMessage += "Password must include at least one numeric character. ";
     }
-  
+
     setPasswordPolicyError(errorMessage.trim());
-    
+
     // Enable confirm password validation only if the new password and old password are valid
     const isConfirmPasswordValid = confirmPassword === newPass && isNewPasswordValid && oldPassValidation;
     setConfirmPassValidation(isConfirmPasswordValid);
   };
-  
-  
+
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -108,7 +109,7 @@ const ChangePassword = () => {
   };
 
 
-  
+
 
   const passwordPolicyText = (
     <Typography variant="body2" sx={{ mt: 2, color: "red" }}>
@@ -120,7 +121,8 @@ const ChangePassword = () => {
     </Typography>
   );
   return (
-    
+    <div>
+    <NavBar />
       <Container
         component="main"
         maxWidth="xs"
@@ -139,7 +141,7 @@ const ChangePassword = () => {
           }}
         >
           <Typography component="h1" variant="h5" sx={{ color: "#18234F", fontWeight: "600" }}>
-            Change Password 
+            Change Password
           </Typography>
           <Box
             component="form"
@@ -157,38 +159,38 @@ const ChangePassword = () => {
                 paddingTop: "1rem",
               }}
             >
-              Enter old password <span style={{ color: "red" }}>*</span> 
-            <TextField
-              sx={{
-                "& .MuiInputLabel-root": { color: "#18234F" },
-                "& .MuiOutlinedInput-root": {
-                  "& > fieldset": { border: 0.5, borderColor: "#18234F" },
-                },
-              }}
-              // margin="normal"
-              
-              fullWidth
-              id="Old password"
-              onChange={handleOldPassword}
-              name="Old password"
-              type={showOldPassword ? "text" : "password"}
-              autoComplete="Old password"
-              autoFocus
-              InputProps={{
-                endAdornment: (
-                  <IconButton
-                    onClick={() => setShowOldPassword(!showOldPassword)}
-                    edge="end"
-                  >
-                    {showOldPassword ? <Visibility /> : <VisibilityOff />}
-                  </IconButton>
-                ),
-              }}
-            />
+              Enter old password <span style={{ color: "red" }}>*</span>
+              <TextField
+                sx={{
+                  "& .MuiInputLabel-root": { color: "#18234F" },
+                  "& .MuiOutlinedInput-root": {
+                    "& > fieldset": { border: 0.5, borderColor: "#18234F" },
+                  },
+                }}
+                // margin="normal"
+
+                fullWidth
+                id="Old password"
+                onChange={handleOldPassword}
+                name="Old password"
+                type={showOldPassword ? "text" : "password"}
+                autoComplete="Old password"
+                autoFocus
+                InputProps={{
+                  endAdornment: (
+                    <IconButton
+                      onClick={() => setShowOldPassword(!showOldPassword)}
+                      edge="end"
+                    >
+                      {showOldPassword ? <Visibility /> : <VisibilityOff />}
+                    </IconButton>
+                  ),
+                }}
+              />
             </Typography>
-          
-        
-          
+
+
+
             <Typography
               variant="subtitle1"
               sx={{
@@ -199,39 +201,39 @@ const ChangePassword = () => {
                 paddingTop: "1rem",
               }}
             >
-              Enter New password <span style={{ color: "red" }}>*</span> 
-            
-            <TextField
-              sx={{
-                "& .MuiInputLabel-root": { color: "#18234F" },
-                "& .MuiOutlinedInput-root": {
-                  "& > fieldset": { border: 0.5, borderColor: "#18234F" },
-                },
-              }}
-              // margin="normal"
-              
-              fullWidth
-              name="New password"
-              onChange={handleNewPassword}
-              type={showNewPassword ? "text" : "password"}
-              onFocus={() => setShowPasswordPolicy(true)}
-              onBlur={() => setShowPasswordPolicy(false)}
-              id="New password"
-              InputProps={{
-                endAdornment: (
-                  <IconButton
-                    onClick={() => setShowNewPassword(!showNewPassword)}
-                    edge="end"
-                  >
-                    {showNewPassword ? <Visibility /> : <VisibilityOff />}
-                  </IconButton>
-                ),
-              }}
-            />
+              Enter New password <span style={{ color: "red" }}>*</span>
+
+              <TextField
+                sx={{
+                  "& .MuiInputLabel-root": { color: "#18234F" },
+                  "& .MuiOutlinedInput-root": {
+                    "& > fieldset": { border: 0.5, borderColor: "#18234F" },
+                  },
+                }}
+                // margin="normal"
+
+                fullWidth
+                name="New password"
+                onChange={handleNewPassword}
+                type={showNewPassword ? "text" : "password"}
+                onFocus={() => setShowPasswordPolicy(true)}
+                onBlur={() => setShowPasswordPolicy(false)}
+                id="New password"
+                InputProps={{
+                  endAdornment: (
+                    <IconButton
+                      onClick={() => setShowNewPassword(!showNewPassword)}
+                      edge="end"
+                    >
+                      {showNewPassword ? <Visibility /> : <VisibilityOff />}
+                    </IconButton>
+                  ),
+                }}
+              />
             </Typography>
-          
-        
-          
+
+
+
             <Typography
               variant="subtitle1"
               sx={{
@@ -242,59 +244,59 @@ const ChangePassword = () => {
                 paddingTop: "1rem",
               }}
             >
-              Confirm New password <span style={{ color: "red" }}>*</span> 
-            
-            <TextField
-              sx={{
-                "& .MuiInputLabel-root": { color: "#18234F" },
-                "& .MuiOutlinedInput-root": {
-                  "& > fieldset": { border: 0.5, borderColor: "#18234F" },
-                },
-              }}
-              // margin="normal"
-              
-              fullWidth
-              onChange={handleConfirmPassword}
-              name="Confirm new password"
-              type={showConfirmPassword ? "text" : "password"}
-              id="Confirm new password"
-              onFocus={() => setShowPasswordPolicy(true)}
-              onBlur={() => setShowPasswordPolicy(false)}
-              InputProps={{
-                endAdornment: (
-                  <IconButton
-                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                    edge="end"
-                  >
-                    {showConfirmPassword ? <Visibility /> : <VisibilityOff />}
-                  </IconButton>
-                ),
-              }}
-            />
+              Confirm New password <span style={{ color: "red" }}>*</span>
+
+              <TextField
+                sx={{
+                  "& .MuiInputLabel-root": { color: "#18234F" },
+                  "& .MuiOutlinedInput-root": {
+                    "& > fieldset": { border: 0.5, borderColor: "#18234F" },
+                  },
+                }}
+                // margin="normal"
+
+                fullWidth
+                onChange={handleConfirmPassword}
+                name="Confirm new password"
+                type={showConfirmPassword ? "text" : "password"}
+                id="Confirm new password"
+                onFocus={() => setShowPasswordPolicy(true)}
+                onBlur={() => setShowPasswordPolicy(false)}
+                InputProps={{
+                  endAdornment: (
+                    <IconButton
+                      onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                      edge="end"
+                    >
+                      {showConfirmPassword ? <Visibility /> : <VisibilityOff />}
+                    </IconButton>
+                  ),
+                }}
+              />
             </Typography>
-        
-         
+
+
             {confirmPass !== newPass && confirmPass !== "" && newPass !== "" && (
-  <p className={`${styles.textDanger}`}>
-    Entered Passwords do not match.
-  </p>
-)}
+              <p className={`${styles.textDanger}`}>
+                Entered Passwords do not match.
+              </p>
+            )}
 
             {passwordPolicyError && <p className={`${styles.textDanger}`}>{passwordPolicyError}</p>}
             {showPasswordPolicy && passwordPolicyText}
 
 
             <Link to={(confirmPassValidation && oldPassValidation) ? "/dash" : ""}>
-            <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 3, mb: 2, backgroundColor: "#1565C0" }}
-           disabled={!confirmPassValidation || !oldPassValidation || !newPassValidation}
-  >
-    Submit
-  </Button>
-</Link>
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2, backgroundColor: "#1565C0" }}
+                disabled={!confirmPassValidation || !oldPassValidation || !newPassValidation}
+              >
+                Submit
+              </Button>
+            </Link>
 
 
 
@@ -302,6 +304,7 @@ const ChangePassword = () => {
         </Box>
       </Container>
 
+    </div>
   );
 };
 

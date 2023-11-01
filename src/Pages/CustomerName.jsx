@@ -6,6 +6,7 @@ import { Menu, MenuItem, Select, Typography } from "@mui/material";
 const CustomerName = (props) => {
   
   const { selectedOption, handleOptionChange, details, setDetails } = props;
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
 
@@ -17,7 +18,6 @@ const CustomerName = (props) => {
 
   const handleSelectChange = (e) => {
     const value = e.target.value;
-
     setDetails({
       ...details,
       category: value
@@ -66,6 +66,7 @@ const CustomerName = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              value = {details.customerName}
               onChange={handleInputChange}
 
             />
@@ -93,7 +94,7 @@ const CustomerName = (props) => {
               size="small"
               value={details.customerReference}
               onChange={handleInputChange}
-              defaultValue=""
+              // defaultValue=""
             >
               <MenuItem value='Existing'>Existing</MenuItem>
               <MenuItem value='New'>New</MenuItem>
@@ -120,6 +121,7 @@ const CustomerName = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              value={details.contact}
               onChange={handleInputChange}
 
             />
@@ -145,6 +147,7 @@ const CustomerName = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              value={details.delivery}
               onChange={handleInputChange}
 
             />
@@ -171,6 +174,7 @@ const CustomerName = (props) => {
               fullWidth
               size="small"
               onChange={handleInputChange}
+              value={details.enquiry}
 
             />
           </Grid>
@@ -197,6 +201,7 @@ const CustomerName = (props) => {
               fullWidth
               size="small"
               onChange={handleInputChange}
+              value={details.path}
 
             />
           </Grid>
