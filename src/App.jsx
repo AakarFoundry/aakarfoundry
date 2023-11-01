@@ -15,6 +15,7 @@ import HorizontalLinearStepper from './Components/Stepper';
 import Approval from './Pages/Approval';
 import ChangePassword from './Pages/ChangePassword';
 import Summary from './Pages/Summary';
+import { UserApproval } from './Pages/UserApproval';
 function App() {
   return (
     <>
@@ -34,6 +35,8 @@ function App() {
           <Route path="/prod" element={<NewProductDev />} /> */}
           <Route path="/approval" element={<Approval />} />
           <Route path="/summary" element={<Summary />} />
+          <Route path="/user" element={<UserApproval />} />
+
           <Route path="/change-password" element={<ChangePassword />} />
 
 

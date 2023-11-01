@@ -140,6 +140,7 @@ const Machine = (props) => {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+
         }}
         noValidate
         autoComplete="on"
@@ -147,49 +148,54 @@ const Machine = (props) => {
         <Grid container spacing={4}>
           {fields.map((field) => (
             <Grid item xs={12} sm={4} key={field.id}>
-              <Typography
-                variant="subtitle1"
+              <Box
                 sx={{
-                  textAlign: 'left',
-                  color: '#054470',
-                  fontWeight: '650',
-                  fontSize: '1.2rem',
-                  padding: '0.3rem',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  height: '100%', // Set a fixed height for the box
                 }}
               >
-                {field.label}{field.label.includes('') && <span style={redAsteriskStyle}>*</span>}
-              </Typography>
-              {field.type === 'select' ? (
-                <FormControl variant="outlined" fullWidth size="small">
-                  <Select
-
-                    labelId={`${field.id}-label`}
-                    id={field.id}
+                <Typography
+                  variant="subtitle1"
+                  sx={{
+                    textAlign: 'left',
+                    color: '#054470',
+                    fontWeight: '650',
+                    fontSize: '1.2rem',
+                    padding: '0.3rem',
+                  }}
+                >
+                  {field.label}{field.label.includes('') && <span style={redAsteriskStyle}>*</span>}
+                </Typography>
+                {field.type === 'select' ? (
+                  <FormControl variant="outlined" fullWidth size="small">
+                    <Select
+                      labelId={`${field.id}-label`}
+                      id={field.id}
+                      variant="outlined"
+                      fullWidth
+                      value={field.value}
+                      onChange={(event) => handleChange(field.id, event)}
+                      defaultValue=""
+                    >
+                      {field.options.map((option) => (
+                        <MenuItem key={option} value={option}>
+                          {option}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </FormControl>
+                ) : (
+                  <TextField
+                    label="Enter Details"
                     variant="outlined"
                     fullWidth
+                    size="small"
                     value={field.value}
                     onChange={(event) => handleChange(field.id, event)}
-                    defaultValue=""
-                  >
-                    {field.options.map((option) => (
-                      <MenuItem key={option} value={option}>
-                        {option}
-                      </MenuItem>
-                    ))}
-                  </Select>
-                </FormControl>
-              ) : (
-
-                <TextField
-
-                  label="Enter Details"
-                  variant="outlined"
-                  fullWidth
-                  size="small"
-                  value={field.value}
-                  onChange={(event) => handleChange(field.id, event)}
-                />
-              )}
+                  />
+                )}
+              </Box>
             </Grid>
           ))}
           <Grid item xs={12} sm={12}>
@@ -218,7 +224,6 @@ const Machine = (props) => {
                 fontSize: "1.2rem",
               }}
             >
-
               Remarks
             </Typography>
             <TextField
