@@ -167,14 +167,14 @@ const CustomerName = (props) => {
             </Typography>
             <TextField
 
-              name="enquiry"
-              id="enquiry"
+              name="enquiryDate"
+              id="enquiryDate"
               label=" Enter Details"
               variant="outlined"
               fullWidth
               size="small"
               onChange={handleInputChange}
-              value={details.enquiry}
+              value={details.enquiryDate}
 
             />
           </Grid>

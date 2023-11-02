@@ -42,13 +42,14 @@ const Ecn = ({inputDetails, setInputDetails, handleInputChange}) => {
               </Typography>
 
               <TextField
-                
-                name="ecnNo"
-                id="ecnNo"
+                disabled
+                name="enquiry"
+                id="enquiry"
                 label="Enter Details  "
                 variant="outlined"
                 fullWidth
                 size="small"
+                value={inputDetails.enquiry}
                 onChange={handleInputChange}
               />
             </Grid>
