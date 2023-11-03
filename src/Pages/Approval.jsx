@@ -73,89 +73,100 @@ export default function Approval() {
   );
 
   return (
-    <div>
-    <NavBar />
-    <Container
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        minHeight: "100vh",
-        justifyContent: "center",
-        mt: "5rem",
-      }}
-    >
-      <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 700 }} aria-label="customized table">
-          <TableHead>
-            <TableRow>
-              <StyledTableCell align="center"> Name</StyledTableCell>
-              <StyledTableCell align="center"> ID</StyledTableCell>
-              <StyledTableCell align="center">Contact No</StyledTableCell>
-              <StyledTableCell align="center">Department</StyledTableCell>
+     <div>
+      <NavBar />
+      <Container
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          minHeight: "100vh",
+          justifyContent: "center",
+          mt: "5rem",
+        }}
+      >
+        <TableContainer component={Paper}>
+          <Table sx={{ minWidth: 700 }} aria-label="customized table">
+            <TableHead>
+              <TableRow>
+                <StyledTableCell align="center"> Name</StyledTableCell>
+                <StyledTableCell align="center"> ID</StyledTableCell>
+                <StyledTableCell align="center">Contact No</StyledTableCell>
+                <StyledTableCell align="center">Department</StyledTableCell>
+                <StyledTableCell align="center">Reset Password</StyledTableCell>
+                <StyledTableCell align="center">Delete User</StyledTableCell>
 
-              <StyledTableCell align="center">Approval</StyledTableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {slicedRows.map((row) => (
-              <StyledTableRow key={row.name}>
-                <StyledTableCell component="th" scope="row">
-                  {row.name}
-                </StyledTableCell>
-                <StyledTableCell align="center">{row.id}</StyledTableCell>
-                <StyledTableCell align="center">{row.status}</StyledTableCell>
-                <StyledTableCell align="center">
-                  {row.department}
-                </StyledTableCell>
-                <StyledTableCell align="center">
-                  <Button
-                    variant="contained"
-                    style={{
-                      background: "#64c664",
-                      minWidth: "100px",
-                      marginRight: "10px",
-                    }}
-                  >
-                    Yes
-                  </Button>
-                  <Button
-                    variant="contained"
-                    style={{
-                      background: "#c42222",
-                      minWidth: "100px",
-                    }}
-                  >
-                    No
-                  </Button>
-                </StyledTableCell>
-              </StyledTableRow>
-            ))}
-
-            {emptyRows > 0 && (
-              <TableRow style={{ height: 53 * emptyRows }}>
-                <StyledTableCell colSpan={5} />
               </TableRow>
-            )}
-          </TableBody>
-        </Table>
-      </TableContainer>
-      <TablePagination
-        rowsPerPageOptions={[5, 10, 25]}
-        component="div"
-        count={rows.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onPageChange={handleChangePage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
-        labelRowsPerPage="Rows per page"
-        labelDisplayedRows={({ from, to, count }) =>
-          `${from}-${to} of ${count}`
-        }
-        backIconButtonText="Previous Page"
-        nextIconButtonText="Next Page"
-      />
-    </Container>
+            </TableHead>
+            <TableBody>
+              {slicedRows.map((row) => (
+                <StyledTableRow key={row.name}>
+                  <StyledTableCell component="th" scope="row">
+                    {row.name}
+                  </StyledTableCell>
+                  <StyledTableCell align="center">{row.id}</StyledTableCell>
+                  <StyledTableCell align="center">{row.status}</StyledTableCell>
+                  <StyledTableCell align="center">
+                    {row.department}
+                  </StyledTableCell>
+                  <StyledTableCell align="center">
+                    {/* Reset Password column */}
+                    <Button
+                      variant="contained"
+                      style={{
+                        background: "#64c664",
+                        minWidth: "100px",
+                        marginRight: "10px",
+                      }}
+                    >
+                      Reset
+                    </Button>
+                    
+                  </StyledTableCell>
+                  <StyledTableCell align="center"> 
+                      <Button
+                      variant="contained"
+                      style={{
+                        background: "#c42222",
+                        minWidth: "100px",
+                      }}
+                    >
+                      Delete
+                    </Button>
+                  </StyledTableCell>
+                
+                </StyledTableRow>
+              ))}
+
+              {emptyRows > 0 && (
+                <TableRow style={{ height: 53 * emptyRows }}>
+                  <StyledTableCell colSpan={6} /> {/* Update colSpan to match the number of columns */}
+                </TableRow>
+              )}
+            </TableBody>
+          </Table>
+        </TableContainer>
+        <TablePagination
+          rowsPerPageOptions={[5, 10, 25]}
+          component="div"
+          count={rows.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+          labelRowsPerPage="Rows per page"
+          labelDisplayedRows={({ from, to, count }) =>
+            `${from}-${to} of ${count}`
+          }
+          backIconButtonText="Previous Page"
+          nextIconButtonText="Next Page"
+        />
+      </Container>
     </div>
   );
 }
+
+
+
+
+
