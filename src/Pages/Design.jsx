@@ -59,6 +59,7 @@ const DesignFoundry = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              value={designDetails.weight}
               onChange={handleInputChange}
             />
           </Grid>
@@ -84,6 +85,7 @@ const DesignFoundry = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              value={designDetails.casting}
               onChange={handleInputChange}
             />
           </Grid>
@@ -110,6 +112,7 @@ const DesignFoundry = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              value={designDetails.area}
               onChange={handleInputChange}
             />
           </Grid>
@@ -135,6 +138,7 @@ const DesignFoundry = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              value={designDetails.dieCasting}
               onChange={handleInputChange}
             />
           </Grid>
@@ -160,6 +164,7 @@ const DesignFoundry = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              value={designDetails.impressions}
               onChange={handleInputChange}
             />
           </Grid>
@@ -186,6 +191,7 @@ const DesignFoundry = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              value={designDetails.rawMaterial}
               onChange={handleInputChange}
             />
           </Grid>
@@ -212,6 +218,7 @@ const DesignFoundry = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              value={designDetails.dieCost}
               onChange={handleInputChange}
             />
           </Grid>
@@ -238,6 +245,7 @@ const DesignFoundry = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              value={designDetails.coreCost}
               onChange={handleInputChange}
             />
           </Grid>
@@ -264,6 +272,7 @@ const DesignFoundry = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              value={designDetails.dieLife}
               onChange={handleInputChange}
             />
           </Grid>
@@ -289,6 +298,7 @@ const DesignFoundry = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              value={designDetails.diePeriod}
               onChange={handleInputChange}
             />
           </Grid>
@@ -315,6 +325,7 @@ const DesignFoundry = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              value={designDetails.shots}
               onChange={handleInputChange}
             />
           </Grid>
@@ -341,6 +352,7 @@ const DesignFoundry = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              value={designDetails.cores}
               onChange={handleInputChange}
             />
           </Grid>
@@ -367,6 +379,7 @@ const DesignFoundry = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              value={designDetails.sandWeight}
               onChange={handleInputChange}
             />
           </Grid>

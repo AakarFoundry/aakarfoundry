@@ -12,6 +12,8 @@ import Container from "@mui/material/Container";
 
 import { TablePagination } from "@mui/material";
 import NavBar from './../Components/NavBar';
+import { useState } from "react";
+import { useEffect } from "react";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -38,23 +40,46 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-function createData(name, id, status, views) {
-  return { name, id, status, views };
+// function createData(name, id, status, views) {
+//   return { name, id, status, views };
+// }
+
+// const rows = [
+//   createData("Customer 1", "12345", "Approved"),
+//   createData("Customer 2", "67890", "Pending"),
+//   createData("Customer 3", "54321", "Incomplete"),
+//   createData("Customer 4", "98765", "Rejected"),
+//   createData("Customer 5", "11111", "Approved"),
+//   createData("Customer 6", "11431", "Rejected"),
+//   createData("Customer 7", "54646", "Pending"),
+//   createData("Customer 8", "64566", "Incomplete"),
+//   createData("Customer 9", "23424", "Approved"),
+// ];
+async function fetchCustomerData() {
+  try {
+    const response = await fetch('http://localhost:4000/dashboard');
+    if (response.ok) {
+      const data = await response.json();
+      return data;
+    } else {
+      throw new Error('Failed to fetch data');
+    } 
+  } catch (error) {
+    console.error('Error fetching customer data: ', error);
+    return [];
+  }
 }
-
-const rows = [
-  createData("Customer 1", "12345", "Approved"),
-  createData("Customer 2", "67890", "Pending"),
-  createData("Customer 3", "54321", "Incomplete"),
-  createData("Customer 4", "98765", "Rejected"),
-  createData("Customer 5", "11111", "Approved"),
-  createData("Customer 6", "11431", "Rejected"),
-  createData("Customer 7", "54646", "Pending"),
-  createData("Customer 8", "64566", "Incomplete"),
-  createData("Customer 9", "23424", "Approved"),
-];
-
 export default function Dashboard() {
+  const [customers, setCustomers] =useState([]);
+  useEffect(()=>{
+    async function fetchData() {
+      const data = await fetchCustomerData();
+      setCustomers(data);
+    }
+    fetchData();
+  }, []);
+
+
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
@@ -68,9 +93,9 @@ export default function Dashboard() {
   };
 
   const emptyRows =
-    rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
+    rowsPerPage - Math.min(rowsPerPage, customers.length - page * rowsPerPage);
 
-  const slicedRows = rows.slice(
+  const slicedRows = customers.slice(
     page * rowsPerPage,
     page * rowsPerPage + rowsPerPage
   );
@@ -99,27 +124,27 @@ export default function Dashboard() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {slicedRows.map((row) => (
-              <StyledTableRow key={row.name}>
+            {slicedRows.map((customer) => (
+              <StyledTableRow key={customer.customerName}>
                 <StyledTableCell component="th" scope="row">
-                  {row.name}
+                  {customer.customerName}
                 </StyledTableCell>
-                <StyledTableCell align="center">{row.id}</StyledTableCell>
+                <StyledTableCell align="center">{customer.enquiry}</StyledTableCell>
                 <StyledTableCell align="center">
                   <Button
                     variant="contained"
                     color={
-                      row.status === "Incomplete"
+                      customer.contact === "Incomplete"
                         ? "primary"
-                        : row.status === "Pending"
+                        : customer.contact === "Pending"
                         ? "warning"
-                        : row.status === "Rejected"
+                        : customer.contact === "Rejected"
                         ? "error"
                         : "success"
                     }
                     style={{ minWidth: "8rem" }}
                   >
-                    {row.status}
+                    {customer.contact}
                   </Button>
                 </StyledTableCell>
                 <StyledTableCell align="center">
@@ -143,7 +168,7 @@ export default function Dashboard() {
       <TablePagination
         rowsPerPageOptions={[5, 10, 25, 50, 100]}
         component="div"
-        count={rows.length}
+        count={customers.length}
         rowsPerPage={rowsPerPage}
         page={page}
         onPageChange={handleChangePage}

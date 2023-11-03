@@ -30,14 +30,93 @@ const Process = (props) => {
     customerReference: '',
     contact: '',
     delivery: '',
-    enquiry: '',
+    enquiryDate: '',
     path: '',
-    category: ''
+    category: ''  
   }
   );
-  const [inputDetails, setInputDetails] = useState(() => {
+  const [inputDetails, setInputDetails] = useState({});
+  const [designDetails, setDesignDetails] = useState({
+    enquiry:'',
+    weight: '',
+    casting: '',
+    area: '',
+    dieCasting: '',
+    impressions: '',
+    rawMaterial: '',
+    dieCost: '',
+    coreCost: '',
+    dieLife: '',
+    diePeriod: '',
+    shots: '',
+    cores: '',
+    sandWeight: '',
+    remarks: 'NA',
+  }
+  );
+  const [riskDetails, setRiskDetails] = useState({
+    enquiry:'',
+    risk: '',
+    requirement: '',
+    application: '',
+    internal: '',
+    environment: '',
+    environment_remarks: 'NA',
+    investment: '',
+    investment_remarks: 'NA',
+    manufacturing: '',
+    manufacturing_remarks: 'NA',
+    technical: '',
+    technical_remarks: 'NA',
+    estimation: '',
+    estimation_remarks: 'NA',
+    regret: '',
+    regret_remarks: 'NA',
+    remarks: 'NA',
+  }
+  );
+  const [machineDetails, setMachineDetails] = useState({
+    enquiry:'',
+    machineType: [],
+    cycleTime: [],
+    fixtureCost: [],
+    remarks: 'NA',
+  })
+  const [qualityDetails, setQualityDetails] = useState({
+    enquiry:'',
+    gaugesCost: '',
+    leakCost: '',
+    washingCost: '',
+    capCost: '',
+    packagingType: '',
+    packagingCost: '',
+    remarks: 'NA',
+
+  });
+  const [npdDetails, setNpdDetails] = useState({
+    enquiry:'',
+    investment: '',
+    partFeasible: '',
+    remarks: 'NA',
+  });
+  useEffect(() => {
+    if (id !== undefined) {
+      fetch(`http://localhost:3001/customers`)
+        .then((res, err) => {
+          return res.json();
+        })
+        .then((data) => {
+          setDetails(data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+
+    }
+  }, [])
+  useEffect(() => {
     if (selectedOption === 'RFQ') {
-      return {
+      setInputDetails({
         name: '',
         partMach: '',
         partCast: '',
@@ -64,91 +143,18 @@ const Process = (props) => {
         works: '',
         tonnage: '',
         remarks: 'NA'
-      };
+      });
     } else {
-      return {
-        ecnNo: '',
+      setInputDetails({
+        enquiry: '',
         partName: '',
         number: '',
         weight: '',
         projectName: '',
         ecnType: ''
-      };
+      });
     }
-  });
-  const [designDetails, setDesignDetails] = useState({
-    weight: '',
-    casting: '',
-    area: '',
-    dieCasting: '',
-    impressions: '',
-    rawMaterial: '',
-    dieCost: '',
-    coreCost: '',
-    dieLife: '',
-    diePeriod: '',
-    shots: '',
-    cores: '',
-    sandWeight: '',
-    remarks: 'NA',
-  }
-  );
-  const [riskDetails, setRiskDetails] = useState({
-    risk: '',
-    requirement: '',
-    application: '',
-    internal: '',
-    environment: '',
-    environment_remarks: 'NA',
-    investment: '',
-    investment_remarks: 'NA',
-    manufacturing: '',
-    manufacturing_remarks: 'NA',
-    technical: '',
-    technical_remarks: 'NA',
-    estimation: '',
-    estimation_remarks: 'NA',
-    regret: '',
-    regret_remarks: 'NA',
-    remarks_extra: 'NA',
-    remarks:'',
-  }
-  );
-  const [machineDetails, setMachineDetails] = useState({
-    machineType: [],
-    cycleTime: [],
-    fixtureCost: [],
-    remarks: 'NA',
-  })
-  const [qualityDetails, setQualityDetails] = useState({
-    gaugesCost: '',
-    leakCost: '',
-    washingCost: '',
-    capCost: '',
-    packagingType: '',
-    packagingCost: '',
-    remarks: 'NA',
-
-  });
-  const [npdDetails, setNpdDetails] = useState({
-    investment: '',
-    partFeasible: '',
-    remarks: 'NA',
-  });
-  useEffect(() => {
-    if (id !== undefined) {
-      fetch(`http://localhost:3001/customers`)
-        .then((res, err) => {
-          return res.json();
-        })
-        .then((data) => {
-          setDetails(data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-  }, [])
+  }, [selectedOption]);
   const isStepSkipped = (step) => {
     return skipped.has(step);
   };
@@ -257,14 +263,57 @@ const Process = (props) => {
 
     if (isStepValid) {
       console.log(stepDetails);
-      fetch(`http://localhost:4000/${name}/new`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(stepDetails),
-        credentials: 'include',
-      })
+      if (name === 'customer') {
+        fetch(`http://localhost:4000/${name}/new`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(stepDetails),
+          credentials: 'include',
+        }).then(res => {
+          if(res.ok) {
+            return res.json();
+          } else {
+            throw new Error("Network response failed")
+          }
+        }).then(data => {
+          const enquiry = data.enquiryNo;
+          setInputDetails({
+            ...inputDetails,
+            enquiry:enquiry
+          });
+          setRiskDetails({
+            ...riskDetails,
+            enquiry:enquiry
+          });
+          setDesignDetails({
+            ...designDetails,
+            enquiry:enquiry
+          });
+          setMachineDetails({
+            ...machineDetails,
+            enquiry:enquiry
+          });
+          setQualityDetails({
+            ...qualityDetails,
+            enquiry:enquiry
+          });
+          setNpdDetails({
+            ...npdDetails,
+            enquiry:enquiry
+          });
+        })
+      } else {
+        fetch(`http://localhost:4000/${name}/new`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(stepDetails),
+          credentials: 'include',
+        })
+      }
 
       let newSkipped = skipped;
       if (isStepSkipped(activeStep)) {
@@ -310,7 +359,7 @@ const Process = (props) => {
 
   return (
     <div className={styles.process}>
-    <NavBar />
+      <NavBar />
       <HorizontalLinearStepper
         activeStep={activeStep}
         setActiveStep={setActiveStep}

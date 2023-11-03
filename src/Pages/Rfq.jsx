@@ -1,4 +1,4 @@
-import React, {useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
@@ -12,14 +12,14 @@ import AddIcon from "@mui/icons-material/Add";
 
 
 
-const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) =>  {
+const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) => {
 
   const [quantity, setQuantity] = useState("");
   const [finishWeight, setFinishWeight] = useState("");
   const [annualTonnage, setAnnualTonnage] = useState("");
-  
 
-  
+
+
 
   const redAsteriskStyle = {
     color: 'red',
@@ -58,7 +58,7 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) =>  {
     ];
     setFields(newFields);
   };
-  const [surfaceTreatments, setSurfaceTreatments] = useState([]); 
+  const [surfaceTreatments, setSurfaceTreatments] = useState([]);
   const [surfaceTreatmentSpecs, setSurfaceTreatmentSpecs] = useState([]);
   const removeField = (id) => {
 
@@ -77,10 +77,10 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) =>  {
       setAnnualTonnage(calculatedTonnage.toFixed(2));
       setInputDetails((prevInputDetails) => ({
         ...prevInputDetails,
-        tonnage: calculatedTonnage.toFixed(2) 
+        tonnage: calculatedTonnage.toFixed(2)
       }));
     } else {
-      setAnnualTonnage(""); 
+      setAnnualTonnage("");
       setInputDetails((prevInputDetails) => ({
         ...prevInputDetails,
         tonnage: ''
@@ -114,7 +114,7 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) =>  {
       }
       return field;
     });
-  
+
     // Update Surface Treatments and Surface Treatment Specifications
     const fieldIndex = fields.findIndex(field => field.id === id);
     if (fieldIndex !== -1) {
@@ -139,7 +139,7 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) =>  {
         }));
       }
     }
-  
+
     setFields(updatedFields);
   };
 
@@ -331,13 +331,14 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) =>  {
               </Typography>
 
               <TextField
-
+                disabled
                 name="enquiry"
                 id="enquiry"
                 label=" Enter Details"
                 variant="outlined"
                 fullWidth
                 size="small"
+                value={inputDetails.enquiry}
                 onChange={handleInputChange}
               />
             </Grid>
@@ -417,7 +418,6 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) =>  {
                 fullWidth
                 size="small"
                 onChange={handleInputChange}
-                defaultValue=''
                 value={inputDetails.processRequired}
               >
                 <MenuItem value="HPDC">HPDC</MenuItem>
@@ -532,51 +532,51 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) =>  {
             </Grid>
           </Grid>
           <Grid container spacing={4}>
-          {fields.map((field) => (
-            <Grid item xs={12} sm={6} key={field.id}>
-              <Typography
-                variant="subtitle1"
-                sx={{
-                  textAlign: 'left',
-                  color: '#054470',
-                  fontWeight: '650',
-                  fontSize: '1.2rem',
-                  padding: '0.3rem',
-                }}
-              >
-              {field.label}{field.label.includes('') && <span style={redAsteriskStyle}>*</span>}
-              </Typography>
-              {field.type === 'select' ? (
-                <FormControl variant="outlined" fullWidth size="small">
-                  <Select
-                    labelId={`${field.id}-label`}
-                    id={field.id}
+            {fields.map((field) => (
+              <Grid item xs={12} sm={6} key={field.id}>
+                <Typography
+                  variant="subtitle1"
+                  sx={{
+                    textAlign: 'left',
+                    color: '#054470',
+                    fontWeight: '650',
+                    fontSize: '1.2rem',
+                    padding: '0.3rem',
+                  }}
+                >
+                  {field.label}{field.label.includes('') && <span style={redAsteriskStyle}>*</span>}
+                </Typography>
+                {field.type === 'select' ? (
+                  <FormControl variant="outlined" fullWidth size="small">
+                    <Select
+                      labelId={`${field.id}-label`}
+                      id={field.id}
+                      variant="outlined"
+                      fullWidth
+                      value={field.value}
+                      onChange={(event) => handleChange(field.id, event)}
+                    >
+                      {field.options.map((option) => (
+                        <MenuItem key={option} value={option}>
+                          {option}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </FormControl>
+                ) : (
+
+                  <TextField
+
+                    label="Enter Details"
                     variant="outlined"
                     fullWidth
+                    size="small"
                     value={field.value}
                     onChange={(event) => handleChange(field.id, event)}
-                  >
-                    {field.options.map((option) => (
-                      <MenuItem key={option} value={option}>
-                        {option}
-                      </MenuItem>
-                    ))}
-                  </Select>
-                </FormControl>
-              ) : (
-
-                <TextField
-
-                  label="Enter Details"
-                  variant="outlined"
-                  fullWidth
-                  size="small"
-                  value={field.value}
-                  onChange={(event) => handleChange(field.id, event)}
-                />
-              )}
-            </Grid>
-        ))}
+                  />
+                )}
+              </Grid>
+            ))}
           </Grid>
           <Stack direction="row" spacing={2}>
             {fields.length > 2 && (
@@ -837,7 +837,7 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) =>  {
                 value={annualTonnage}
                 onChange={handleInputChange}
               />
-              
+
             </Grid>
             <Grid item xs={12} sm={12}>
               <Typography

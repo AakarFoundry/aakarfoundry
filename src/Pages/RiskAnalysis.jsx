@@ -15,36 +15,36 @@ import { useState } from "react";
 
 const RiskAnalysis = (props) => {
 
-  const [selectedValue1, setSelectedValue1] = useState('');
-  const [selectedValue2, setSelectedValue2] = useState('');
-  const [selectedValue3, setSelectedValue3] = useState('');
-  const [selectedValue4, setSelectedValue4] = useState('');
-  const [selectedValue5, setSelectedValue5] = useState('');
-  const [selectedValue6, setSelectedValue6] = useState('');
+  // const [selectedValue1, setSelectedValue1] = useState('');
+  // const [selectedValue2, setSelectedValue2] = useState('');
+  // const [selectedValue3, setSelectedValue3] = useState('');
+  // const [selectedValue4, setSelectedValue4] = useState('');
+  // const [selectedValue5, setSelectedValue5] = useState('');
+  // const [selectedValue6, setSelectedValue6] = useState('');
 
-  const handleRadioChange1 = (event) => {
-    setSelectedValue1(event.target.value);
-  };
+  // const handleRadioChange1 = (event) => {
+  //   setSelectedValue1(event.target.value);
+  // };
 
-  const handleRadioChange2 = (event) => {
-    setSelectedValue2(event.target.value);
-  };
+  // const handleRadioChange2 = (event) => {
+  //   setSelectedValue2(event.target.value);
+  // };
 
-  const handleRadioChange3 = (event) => {
-    setSelectedValue3(event.target.value);
-  };
+  // const handleRadioChange3 = (event) => {
+  //   setSelectedValue3(event.target.value);
+  // };
 
-  const handleRadioChange4 = (event) => {
-    setSelectedValue4(event.target.value);
-  };
+  // const handleRadioChange4 = (event) => {
+  //   setSelectedValue4(event.target.value);
+  // };
 
-  const handleRadioChange5 = (event) => {
-    setSelectedValue5(event.target.value);
-  };
+  // const handleRadioChange5 = (event) => {
+  //   setSelectedValue5(event.target.value);
+  // };
 
-  const handleRadioChange6 = (event) => {
-    setSelectedValue6(event.target.value);
-  };
+  // const handleRadioChange6 = (event) => {
+  //   setSelectedValue6(event.target.value);
+  // };
 
   const { riskDetails, setRiskDetails } = props;
   const handleInputChange = (e) => {
@@ -100,6 +100,7 @@ const RiskAnalysis = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              value={riskDetails.risk}
               onChange={handleInputChange}
             />
           </Grid>
@@ -124,6 +125,7 @@ const RiskAnalysis = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              value={riskDetails.requirement}
               onChange={handleInputChange}
             />
           </Grid>
@@ -148,6 +150,7 @@ const RiskAnalysis = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              value={riskDetails.application}
               onChange={handleInputChange}
             />
           </Grid>
@@ -171,6 +174,7 @@ const RiskAnalysis = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              value={riskDetails.internal}
               onChange={handleInputChange}
             />
           </Grid>
@@ -205,11 +209,8 @@ const RiskAnalysis = (props) => {
                 row
                 aria-labelledby="demo-row-radio-buttons-group-label"
                 name="environment"
-                value={selectedValue1}
-                onChange={(event) => {
-                  handleRadioChange1(event);
-                  handleInputChange(event);
-                }}
+                value={riskDetails.environment}
+                onChange={handleInputChange}
               >
                 <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
                 <FormControlLabel value="NO" control={<Radio />} label="No" />
@@ -243,12 +244,8 @@ const RiskAnalysis = (props) => {
                 row
                 aria-labelledby="demo-row-radio-buttons-group-label"
                 name="investment"
-                value={selectedValue2}
-                onChange={(event) => {
-                  handleRadioChange2(event);
-                  handleInputChange(event);
-                }}
-
+                value={riskDetails.investment}
+                onChange={handleInputChange}
               >
                 <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
                 <FormControlLabel value="NO" control={<Radio />} label="No" />
@@ -281,11 +278,8 @@ const RiskAnalysis = (props) => {
                 row
                 aria-labelledby="demo-row-radio-buttons-group-label"
                 name="manufacturing"
-                value={selectedValue3}
-                onChange={(event) => {
-                  handleRadioChange3(event);
-                  handleInputChange(event);
-                }}
+                value={riskDetails.manufacturing}
+                onChange={handleInputChange}
               >
                 <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
                 <FormControlLabel value="NO" control={<Radio />} label="No" />
@@ -294,7 +288,6 @@ const RiskAnalysis = (props) => {
             <TextField
               name="manufacturing_remarks"
               id="manufacturing_remarks"
-
               label="Add Remarks"
               variant="outlined"
               fullWidth
@@ -333,11 +326,8 @@ const RiskAnalysis = (props) => {
                 row
                 aria-labelledby="demo-row-radio-buttons-group-label"
                 name="technical"
-                value={selectedValue4}
-                onChange={(event) => {
-                  handleRadioChange4(event);
-                  handleInputChange(event);
-                }}
+                value={riskDetails.technical}
+                onChange={handleInputChange}
               >
                 <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
                 <FormControlLabel value="NO" control={<Radio />} label="No" />
@@ -370,11 +360,8 @@ const RiskAnalysis = (props) => {
                 row
                 aria-labelledby="demo-row-radio-buttons-group-label"
                 name="estimation"
-                value={selectedValue5}
-                onChange={(event) => {
-                  handleRadioChange5(event);
-                  handleInputChange(event);
-                }}
+                value={riskDetails.estimation}
+                onChange={handleInputChange}
               >
                 <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
                 <FormControlLabel value="NO" control={<Radio />} label="No" />
@@ -407,11 +394,8 @@ const RiskAnalysis = (props) => {
                 row
                 aria-labelledby="demo-row-radio-buttons-group-label"
                 name="regret"
-                value={selectedValue6}
-                onChange={(event) => {
-                  handleRadioChange6(event);
-                  handleInputChange(event);
-                }}
+                value={riskDetails.regret}
+                onChange={handleInputChange}
               >
                 <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
                 <FormControlLabel value="NO" control={<Radio />} label="No" />
