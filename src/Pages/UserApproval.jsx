@@ -7,15 +7,31 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import NavBar from "../Components/NavBar";
+
 
 const defaultTheme = createTheme();
 
-export default function UserApproval() {
+const UserApproval = () => {
   const emailRegex = /^\w+([\.-]?\w+)*@aakarfoundry\.com$/;
   const phoneRegex = /^\d{10}$/;
 
   const [emailError, setEmailError] = React.useState(false);
   const [phoneError, setPhoneError] = React.useState(false);
+  const [department, setDepartment] = React.useState('');
+  const [role, setRole] = React.useState('');
+
+  const handleDepartmentChange = (event) => {
+    setDepartment(event.target.value);
+  };
+
+  const handleRoleChange = (event) => {
+    setRole(event.target.value);
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -26,46 +42,56 @@ export default function UserApproval() {
     setEmailError(!emailRegex.test(email));
     setPhoneError(!phoneRegex.test(phoneNumber));
 
-    if (!emailRegex.test(email) || !phoneRegex.test(phoneNumber)) {
+    if (!emailRegex.test(email) || !phoneRegex.test(phoneNumber) || !department || !role) {
       return;
     }
 
     // Proceed with form submission
     console.log({
       email: email,
-      password: data.get('password'),
       fullName: data.get('name'),
       phoneNumber: phoneNumber,
-      role: data.get('role'),
-      department: data.get('department'),
+      department: department,
+      role: role,
     });
+    const toastOptions = {
+      position: "bottom-right",
+      autoClose: 8000,
+      pauseOnHover: true,
+      draggable: true,
+      theme: "dark",
+    };
+
+    toast.success('User has been added successfully!', toastOptions);
   };
 
   return (
     <ThemeProvider theme={defaultTheme}>
+    <NavBar/>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
+       
         <Box
           sx={{
-            marginTop: 8,
+            marginTop: 15,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
           }}
         >
-          <Typography component="h1" variant="h5">
+          <Typography component="h1" variant="h5" sx={{ color: "#18234F", fontWeight: "600" }}>
             Create User
           </Typography>
           <Box component="form" onSubmit={handleSubmit} Validate sx={{ mt: 1 }}>
             <Grid container spacing={2}>
               <Grid item xs={12}>
-                <Typography variant="subtitle1" style={{ textAlign: 'left' }}>
-                  Full Name
+                <Typography variant="subtitle1" style={{ textAlign: 'left' }} sx={{ color: "#18234F", fontWeight: "600" }}>
+                  Full Name <span style={{ color: "red" }}>*</span>
                 </Typography>
                 <TextField
                   required
                   id="name"
-                  label="Full Name"
+                  label="Enter Details"
                   name="name"
                   autoComplete="name"
                   autoFocus
@@ -73,15 +99,15 @@ export default function UserApproval() {
                 />
               </Grid>
               <Grid item xs={12}>
-                <Typography variant="subtitle1" style={{ textAlign: 'left' }}>
-                  Email Address
+                <Typography variant="subtitle1" style={{ textAlign: 'left' }}sx={{ color: "#18234F", fontWeight: "600" }}>
+                  Email Address <span style={{ color: "red" }}>*</span>
                 </Typography>
                 <TextField
                   required
                   error={emailError}
                   helperText={emailError ? 'Invalid email address' : ''}
                   id="email"
-                  label="Email Address"
+                  label="Enter Details"
                   name="email"
                   autoComplete="email"
                   autoFocus
@@ -89,45 +115,53 @@ export default function UserApproval() {
                 />
               </Grid>
               <Grid item xs={12}>
-                <Typography variant="subtitle1" style={{ textAlign: 'left' }}>
-                  Phone Number
+                <Typography variant="subtitle1" style={{ textAlign: 'left' }}sx={{ color: "#18234F", fontWeight: "600" }}>
+                  Phone Number <span style={{ color: "red" }}>*</span>
                 </Typography>
                 <TextField
                   required
                   error={phoneError}
                   helperText={phoneError ? 'Invalid phone number' : ''}
                   id="phoneNumber"
-                  label="Phone Number"
+                  label="Enter Details"
                   name="phoneNumber"
                   autoComplete="tel"
                   style={{ width: '100%' }}
                 />
               </Grid>
               <Grid item xs={12}>
-                <Typography variant="subtitle1" style={{ textAlign: 'left' }}>
-                  Role/Title
+                <Typography variant="subtitle1" style={{ textAlign: 'left' }}sx={{ color: "#18234F", fontWeight: "600" }}>
+                  Department <span style={{ color: "red" }}>*</span>
                 </Typography>
-                <TextField
-                  required
-                  id="role"
-                  label="Role/title"
-                  name="role"
-                  autoComplete="role"
-                  style={{ width: '100%' }}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <Typography variant="subtitle1" style={{ textAlign: 'left' }}>
-                  Department
-                </Typography>
-                <TextField
+                <Select
                   required
                   id="department"
-                  label="Department"
-                  name="department"
-                  autoComplete="organization"
+                  value={department}
+                  onChange={handleDepartmentChange}
+                  label="Enter Details"
                   style={{ width: '100%' }}
-                />
+                >
+                  <MenuItem value="Marketing">Marketing</MenuItem>
+                  <MenuItem value="Machine">Machine</MenuItem>
+                  <MenuItem value="Quality">Quality</MenuItem>
+                </Select>
+              </Grid>
+              <Grid item xs={12}>
+                <Typography variant="subtitle1" style={{ textAlign: 'left' }}sx={{ color: "#18234F", fontWeight: "600" }}>
+                  Role <span style={{ color: "red" }}>*</span>
+                </Typography>
+                <Select
+                  required
+                  id="role"
+                  value={role}
+                  onChange={handleRoleChange}
+                  label="Enter Details"
+                  style={{ width: '100%' }}
+                >
+                  <MenuItem value="CEO">CEO</MenuItem>
+                  <MenuItem value="HOD">HOD</MenuItem>
+                  <MenuItem value="Employee">Employee</MenuItem>
+                </Select>
               </Grid>
             </Grid>
             <Button
@@ -140,7 +174,10 @@ export default function UserApproval() {
             </Button>
           </Box>
         </Box>
+        <ToastContainer />
       </Container>
     </ThemeProvider>
   );
-}
+};
+
+export default UserApproval;
