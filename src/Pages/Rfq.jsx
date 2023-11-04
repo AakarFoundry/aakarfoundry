@@ -530,8 +530,6 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) => {
                 onChange={handleInputChange}
               />
             </Grid>
-          </Grid>
-          <Grid container spacing={4}>
             {fields.map((field) => (
               <Grid item xs={12} sm={6} key={field.id}>
                 <Typography
