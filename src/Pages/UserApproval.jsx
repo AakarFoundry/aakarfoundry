@@ -12,59 +12,112 @@ import MenuItem from '@mui/material/MenuItem';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import NavBar from "../Components/NavBar";
-
+import { useEffect,useState } from 'react';
 
 const defaultTheme = createTheme();
 
 const UserApproval = () => {
-  const emailRegex = /^\w+([\.-]?\w+)*@aakarfoundry\.com$/;
-  const phoneRegex = /^\d{10}$/;
 
-  const [emailError, setEmailError] = React.useState(false);
-  const [phoneError, setPhoneError] = React.useState(false);
-  const [department, setDepartment] = React.useState('');
-  const [role, setRole] = React.useState('');
-
-  const handleDepartmentChange = (event) => {
-    setDepartment(event.target.value);
+  const handleEvent = (e) => {
+    setForm({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleRoleChange = (event) => {
-    setRole(event.target.value);
-  };
+  const [formData, setForm] = useState({});
+  const [isNameValid, setIsNameValid] = useState(true);
+  const [isEmailValid, setIsEmailValid] = useState(true);
+  const [isNumberValid, setIsNumberValid] = useState(true);
+  const [isDepartmentValid, setIsDepartmentValid] = useState(true);
+  const [isRoleValid, setIsRoleValid] = useState(true);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const email = data.get('email');
-    const phoneNumber = data.get('phoneNumber');
+  function isfirstName(val) {
+    var reg = /^[a-zA-Z\s]+$/;
+    const isValid = reg.test(val) && val.trim().length > 0;
+    setIsNameValid(isValid);
+    return isValid;
+  }
 
-    setEmailError(!emailRegex.test(email));
-    setPhoneError(!phoneRegex.test(phoneNumber));
+  function isMail(val) {
+    var mail = /^\w+([\.-]?\w+)*@aakarfoundry\.com$/;
+    const isValid = mail.test(val);
+    setIsEmailValid(isValid);
+    return isValid;
+  }
 
-    if (!emailRegex.test(email) || !phoneRegex.test(phoneNumber) || !department || !role) {
-      return;
+  function isNumber(val) {
+    var phoneNo = /^\d{10}$/;
+    const isValid = phoneNo.test(val);
+    setIsNumberValid(isValid);
+    return isValid;
+  }
+
+  function isDepartmentBox(val) {
+    var regex = /^[a-zA-Z.-\s]*$/;
+    const isValid = regex.test(val) && val.trim().length > 0;
+    setIsDepartmentValid(isValid);
+    return isValid;
+  }
+
+  function isRole(val) {
+    var regex = /^[a-zA-Z.-\s]*$/;
+    const isValid = regex.test(val) && val.trim().length > 0;
+    setIsRoleValid(isValid);
+    return isValid;
+  }
+
+  const URL = "http://localhost:4000/register/new";
+
+  async function uploadData(url, data) {
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        console.log("Error:", response.status);
+        // Optionally handle specific error cases here
+        // For example, if(response.status === 404) { /* handle 404 error */ }
+      } else {
+        const json = await response.json();
+        console.log("Success:", json);
+      }
+    } catch (error) {
+      console.log("Error:", error);
     }
+  }
 
-    // Proceed with form submission
-    console.log({
-      email: email,
-      fullName: data.get('name'),
-      phoneNumber: phoneNumber,
-      department: department,
-      role: role,
+  function onFormSubmit(e) {
+    e.preventDefault();
+    var name = isfirstName(formData.name);
+    var email = isMail(formData.email);
+    var department = isDepartmentBox(formData.department);
+    var number = isNumber(formData.number);
+    var role = isRole(formData.role);
+
+    if (name && email && department && number && role) {
+      console.log(formData);
+      uploadData(URL, formData);
+      alert("Register Successful");
+    } else {
+      alert("Register Unsuccessful");
+    }
+  }
+
+
+  useEffect(() => {
+    setForm({
+      name: "",
+      email: "",
+      number: "",
+      department: "",
+      role: "",
     });
-    const toastOptions = {
-      position: "bottom-right",
-      autoClose: 8000,
-      pauseOnHover: true,
-      draggable: true,
-      theme: "dark",
-    };
+  }, []);
 
-    toast.success('User has been added successfully!', toastOptions);
-  };
-
+  
   return (
     <ThemeProvider theme={defaultTheme}>
     <NavBar/>
@@ -82,96 +135,118 @@ const UserApproval = () => {
           <Typography component="h1" variant="h5" sx={{ color: "#18234F", fontWeight: "600" }}>
             Create User
           </Typography>
-          <Box component="form" onSubmit={handleSubmit} Validate sx={{ mt: 1 }}>
+          <Box component="form" Validate sx={{ mt: 1 }}>
+
+
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <Typography variant="subtitle1" style={{ textAlign: 'left' }} sx={{ color: "#18234F", fontWeight: "600" }}>
                   Full Name <span style={{ color: "red" }}>*</span>
                 </Typography>
                 <TextField
-                  required
-                  id="name"
-                  label="Enter Details"
-                  name="name"
-                  autoComplete="name"
-                  autoFocus
-                  style={{ width: '100%' }}
+                 id="name"
+                 label="Enter Details"
+                 name="name"
+                 autoComplete="name"
+                 onChange={handleEvent}
+                 autoFocus
+                 helperText={isNameValid ? "" : "Invalid name"}
+                 error={!isNameValid}
+                 style={{ width: '100%' }}
                 />
               </Grid>
+
+
               <Grid item xs={12}>
                 <Typography variant="subtitle1" style={{ textAlign: 'left' }}sx={{ color: "#18234F", fontWeight: "600" }}>
                   Email Address <span style={{ color: "red" }}>*</span>
                 </Typography>
                 <TextField
-                  required
-                  error={emailError}
-                  helperText={emailError ? 'Invalid email address' : ''}
+                  fullWidth
                   id="email"
                   label="Enter Details"
                   name="email"
                   autoComplete="email"
+                  onChange={handleEvent}
                   autoFocus
-                  style={{ width: '100%' }}
+                  helperText={isEmailValid ? "" : "Invalid Email"}
+                  error={!isEmailValid}
                 />
               </Grid>
+
+
               <Grid item xs={12}>
                 <Typography variant="subtitle1" style={{ textAlign: 'left' }}sx={{ color: "#18234F", fontWeight: "600" }}>
                   Phone Number <span style={{ color: "red" }}>*</span>
                 </Typography>
                 <TextField
-                  required
-                  error={phoneError}
-                  helperText={phoneError ? 'Invalid phone number' : ''}
-                  id="phoneNumber"
+                  name="number"
                   label="Enter Details"
-                  name="phoneNumber"
-                  autoComplete="tel"
+                  type="text"
+                  id="number"
+                  onChange={handleEvent}
+                  autoComplete=""
+                  helperText={isNumberValid ? "" : "Invalid phone number."}
+                  error={!isNumberValid}
                   style={{ width: '100%' }}
                 />
               </Grid>
+
+
               <Grid item xs={12}>
                 <Typography variant="subtitle1" style={{ textAlign: 'left' }}sx={{ color: "#18234F", fontWeight: "600" }}>
                   Department <span style={{ color: "red" }}>*</span>
                 </Typography>
                 <Select
-                  required
                   id="department"
-                  value={department}
-                  onChange={handleDepartmentChange}
+                  name="department"
+                  onChange={handleEvent}
+                  value={formData.department}
                   label="Enter Details"
                   style={{ width: '100%' }}
+                  defaultValue=""
+                  helperText={isDepartmentValid ? "" : "Invalid Department number."}
+                  error={!isDepartmentValid}
                 >
                   <MenuItem value="Marketing">Marketing</MenuItem>
                   <MenuItem value="Machine">Machine</MenuItem>
                   <MenuItem value="Quality">Quality</MenuItem>
                 </Select>
               </Grid>
+
+
               <Grid item xs={12}>
                 <Typography variant="subtitle1" style={{ textAlign: 'left' }}sx={{ color: "#18234F", fontWeight: "600" }}>
                   Role <span style={{ color: "red" }}>*</span>
                 </Typography>
                 <Select
-                  required
                   id="role"
-                  value={role}
-                  onChange={handleRoleChange}
+                  name="role"
+                  onChange={handleEvent}
+                  value={formData.role}
                   label="Enter Details"
                   style={{ width: '100%' }}
+                  defaultValue=""
+                  helperText={isRoleValid ? "" : "Invalid Role."}
+                  error={!isRoleValid}
                 >
                   <MenuItem value="CEO">CEO</MenuItem>
                   <MenuItem value="HOD">HOD</MenuItem>
                   <MenuItem value="Employee">Employee</MenuItem>
                 </Select>
               </Grid>
+
+
             </Grid>
             <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
-              Add User
-            </Button>
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2, backgroundColor: "#1565C0" }}
+            onClick={onFormSubmit}
+          >
+            Add User
+          </Button>
           </Box>
         </Box>
         <ToastContainer />
