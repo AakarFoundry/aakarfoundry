@@ -1,7 +1,6 @@
 import './App.css'
 import Dashboard from './Pages/Dashboard';
 import { Login } from './Pages/Login';
-import { Register } from './Pages/register';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Process from './Pages/Process';
 import Approval from './Pages/Approval';
@@ -15,7 +14,6 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route path="/register" element={<Register />} />
           <Route path="/dash" element={<Dashboard />} />
           <Route path="/details/:id" element={<Process />} />
           <Route path='/details' element={<Process />} />

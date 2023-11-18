@@ -5,49 +5,63 @@ import styles from "../assets/styles/Login.module.css";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
-import Link from "@mui/material/Link";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import { useState, useEffect } from "react";
 import IconButton from "@mui/material/IconButton";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-
+import {useNavigate} from "react-router-dom"
 
 export const Login = () => {
+
+  const URL = "http://localhost:4000/login ";
+  const navigate = useNavigate();
+
+  async function uploadingData(URL, data) {
+    try {
+     
+      const respones = await fetch(URL, {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }).catch((e) => console.log("Error : ", e));
+      const json = await respones.json();
+      console.log(respones.status);
+      if (respones.status === 200) {
+        
+        //Login Success
+        console.log("Success");
+            alert("Login Successful!!")
+            navigate("/dash");
+        
+      } else {
+        //Login Invalid
+        alert("Invalid Login")
+        console.log("Invalid");
+      }
+      
+    } catch (e) {
+      console.log("Error : ", e);
+    }
+  }
+
+
   const handleEvent = (e) => {
     setForm({ ...formData, [e.target.name]: e.target.value });
   };
 
   const [formData, setForm] = useState({});
-  const [isEmailValid, setIsEmailValid] = useState(true);
-  const [isNumberValid, setIsNumberValid] = useState(true);
 
-  function isMail(val) {
-    var mail = /^\w+([\.-]?\w+)*@aakarfoundry\.com$/;
-    const isValid = mail.test(val);
-    setIsEmailValid(isValid);
-    return isValid;
-  }
 
-  function isNumber(val) {
-    var phoneNo = /^\d{4}$/;
-    const isValid = phoneNo.test(val);
-    setIsNumberValid(isValid); 
-    return isValid;
-  }
+  
 
   function onFormSubmit(e) {
     e.preventDefault();
-
-    var email = isMail(formData.email);
-    var password = isNumber(formData.password);
-    if (email && password) {
-      console.log(formData);
-      alert("Done");
-    } else {
-      alert("Failed");
-    }
+    console.log(formData);
+    uploadingData(URL,formData);
   }
 
   useEffect(() => {
@@ -56,22 +70,10 @@ export const Login = () => {
       password: "",
     });
   }, []);
+  
   const [showPassword, setShowPassword] = useState(false);
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
-  };
-{/*  const handlePassword = (e) => {
-    if (e.target.value === "") {
-      setConfirmPassValidation(false);
-    } else {
-      setConfirmPassValidation(true);
-    }
-  };*/}
+
+
 
   return (
     <div className={styles.frameLogin}>
@@ -112,7 +114,6 @@ export const Login = () => {
             </Typography>
             <Box
               component="form"
-              onSubmit={handleSubmit}
               noValidate
               sx={{ mt: 1 }}
             >
@@ -132,8 +133,7 @@ export const Login = () => {
                 autoComplete="email"
                 autoFocus
                 onChange={handleEvent}
-                helperText={isEmailValid ? "" : "Invalid Email Address"}
-                error={!isEmailValid}
+                
               />
               <TextField
                 sx={{
@@ -150,9 +150,7 @@ export const Login = () => {
                 type={showPassword ? "text" : "Password"}
                 id="password"
                 autoComplete="Password"
-                // onChange={handlePassword}x
-                helperText={isNumberValid ? "" : "Invalid Password"}
-                error={!isNumberValid}
+                onChange={handleEvent}
                 InputProps={{
                   endAdornment: (
                     <IconButton
@@ -173,13 +171,7 @@ export const Login = () => {
               >
                 Log In
               </Button>
-              <div className={styles.registerLine}>
-                
-                Don&apos;t have an account?&nbsp;
-                <Link href="/register" variant="body2">
-                  {"\t\tCreate Account"}
-                </Link>
-              </div>
+             
             </Box>
           </Box>
         </Container>

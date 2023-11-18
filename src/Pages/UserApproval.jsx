@@ -78,8 +78,6 @@ const UserApproval = () => {
 
       if (!response.ok) {
         console.log("Error:", response.status);
-        // Optionally handle specific error cases here
-        // For example, if(response.status === 404) { /* handle 404 error */ }
       } else {
         const json = await response.json();
         console.log("Success:", json);
@@ -89,7 +87,7 @@ const UserApproval = () => {
     }
   }
 
-  function onFormSubmit(e) {
+  async function onFormSubmit(e) {
     e.preventDefault();
     var name = isfirstName(formData.name);
     var email = isMail(formData.email);
@@ -101,6 +99,13 @@ const UserApproval = () => {
       console.log(formData);
       uploadData(URL, formData);
       alert("Register Successful");
+      setForm({
+        name: "",
+        email: "",
+        number: "",
+        department: "",
+        role: "",
+      });
     } else {
       alert("Register Unsuccessful");
     }
