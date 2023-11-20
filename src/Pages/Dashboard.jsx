@@ -14,6 +14,7 @@ import { TablePagination } from "@mui/material";
 import NavBar from './../Components/NavBar';
 import { useState } from "react";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -82,7 +83,11 @@ export default function Dashboard() {
 
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
-
+  const navigate = useNavigate();
+  const handleViewForm = (id) => {
+    console.log("View Form for ID:", id);
+    navigate(`/details/${id}`);
+  };
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
@@ -151,6 +156,7 @@ export default function Dashboard() {
                   <Button
                     variant="contained"
                     style={{ background: "#3E5C72D9", minWidth: "100px" }}
+                    onClick={() => handleViewForm(customer.enquiry)}
                   >
                     View Form
                   </Button>
