@@ -28,6 +28,8 @@ function NavBar() {
     } else if (selectedSetting === "Approval") {
       window.location.href = "/approval"; 
     } else if (selectedSetting === "Logout") {
+      window.localStorage.clear();
+      window.location.reload();
       window.location.href = "/"; 
     }
   };
