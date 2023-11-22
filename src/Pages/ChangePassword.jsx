@@ -11,14 +11,18 @@ import IconButton from "@mui/material/IconButton";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 const ChangePassword = () => {
-
+ 
   const [showNote, setShowNote] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [newshowPassword, setnewShowPassword] = useState(false);
+  const [conshowPassword, setconShowPassword] = useState(false);
   const toggleNote = () => {
     setShowNote(!showNote);
   };
   const { setUserInfo,userInfo } = useContext(UserContext);
-  const [formData, setForm] = useState({});
+  const [formData, setForm] = useState({
+
+  });
   const [isPassValid, setIsPassValid] = useState(true);
   const [isNewValid, setIsNewValid] = useState(true);
   const [IsRePassValid, setIsRePassValid] = useState(true);
@@ -27,10 +31,9 @@ const ChangePassword = () => {
   };
 
   function isPass(val) {
-    var regex = /^[a-zA-Z.-\s]*$/;
-    const isValid = regex.test(val) && val.trim().length > 0;
-    setIsPassValid(isValid);
-    return isValid;
+    const isValid = val.trim().length > 0;
+  setIsPassValid(isValid);
+  return isValid;
   }
   function isNew(val) {
     var regex = /^[a-zA-Z0-9!@#$%^&*]{8,16}$/
@@ -45,21 +48,52 @@ const ChangePassword = () => {
     return isValid;
   }
 
+  const URL = "http://localhost:4000/updatepassword ";
+  async function uploadingData(url, data) {
+    try {
+      const respones = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }).catch((e) => console.log("Error : ", e));
+      const json = await respones.json();
+      console.log(respones.status);
+      if (respones.status === 200) {
+        //Login Success
+        console.log("Success");
+      } else {
+        //Login Invalid
+        console.log("Invalid");
+      }
+    } catch (e) {
+      console.log("Error : ", e);
+    }
+  }
+  
 
   async function onFormSubmit(e) {
     e.preventDefault();
-    var pass = isPass(formData.old_password);
-    var newpass = isNew(formData.new_password);
-    var repass = isRePassword(formData.new_password, formData.confirm_password)
-    console.log(formData);
+    var pass = isPass(formData.oldPassword);
+    var newpass = isNew(formData.newPassword);
+    var repass = isRePassword(formData.newPassword, formData.confirm_password)
+    if (pass && newpass && repass) {
+      console.log(formData);
+      uploadingData(URL, formData);
+      alert("Update Successful");
+     } else {
+      console.log(formData);
+      console.log("Fail");
+      alert("Update Unsuccessful");
+    }
   };
 
   useEffect(() => {
     setForm({
       email:userInfo.userEmail,
-      old_password: "",
-      confirm_password: "",
-      new_password: "",
+      oldPassword: "",
+      newPassword: "",
     });
   }, []);
 
@@ -112,8 +146,8 @@ const ChangePassword = () => {
                 }}
                 // margin="normal"
                 fullWidth
-                id="old_password"
-                name="old_password"
+                id="oldPassword"
+                name="oldPassword"
                 autoFocus
                 onChange={handleEvent}
                 type={showPassword ? "text" : "Password"}
@@ -156,20 +190,20 @@ const ChangePassword = () => {
 
 
                 fullWidth
-                name="new_password"
-                id="new_password"
+                name="newPassword"
+                id="newPassword"
                 onChange={handleEvent}
                 onClick={toggleNote}
-                type={showPassword ? "text" : "Password"}
+                type={newshowPassword ? "text" : "Password"}
                 helperText={isNewValid ? "" : "Password not matching certeria"}
                 error={!isNewValid}
                 InputProps={{
                   endAdornment: (
                     <IconButton
-                      onClick={() => setShowPassword(!showPassword)}
+                      onClick={() => setnewShowPassword(!newshowPassword)}
                       edge="end"
                     >
-                      {showPassword ? <Visibility /> : <VisibilityOff />}
+                      {newshowPassword ? <Visibility /> : <VisibilityOff />}
                     </IconButton>
                   ),
                 }}
@@ -200,14 +234,14 @@ const ChangePassword = () => {
                 onChange={handleEvent}
                 helperText={IsRePassValid ? "" : "Password doesnt match with new password"}
                 error={!IsRePassValid}
-                type={showPassword ? "text" : "Password"}
+                type={conshowPassword ? "text" : "Password"}
                 InputProps={{
                   endAdornment: (
                     <IconButton
-                      onClick={() => setShowPassword(!showPassword)}
+                      onClick={() => setconShowPassword(!conshowPassword)}
                       edge="end"
                     >
-                      {showPassword ? <Visibility /> : <VisibilityOff />}
+                      {conshowPassword ? <Visibility /> : <VisibilityOff />}
                     </IconButton>
                   ),
                 }}
@@ -216,7 +250,7 @@ const ChangePassword = () => {
             {showNote && (
               <div style={{ marginTop: 10, color: "red" }}>
                 Password Policy * <br />
-                • Be a minimum length of eight (8) characters on all systems. <br />
+                • Length must be between (8) to (16) characters. <br />
                 • Must include minimum one uppercase character <br />
                 • Must include minimum of one special character <br />
                 • Must include minimum of one numeric character
