@@ -8,6 +8,9 @@ import ChangePassword from './Pages/ChangePassword';
 import Summary from './Pages/Summary';
 import UserApproval from './Pages/UserApproval';
 import { UserContextProvider } from './Pages/UserContext';
+import { Test2 } from './Pages/Test2';
+
+import Done from "./Pages/test";
 function App() {
   return (
     <>
@@ -22,8 +25,9 @@ function App() {
           <Route path="/approval" element={<Approval />} />
           <Route path="/summary" element={<Summary />} />
           <Route path="/user" element={<UserApproval />} />
-
-          <Route path="/change-password" element={<ChangePassword />} />
+          <Route path="/test" element={<Done />} />
+          <Route path="/test2" element={<Test2 />} />
+          <Route path="/changepassword" element={<ChangePassword />} />
         </Routes>
         </UserContextProvider>
       </Router>

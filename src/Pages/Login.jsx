@@ -19,7 +19,7 @@ export const Login = () => {
   const URL = "http://localhost:4000/login ";
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
-  const { setUserInfo } = useContext(UserContext);
+  const { setUserInfo,userInfo } = useContext(UserContext);
   const [formData, setForm] = useState({});
 
   const handleEvent = (e) => {
@@ -37,8 +37,8 @@ export const Login = () => {
       });
   
       if (response.ok) {
-        const userInfo = await response.json();
-        setUserInfo(userInfo);
+        const userData = await response.json();
+        setUserInfo(userData);
         console.log(userInfo);
         alert("Login Successful!!");
         navigate("/dash");

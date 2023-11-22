@@ -14,23 +14,28 @@ import logo from "../assets/img/Logo.png";
 import styles from "../assets/styles/NavBar.module.css";
 import AddIcon from "@mui/icons-material/Add";
 import profile from "../assets/img/profile.png";
+import { useNavigate } from "react-router-dom";
+
+
 const pages = [];
 const settings = ["Change Password", "Approval", "Logout"];
 function NavBar() {
+  const navigate = useNavigate();
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
   const handleCloseUserMenu = (selectedSetting) => () => {
     setAnchorElUser(null);
+
     if (selectedSetting === "Change Password") {
-      window.location.href = "/change-password"; 
+      navigate("/changepassword");
     } else if (selectedSetting === "Approval") {
-      window.location.href = "/approval"; 
+      navigate("/approval");  
     } else if (selectedSetting === "Logout") {
       window.localStorage.clear();
+      navigate("/"); // Assuming you have a route for the home page
       window.location.reload();
-      window.location.href = "/"; 
     }
   };
   return (

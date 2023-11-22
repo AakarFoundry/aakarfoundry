@@ -9,12 +9,12 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Container from "@mui/material/Container";
-
 import { TablePagination } from "@mui/material";
 import NavBar from './../Components/NavBar';
-import { useState } from "react";
+import { useState,useContext } from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "./UserContext";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -60,6 +60,7 @@ async function fetchCustomerData() {
   try {
     const response = await fetch('http://localhost:4000/dashboard');
     if (response.ok) {
+  
       const data = await response.json();
       return data;
     } else {
@@ -72,6 +73,8 @@ async function fetchCustomerData() {
 }
 export default function Dashboard() {
   const [customers, setCustomers] =useState([]);
+  const { setUserInfo,userInfo } = useContext(UserContext);
+  console.log(userInfo);
   useEffect(()=>{
     async function fetchData() {
       const data = await fetchCustomerData();
@@ -80,7 +83,7 @@ export default function Dashboard() {
     fetchData();
   }, []);
 
-
+  
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
   const navigate = useNavigate();
