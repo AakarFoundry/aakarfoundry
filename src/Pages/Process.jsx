@@ -32,8 +32,7 @@ const Process = (props) => {
     delivery: '',
     enquiryDate: '',
     path: '',
-    category: '',
-    enquiry: 'NA'
+    category: ''  
   }
   );
   const [inputDetails, setInputDetails] = useState({});
@@ -102,104 +101,19 @@ const Process = (props) => {
   });
   useEffect(() => {
     if (id !== undefined) {
-      fetch(`http://localhost:4000/customers/${id}`)
+      fetch(`http://localhost:4000/customers`)
         .then((res, err) => {
           return res.json();
         })
         .then((data) => {
           setDetails(data);
-          setSelectedOption(data.category);
         })
         .catch((err) => {
           console.log(err);
         });
 
-
-        if (selectedOption === 'RFQ') {
-        fetch(`http://localhost:4000/rfqs/${id}`)
-        .then((res, err) => {
-          return res.json();
-        })
-        .then((data) => {
-          setInputDetails(data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-      } else {
-        fetch(`http://localhost:4000/ecns/${id}`)
-        .then((res, err) => {
-          return res.json();
-        })
-        .then((data) => {
-          setInputDetails(data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-      }
-
-
-        fetch(`http://localhost:4000/risks/${id}`)
-        .then((res, err) => {
-          return res.json();
-        })
-        .then((data) => {
-          setRiskDetails(data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-
-
-        fetch(`http://localhost:4000/designs/${id}`)
-        .then((res, err) => {
-          return res.json();
-        })
-        .then((data) => {
-          setDesignDetails(data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-
-
-        fetch(`http://localhost:4000/machines/${id}`)
-        .then((res, err) => {
-          return res.json();
-        })
-        .then((data) => {
-          setMachineDetails(data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-
-
-        fetch(`http://localhost:4000/qualities/${id}`)
-        .then((res, err) => {
-          return res.json();
-        })
-        .then((data) => {
-          setQualityDetails(data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-
-
-        fetch(`http://localhost:4000/npds/${id}`)
-        .then((res, err) => {
-          return res.json();
-        })
-        .then((data) => {
-          setNpdDetails(data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
     }
-  }, [selectedOption])
+  }, [])
   useEffect(() => {
     if (selectedOption === 'RFQ') {
       setInputDetails({
@@ -244,6 +158,18 @@ const Process = (props) => {
   const isStepSkipped = (step) => {
     return skipped.has(step);
   };
+  const handleSkip = () => {
+    const nextStep = activeStep + 1;
+    if (nextStep >= 0) {
+      if (id !== undefined && id !== 'undefined') {
+        navigate(`/details/${id}/?step=${activeStep}&option=${selectedOption}`);
+      } else {
+        navigate(`/details/?step=${activeStep}&option=${selectedOption}`);
+      }
+      setActiveStep(nextStep);
+    }
+  };
+
   const handleNext = () => {
     let isStepValid = true;
     let stepDetails = null;
@@ -426,6 +352,7 @@ const Process = (props) => {
       setActiveStep(previousStep);
     }
   };
+  
   const handleOptionChange = (option) => {
     setSelectedOption(option);
     if (id !== undefined && id !== 'undefined') {
@@ -480,7 +407,6 @@ const Process = (props) => {
           <Machine
             machineDetails={machineDetails}
             setMachineDetails={setMachineDetails}
-            id = {id}
           />}
         {activeStep === 5 && (
           <Quality
@@ -534,6 +460,10 @@ const Process = (props) => {
                   disabled={activeStep === 0}
                 >
                   Back
+                </Button>
+                <Button variant="contained" size="large" onClick={handleSkip}
+                 disabled={activeStep === 0 || activeStep === 1} >
+                  Skip
                 </Button>
                 <Button variant="contained" size="large" onClick={handleNext}>
                   Continue
