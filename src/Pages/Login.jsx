@@ -40,8 +40,14 @@ export const Login = () => {
         const userData = await response.json();
         setUserInfo(userData);
         console.log(userInfo);
-        alert("Login Successful!!");
-        navigate("/dash");
+        console.log(userData.userEmail);
+        if (userData.userEmail === "admin123") {
+          alert("Login Successful as Admin!!");
+          navigate("/approval");
+        } else {
+          alert("Login Successful!!");
+          navigate("/dash");
+        }
       } else {
         alert("Invalid Login");
         console.log("Invalid");

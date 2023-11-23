@@ -36,7 +36,7 @@ const ChangePassword = () => {
   return isValid;
   }
   function isNew(val) {
-    var regex = /^[a-zA-Z0-9!@#$%^&*]{8,16}$/
+    var regex = /^[a-zA-Z0-9!@#$%^&*]{8,16}$/;
     const isValid = regex.test(val) && val.trim().length > 0;
     setIsNewValid(isValid);
     return isValid;
@@ -81,7 +81,7 @@ const ChangePassword = () => {
     if (pass && newpass && repass) {
       console.log(formData);
       uploadingData(URL, formData);
-      alert("Update Successful");
+      
      } else {
       console.log(formData);
       console.log("Fail");

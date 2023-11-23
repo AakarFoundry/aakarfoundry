@@ -15,36 +15,64 @@ import styles from "../assets/styles/NavBar.module.css";
 import AddIcon from "@mui/icons-material/Add";
 import profile from "../assets/img/profile.png";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../Pages/UserContext";
 
 
-const pages = [];
-const settings = ["Change Password", "Approval", "Logout"];
+
+
+
+
 function NavBar() {
+
   const navigate = useNavigate();
+  const { setUserInfo, userInfo } = useContext(UserContext);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  console.log(userInfo.userEmail);
+  let pages = [];
+  let settings = [];
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
+  if (userInfo.userEmail === "admin123") {
+    pages = [];
+    settings = ["Change Password", "Logout"];
+  } else {
+    pages = [];
+    settings = ["Change Password", "Approval", "Logout"];
+  }
   const handleCloseUserMenu = (selectedSetting) => () => {
     setAnchorElUser(null);
-
-    if (selectedSetting === "Change Password") {
-      navigate("/changepassword");
-    } else if (selectedSetting === "Approval") {
-      navigate("/approval");  
-    } else if (selectedSetting === "Logout") {
-      window.localStorage.clear();
-      navigate("/"); // Assuming you have a route for the home page
-      window.location.reload();
+    if (userInfo.userEmail === "admin123") {
+      if (selectedSetting === "Change Password") {
+        navigate("/changepassword");
+      } else if (selectedSetting === "Logout") {
+        window.localStorage.clear();
+        navigate("/");
+        window.location.reload();
+      }
+    } else {
+      if (selectedSetting === "Change Password") {
+        navigate("/changepassword");
+      } else if (selectedSetting === "Approval") {
+        navigate("/approval");
+      } else if (selectedSetting === "Logout") {
+        window.localStorage.clear();
+        navigate("/");
+        window.location.reload();
+      }
     }
   };
   return (
     <AppBar position="fixed">
       <Container maxWidth="">
         <Toolbar disableGutters>
-          <a href="/dash">
+
+          <a href={window.location.pathname === "/approval" || window.location.pathname === "/user" ? "/approval" : "/dash"}>
             <img src={logo} className={styles.logoImage} alt="Logo" />
           </a>
+
+
           <Typography
             variant="h6"
             noWrap
@@ -114,6 +142,29 @@ function NavBar() {
                 color="ffffff"
                 aria-label="add"
                 href="/details"
+              >
+                <AddIcon />
+              </IconButton>
+            ) : window.location.pathname === "/approval" ? (
+              <IconButton
+                sx={{
+                  height: "2.5rem",
+                  width: "2.5rem",
+                  position: "absolute",
+                  right: "4rem",
+                  background: "#054470",
+                  "&:hover": {
+                    background: "#3f82b1",
+                  },
+                  "& svg": {
+                    // mt: 0.7,
+                    fontSize: "2rem",
+                    color: "white",
+                  },
+                }}
+                color="ffffff"
+                aria-label="add"
+                href="/user"
               >
                 <AddIcon />
               </IconButton>
