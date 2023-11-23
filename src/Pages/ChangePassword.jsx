@@ -1,128 +1,105 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import styles from "../assets/styles/change.module.css";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
+import { UserContext } from "./UserContext";
+import NavBar from "../Components/NavBar";
 import IconButton from "@mui/material/IconButton";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import { Link } from "react-router-dom";
-import { Grid } from "@mui/material";
-import NavBar from "../Components/NavBar";
-
 const ChangePassword = () => {
-  const [oldPassValidation, setOldPassValidation] = useState(false);
-  const [confirmPassValidation, setConfirmPassValidation] = useState(false);
-  const [newPass, setNewPass] = useState(false);
-  const [confirmPass, setConfirmPass] = useState("");
-  const [newPassValidation, setNewPassValidation] = useState(false);
-  const [showOldPassword, setShowOldPassword] = useState(false);
-  const [showNewPassword, setShowNewPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [showPasswordPolicy, setShowPasswordPolicy] = useState(false);
-  const [passwordPolicyError, setPasswordPolicyError] = useState("");
+ 
+  const [showNote, setShowNote] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [newshowPassword, setnewShowPassword] = useState(false);
+  const [conshowPassword, setconShowPassword] = useState(false);
+  const toggleNote = () => {
+    setShowNote(!showNote);
+  };
+  const { setUserInfo,userInfo } = useContext(UserContext);
+  const [formData, setForm] = useState({
 
-  const handleOldPassword = (e) => {
-    const oldPassword = e.target.value;
-    if (oldPassword.trim() === "") {
-      setOldPassValidation(false);
-    } else {
-      setOldPassValidation(true);
+  });
+  const [isPassValid, setIsPassValid] = useState(true);
+  const [isNewValid, setIsNewValid] = useState(true);
+  const [IsRePassValid, setIsRePassValid] = useState(true);
+  const handleEvent = (e) => {
+    setForm({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  function isPass(val) {
+    const isValid = val.trim().length > 0;
+  setIsPassValid(isValid);
+  return isValid;
+  }
+  function isNew(val) {
+    var regex = /^[a-zA-Z0-9!@#$%^&*]{8,16}$/;
+    const isValid = regex.test(val) && val.trim().length > 0;
+    setIsNewValid(isValid);
+    return isValid;
+  }
+
+  function isRePassword(pass, repass) {
+    const isValid = pass === repass;
+    setIsRePassValid(isValid);
+    return isValid;
+  }
+
+  const URL = "http://localhost:4000/updatepassword ";
+  async function uploadingData(url, data) {
+    try {
+      const respones = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }).catch((e) => console.log("Error : ", e));
+      const json = await respones.json();
+      console.log(respones.status);
+      if (respones.status === 200) {
+        //Login Success
+        console.log("Success");
+      } else {
+        //Login Invalid
+        console.log("Invalid");
+      }
+    } catch (e) {
+      console.log("Error : ", e);
+    }
+  }
+  
+
+  async function onFormSubmit(e) {
+    e.preventDefault();
+    var pass = isPass(formData.oldPassword);
+    var newpass = isNew(formData.newPassword);
+    var repass = isRePassword(formData.newPassword, formData.confirm_password)
+    if (pass && newpass && repass) {
+      console.log(formData);
+      uploadingData(URL, formData);
+      
+     } else {
+      console.log(formData);
+      console.log("Fail");
+      alert("Update Unsuccessful");
     }
   };
 
-  const handleNewPassword = (e) => {
-    const newPassword = e.target.value;
-    setNewPass(newPassword);
-
-    // Password criteria validation logic
-    const lengthRegex = /.{8,}/;
-    const uppercaseRegex = /[A-Z]/;
-    const specialCharRegex = /[!@#$%^&*(),.?":{}|<>]/;
-    const numericRegex = /[0-9]/;
-
-    const isLengthValid = lengthRegex.test(newPassword);
-    const isUppercaseValid = uppercaseRegex.test(newPassword);
-    const isSpecialCharValid = specialCharRegex.test(newPassword);
-    const isNumericValid = numericRegex.test(newPassword);
-
-    setNewPassValidation(isLengthValid && isUppercaseValid && isSpecialCharValid && isNumericValid);
-  };
-
-  const handleConfirmPassword = (e) => {
-    const confirmPassword = e.target.value;
-    setConfirmPass(confirmPassword);
-
-    // Password criteria validation logic
-    const lengthRegex = /.{8,}/;
-    const uppercaseRegex = /[A-Z]/;
-    const specialCharRegex = /[!@#$%^&*(),.?":{}|<>]/;
-    const numericRegex = /[0-9]/;
-
-    const isLengthValid = lengthRegex.test(confirmPassword);
-    const isUppercaseValid = uppercaseRegex.test(confirmPassword);
-    const isSpecialCharValid = specialCharRegex.test(confirmPassword);
-    const isNumericValid = numericRegex.test(confirmPassword);
-
-    // Enable confirm password validation only if the new password meets all criteria
-    const isNewPasswordValid = isLengthValid && isUppercaseValid && isSpecialCharValid && isNumericValid;
-    setNewPassValidation(isNewPasswordValid);
-
-    // Handle error messages for mismatched passwords and missing password policies
-    let errorMessage = "";
-    if (!isNewPasswordValid) {
-      errorMessage += "Entered Passwords do not meet the criteria. ";
-    }
-    if (!isLengthValid) {
-      errorMessage += "Password must be at least 8 characters long. ";
-    }
-    if (!isUppercaseValid) {
-      errorMessage += "Password must include at least one uppercase character. ";
-    }
-    if (!isSpecialCharValid) {
-      errorMessage += "Password must include at least one special character. ";
-    }
-    if (!isNumericValid) {
-      errorMessage += "Password must include at least one numeric character. ";
-    }
-
-    setPasswordPolicyError(errorMessage.trim());
-
-    // Enable confirm password validation only if the new password and old password are valid
-    const isConfirmPasswordValid = confirmPassword === newPass && isNewPasswordValid && oldPassValidation;
-    setConfirmPassValidation(isConfirmPasswordValid);
-  };
-
-
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    const data = new FormData(event.currentTarget);
-    console.log({
-      OldPassword: data.get("Old password"),
-      NewPassword: data.get("New password"),
-      ConfirmNewPassword: data.get("Confirm New password"),
+  useEffect(() => {
+    setForm({
+      email:userInfo.userEmail,
+      oldPassword: "",
+      newPassword: "",
     });
-  };
+  }, []);
 
-
-
-
-  const passwordPolicyText = (
-    <Typography variant="body2" sx={{ mt: 2, color: "red" }}>
-      Password Policy * <br />
-      • Be a minimum length of eight (8) characters on all systems. <br />
-      • Must include minimum one uppercase character <br />
-      • Must include minimum of one special character <br />
-      • Must include minimum of one numeric character
-    </Typography>
-  );
   return (
     <div>
-    <NavBar />
+      <NavBar />
       <Container
         component="main"
         maxWidth="xs"
@@ -145,7 +122,7 @@ const ChangePassword = () => {
           </Typography>
           <Box
             component="form"
-            onSubmit={handleSubmit}
+            onSubmit={onFormSubmit}
             noValidate
             sx={{ mt: 1 }}
           >
@@ -168,21 +145,21 @@ const ChangePassword = () => {
                   },
                 }}
                 // margin="normal"
-
                 fullWidth
-                id="Old password"
-                onChange={handleOldPassword}
-                name="Old password"
-                type={showOldPassword ? "text" : "password"}
-                autoComplete="Old password"
+                id="oldPassword"
+                name="oldPassword"
                 autoFocus
+                onChange={handleEvent}
+                type={showPassword ? "text" : "Password"}
+                helperText={isPassValid ? "" : "This field is required"}
+                error={!isPassValid}
                 InputProps={{
                   endAdornment: (
                     <IconButton
-                      onClick={() => setShowOldPassword(!showOldPassword)}
+                      onClick={() => setShowPassword(!showPassword)}
                       edge="end"
                     >
-                      {showOldPassword ? <Visibility /> : <VisibilityOff />}
+                      {showPassword ? <Visibility /> : <VisibilityOff />}
                     </IconButton>
                   ),
                 }}
@@ -210,29 +187,28 @@ const ChangePassword = () => {
                     "& > fieldset": { border: 0.5, borderColor: "#18234F" },
                   },
                 }}
-                // margin="normal"
+
 
                 fullWidth
-                name="New password"
-                onChange={handleNewPassword}
-                type={showNewPassword ? "text" : "password"}
-                onFocus={() => setShowPasswordPolicy(true)}
-                onBlur={() => setShowPasswordPolicy(false)}
-                id="New password"
+                name="newPassword"
+                id="newPassword"
+                onChange={handleEvent}
+                onClick={toggleNote}
+                type={newshowPassword ? "text" : "Password"}
+                helperText={isNewValid ? "" : "Password not matching certeria"}
+                error={!isNewValid}
                 InputProps={{
                   endAdornment: (
                     <IconButton
-                      onClick={() => setShowNewPassword(!showNewPassword)}
+                      onClick={() => setnewShowPassword(!newshowPassword)}
                       edge="end"
                     >
-                      {showNewPassword ? <Visibility /> : <VisibilityOff />}
+                      {newshowPassword ? <Visibility /> : <VisibilityOff />}
                     </IconButton>
                   ),
                 }}
               />
             </Typography>
-
-
 
             <Typography
               variant="subtitle1"
@@ -245,7 +221,6 @@ const ChangePassword = () => {
               }}
             >
               Confirm New password <span style={{ color: "red" }}>*</span>
-
               <TextField
                 sx={{
                   "& .MuiInputLabel-root": { color: "#18234F" },
@@ -253,50 +228,44 @@ const ChangePassword = () => {
                     "& > fieldset": { border: 0.5, borderColor: "#18234F" },
                   },
                 }}
-                // margin="normal"
-
                 fullWidth
-                onChange={handleConfirmPassword}
-                name="Confirm new password"
-                type={showConfirmPassword ? "text" : "password"}
-                id="Confirm new password"
-                onFocus={() => setShowPasswordPolicy(true)}
-                onBlur={() => setShowPasswordPolicy(false)}
+                name="confirm_password"
+                id="confirm_password"
+                onChange={handleEvent}
+                helperText={IsRePassValid ? "" : "Password doesnt match with new password"}
+                error={!IsRePassValid}
+                type={conshowPassword ? "text" : "Password"}
                 InputProps={{
                   endAdornment: (
                     <IconButton
-                      onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                      onClick={() => setconShowPassword(!conshowPassword)}
                       edge="end"
                     >
-                      {showConfirmPassword ? <Visibility /> : <VisibilityOff />}
+                      {conshowPassword ? <Visibility /> : <VisibilityOff />}
                     </IconButton>
                   ),
                 }}
               />
             </Typography>
-
-
-            {confirmPass !== newPass && confirmPass !== "" && newPass !== "" && (
-              <p className={`${styles.textDanger}`}>
-                Entered Passwords do not match.
-              </p>
+            {showNote && (
+              <div style={{ marginTop: 10, color: "red" }}>
+                Password Policy * <br />
+                • Length must be between (8) to (16) characters. <br />
+                • Must include minimum one uppercase character <br />
+                • Must include minimum of one special character <br />
+                • Must include minimum of one numeric character
+              </div>
             )}
 
-            {passwordPolicyError && <p className={`${styles.textDanger}`}>{passwordPolicyError}</p>}
-            {showPasswordPolicy && passwordPolicyText}
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2, backgroundColor: "#1565C0" }}
+            >
+              Submit
+            </Button>
 
-
-            <Link to={(confirmPassValidation && oldPassValidation) ? "/dash" : ""}>
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2, backgroundColor: "#1565C0" }}
-                disabled={!confirmPassValidation || !oldPassValidation || !newPassValidation}
-              >
-                Submit
-              </Button>
-            </Link>
 
 
 

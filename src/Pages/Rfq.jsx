@@ -858,10 +858,19 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) => {
                 onChange={handleInputChange}
                 value={inputDetails.works}
               >
-                <MenuItem value="FOB">FOB</MenuItem>
-                <MenuItem value="CIF">CIF</MenuItem>
-                <MenuItem value="DDP">DDP</MenuItem>
-                <MenuItem value="DDU">DDU</MenuItem>
+                <MenuItem value="EXW">EXW (Ex-works)</MenuItem>
+                <MenuItem value="DAP">DAP (Delivery At Place)</MenuItem>
+                <MenuItem value="FOB">FOB (Free on Board)</MenuItem>
+                <MenuItem value="FCA">FCA (Free Carrier)</MenuItem>
+                <MenuItem value="FAS">FAS (Free Alongside Ship)</MenuItem>
+                <MenuItem value="CFR">CFR (Cost and Freight)</MenuItem>
+                <MenuItem value="CIF">CIF (Cost, Insurance and Freight)</MenuItem>
+                <MenuItem value="CPT">CPT (Carriage Paid To)</MenuItem>
+                <MenuItem value="CIP">CIP (Carriage and Insurance Paid To)</MenuItem>
+                <MenuItem value="DPU">DPU (Delivered At Place Unloaded)</MenuItem>
+                <MenuItem value="DDP">DDP (Delivered Duty Paid)</MenuItem>
+                <MenuItem value="DDU">DDU (Delivered Duty Unpaid)</MenuItem>
+                <MenuItem value="OTHER">OTHER</MenuItem>
               </Select>
             </Grid>
             <Grid item xs={12} sm={6}>

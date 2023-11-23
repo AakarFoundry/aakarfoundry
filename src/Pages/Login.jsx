@@ -7,61 +7,62 @@ import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import IconButton from "@mui/material/IconButton";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import {useNavigate} from "react-router-dom"
+import { useNavigate,Navigate } from "react-router-dom";
+import { UserContext } from "./UserContext";
 
 export const Login = () => {
 
-  const URL = "http://localhost:4000/login ";
+  const URL = "http://localhost:4000/login";
   const navigate = useNavigate();
-
-  async function uploadingData(URL, data) {
-    try {
-     
-      const respones = await fetch(URL, {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify(data),
-      }).catch((e) => console.log("Error : ", e));
-      const json = await respones.json();
-      console.log(respones.status);
-      if (respones.status === 200) {
-        
-        //Login Success
-        console.log("Success");
-            alert("Login Successful!!")
-            navigate("/dash");
-        
-      } else {
-        //Login Invalid
-        alert("Invalid Login")
-        console.log("Invalid");
-      }
-      
-    } catch (e) {
-      console.log("Error : ", e);
-    }
-  }
-
+  const [showPassword, setShowPassword] = useState(false);
+  const { setUserInfo,userInfo } = useContext(UserContext);
+  const [formData, setForm] = useState({});
 
   const handleEvent = (e) => {
     setForm({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const [formData, setForm] = useState({});
-
-
+  async function uploadingData(URL, data) {
+    try {
+      const response = await fetch(URL, {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
   
+      if (response.ok) {
+        const userData = await response.json();
+        setUserInfo(userData);
+        console.log(userInfo);
+        console.log(userData.userEmail);
+        if (userData.userEmail === "admin123") {
+          alert("Login Successful as Admin!!");
+          navigate("/approval");
+        } else {
+          alert("Login Successful!!");
+          navigate("/dash");
+        }
+      } else {
+        alert("Invalid Login");
+        console.log("Invalid");
+      }
+    } catch (e) {
+      console.log("Error:", e);
+    }
+  }
+  
+
 
   function onFormSubmit(e) {
     e.preventDefault();
     console.log(formData);
-    uploadingData(URL,formData);
+    uploadingData(URL, formData);
   }
 
   useEffect(() => {
@@ -70,8 +71,9 @@ export const Login = () => {
       password: "",
     });
   }, []);
+
   
-  const [showPassword, setShowPassword] = useState(false);
+
 
 
 
@@ -119,7 +121,7 @@ export const Login = () => {
             >
               <TextField
                 sx={{
-                  "& .MuiInputLabel-root": { color: "white" }, 
+                  "& .MuiInputLabel-root": { color: "white" },
                   "& .MuiOutlinedInput-root": {
                     "& > fieldset": { border: 0.5, borderColor: "white" },
                   },
@@ -133,11 +135,11 @@ export const Login = () => {
                 autoComplete="email"
                 autoFocus
                 onChange={handleEvent}
-                
+
               />
               <TextField
                 sx={{
-                  "& .MuiInputLabel-root": { color: "white" }, 
+                  "& .MuiInputLabel-root": { color: "white" },
                   "& .MuiOutlinedInput-root": {
                     "& > fieldset": { border: 0.5, borderColor: "white" },
                   },
@@ -171,7 +173,7 @@ export const Login = () => {
               >
                 Log In
               </Button>
-             
+
             </Box>
           </Box>
         </Container>

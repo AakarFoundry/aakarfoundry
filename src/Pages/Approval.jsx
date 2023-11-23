@@ -1,4 +1,5 @@
 import * as React from "react";
+import Button from "@mui/material/Button";
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -8,9 +9,12 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Container from "@mui/material/Container";
-import Button from "@mui/material/Button";
 import { TablePagination } from "@mui/material";
 import NavBar from './../Components/NavBar';
+import { useState,useContext } from "react";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { UserContext } from "./UserContext";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -33,25 +37,120 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
   "&:last-child td, &:last-child th": {
     border: `1px solid ${theme.palette.divider}`,
+    
   },
 }));
 
-function createData(name, id, status, department) {
-  return { name, id, status, department };
+// function createData(name, id, status, views) {
+//   return { name, id, status, views };
+// }
+
+// const rows = [
+//   createData("Customer 1", "12345", "Approved"),
+//   createData("Customer 2", "67890", "Pending"),
+//   createData("Customer 3", "54321", "Incomplete"),
+//   createData("Customer 4", "98765", "Rejected"),
+//   createData("Customer 5", "11111", "Approved"),
+//   createData("Customer 6", "11431", "Rejected"),
+//   createData("Customer 7", "54646", "Pending"),
+//   createData("Customer 8", "64566", "Incomplete"),
+//   createData("Customer 9", "23424", "Approved"),
+// ];
+async function fetchUserData() {
+  try {
+    const response = await fetch('http://localhost:4000/user');
+    if (response.ok) {
+  
+      const data = await response.json();
+      return data;
+    } else {
+      throw new Error('Failed to fetch data');
+    } 
+  } catch (error) {
+    console.error('Error fetching User data: ', error);
+    return [];
+  }
+}
+export default function Approval() {
+  const [users, setUsers] =useState([]);
+  const { setUserInfo,userInfo } = useContext(UserContext);
+  const [formData, setForm] = useState({});
+  const [currentId, setCurrentId] = useState(null);
+  const URL = "http://localhost:4000/resetpassword"
+  const url = "http://localhost:4000/deleteuser"
+
+  const rpassword = (id) => {
+    console.log("View Form for ID by rpassword:", id);
+    setCurrentId(id);
+   // console.log(formData)
+    uploadingData(URL, { email: id });
+  };
+
+  const handleViewForm = (id) => {
+    console.log("View Form for ID:", id);
+    setCurrentId(id);
+    deletingData(url, { email: id });
+  };
+
+  async function uploadingData(URL, data) {
+    try {
+        const response = await fetch(URL, {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json",
+            },
+            body: JSON.stringify(data),
+        });
+      
+        if (!response.ok) {
+            console.error("Error:", response.status, await response.json());
+            alert("Error")
+        } else {
+            console.log("Success:", response.status, await response.json());
+            alert("Reset Success")
+        }
+    } catch (error) {
+        console.error("Error:", error);
+    }
 }
 
-const rows = [
-  createData("Vinayak Joshi", "12345", "54321 09876", "Information Technology"),
-  createData("Olivia Smith", "67890", "32109 87654", "Human Resources"),
-  createData("Liam Johnson", "54321", "98765 43210", "Finance"),
-  createData("Noah Davis", "98765", "91234 56789", "Research and Development"),
-  createData("Ava Miller", "11111", "87654 32109", "Sales"),
-  createData("Isabella Lee", "11115", "87651 23459", "Legal"),
-  createData("Sophia Martinez", "11616", "76512 34980", "Product Management"),
-  createData("Mason Clark", "11187", "65423 19802", "Customer Service"),
-];
+async function deletingData(URL, data) {
+  try {
+      const response = await fetch(URL, {
+          method: "POST",
+          headers: {
+              "Content-type": "application/json",
+          },
+          body: JSON.stringify(data),
+      });
+    
+      if (!response.ok) {
+          console.error("Error:", response.status, await response.json());
+          alert("Error")
+      } else {
+          console.log("Success:", response.status, await response.json());
+          alert("Delete Success")
+          window.location.reload();
+      }
+  } catch (error) {
+      console.error("Error:", error);
+  }
+}
 
-export default function Approval() {
+
+
+
+  useEffect(()=>{
+    async function fetchData() {
+      const data = await fetchUserData();
+      setUsers(data);
+    }
+    fetchData();
+  }, []);
+
+  
+
+  
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
@@ -65,108 +164,97 @@ export default function Approval() {
   };
 
   const emptyRows =
-    rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
+    rowsPerPage - Math.min(rowsPerPage, users.length - page * rowsPerPage);
 
-  const slicedRows = rows.slice(
+  const slicedRows = users.slice(
     page * rowsPerPage,
     page * rowsPerPage + rowsPerPage
   );
 
   return (
-     <div>
-      <NavBar />
-      <Container
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          minHeight: "100vh",
-          justifyContent: "center",
-          mt: "5rem",
-        }}
-      >
-        <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 700 }} aria-label="customized table">
-            <TableHead>
-              <TableRow>
+    <div>
+    <NavBar />
+    <Container
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        minHeight: "100vh",
+        justifyContent: "center",
+        mt: "3rem",
+      }}
+    >
+      <TableContainer component={Paper}>
+        <Table sx={{ minWidth: 700 }} aria-label="customized table">
+          <TableHead>
+          <TableRow>
                 <StyledTableCell align="center"> Name</StyledTableCell>
-                <StyledTableCell align="center"> ID</StyledTableCell>
+                <StyledTableCell align="center">Email-Id</StyledTableCell>
                 <StyledTableCell align="center">Contact No</StyledTableCell>
                 <StyledTableCell align="center">Department</StyledTableCell>
                 <StyledTableCell align="center">Reset Password</StyledTableCell>
                 <StyledTableCell align="center">Delete User</StyledTableCell>
 
               </TableRow>
-            </TableHead>
-            <TableBody>
-              {slicedRows.map((row) => (
-                <StyledTableRow key={row.name}>
-                  <StyledTableCell component="th" scope="row">
-                    {row.name}
-                  </StyledTableCell>
-                  <StyledTableCell align="center">{row.id}</StyledTableCell>
-                  <StyledTableCell align="center">{row.status}</StyledTableCell>
-                  <StyledTableCell align="center">
-                    {row.department}
-                  </StyledTableCell>
-                  <StyledTableCell align="center">
-                    {/* Reset Password column */}
-                    <Button
-                      variant="contained"
-                      style={{
-                        background: "#64c664",
-                        minWidth: "100px",
-                        marginRight: "10px",
-                      }}
-                    >
-                      Reset
-                    </Button>
+          </TableHead>
+          <TableBody>
+            {slicedRows.map((users) => (
+              <StyledTableRow key={users.name}>
+                <StyledTableCell component="th" scope="row">
+                  {users.name}
+                </StyledTableCell>
+                <StyledTableCell component="th" scope="row">
+                  {users.email}
+                </StyledTableCell>
+                <StyledTableCell align="center">{users.number}</StyledTableCell>
+                <StyledTableCell align="center">
+                    {users.department}
+                </StyledTableCell>
+                <StyledTableCell align="center">
+                  <Button
+                    variant="contained"
+                    style={{ background: "success", minWidth: "100px" }}
+                    onClick={() => rpassword(users.email)}
+                  >
+                    Reset Password
+                  </Button>
+                </StyledTableCell>
+                <StyledTableCell align="center">
+                  <Button
+                    variant="contained"
                     
-                  </StyledTableCell>
-                  <StyledTableCell align="center"> 
-                      <Button
-                      variant="contained"
-                      style={{
-                        background: "#c42222",
-                        minWidth: "100px",
-                      }}
-                    >
-                      Delete
-                    </Button>
-                  </StyledTableCell>
-                
-                </StyledTableRow>
-              ))}
-
-              {emptyRows > 0 && (
-                <TableRow style={{ height: 53 * emptyRows }}>
-                  <StyledTableCell colSpan={6} /> {/* Update colSpan to match the number of columns */}
-                </TableRow>
-              )}
-            </TableBody>
-          </Table>
-        </TableContainer>
-        <TablePagination
-          rowsPerPageOptions={[5, 10, 25]}
-          component="div"
-          count={rows.length}
-          rowsPerPage={rowsPerPage}
-          page={page}
-          onPageChange={handleChangePage}
-          onRowsPerPageChange={handleChangeRowsPerPage}
-          labelRowsPerPage="Rows per page"
-          labelDisplayedRows={({ from, to, count }) =>
-            `${from}-${to} of ${count}`
-          }
-          backIconButtonText="Previous Page"
-          nextIconButtonText="Next Page"
-        />
-      </Container>
+                    style={{backgroundColor: "#DC143C", minWidth: "100px" }}
+                    onClick={() => handleViewForm(users.email)}
+                  >
+                    Delete
+                  </Button>
+                </StyledTableCell>
+              </StyledTableRow>
+            ))}
+            {emptyRows > 0 && (
+              <TableRow style={{ height: 53 * emptyRows }}>
+                <StyledTableCell colSpan={4} />
+              </TableRow>
+            )}
+          </TableBody>
+        </Table>
+      </TableContainer>
+      <TablePagination
+        rowsPerPageOptions={[5, 10, 25, 50, 100]}
+        component="div"
+        count={users.length}
+        rowsPerPage={rowsPerPage}
+        page={page}
+        onPageChange={handleChangePage}
+        onRowsPerPageChange={handleChangeRowsPerPage}
+        labelRowsPerPage="Rows per page"
+        labelDisplayedRows={({ from, to, count }) =>
+          `${from}-${to} of ${count}`
+        }
+        backIconButtonText="Previous Page"
+        nextIconButtonText="Next Page"
+      />
+    </Container>
     </div>
   );
 }
-
-
-
-
-

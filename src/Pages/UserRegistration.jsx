@@ -16,7 +16,7 @@ import { useEffect,useState } from 'react';
 
 const defaultTheme = createTheme();
 
-const UserApproval = () => {
+const UserRegistration = () => {
 
   const handleEvent = (e) => {
     setForm({ ...formData, [e.target.name]: e.target.value });
@@ -260,4 +260,4 @@ const UserApproval = () => {
   );
 };
 
-export default UserApproval;
+export default UserRegistration;
