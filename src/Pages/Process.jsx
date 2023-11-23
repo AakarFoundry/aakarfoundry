@@ -32,7 +32,8 @@ const Process = (props) => {
     delivery: '',
     enquiryDate: '',
     path: '',
-    category: ''  
+    category: '',
+    enquiry: 'NA'
   }
   );
   const [inputDetails, setInputDetails] = useState({});
@@ -101,19 +102,104 @@ const Process = (props) => {
   });
   useEffect(() => {
     if (id !== undefined) {
-      fetch(`http://localhost:4000/customers`)
+      fetch(`http://localhost:4000/customers/${id}`)
         .then((res, err) => {
           return res.json();
         })
         .then((data) => {
           setDetails(data);
+          setSelectedOption(data.category);
         })
         .catch((err) => {
           console.log(err);
         });
 
+
+        if (selectedOption === 'RFQ') {
+        fetch(`http://localhost:4000/rfqs/${id}`)
+        .then((res, err) => {
+          return res.json();
+        })
+        .then((data) => {
+          setInputDetails(data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      } else {
+        fetch(`http://localhost:4000/ecns/${id}`)
+        .then((res, err) => {
+          return res.json();
+        })
+        .then((data) => {
+          setInputDetails(data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      }
+
+
+        fetch(`http://localhost:4000/risks/${id}`)
+        .then((res, err) => {
+          return res.json();
+        })
+        .then((data) => {
+          setRiskDetails(data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+
+
+        fetch(`http://localhost:4000/designs/${id}`)
+        .then((res, err) => {
+          return res.json();
+        })
+        .then((data) => {
+          setDesignDetails(data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+
+
+        fetch(`http://localhost:4000/machines/${id}`)
+        .then((res, err) => {
+          return res.json();
+        })
+        .then((data) => {
+          setMachineDetails(data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+
+
+        fetch(`http://localhost:4000/qualities/${id}`)
+        .then((res, err) => {
+          return res.json();
+        })
+        .then((data) => {
+          setQualityDetails(data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+
+
+        fetch(`http://localhost:4000/npds/${id}`)
+        .then((res, err) => {
+          return res.json();
+        })
+        .then((data) => {
+          setNpdDetails(data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
-  }, [])
+  }, [selectedOption])
   useEffect(() => {
     if (selectedOption === 'RFQ') {
       setInputDetails({
@@ -394,6 +480,7 @@ const Process = (props) => {
           <Machine
             machineDetails={machineDetails}
             setMachineDetails={setMachineDetails}
+            id = {id}
           />}
         {activeStep === 5 && (
           <Quality

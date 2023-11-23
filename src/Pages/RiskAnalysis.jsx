@@ -224,6 +224,7 @@ const RiskAnalysis = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              value={riskDetails.environment_remarks}
               onChange={handleInputChange}
 
             />
@@ -258,6 +259,7 @@ const RiskAnalysis = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              value={riskDetails.investment_remarks}
               onChange={handleInputChange}
             />
 
@@ -292,6 +294,7 @@ const RiskAnalysis = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              value={riskDetails.manufacturing_remarks}
               onChange={handleInputChange}
             />
           </Grid>
@@ -341,6 +344,7 @@ const RiskAnalysis = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              value={riskDetails.technical_remarks}
               onChange={handleInputChange}
             />
             <FormControl>
@@ -374,6 +378,7 @@ const RiskAnalysis = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              value={riskDetails.estimation_remarks}
               onChange={handleInputChange}
             />
 
@@ -408,6 +413,7 @@ const RiskAnalysis = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              value={riskDetails.regret_remarks}
               onChange={handleInputChange}
             />
           </Grid>
@@ -431,6 +437,7 @@ const RiskAnalysis = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              value={riskDetails.remarks}
               onChange={handleInputChange}
             />
           </Grid>

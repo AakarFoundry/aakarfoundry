@@ -403,6 +403,7 @@ const DesignFoundry = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              value={designDetails.remarks}
               onChange={handleInputChange}
             />
           </Grid>

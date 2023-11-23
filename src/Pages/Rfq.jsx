@@ -13,14 +13,6 @@ import AddIcon from "@mui/icons-material/Add";
 
 
 const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) => {
-
-  const [quantity, setQuantity] = useState("");
-  const [finishWeight, setFinishWeight] = useState("");
-  const [annualTonnage, setAnnualTonnage] = useState("");
-
-
-
-
   const redAsteriskStyle = {
     color: 'red',
   };
@@ -38,7 +30,9 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) => {
       value: "",
     },
   ]);
-
+  const [finishWeight, setFinishWeight] = useState();
+  const [tonnage, setTonnage] = useState();
+  const [quantity, setQuantity] = useState();
   const addField = () => {
     const newFields = [
       ...fields,
@@ -71,29 +65,75 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) => {
   };
 
   useEffect(() => {
-    // Calculate Annual Tonnage whenever finishWeight or quantity changes
-    if (finishWeight && quantity) {
-      const calculatedTonnage = (finishWeight * quantity) / 1000;
-      setAnnualTonnage(calculatedTonnage.toFixed(2));
+    if (inputDetails.finishWeight && inputDetails.quantity){
+      const calculatedTonnage = (inputDetails.finishWeight * inputDetails.quantity) / 1000;
       setInputDetails((prevInputDetails) => ({
         ...prevInputDetails,
         tonnage: calculatedTonnage.toFixed(2)
       }));
     } else {
-      setAnnualTonnage("");
       setInputDetails((prevInputDetails) => ({
         ...prevInputDetails,
         tonnage: ''
       }));
     }
-  }, [finishWeight, quantity, setInputDetails]);
+  }, [inputDetails.finishWeight, inputDetails.quantity, setInputDetails]);
 
+  useEffect(() => {
+    // Create three empty fields for each type
+    const emptySurfaceTreatmentFields = Array.from({ length: 1 }, (_, index) => ({
+      id: index * 2 + 1,
+      label: 'Surface Treatment',
+      type: 'select',
+      options: ['Anodizing', 'Chromotising', 'Powder Coating', 'Other'],
+      value: '',
+    }));
+  
+    const emptyTreatmentSpecificationFields = Array.from({ length: 1 }, (_, index) => ({
+      id: index * 2 + 2,
+      label: 'Surface Treatment Specification',
+      value: '',
+    }));
+  
+    // Merge the empty fields with the fields from the arrays
+    const surfaceTreatmentFields = inputDetails.surfaceTreatment
+      ? inputDetails.surfaceTreatment.map((treatment, index) => ({
+          id: index * 2 + 1,
+          label: 'Surface Treatment',
+          type: 'select',
+          options: ['Anodizing', 'Chromotising', 'Powder Coating', 'Other'],
+          value: treatment,
+        }))
+      : emptySurfaceTreatmentFields;
+  
+    const treatmentSpecificationFields = inputDetails.treatmentSpecification
+      ? inputDetails.treatmentSpecification.map((spec, index) => ({
+          id: index * 2 + 2,
+          label: 'Surface Treatment Specification',
+          value: spec,
+        }))
+      : emptyTreatmentSpecificationFields;
+  
+    // Combine the fields and sort them by id
+    const newFields = [
+      ...surfaceTreatmentFields,
+      ...treatmentSpecificationFields,
+    ].sort((a, b) => a.id - b.id);
+  
+    // console.log(newFields);
+    setFields(newFields);
+  }, [inputDetails]);
+  
   const handleFinishWeightChange = (event) => {
     handleInputChange(event);
     const inputValue = event.target.value;
     // Validate input to allow numeric and decimal values
     if (/^\d*\.?\d*$/.test(inputValue)) {
-      setFinishWeight(inputValue);
+      // setFinishWeight(inputValue);
+      setInputDetails((prevInputDetails) => ({
+        ...prevInputDetails,
+        finishWeight: inputValue
+      }));
     }
   };
 
@@ -103,7 +143,10 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) => {
     const inputValue = event.target.value;
     // Validate input to allow numeric and decimal values
     if (/^\d*\.?\d*$/.test(inputValue)) {
-      setQuantity(inputValue);
+      setInputDetails((prevInputDetails) => ({
+        ...prevInputDetails,
+        quantity: inputValue
+      }));
     }
   };
 
@@ -186,6 +229,7 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                value={inputDetails.name}
                 onChange={handleInputChange}
               />
             </Grid>
@@ -211,6 +255,7 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                value={inputDetails.partMach}
                 onChange={handleInputChange}
               />
             </Grid>
@@ -237,6 +282,7 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                value={inputDetails.partCast}
                 onChange={handleInputChange}
               />
             </Grid>
@@ -257,12 +303,12 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) => {
               <TextField
 
                 name="finishWeight"
-                id="weight"
+                id="finishWeight"
                 label=" Enter Details"
                 variant="outlined"
                 fullWidth
                 size="small"
-                value={finishWeight}
+                value={inputDetails.finishWeight}
                 onChange={handleFinishWeightChange}
               />
             </Grid>
@@ -288,6 +334,7 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                value={inputDetails.castingWeight}
                 onChange={handleInputChange}
               />
             </Grid>
@@ -313,6 +360,7 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                value={inputDetails.details}
                 onChange={handleInputChange}
               />
             </Grid>
@@ -364,7 +412,7 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) => {
                 variant="outlined"
                 fullWidth
                 size="small"
-                value={quantity}
+                value={inputDetails.quantity}
                 onChange={handleQuantityChange}
               />
             </Grid>
@@ -392,6 +440,7 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                value={inputDetails.life}
                 onChange={handleInputChange}
               />
             </Grid>
@@ -447,6 +496,7 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                value={inputDetails.alloy}
                 onChange={handleInputChange}
               />
             </Grid>
@@ -472,6 +522,7 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                value={inputDetails.machined}
                 onChange={handleInputChange}
                 defaultValue=''
               >
@@ -502,6 +553,7 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                value={inputDetails.blasting}
                 onChange={handleInputChange}
               />
             </Grid>
@@ -527,6 +579,7 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                value={inputDetails.productQc}
                 onChange={handleInputChange}
               />
             </Grid>
@@ -614,6 +667,7 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                value={inputDetails.materials}
                 onChange={handleInputChange}
               />
             </Grid>
@@ -639,6 +693,7 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                value={inputDetails.pressure}
                 onChange={handleInputChange}
               />
             </Grid>
@@ -663,6 +718,7 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                value={inputDetails.impregnation}
                 onChange={handleInputChange}
               />
             </Grid>
@@ -688,6 +744,7 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                value={inputDetails.treatment}
                 onChange={handleInputChange}
               />
             </Grid>
@@ -745,6 +802,7 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                value={inputDetails.custom}
                 onChange={handleInputChange}
               />
             </Grid>
@@ -771,6 +829,7 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                value={inputDetails.delivery}
                 onChange={handleInputChange}
               />
             </Grid>
@@ -832,7 +891,7 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) => {
                   color: 'darkgray',
                   borderColor: 'darkgray',
                 }}
-                value={annualTonnage}
+                value={inputDetails.tonnage}
                 onChange={handleInputChange}
               />
 
@@ -857,6 +916,7 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                value={inputDetails.remarks}
                 onChange={handleInputChange}
               />
             </Grid>

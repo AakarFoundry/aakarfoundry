@@ -75,6 +75,7 @@ const Ecn = ({inputDetails, setInputDetails, handleInputChange}) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                value={inputDetails.partName}
                 onChange={handleInputChange}
               />
             </Grid>
@@ -100,6 +101,7 @@ const Ecn = ({inputDetails, setInputDetails, handleInputChange}) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                value={inputDetails.number}
                 onChange={handleInputChange}
               />
             </Grid>
@@ -125,6 +127,7 @@ const Ecn = ({inputDetails, setInputDetails, handleInputChange}) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                value={inputDetails.weight}
                 onChange={handleInputChange}
               />
             </Grid>
@@ -150,6 +153,7 @@ const Ecn = ({inputDetails, setInputDetails, handleInputChange}) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                value={inputDetails.projectName}
                 onChange={handleInputChange}
               />
             </Grid>
@@ -175,6 +179,7 @@ const Ecn = ({inputDetails, setInputDetails, handleInputChange}) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                value={inputDetails.ecnType}
                 onChange={handleInputChange}
               />
             </Grid>

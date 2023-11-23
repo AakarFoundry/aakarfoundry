@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
@@ -7,7 +8,6 @@ import IconButton from "@mui/material/IconButton";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 import { Stack } from "@mui/material";
-import { useState } from "react";
 import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 
 const Machine = (props) => {
@@ -17,25 +17,71 @@ const Machine = (props) => {
     color: 'red',
   };
 
-  const [fields, setFields] = useState([
-    {
-      id: 1,
+  const [fields, setFields] = useState([]);
+
+  useEffect(() => {
+    // Create three empty fields for each type
+    const emptyMachineTypeFields = Array.from({ length: 1 }, (_, index) => ({
+      id: index * 3 + 1,
       label: 'Machine Type',
       type: 'select',
       options: ['CNC', 'VMC', 'HMC', 'As cast'],
       value: '',
-    },
-    {
-      id: 2,
+    }));
+  
+    const emptyCycleTimeFields = Array.from({ length: 1 }, (_, index) => ({
+      id: index * 3 + 2,
       label: 'Cycle time',
       value: '',
-    },
-    {
-      id: 3,
+    }));
+  
+    const emptyFixtureCostFields = Array.from({ length: 1 }, (_, index) => ({
+      id: index * 3 + 3,
       label: 'Machining Fixture cost',
       value: '',
-    },
-  ]);
+    }));
+  
+    // Merge the empty fields with the fields from the arrays
+    const machineTypeFields = machineDetails.machineType.length!==0
+      ? machineDetails.machineType.map((type, index) => ({
+          id: index * 3 + 1,
+          label: 'Machine Type',
+          type: 'select',
+          options: ['CNC', 'VMC', 'HMC', 'As cast'],
+          value: type,
+        }))
+      : emptyMachineTypeFields;
+  
+    const cycleTimeFields = machineDetails.cycleTime.length!==0
+      ? machineDetails.cycleTime.map((time, index) => ({
+          id: index * 3 + 2,
+          label: 'Cycle time',
+          value: time,
+        }))
+      : emptyCycleTimeFields;
+  
+    const fixtureCostFields = machineDetails.fixtureCost.length!==0
+      ? machineDetails.fixtureCost.map((cost, index) => ({
+          id: index * 3 + 3,
+          label: 'Machining Fixture cost',
+          value: cost,
+        }))
+      : emptyFixtureCostFields;
+  
+    // Combine the fields and sort them by id
+    const newFields = [
+      ...machineTypeFields,
+      ...cycleTimeFields,
+      ...fixtureCostFields,
+    ].sort((a, b) => a.id - b.id);
+  
+    console.log(newFields);
+    setFields(newFields);
+  }, [machineDetails]);
+  
+
+
+
 
   const [machineTypes, setMachineTypes] = useState([]);
   const [cycleTimes, setCycleTimes] = useState([]);
@@ -45,20 +91,19 @@ const Machine = (props) => {
     const newFields = [
       ...fields,
       {
-        id: fields.length + 1,
+        id: fields.length > 0 ? fields[fields.length - 1].id + 1 : 1,
         label: 'Machine Type',
         type: 'select',
         options: ['CNC', 'VMC', 'HMC', 'As cast'],
         value: '',
       },
       {
-        id: fields.length + 2,
+        id: fields.length > 0 ? fields[fields.length - 1].id + 2 : 2,
         label: 'Next Cycle time',
         value: '',
-        
       },
       {
-        id: fields.length + 3,
+        id: fields.length > 0 ? fields[fields.length - 1].id + 3 : 3,
         label: 'Next Machining Fixture cost',
         value: '',
       },
@@ -140,7 +185,6 @@ const Machine = (props) => {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-
         }}
         noValidate
         autoComplete="on"
@@ -152,7 +196,7 @@ const Machine = (props) => {
                 sx={{
                   display: 'flex',
                   flexDirection: 'column',
-                  height: '100%', // Set a fixed height for the box
+                  height: '100%',
                 }}
               >
                 <Typography
@@ -233,6 +277,7 @@ const Machine = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              value={machineDetails.remarks}
               onChange={handleInputChange}
             />
           </Grid>

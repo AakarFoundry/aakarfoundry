@@ -111,7 +111,7 @@ const CustomerName = (props) => {
               }}
             >
 
-              Contact Person <span style={{ color: "red" }}>*</span>
+              Status <span style={{ color: "red" }}>*</span>
             </Typography>
             <TextField
 

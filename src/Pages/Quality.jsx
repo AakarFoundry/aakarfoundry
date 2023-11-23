@@ -55,6 +55,7 @@ const Quality = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              value={qualityDetails.gaugesCost}
               onChange={handleInputChange}
             />
           </Grid>
@@ -79,6 +80,7 @@ const Quality = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              value={qualityDetails.leakCost}
               onChange={handleInputChange}
             />
           </Grid>
@@ -104,6 +106,7 @@ const Quality = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              value={qualityDetails.washingCost}
               onChange={handleInputChange}
             />
           </Grid>
@@ -129,6 +132,7 @@ const Quality = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              value={qualityDetails.capCost}
               onChange={handleInputChange}
             />
           </Grid>
@@ -155,7 +159,7 @@ const Quality = (props) => {
           size="small"
           onChange={handleInputChange}
           defaultValue=''
-          value={qualityDetails.packageType}
+          value={qualityDetails.packagingType}
         >
           <MenuItem value="Corrugated">Corrugated</MenuItem>
           <MenuItem value="PP">PP</MenuItem>
@@ -186,6 +190,7 @@ const Quality = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              value={qualityDetails.packagingCost}
               onChange={handleInputChange}
             />
           </Grid>
@@ -209,6 +214,7 @@ const Quality = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              value={qualityDetails.remarks}
               onChange={handleInputChange}
             />
           </Grid>

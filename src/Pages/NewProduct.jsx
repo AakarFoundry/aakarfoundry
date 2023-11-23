@@ -59,6 +59,7 @@ const NewProductDev = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              value={npdDetails.investment}
               onChange={handleInputChange}
             />
           </Grid>
@@ -112,6 +113,7 @@ const NewProductDev = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              value={npdDetails.remarks}
               onChange={handleInputChange}
             />
           </Grid>
