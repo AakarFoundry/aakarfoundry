@@ -16,7 +16,7 @@ import { UserContext } from "./UserContext";
 
 export const Login = () => {
 
-  const URL = "http://localhost:4000/login ";
+  const URL = "http://localhost:4000/login";
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const { setUserInfo,userInfo } = useContext(UserContext);
