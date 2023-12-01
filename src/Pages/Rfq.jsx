@@ -4,7 +4,7 @@ import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 import { FormControl, MenuItem, Select, Typography } from "@mui/material";
-
+import Button from "@mui/material/Button";
 import { Stack } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import RemoveIcon from "@mui/icons-material/Remove";
@@ -923,7 +923,16 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) => {
                 value={inputDetails.remarks}
                 onChange={handleInputChange}
               />
-            </Grid>
+            </Grid> 
+      <Button
+      variant="contained"
+      color="primary"
+      size="large"
+      textAlign="centre"
+      sx={{ margin: "auto", marginTop: 2 }}
+    >
+      Approve
+    </Button>  
           </Grid>
         </Box>
       </Container>

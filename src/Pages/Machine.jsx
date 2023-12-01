@@ -9,6 +9,7 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 import { Stack } from "@mui/material";
 import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
+import Button from "@mui/material/Button";
 
 const Machine = (props) => {
   const { machineDetails, setMachineDetails } = props;
@@ -281,6 +282,15 @@ const Machine = (props) => {
               onChange={handleInputChange}
             />
           </Grid>
+    <Button
+      variant="contained"
+      color="primary"
+      size="large"
+      textAlign="centre"
+      sx={{ margin: "auto", marginTop: 2 }}
+    >
+      Approve
+    </Button>  
         </Grid>
       </Box>
     </Container>
