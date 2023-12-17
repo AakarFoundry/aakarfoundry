@@ -229,6 +229,7 @@ async function deletingData(URL, data) {
                     
                     style={{backgroundColor: "#DC143C", minWidth: "100px" }}
                     onClick={() => handleViewForm(users.email)}
+                    disabled={users.email === "admin123"}
                   >
                     Delete
                   </Button>

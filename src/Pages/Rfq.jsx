@@ -865,7 +865,7 @@ const Rfq = (props) => {
                 onChange={handleInputChange}
               />
             </Grid>
-            <Button
+            {/* <Button
               variant="contained"
               color="primary"
               size="large"
@@ -873,7 +873,7 @@ const Rfq = (props) => {
               sx={{ margin: "auto", marginTop: 2 }}
             >
               Approve
-            </Button>
+            </Button> */}
           </Grid>
         </Box>
       </Container>

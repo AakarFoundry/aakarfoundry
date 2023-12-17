@@ -182,7 +182,7 @@ const Machine = (props) => {
               onChange={handleInputChange}
             />
           </Grid>
-          <Button
+          {/* <Button
             variant="contained"
             color="primary"
             size="large"
@@ -190,7 +190,7 @@ const Machine = (props) => {
             sx={{ margin: "auto", marginTop: 2 }}
           >
             Approve
-          </Button>
+          </Button> */}
         </Grid>
       </Box>
     </Container>

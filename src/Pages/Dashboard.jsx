@@ -11,7 +11,7 @@ import Paper from "@mui/material/Paper";
 import Container from "@mui/material/Container";
 import { TablePagination } from "@mui/material";
 import NavBar from './../Components/NavBar';
-import { useState,useContext } from "react";
+import { useState, useContext } from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "./UserContext";
@@ -38,7 +38,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
   "&:last-child td, &:last-child th": {
     border: `1px solid ${theme.palette.divider}`,
-    
+
   },
 }));
 
@@ -61,12 +61,12 @@ async function fetchCustomerData() {
   try {
     const response = await fetch('http://localhost:4000/dashboard');
     if (response.ok) {
-  
+
       const data = await response.json();
       return data;
     } else {
       throw new Error('Failed to fetch data');
-    } 
+    }
   } catch (error) {
     console.error('Error fetching customer data: ', error);
     return [];
@@ -87,7 +87,7 @@ export default function Dashboard() {
     }
     fetchData();
   }, []);
-  
+
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
   const navigate = useNavigate();
@@ -97,7 +97,7 @@ export default function Dashboard() {
     navigate(`/details/${id}`);
   };
 
-   const handleChangePage = (event, newPage) => {
+  const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
 
@@ -133,96 +133,108 @@ export default function Dashboard() {
 
   return (
     <div>
-    <NavBar />
-    <Container
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        minHeight: "100vh",
-        justifyContent: "center",
-        mt: "5rem",
-        position: "relative"
-         
-      }}
-    >
-    <Paper>
-        <SearchBar
-       
-        value={''} 
-        onChange={(searchVal) => requestSearch(searchVal)}
-        onCancelSearch={() => cancelSearch()}
-          style={{ margin: "20px" }} 
-        />
-      <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 1000 }} aria-label="customized table">
-          <TableHead>
-            <TableRow>
-              <StyledTableCell align="center">Customer Name</StyledTableCell>
-              <StyledTableCell align="center">Customer ID</StyledTableCell>
-              <StyledTableCell align="center">Status</StyledTableCell>
-              <StyledTableCell align="center">Details</StyledTableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {slicedRows.map((customer) => (
-              <StyledTableRow key={customer.customerName}>
-                <StyledTableCell component="th" scope="row">
-                  {customer.customerName}
-                </StyledTableCell>
-                <StyledTableCell align="center">{customer.enquiry}</StyledTableCell>
-                <StyledTableCell align="center">
-                  <Button
-                    variant="contained"
-                    color={
-                  
+      <NavBar />
+      <Container
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          minHeight: "100vh",
+          justifyContent: "center",
+          mt: "5rem",
+          position: "relative"
+
+        }}
+      >
+        <Paper>
+          <SearchBar
+
+            value={''}
+            onChange={(searchVal) => requestSearch(searchVal)}
+            onCancelSearch={() => cancelSearch()}
+            style={{ margin: "20px" }}
+          />
+          <TableContainer component={Paper}>
+            <Table sx={{ minWidth: 1000 }} aria-label="customized table">
+              <TableHead>
+                <TableRow>
+                  <StyledTableCell align="center">Customer Name</StyledTableCell>
+                  <StyledTableCell align="center">Customer ID</StyledTableCell>
+                  <StyledTableCell align="center">Status</StyledTableCell>
+                  <StyledTableCell align="center">Details</StyledTableCell>
+                  <StyledTableCell align="center">Download PDF</StyledTableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {slicedRows.map((customer) => (
+                  <StyledTableRow key={customer.customerName}>
+                    <StyledTableCell component="th" scope="row">
+                      {customer.customerName}
+                    </StyledTableCell>
+                    <StyledTableCell align="center">{customer.enquiry}</StyledTableCell>
+                    <StyledTableCell align="center">
+                      <Button
+                        variant="contained"
+                        color={
+
                           customer.status === "Success"
-                        ? "success"
-                        : customer.status === "Rejected"
-                        ? "error"
-                        : "primary"
-                    }
-                    style={{ minWidth: "8rem" }}
-                  >
-                    {customer.status}
-                  </Button>
-                </StyledTableCell>
-                <StyledTableCell align="center">
-                  <Button
-                    variant="contained"
-                    style={{ background: "#3E5C72D9", minWidth: "100px" }}
-                    onClick={() => handleViewForm(customer.enquiry)}
-                  >
-                    View Form
-                  </Button>
-                </StyledTableCell>
-              </StyledTableRow>
-            ))}
-            {emptyRows > 0 && (
-              <TableRow style={{ height: 53 * emptyRows }}>
-                <StyledTableCell colSpan={4} />
-              </TableRow>
-            )}
-          </TableBody>
-        </Table>
-      </TableContainer>
-      </Paper>
-      <TablePagination
-        rowsPerPageOptions={[5, 10, 25, 50, 100]}
-        component="div"
-        count={customers.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onPageChange={handleChangePage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
-        labelRowsPerPage="Rows per page"
-        labelDisplayedRows={({ from, to, count }) =>
-          `${from}-${to} of ${count}`
-        }
-        backIconButtonText="Previous Page"
-        nextIconButtonText="Next Page"
-      />
-    </Container>
+                            ? "success"
+                            : customer.status === "Rejected"
+                              ? "error"
+                              : "primary"
+                        }
+                        style={{ minWidth: "8rem" }}
+                      >
+                        {customer.status}
+                      </Button>
+                    </StyledTableCell>
+                    <StyledTableCell align="center">
+                      <Button
+                        variant="contained"
+                        style={{ background: "#3E5C72D9", minWidth: "100px" }}
+                        onClick={() => handleViewForm(customer.enquiry)}
+                        disabled={customer.status === "Rejected"}
+                      >
+                        View Form
+                      </Button>
+                    </StyledTableCell>
+                    <StyledTableCell align="center">
+                      <Button
+                        variant="contained"
+                        style={{ background: "#3E5C72D9", minWidth: "100px" }}
+                        onClick={() => handleViewForm(customer.enquiry)}
+                        disabled={customer.status !== "Success"}
+                      >
+                        Download
+                      </Button>
+                    </StyledTableCell>
+                  </StyledTableRow>
+                ))}
+                {emptyRows > 0 && (
+                  <TableRow style={{ height: 53 * emptyRows }}>
+                    <StyledTableCell colSpan={4} />
+                  </TableRow>
+                )}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </Paper>
+        <TablePagination
+          rowsPerPageOptions={[5, 10, 25, 50, 100]}
+          component="div"
+          count={customers.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+          labelRowsPerPage="Rows per page"
+          labelDisplayedRows={({ from, to, count }) =>
+            `${from}-${to} of ${count}`
+          }
+          backIconButtonText="Previous Page"
+          nextIconButtonText="Next Page"
+        />
+      </Container>
     </div>
   );
 }
