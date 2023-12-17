@@ -9,6 +9,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
+import { Typography } from "@mui/material";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -59,7 +60,19 @@ export default function Summary() {
         justifyContent: "center",
       }}
     >
-      <TableContainer component={Paper}>
+       <Typography
+                variant="subtitle1"
+                sx={{
+                  textAlign: "left",
+                  color: "#054470",
+                  fontWeight: "650",
+                  fontSize: "2.2rem",
+                  padding: "0.3rem",
+                }}
+              >
+      Form Submitted Successfully!!
+      </Typography>
+      {/* <TableContainer component={Paper}>
         <Table sx={{ minWidth: 700 }} aria-label="customized table">
           <TableHead>
             <TableRow>
@@ -83,7 +96,7 @@ export default function Summary() {
 
           </TableBody>
         </Table>
-      </TableContainer>
+      </TableContainer> */}
       
     </Container>
   );
