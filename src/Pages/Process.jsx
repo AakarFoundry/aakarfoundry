@@ -32,12 +32,12 @@ const Process = (props) => {
     delivery: '',
     enquiryDate: '',
     path: '',
-    category: ''  
+    category: ''
   }
   );
   const [inputDetails, setInputDetails] = useState({});
   const [designDetails, setDesignDetails] = useState({
-    enquiry:'',
+    enquiry: '',
     weight: '',
     casting: '',
     area: '',
@@ -55,7 +55,7 @@ const Process = (props) => {
   }
   );
   const [riskDetails, setRiskDetails] = useState({
-    enquiry:'',
+    enquiry: '',
     risk: '',
     requirement: '',
     application: '',
@@ -76,14 +76,12 @@ const Process = (props) => {
   }
   );
   const [machineDetails, setMachineDetails] = useState({
-    enquiry:'',
-    machineType: [],
-    cycleTime: [],
-    fixtureCost: [],
+    enquiry: '',
+    machine: [{}],
     remarks: 'NA',
   })
   const [qualityDetails, setQualityDetails] = useState({
-    enquiry:'',
+    enquiry: '',
     gaugesCost: '',
     leakCost: '',
     washingCost: '',
@@ -94,26 +92,127 @@ const Process = (props) => {
 
   });
   const [npdDetails, setNpdDetails] = useState({
-    enquiry:'',
+    enquiry: '',
     investment: '',
     partFeasible: '',
     remarks: 'NA',
   });
   useEffect(() => {
     if (id !== undefined) {
-      fetch(`http://localhost:4000/customers`)
+      fetch(`http://localhost:4000/customers/${id}`)
         .then((res, err) => {
           return res.json();
         })
         .then((data) => {
-          setDetails(data);
+          if (data !== null) {
+            setDetails(data);
+            setSelectedOption(data.category);
+          }
         })
         .catch((err) => {
           console.log(err);
         });
 
+
+      if (selectedOption === 'RFQ') {
+        fetch(`http://localhost:4000/rfqs/${id}`)
+          .then((res, err) => {
+            return res.json();
+          })
+          .then((data) => {
+            if (data !== null) {
+              setInputDetails(data);
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      } else {
+        fetch(`http://localhost:4000/ecns/${id}`)
+          .then((res, err) => {
+            return res.json();
+          })
+          .then((data) => {
+            if (data !== null) {
+              setInputDetails(data);
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
+
+
+      fetch(`http://localhost:4000/risks/${id}`)
+        .then((res, err) => {
+          return res.json();
+        })
+        .then((data) => {
+          if (data !== null) {
+            setRiskDetails(data);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+
+
+      fetch(`http://localhost:4000/designs/${id}`)
+        .then((res, err) => {
+          return res.json();
+        })
+        .then((data) => {
+          if (data !== null) {
+            setDesignDetails(data);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+
+
+      fetch(`http://localhost:4000/machines/${id}`)
+        .then((res, err) => {
+          return res.json();
+        })
+        .then((data) => {
+          if (data !== null) {
+            setMachineDetails(data);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+
+
+      fetch(`http://localhost:4000/qualities/${id}`)
+        .then((res, err) => {
+          return res.json();
+        })
+        .then((data) => {
+          if (data !== null) {
+            setQualityDetails(data);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+
+
+      fetch(`http://localhost:4000/npds/${id}`)
+        .then((res, err) => {
+          return res.json();
+        })
+        .then((data) => {
+          if (data !== null) {
+            setNpdDetails(data);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
-  }, [])
+  }, [selectedOption])
   useEffect(() => {
     if (selectedOption === 'RFQ') {
       setInputDetails({
@@ -131,8 +230,7 @@ const Process = (props) => {
         machined: '',
         blasting: '',
         productQc: '',
-        surfaceTreatment: [],
-        treatmentSpecification: [],
+        surfaceTreatment: [{}],
         materials: '',
         pressure: '',
         impregnation: '',
@@ -195,9 +293,8 @@ const Process = (props) => {
       }
       else {
         if (selectedOption === 'RFQ') {
-          const surfaceTreatmentLength = inputDetails.surfaceTreatment.length;
-          const treatmentSpecificationLength = inputDetails.treatmentSpecification.length;
-          if ((surfaceTreatmentLength !== treatmentSpecificationLength)) {
+
+          if ((inputDetails.surfaceTreatment.length === 0)) {
             isStepValid = false;
           }
         }
@@ -233,16 +330,9 @@ const Process = (props) => {
         stepDetails = designDetails;
       }
     } else if (activeStep === 4) {
-      const machineTypeLength = machineDetails.machineType.length;
-      const cycleTimeLength = machineDetails.cycleTime.length;
-      const fixtureCostLength = machineDetails.fixtureCost.length;
       if (
         Object.values(machineDetails).some((value) => value === '') ||
-        Object.values(machineDetails).some((value) => value === undefined) ||
-        (machineTypeLength !== cycleTimeLength) ||
-        (cycleTimeLength !== fixtureCostLength) ||
-        (machineTypeLength !== fixtureCostLength)
-      ) {
+        machineDetails.machine[0].cycleTime === null) {
         isStepValid = false;
       }
       else {
@@ -274,6 +364,7 @@ const Process = (props) => {
     }
 
     if (isStepValid) {
+      console.log(name);
       console.log(stepDetails);
       if (name === 'customer') {
         fetch(`http://localhost:4000/${name}/new`, {
@@ -284,7 +375,7 @@ const Process = (props) => {
           body: JSON.stringify(stepDetails),
           credentials: 'include',
         }).then(res => {
-          if(res.ok) {
+          if (res.ok) {
             return res.json();
           } else {
             throw new Error("Network response failed")
@@ -293,27 +384,27 @@ const Process = (props) => {
           const enquiry = data.enquiryNo;
           setInputDetails({
             ...inputDetails,
-            enquiry:enquiry
+            enquiry: enquiry
           });
           setRiskDetails({
             ...riskDetails,
-            enquiry:enquiry
+            enquiry: enquiry
           });
           setDesignDetails({
             ...designDetails,
-            enquiry:enquiry
+            enquiry: enquiry
           });
           setMachineDetails({
             ...machineDetails,
-            enquiry:enquiry
+            enquiry: enquiry
           });
           setQualityDetails({
             ...qualityDetails,
-            enquiry:enquiry
+            enquiry: enquiry
           });
           setNpdDetails({
             ...npdDetails,
-            enquiry:enquiry
+            enquiry: enquiry
           });
         })
       } else {
@@ -337,6 +428,7 @@ const Process = (props) => {
       setActiveStep(nextStep);
       setSkipped(newSkipped);
     } else {
+      console.log(riskDetails)
       alert("Please fill all fields.")
     }
   };
@@ -352,7 +444,7 @@ const Process = (props) => {
       setActiveStep(previousStep);
     }
   };
-  
+
   const handleOptionChange = (option) => {
     setSelectedOption(option);
     if (id !== undefined && id !== 'undefined') {
@@ -368,8 +460,24 @@ const Process = (props) => {
       navigate(`/details/?step=${activeStep}&option=${selectedOption}`);
     }
   }, [id, activeStep, selectedOption, navigate]);
+  const updateMachineDetails = (index, key, value) => {
+    const updatedMachine = [...machineDetails.machine];
+    updatedMachine[index] = { ...updatedMachine[index], [key]: value };
 
+    setMachineDetails({
+      ...machineDetails,
+      machine: updatedMachine,
+    });
+  };
+  const updateRfqDetails = (index, key, value) => {
+    const updatedRfq = [...inputDetails.surfaceTreatment];
+    updatedRfq[index] = { ...updatedRfq[index], [key]: value };
 
+    setInputDetails({
+      ...inputDetails,
+      surfaceTreatment: updatedRfq,
+    });
+  };
   return (
     <div className={styles.process}>
       <NavBar />
@@ -391,6 +499,7 @@ const Process = (props) => {
             selectedOption={selectedOption}
             inputDetails={inputDetails}
             setInputDetails={setInputDetails}
+            updateRfqDetails={updateRfqDetails}
 
           />}
         {activeStep === 2 &&
@@ -406,7 +515,7 @@ const Process = (props) => {
         {activeStep === 4 &&
           <Machine
             machineDetails={machineDetails}
-            setMachineDetails={setMachineDetails}
+            updateMachineDetails={updateMachineDetails}
           />}
         {activeStep === 5 && (
           <Quality
@@ -462,7 +571,7 @@ const Process = (props) => {
                   Back
                 </Button>
                 <Button variant="contained" size="large" onClick={handleSkip}
-                 disabled={activeStep === 0 || activeStep === 1} >
+                  disabled={activeStep === 0 || activeStep === 1} >
                   Skip
                 </Button>
                 <Button variant="contained" size="large" onClick={handleNext}>

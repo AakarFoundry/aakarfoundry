@@ -59,7 +59,7 @@ const DesignFoundry = (props) => {
               variant="outlined"
               fullWidth
               size="small"
-              value={designDetails.weight}
+              value={designDetails?.weight}
               onChange={handleInputChange}
             />
           </Grid>
@@ -85,7 +85,7 @@ const DesignFoundry = (props) => {
               variant="outlined"
               fullWidth
               size="small"
-              value={designDetails.casting}
+              value={designDetails?.casting}
               onChange={handleInputChange}
             />
           </Grid>
@@ -112,7 +112,7 @@ const DesignFoundry = (props) => {
               variant="outlined"
               fullWidth
               size="small"
-              value={designDetails.area}
+              value={designDetails?.area}
               onChange={handleInputChange}
             />
           </Grid>
@@ -138,7 +138,7 @@ const DesignFoundry = (props) => {
               variant="outlined"
               fullWidth
               size="small"
-              value={designDetails.dieCasting}
+              value={designDetails?.dieCasting}
               onChange={handleInputChange}
             />
           </Grid>
@@ -164,7 +164,7 @@ const DesignFoundry = (props) => {
               variant="outlined"
               fullWidth
               size="small"
-              value={designDetails.impressions}
+              value={designDetails?.impressions}
               onChange={handleInputChange}
             />
           </Grid>
@@ -191,7 +191,7 @@ const DesignFoundry = (props) => {
               variant="outlined"
               fullWidth
               size="small"
-              value={designDetails.rawMaterial}
+              value={designDetails?.rawMaterial}
               onChange={handleInputChange}
             />
           </Grid>
@@ -218,7 +218,7 @@ const DesignFoundry = (props) => {
               variant="outlined"
               fullWidth
               size="small"
-              value={designDetails.dieCost}
+              value={designDetails?.dieCost}
               onChange={handleInputChange}
             />
           </Grid>
@@ -245,7 +245,7 @@ const DesignFoundry = (props) => {
               variant="outlined"
               fullWidth
               size="small"
-              value={designDetails.coreCost}
+              value={designDetails?.coreCost}
               onChange={handleInputChange}
             />
           </Grid>
@@ -272,7 +272,7 @@ const DesignFoundry = (props) => {
               variant="outlined"
               fullWidth
               size="small"
-              value={designDetails.dieLife}
+              value={designDetails?.dieLife}
               onChange={handleInputChange}
             />
           </Grid>
@@ -298,7 +298,7 @@ const DesignFoundry = (props) => {
               variant="outlined"
               fullWidth
               size="small"
-              value={designDetails.diePeriod}
+              value={designDetails?.diePeriod}
               onChange={handleInputChange}
             />
           </Grid>
@@ -325,7 +325,7 @@ const DesignFoundry = (props) => {
               variant="outlined"
               fullWidth
               size="small"
-              value={designDetails.shots}
+              value={designDetails?.shots}
               onChange={handleInputChange}
             />
           </Grid>
@@ -352,7 +352,7 @@ const DesignFoundry = (props) => {
               variant="outlined"
               fullWidth
               size="small"
-              value={designDetails.cores}
+              value={designDetails?.cores}
               onChange={handleInputChange}
             />
           </Grid>
@@ -379,7 +379,7 @@ const DesignFoundry = (props) => {
               variant="outlined"
               fullWidth
               size="small"
-              value={designDetails.sandWeight}
+              value={designDetails?.sandWeight}
               onChange={handleInputChange}
             />
           </Grid>
@@ -403,7 +403,7 @@ const DesignFoundry = (props) => {
               variant="outlined"
               fullWidth
               size="small"
-              value={designDetails.remarks}
+              value={designDetails?.remarks}
               onChange={handleInputChange}
             />
           </Grid>

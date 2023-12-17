@@ -30,8 +30,8 @@ const Done = (props) => {
     
         const addPage = async () => {
             const canvas = await captureDocument();
-            // const imgData = canvas.toDataURL('image/png');
-            // pdf.addImage(imgData, 'PNG', 0, 0, pdf.internal.pageSize.getWidth(), pdf.internal.pageSize.getHeight());
+            const imgData = canvas.toDataURL('image/png') ;
+            pdf.addImage(imgData, 'PNG', 0, 0, pdf.internal.pageSize.getWidth(), pdf.internal.pageSize.getHeight());
             // pdf.addPage();
         };
     
@@ -57,7 +57,7 @@ const Done = (props) => {
     return (
         <div>
 
-            <div id='bye' ref={pdfRef} style={{  }}>
+            <div id='bye' ref={pdfRef} style={{display:"none"  }}>
                 
                 <div style={{ fontSize: "30px", marginTop: "2px", marginLeft: "520px" }}>
                     <b>Aakar Foundry Pvt Ltd, Talegaon,Pune</b>

@@ -59,7 +59,7 @@ const NewProductDev = (props) => {
               variant="outlined"
               fullWidth
               size="small"
-              value={npdDetails.investment}
+              value={npdDetails?.investment}
               onChange={handleInputChange}
             />
           </Grid>
@@ -86,7 +86,7 @@ const NewProductDev = (props) => {
             size="small"
             onChange={handleInputChange}
             defaultValue=''
-            value = {npdDetails.partFeasible}
+            value = {npdDetails?.partFeasible}
           >
           <MenuItem value='Feasible With Changes'>Feasible With Changes</MenuItem>
           <MenuItem value='Part Feasible'>Part Feasible</MenuItem>
@@ -113,7 +113,7 @@ const NewProductDev = (props) => {
               variant="outlined"
               fullWidth
               size="small"
-              value={npdDetails.remarks}
+              value={npdDetails?.remarks}
               onChange={handleInputChange}
             />
           </Grid>

@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
-import { FormControl, MenuItem, Select, Typography } from "@mui/material";
-
+import { MenuItem, Select, Typography } from "@mui/material";
 import { Stack } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import RemoveIcon from "@mui/icons-material/Remove";
@@ -12,60 +11,10 @@ import AddIcon from "@mui/icons-material/Add";
 
 
 
-const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) => {
-  const redAsteriskStyle = {
-    color: 'red',
-  };
-  const [fields, setFields] = useState([
-    {
-      id: 1,
-      label: "Surface Treatment",
-      type: "select",
-      options: ['Anodizing', 'Chromotising', 'Powder Coating', 'Other'],
-      value: "",
-    },
-    {
-      id: 2,
-      label: "Surface Treatment Specification",
-      value: "",
-    },
-  ]);
-  const [finishWeight, setFinishWeight] = useState();
-  const [tonnage, setTonnage] = useState();
-  const [quantity, setQuantity] = useState();
-  const addField = () => {
-    const newFields = [
-      ...fields,
-      {
-        id: fields.length + 1,
-        label: "Surface Treatment",
-        type: 'select',
-        options: ['Anodizing', 'Chromotising', 'Powder Coating', 'Other'],
-        value: "",
-      },
-      {
-        id: fields.length + 2,
-        label: "Surface Treatment Specification",
-        value: "",
-      },
-
-    ];
-    setFields(newFields);
-  };
-  const [surfaceTreatments, setSurfaceTreatments] = useState([]);
-  const [surfaceTreatmentSpecs, setSurfaceTreatmentSpecs] = useState([]);
-  const removeField = (id) => {
-
-    const index = fields.findIndex((field) => field.id === id);
-    if (index !== -1) {
-
-      const newFields = fields.filter((_, i) => i < index || i >= index + 2);
-      setFields(newFields);
-    }
-  };
-
+const Rfq = (props) => {
+  const { inputDetails, setInputDetails, handleInputChange, updateRfqDetails } = props
   useEffect(() => {
-    if (inputDetails.finishWeight && inputDetails.quantity){
+    if (inputDetails.finishWeight && inputDetails.quantity) {
       const calculatedTonnage = (inputDetails.finishWeight * inputDetails.quantity) / 1000;
       setInputDetails((prevInputDetails) => ({
         ...prevInputDetails,
@@ -79,113 +28,64 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) => {
     }
   }, [inputDetails.finishWeight, inputDetails.quantity, setInputDetails]);
 
-  useEffect(() => {
-    // Create three empty fields for each type
-    const emptySurfaceTreatmentFields = Array.from({ length: 1 }, (_, index) => ({
-      id: index * 2 + 1,
-      label: 'Surface Treatment',
-      type: 'select',
-      options: ['Anodizing', 'Chromotising', 'Powder Coating', 'Other'],
-      value: '',
-    }));
-  
-    const emptyTreatmentSpecificationFields = Array.from({ length: 1 }, (_, index) => ({
-      id: index * 2 + 2,
-      label: 'Surface Treatment Specification',
-      value: '',
-    }));
-  
-    // Merge the empty fields with the fields from the arrays
-    const surfaceTreatmentFields = inputDetails.surfaceTreatment
-      ? inputDetails.surfaceTreatment.map((treatment, index) => ({
-          id: index * 2 + 1,
-          label: 'Surface Treatment',
-          type: 'select',
-          options: ['Anodizing', 'Chromotising', 'Powder Coating', 'Other'],
-          value: treatment,
-        }))
-      : emptySurfaceTreatmentFields;
-  
-    const treatmentSpecificationFields = inputDetails.treatmentSpecification
-      ? inputDetails.treatmentSpecification.map((spec, index) => ({
-          id: index * 2 + 2,
-          label: 'Surface Treatment Specification',
-          value: spec,
-        }))
-      : emptyTreatmentSpecificationFields;
-  
-    // Combine the fields and sort them by id
-    const newFields = [
-      ...surfaceTreatmentFields,
-      ...treatmentSpecificationFields,
-    ].sort((a, b) => a.id - b.id);
-  
-    // console.log(newFields);
-    setFields(newFields);
-  }, [inputDetails]);
-  
   const handleFinishWeightChange = (event) => {
     handleInputChange(event);
     const inputValue = event.target.value;
-    // Validate input to allow numeric and decimal values
-    if (/^\d*\.?\d*$/.test(inputValue)) {
-      // setFinishWeight(inputValue);
+    if (inputValue === "") {
       setInputDetails((prevInputDetails) => ({
         ...prevInputDetails,
-        finishWeight: inputValue
+        finishWeight: inputValue,
       }));
+      return;
+    }
+    if (/^\d*\.?\d+$/.test(inputValue)) {
+      setInputDetails((prevInputDetails) => ({
+        ...prevInputDetails,
+        finishWeight: inputValue,
+      }));
+    } else {
+      inputDetails.finishWeight = "";
     }
   };
-
 
   const handleQuantityChange = (event) => {
     handleInputChange(event);
     const inputValue = event.target.value;
-    // Validate input to allow numeric and decimal values
-    if (/^\d*\.?\d*$/.test(inputValue)) {
+    if (inputValue === "") {
       setInputDetails((prevInputDetails) => ({
         ...prevInputDetails,
-        quantity: inputValue
+        quantity: inputValue,
+      }));
+      return;
+    }
+    if (/^\d*\.?\d+$/.test(inputValue)) {
+      setInputDetails((prevInputDetails) => ({
+        ...prevInputDetails,
+        quantity: inputValue,
       }));
     }
   };
 
-  const handleChange = (id, event) => {
-    const updatedFields = fields.map(field => {
-      if (field.id === id) {
-        return { ...field, value: event.target.value };
-      }
-      return field;
-    });
 
-    // Update Surface Treatments and Surface Treatment Specifications
-    const fieldIndex = fields.findIndex(field => field.id === id);
-    if (fieldIndex !== -1) {
-      if (fieldIndex % 2 === 0) {
-        const surfaceTreatmentIndex = fieldIndex / 2;
-        const newSurfaceTreatments = [...surfaceTreatments];
-        newSurfaceTreatments[surfaceTreatmentIndex] = event.target.value;
-        setSurfaceTreatments(newSurfaceTreatments);
-        setInputDetails(prevInputDetails => ({
-          ...prevInputDetails,
-          surfaceTreatment: newSurfaceTreatments
-        }));
-      } else {
+  const [entityCount, setEntityCount] = useState(1);
 
-        const surfaceTreatmentSpecIndex = (fieldIndex - 1) / 2;
-        const newSurfaceTreatmentSpecs = [...surfaceTreatmentSpecs];
-        newSurfaceTreatmentSpecs[surfaceTreatmentSpecIndex] = event.target.value;
-        setSurfaceTreatmentSpecs(newSurfaceTreatmentSpecs);
-        setInputDetails(prevInputDetails => ({
-          ...prevInputDetails,
-          treatmentSpecification: newSurfaceTreatmentSpecs
-        }));
-      }
+  useEffect(() => {
+    setEntityCount(inputDetails.surfaceTreatment.length);
+  }, [inputDetails]);
+
+  const handleAddEntity = () => {
+    if (entityCount < 7) {
+      setEntityCount(entityCount + 1);
     }
-
-    setFields(updatedFields);
   };
 
+  const handleRemoveEntity = () => {
+    if (entityCount > 1) {
+      setEntityCount(entityCount - 1);
+    }
+  };
+  const renderPlusIcon = entityCount < 4;
+  const renderMinusIcon = entityCount > 1;
   return (
     <div>
       <Container
@@ -229,7 +129,7 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) => {
                 variant="outlined"
                 fullWidth
                 size="small"
-                value={inputDetails.name}
+                value={inputDetails?.name}
                 onChange={handleInputChange}
               />
             </Grid>
@@ -255,7 +155,7 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) => {
                 variant="outlined"
                 fullWidth
                 size="small"
-                value={inputDetails.partMach}
+                value={inputDetails?.partMach}
                 onChange={handleInputChange}
               />
             </Grid>
@@ -282,7 +182,7 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) => {
                 variant="outlined"
                 fullWidth
                 size="small"
-                value={inputDetails.partCast}
+                value={inputDetails?.partCast}
                 onChange={handleInputChange}
               />
             </Grid>
@@ -308,8 +208,10 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) => {
                 variant="outlined"
                 fullWidth
                 size="small"
-                value={inputDetails.finishWeight}
+                value={inputDetails?.finishWeight}
                 onChange={handleFinishWeightChange}
+                type="number"  
+                inputProps={{ step: "0.01" }}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -334,7 +236,7 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) => {
                 variant="outlined"
                 fullWidth
                 size="small"
-                value={inputDetails.castingWeight}
+                value={inputDetails?.castingWeight}
                 onChange={handleInputChange}
               />
             </Grid>
@@ -360,7 +262,7 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) => {
                 variant="outlined"
                 fullWidth
                 size="small"
-                value={inputDetails.details}
+                value={inputDetails?.details}
                 onChange={handleInputChange}
               />
             </Grid>
@@ -386,7 +288,7 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) => {
                 variant="outlined"
                 fullWidth
                 size="small"
-                value={inputDetails.enquiry}
+                value={inputDetails?.enquiry}
                 onChange={handleInputChange}
               />
             </Grid>
@@ -412,8 +314,10 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) => {
                 variant="outlined"
                 fullWidth
                 size="small"
-                value={inputDetails.quantity}
+                value={inputDetails?.quantity}
                 onChange={handleQuantityChange}
+                type="number"  
+                inputProps={{ step: "0.01" }}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -440,7 +344,7 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) => {
                 variant="outlined"
                 fullWidth
                 size="small"
-                value={inputDetails.life}
+                value={inputDetails?.life}
                 onChange={handleInputChange}
               />
             </Grid>
@@ -467,7 +371,7 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) => {
                 fullWidth
                 size="small"
                 onChange={handleInputChange}
-                value={inputDetails.processRequired}
+                value={inputDetails?.processRequired}
               >
                 <MenuItem value="HPDC">HPDC</MenuItem>
                 <MenuItem value="LPDC">LPDC</MenuItem>
@@ -496,7 +400,7 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) => {
                 variant="outlined"
                 fullWidth
                 size="small"
-                value={inputDetails.alloy}
+                value={inputDetails?.alloy}
                 onChange={handleInputChange}
               />
             </Grid>
@@ -522,7 +426,7 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) => {
                 variant="outlined"
                 fullWidth
                 size="small"
-                value={inputDetails.machined}
+                value={inputDetails?.machined}
                 onChange={handleInputChange}
                 defaultValue=''
               >
@@ -553,7 +457,7 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) => {
                 variant="outlined"
                 fullWidth
                 size="small"
-                value={inputDetails.blasting}
+                value={inputDetails?.blasting}
                 onChange={handleInputChange}
               />
             </Grid>
@@ -579,71 +483,75 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) => {
                 variant="outlined"
                 fullWidth
                 size="small"
-                value={inputDetails.productQc}
+                value={inputDetails?.productQc}
                 onChange={handleInputChange}
               />
             </Grid>
-            {fields.map((field) => (
-              <Grid item xs={12} sm={6} key={field.id}>
-                <Typography
-                  variant="subtitle1"
-                  sx={{
-                    textAlign: 'left',
-                    color: '#054470',
-                    fontWeight: '650',
-                    fontSize: '1.2rem',
-                    padding: '0.3rem',
-                  }}
-                >
-                  {field.label}{field.label.includes('') && <span style={redAsteriskStyle}>*</span>}
-                </Typography>
-                {field.type === 'select' ? (
-                  <FormControl variant="outlined" fullWidth size="small">
-                    <Select
-                      labelId={`${field.id}-label`}
-                      id={field.id}
-                      variant="outlined"
-                      fullWidth
-                      value={field.value}
-                      onChange={(event) => handleChange(field.id, event)}
-                    >
-                      {field.options.map((option) => (
-                        <MenuItem key={option} value={option}>
-                          {option}
-                        </MenuItem>
-                      ))}
-                    </Select>
-                  </FormControl>
-                ) : (
-
-                  <TextField
-
+            {[...Array(entityCount)].map((_, index) => (
+              <Grid container spacing={4} key={index} sx={{ml:'12'}}>
+                <Grid item xs={12} sm={4}>
+                  <Typography
+                    variant="subtitle1"
+                    sx={{
+                      textAlign: "left",
+                      color: "#054470",
+                      fontWeight: "650",
+                      fontSize: "1.2rem",
+                    }}
+                  >
+                    Surface Treatment <span style={{ color: "red" }}>*</span>
+                  </Typography>
+                  <Select
+                    name={`surfaceTreatment_${index}`}
                     label="Enter Details"
                     variant="outlined"
                     fullWidth
                     size="small"
-                    value={field.value}
-                    onChange={(event) => handleChange(field.id, event)}
+                    value={inputDetails?.surfaceTreatment[index]?.treatment || ""}
+                    onChange={(e) => updateRfqDetails(index, "treatment", e.target.value)}
+                  >
+                    <MenuItem value='Anodizing'>Anodizing</MenuItem>
+                    <MenuItem value='Chromotising'>Chromotising</MenuItem>
+                    <MenuItem value='Powder Coating'>Powder Coating</MenuItem>
+                    <MenuItem value='Other'>Other</MenuItem>
+                  </Select>
+                </Grid>
+                <Grid item xs={12} sm={4}>
+                  <Typography
+                    variant="subtitle1"
+                    sx={{
+                      textAlign: "left",
+                      color: "#054470",
+                      fontWeight: "650",
+                      fontSize: "1.2rem",
+                    }}
+                  >
+                    Treatment Specification<span style={{ color: "red" }}>*</span>
+                  </Typography>
+                  <TextField
+                    name={`specification_${index}`}
+                    id={`specification_${index}`}
+                    label="Enter Details"
+                    variant="outlined"
+                    fullWidth
+                    size="small"
+                    value={inputDetails?.surfaceTreatment[index]?.specification || ""}
+                    onChange={(e) => updateRfqDetails(index, "specification", e.target.value)}
                   />
-                )}
+                </Grid>
               </Grid>
             ))}
-          </Grid>
-          <Stack direction="row" spacing={2}>
-            {fields.length > 2 && (
-              <IconButton
-                onClick={() => removeField(fields[fields.length - 2].id)}
-              >
-                <RemoveIcon />
-              </IconButton>
-            )}
-            {fields.length < 6 && (
-              <IconButton onClick={addField}>
-                <AddIcon />
-              </IconButton>
-            )}
-          </Stack>
-          <Grid container spacing={4}>
+            <Grid item xs={12} sm={12}>
+              <Stack direction="row" spacing={2} sx={{ justifyContent: 'center' }}>
+                {/* Plus and Minus Icons */}
+                <IconButton onClick={handleAddEntity} disabled={!renderPlusIcon}>
+                  <AddIcon />
+                </IconButton>
+                <IconButton onClick={handleRemoveEntity} disabled={!renderMinusIcon}>
+                  <RemoveIcon />
+                </IconButton>
+              </Stack>
+            </Grid>
             <Grid item xs={12} sm={6}>
               <Typography
                 variant="subtitle1"
@@ -667,7 +575,7 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) => {
                 variant="outlined"
                 fullWidth
                 size="small"
-                value={inputDetails.materials}
+                value={inputDetails?.materials}
                 onChange={handleInputChange}
               />
             </Grid>
@@ -693,7 +601,7 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) => {
                 variant="outlined"
                 fullWidth
                 size="small"
-                value={inputDetails.pressure}
+                value={inputDetails?.pressure}
                 onChange={handleInputChange}
               />
             </Grid>
@@ -718,7 +626,7 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) => {
                 variant="outlined"
                 fullWidth
                 size="small"
-                value={inputDetails.impregnation}
+                value={inputDetails?.impregnation}
                 onChange={handleInputChange}
               />
             </Grid>
@@ -744,7 +652,7 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) => {
                 variant="outlined"
                 fullWidth
                 size="small"
-                value={inputDetails.treatment}
+                value={inputDetails?.treatment}
                 onChange={handleInputChange}
               />
             </Grid>
@@ -771,7 +679,7 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) => {
                 fullWidth
                 size="small"
                 onChange={handleInputChange}
-                value={inputDetails.packaging}
+                value={inputDetails?.packaging}
               >
                 <MenuItem value="Corrugated">Corrugated</MenuItem>
                 <MenuItem value="PP">PP</MenuItem>
@@ -802,7 +710,7 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) => {
                 variant="outlined"
                 fullWidth
                 size="small"
-                value={inputDetails.custom}
+                value={inputDetails?.custom}
                 onChange={handleInputChange}
               />
             </Grid>
@@ -829,7 +737,7 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) => {
                 variant="outlined"
                 fullWidth
                 size="small"
-                value={inputDetails.delivery}
+                value={inputDetails?.delivery}
                 onChange={handleInputChange}
               />
             </Grid>
@@ -856,7 +764,7 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) => {
                 fullWidth
                 size="small"
                 onChange={handleInputChange}
-                value={inputDetails.works}
+                value={inputDetails?.works}
               >
                 <MenuItem value="EXW">EXW (Ex-works)</MenuItem>
                 <MenuItem value="DAP">DAP (Delivery At Place)</MenuItem>
@@ -900,7 +808,7 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) => {
                   color: 'darkgray',
                   borderColor: 'darkgray',
                 }}
-                value={inputDetails.tonnage}
+                value={inputDetails?.tonnage}
                 onChange={handleInputChange}
               />
 
@@ -925,7 +833,7 @@ const Rfq = ({ inputDetails, setInputDetails, handleInputChange }) => {
                 variant="outlined"
                 fullWidth
                 size="small"
-                value={inputDetails.remarks}
+                value={inputDetails?.remarks}
                 onChange={handleInputChange}
               />
             </Grid>

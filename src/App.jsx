@@ -6,17 +6,13 @@ import Process from './Pages/Process';
 import Approval from './Pages/Approval';
 import ChangePassword from './Pages/ChangePassword';
 import Summary from './Pages/Summary';
-
 import { UserContextProvider } from './Pages/UserContext';
 import { Test2 } from './Pages/Test2';
-
 import Done from "./Pages/test";
 import UserRegistration from './Pages/UserRegistration';
 function App() {
   return (
-    <>
-
-      <Router>
+    <Router>
       <UserContextProvider>
         <Routes>
           <Route path="/" element={<Login />} />
@@ -30,9 +26,8 @@ function App() {
           <Route path="/test2" element={<Test2 />} />
           <Route path="/changepassword" element={<ChangePassword />} />
         </Routes>
-        </UserContextProvider>
-      </Router>
-    </>
+      </UserContextProvider>
+    </Router>
   )
 }
 

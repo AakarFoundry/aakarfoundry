@@ -100,7 +100,7 @@ const RiskAnalysis = (props) => {
               variant="outlined"
               fullWidth
               size="small"
-              value={riskDetails.risk}
+              value={riskDetails?.risk}
               onChange={handleInputChange}
             />
           </Grid>
@@ -125,7 +125,7 @@ const RiskAnalysis = (props) => {
               variant="outlined"
               fullWidth
               size="small"
-              value={riskDetails.requirement}
+              value={riskDetails?.requirement}
               onChange={handleInputChange}
             />
           </Grid>
@@ -150,7 +150,7 @@ const RiskAnalysis = (props) => {
               variant="outlined"
               fullWidth
               size="small"
-              value={riskDetails.application}
+              value={riskDetails?.application}
               onChange={handleInputChange}
             />
           </Grid>
@@ -174,7 +174,7 @@ const RiskAnalysis = (props) => {
               variant="outlined"
               fullWidth
               size="small"
-              value={riskDetails.internal}
+              value={riskDetails?.internal}
               onChange={handleInputChange}
             />
           </Grid>
@@ -209,7 +209,7 @@ const RiskAnalysis = (props) => {
                 row
                 aria-labelledby="demo-row-radio-buttons-group-label"
                 name="environment"
-                value={riskDetails.environment}
+                value={riskDetails?.environment}
                 onChange={handleInputChange}
               >
                 <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
@@ -224,7 +224,7 @@ const RiskAnalysis = (props) => {
               variant="outlined"
               fullWidth
               size="small"
-              value={riskDetails.environment_remarks}
+              value={riskDetails?.environment_remarks}
               onChange={handleInputChange}
 
             />
@@ -245,7 +245,7 @@ const RiskAnalysis = (props) => {
                 row
                 aria-labelledby="demo-row-radio-buttons-group-label"
                 name="investment"
-                value={riskDetails.investment}
+                value={riskDetails?.investment}
                 onChange={handleInputChange}
               >
                 <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
@@ -259,7 +259,7 @@ const RiskAnalysis = (props) => {
               variant="outlined"
               fullWidth
               size="small"
-              value={riskDetails.investment_remarks}
+              value={riskDetails?.investment_remarks}
               onChange={handleInputChange}
             />
 
@@ -280,7 +280,7 @@ const RiskAnalysis = (props) => {
                 row
                 aria-labelledby="demo-row-radio-buttons-group-label"
                 name="manufacturing"
-                value={riskDetails.manufacturing}
+                value={riskDetails?.manufacturing}
                 onChange={handleInputChange}
               >
                 <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
@@ -294,7 +294,7 @@ const RiskAnalysis = (props) => {
               variant="outlined"
               fullWidth
               size="small"
-              value={riskDetails.manufacturing_remarks}
+              value={riskDetails?.manufacturing_remarks}
               onChange={handleInputChange}
             />
           </Grid>
@@ -329,7 +329,7 @@ const RiskAnalysis = (props) => {
                 row
                 aria-labelledby="demo-row-radio-buttons-group-label"
                 name="technical"
-                value={riskDetails.technical}
+                value={riskDetails?.technical}
                 onChange={handleInputChange}
               >
                 <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
@@ -344,7 +344,7 @@ const RiskAnalysis = (props) => {
               variant="outlined"
               fullWidth
               size="small"
-              value={riskDetails.technical_remarks}
+              value={riskDetails?.technical_remarks}
               onChange={handleInputChange}
             />
             <FormControl>
@@ -364,7 +364,7 @@ const RiskAnalysis = (props) => {
                 row
                 aria-labelledby="demo-row-radio-buttons-group-label"
                 name="estimation"
-                value={riskDetails.estimation}
+                value={riskDetails?.estimation}
                 onChange={handleInputChange}
               >
                 <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
@@ -378,7 +378,7 @@ const RiskAnalysis = (props) => {
               variant="outlined"
               fullWidth
               size="small"
-              value={riskDetails.estimation_remarks}
+              value={riskDetails?.estimation_remarks}
               onChange={handleInputChange}
             />
 
@@ -399,7 +399,7 @@ const RiskAnalysis = (props) => {
                 row
                 aria-labelledby="demo-row-radio-buttons-group-label"
                 name="regret"
-                value={riskDetails.regret}
+                value={riskDetails?.regret}
                 onChange={handleInputChange}
               >
                 <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
@@ -413,7 +413,7 @@ const RiskAnalysis = (props) => {
               variant="outlined"
               fullWidth
               size="small"
-              value={riskDetails.regret_remarks}
+              value={riskDetails?.regret_remarks}
               onChange={handleInputChange}
             />
           </Grid>
@@ -437,7 +437,7 @@ const RiskAnalysis = (props) => {
               variant="outlined"
               fullWidth
               size="small"
-              value={riskDetails.remarks}
+              value={riskDetails?.remarks}
               onChange={handleInputChange}
             />
           </Grid>

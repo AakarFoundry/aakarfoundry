@@ -15,7 +15,6 @@ const CustomerName = (props) => {
       [name]: value
     });
   };
-
   const handleSelectChange = (e) => {
     const value = e.target.value;
     setDetails({
@@ -66,7 +65,7 @@ const CustomerName = (props) => {
               variant="outlined"
               fullWidth
               size="small"
-              value = {details.customerName}
+              value = {details?.customerName}
               onChange={handleInputChange}
 
             />
@@ -92,7 +91,7 @@ const CustomerName = (props) => {
               variant="outlined"
               fullWidth
               size="small"
-              value={details.customerReference}
+              value={details?.customerReference}
               onChange={handleInputChange}
               // defaultValue=""
             >
@@ -111,7 +110,7 @@ const CustomerName = (props) => {
               }}
             >
 
-              Status <span style={{ color: "red" }}>*</span>
+              Contact Person <span style={{ color: "red" }}>*</span>
             </Typography>
             <TextField
 
@@ -121,7 +120,7 @@ const CustomerName = (props) => {
               variant="outlined"
               fullWidth
               size="small"
-              value={details.contact}
+              value={details?.contact}
               onChange={handleInputChange}
 
             />
@@ -147,7 +146,7 @@ const CustomerName = (props) => {
               variant="outlined"
               fullWidth
               size="small"
-              value={details.delivery}
+              value={details?.delivery}
               onChange={handleInputChange}
 
             />
@@ -174,7 +173,7 @@ const CustomerName = (props) => {
               fullWidth
               size="small"
               onChange={handleInputChange}
-              value={details.enquiryDate}
+              value={details?.enquiryDate}
 
             />
           </Grid>
@@ -201,7 +200,7 @@ const CustomerName = (props) => {
               fullWidth
               size="small"
               onChange={handleInputChange}
-              value={details.path}
+              value={details?.path}
 
             />
           </Grid>
@@ -228,7 +227,7 @@ const CustomerName = (props) => {
               variant="outlined"
               fullWidth
               size="small"
-              value={details.category}
+              value={details?.category}
               onChange={handleSelectChange}
               defaultValue=""
             >

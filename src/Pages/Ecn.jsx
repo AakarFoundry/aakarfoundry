@@ -49,7 +49,7 @@ const Ecn = ({inputDetails, setInputDetails, handleInputChange}) => {
                 variant="outlined"
                 fullWidth
                 size="small"
-                value={inputDetails.enquiry}
+                value={inputDetails?.enquiry}
                 onChange={handleInputChange}
               />
             </Grid>
@@ -75,7 +75,7 @@ const Ecn = ({inputDetails, setInputDetails, handleInputChange}) => {
                 variant="outlined"
                 fullWidth
                 size="small"
-                value={inputDetails.partName}
+                value={inputDetails?.partName}
                 onChange={handleInputChange}
               />
             </Grid>
@@ -101,7 +101,7 @@ const Ecn = ({inputDetails, setInputDetails, handleInputChange}) => {
                 variant="outlined"
                 fullWidth
                 size="small"
-                value={inputDetails.number}
+                value={inputDetails?.number}
                 onChange={handleInputChange}
               />
             </Grid>
@@ -127,7 +127,7 @@ const Ecn = ({inputDetails, setInputDetails, handleInputChange}) => {
                 variant="outlined"
                 fullWidth
                 size="small"
-                value={inputDetails.weight}
+                value={inputDetails?.weight}
                 onChange={handleInputChange}
               />
             </Grid>
@@ -153,7 +153,7 @@ const Ecn = ({inputDetails, setInputDetails, handleInputChange}) => {
                 variant="outlined"
                 fullWidth
                 size="small"
-                value={inputDetails.projectName}
+                value={inputDetails?.projectName}
                 onChange={handleInputChange}
               />
             </Grid>
@@ -179,7 +179,7 @@ const Ecn = ({inputDetails, setInputDetails, handleInputChange}) => {
                 variant="outlined"
                 fullWidth
                 size="small"
-                value={inputDetails.ecnType}
+                value={inputDetails?.ecnType}
                 onChange={handleInputChange}
               />
             </Grid>
