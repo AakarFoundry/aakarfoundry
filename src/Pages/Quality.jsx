@@ -1,6 +1,6 @@
 import React from 'react'
 import { Container,Box,Grid,Typography,TextField, Select, MenuItem } from '@mui/material';
-
+import Button from "@mui/material/Button";
 const Quality = (props) => {
 
   const { qualityDetails, setQualityDetails } = props;
@@ -218,6 +218,15 @@ const Quality = (props) => {
               onChange={handleInputChange}
             />
           </Grid>
+    <Button
+      variant="contained"
+      color="primary"
+      size="large"
+      textAlign="centre"
+      sx={{ margin: "auto", marginTop: 2 }}
+    >
+      Approve
+    </Button>    
         </Grid>
         </Box>
         </Container>

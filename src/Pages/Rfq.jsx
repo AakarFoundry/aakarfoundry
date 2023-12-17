@@ -415,12 +415,10 @@ const Rfq = (props) => {
                   padding: "0.3rem",
                 }}
               >
-                Requirements <span style={{ color: "red" }}>*</span>
+                Requirements(Raw/Machined) <span style={{ color: "red" }}>*</span>
               </Typography>
-
-              <Select
-
-                name="machined"
+              <TextField
+               name="machined"
                 id="machined"
                 label=" Enter Details"
                 variant="outlined"
@@ -429,10 +427,7 @@ const Rfq = (props) => {
                 value={inputDetails?.machined}
                 onChange={handleInputChange}
                 defaultValue=''
-              >
-                <MenuItem value="Raw">Raw</MenuItem>
-                <MenuItem value="Machined">Machined</MenuItem>
-              </Select>
+              />
             </Grid>
             <Grid item xs={12} sm={6}>
               <Typography
@@ -836,7 +831,16 @@ const Rfq = (props) => {
                 value={inputDetails?.remarks}
                 onChange={handleInputChange}
               />
-            </Grid>
+            </Grid> 
+      <Button
+      variant="contained"
+      color="primary"
+      size="large"
+      textAlign="centre"
+      sx={{ margin: "auto", marginTop: 2 }}
+    >
+      Approve
+    </Button>  
           </Grid>
         </Box>
       </Container>

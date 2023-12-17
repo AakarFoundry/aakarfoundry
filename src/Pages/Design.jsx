@@ -3,6 +3,7 @@ import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 import { Typography } from "@mui/material";
+import Button from "@mui/material/Button";
 
 const DesignFoundry = (props) => {
 
@@ -407,6 +408,15 @@ const DesignFoundry = (props) => {
               onChange={handleInputChange}
             />
           </Grid>
+    <Button
+      variant="contained"
+      color="primary"
+      size="large"
+      textAlign="centre"
+      sx={{ margin: "auto", marginTop: 2 }}
+    >
+      Approve
+    </Button>  
         </Grid>
       </Box>
     </Container>

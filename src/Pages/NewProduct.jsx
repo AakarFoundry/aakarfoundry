@@ -3,7 +3,7 @@ import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 import { Typography, Select, MenuItem } from "@mui/material";
-
+import Button from "@mui/material/Button";
 const NewProductDev = (props) => {
 
   const { npdDetails,setNpdDetails} = props;
@@ -117,6 +117,15 @@ const NewProductDev = (props) => {
               onChange={handleInputChange}
             />
           </Grid>
+    <Button
+      variant="contained"
+      color="primary"
+      size="large"
+      textAlign="centre"
+      sx={{ margin: "auto", marginTop: 2 }}
+    >
+      Approve
+    </Button>  
         </Grid>
       </Box>
     </Container>
