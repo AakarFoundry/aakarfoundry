@@ -17,7 +17,7 @@ const RiskAnalysis = (props) => {
 
   const { riskDetails, setRiskDetails } = props;
   const { userInfo } = useContext(UserContext);
-  const flag = (userInfo.userDepartment === 'Marketing');
+  const flag = !(userInfo.userDepartment === 'Senior Management');
   const handleInputChange = (e) => {
     const { name, value } = e.target;
 

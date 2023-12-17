@@ -10,7 +10,7 @@ const DesignFoundry = (props) => {
 
   const { designDetails, setDesignDetails } = props;
   const { userInfo } = useContext(UserContext);
-  const flag = !(userInfo.userDepartment === 'Marketing');
+  const flag = !(userInfo.userDepartment === 'Design' || userInfo.userDepartment === 'Foundry');
   const handleInputChange = (e) => {
     const { name, value } = e.target;
 

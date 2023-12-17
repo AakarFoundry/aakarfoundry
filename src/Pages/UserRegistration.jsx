@@ -14,6 +14,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import NavBar from "../Components/NavBar";
 import { useEffect,useState } from 'react';
 import { Navigate,useNavigate } from 'react-router-dom';
+import { Menu } from '@mui/material';
 
 const defaultTheme = createTheme();
 
@@ -218,6 +219,10 @@ const UserRegistration = () => {
                   <MenuItem value="Marketing">Marketing</MenuItem>
                   <MenuItem value="Machine">Machine</MenuItem>
                   <MenuItem value="Quality">Quality</MenuItem>
+                  <MenuItem value="Design">Design</MenuItem>
+                  <MenuItem value="Foundry">Foundry</MenuItem>
+                  <MenuItem value="NPD">NPD</MenuItem>
+                  <MenuItem value="Senior Management">Senior Management</MenuItem>
                 </Select>
               </Grid>
 

@@ -4,9 +4,13 @@ import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 import { Typography } from "@mui/material";
 import Button from "@mui/material/Button";
+import { useContext } from "react";
+import { UserContext } from "./UserContext";
 
-const Ecn = ({inputDetails, setInputDetails, handleInputChange}) => {
+const Ecn = ({ inputDetails, setInputDetails, handleInputChange }) => {
 
+  const { userInfo } = useContext(UserContext);
+  const flag = !(userInfo.userDepartment === 'Marketing');
   return (
     <div>
       <Container
@@ -69,13 +73,14 @@ const Ecn = ({inputDetails, setInputDetails, handleInputChange}) => {
               </Typography>
 
               <TextField
-                
+
                 name="partName"
                 id="partName"
                 label="Enter Details"
                 variant="outlined"
                 fullWidth
                 size="small"
+                disabled={flag}
                 value={inputDetails?.partName}
                 onChange={handleInputChange}
               />
@@ -95,13 +100,14 @@ const Ecn = ({inputDetails, setInputDetails, handleInputChange}) => {
               </Typography>
 
               <TextField
-                
+
                 name="number"
                 id="number"
                 label="Enter Details"
                 variant="outlined"
                 fullWidth
                 size="small"
+                disabled={flag}
                 value={inputDetails?.number}
                 onChange={handleInputChange}
               />
@@ -121,13 +127,14 @@ const Ecn = ({inputDetails, setInputDetails, handleInputChange}) => {
               </Typography>
 
               <TextField
-                
+
                 name="weight"
                 id="weight"
                 label=" Enter Details"
                 variant="outlined"
                 fullWidth
                 size="small"
+                disabled={flag}
                 value={inputDetails?.weight}
                 onChange={handleInputChange}
               />
@@ -147,13 +154,14 @@ const Ecn = ({inputDetails, setInputDetails, handleInputChange}) => {
               </Typography>
 
               <TextField
-                
+
                 name="projectName"
                 id="projectName"
                 label="Enter Details"
                 variant="outlined"
                 fullWidth
                 size="small"
+                disabled={flag}
                 value={inputDetails?.projectName}
                 onChange={handleInputChange}
               />
@@ -173,26 +181,27 @@ const Ecn = ({inputDetails, setInputDetails, handleInputChange}) => {
               </Typography>
 
               <TextField
-                
+
                 name="ecnType"
                 id="ecnType"
                 label="Enter Details"
                 variant="outlined"
                 fullWidth
                 size="small"
+                disabled={flag}
                 value={inputDetails?.ecnType}
                 onChange={handleInputChange}
               />
             </Grid>
-    <Button
-      variant="contained"
-      color="primary"
-      size="large"
-      textAlign="centre"
-      sx={{ margin: "auto", marginTop: 2 }}
-    >
-      Approve
-    </Button>  
+            <Button
+              variant="contained"
+              color="primary"
+              size="large"
+              textAlign="centre"
+              sx={{ margin: "auto", marginTop: 2 }}
+            >
+              Approve
+            </Button>
           </Grid>
         </Box>
       </Container>

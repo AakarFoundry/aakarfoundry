@@ -9,7 +9,7 @@ import { UserContext } from "./UserContext";
 
 const NewProductDev = (props) => {
   const { userInfo } = useContext(UserContext);
-  const flag = (userInfo.userDepartment === 'Marketing');
+  const flag = !(userInfo.userDepartment === 'NPD');
   const { npdDetails, setNpdDetails } = props;
   const handleInputChange = (e) => {
     const { name, value } = e.target;

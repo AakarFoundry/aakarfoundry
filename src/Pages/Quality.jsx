@@ -6,7 +6,7 @@ import { useContext } from 'react';
 
 const Quality = (props) => {
   const { userInfo } = useContext(UserContext);
-  const flag = (userInfo.userDepartment === 'Marketing');
+  const flag = !(userInfo.userDepartment === 'Quality');
   const { qualityDetails, setQualityDetails } = props;
   const handleInputChange = (e) => {
     const { name, value } = e.target;
