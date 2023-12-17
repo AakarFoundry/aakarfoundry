@@ -15,6 +15,7 @@ import { useState,useContext } from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "./UserContext";
+import SearchBar from "material-ui-search-bar";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -71,27 +72,32 @@ async function fetchCustomerData() {
     return [];
   }
 }
+
 export default function Dashboard() {
-  const [customers, setCustomers] =useState([]);
-  const { setUserInfo,userInfo } = useContext(UserContext);
-  console.log(userInfo);
-  useEffect(()=>{
+  const [customers, setCustomers] = useState([]);
+  const { setUserInfo, userInfo } = useContext(UserContext);
+  const [originalData, setOriginalData] = useState([]);
+
+  useEffect(() => {
     async function fetchData() {
       const data = await fetchCustomerData();
       setCustomers(data);
+      setOriginalData(data); // Save original data
+
     }
     fetchData();
   }, []);
-
   
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
   const navigate = useNavigate();
+
   const handleViewForm = (id) => {
     console.log("View Form for ID:", id);
     navigate(`/details/${id}`);
   };
-  const handleChangePage = (event, newPage) => {
+
+   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
 
@@ -108,6 +114,23 @@ export default function Dashboard() {
     page * rowsPerPage + rowsPerPage
   );
 
+  const requestSearch = (searchedVal) => {
+    const filteredRows = originalData.filter((row) => {
+      return (
+        row.customerName.toLowerCase().includes(searchedVal.toLowerCase()) ||
+        row.enquiry.toLowerCase().includes(searchedVal.toLowerCase()) ||
+        row.contact.toLowerCase().includes(searchedVal.toLowerCase())
+      );
+    });
+    setCustomers(filteredRows);
+  };
+
+  const cancelSearch = () => {
+    setCustomers(originalData); // Reset to original data
+    fetchData(); // Restore original data
+
+  };
+
   return (
     <div>
     <NavBar />
@@ -118,11 +141,21 @@ export default function Dashboard() {
         alignItems: "center",
         minHeight: "100vh",
         justifyContent: "center",
-        mt: "3rem",
+        mt: "5rem",
+        position: "relative"
+         
       }}
     >
+    <Paper>
+        <SearchBar
+       
+        value={''} 
+        onChange={(searchVal) => requestSearch(searchVal)}
+        onCancelSearch={() => cancelSearch()}
+          style={{ margin: "20px" }} 
+        />
       <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 700 }} aria-label="customized table">
+        <Table sx={{ minWidth: 1000 }} aria-label="customized table">
           <TableHead>
             <TableRow>
               <StyledTableCell align="center">Customer Name</StyledTableCell>
@@ -142,17 +175,16 @@ export default function Dashboard() {
                   <Button
                     variant="contained"
                     color={
-                      customer.contact === "Incomplete"
-                        ? "primary"
-                        : customer.contact === "Pending"
-                        ? "warning"
-                        : customer.contact === "Rejected"
+                  
+                          customer.status === "Success"
+                        ? "success"
+                        : customer.status === "Rejected"
                         ? "error"
-                        : "success"
+                        : "primary"
                     }
                     style={{ minWidth: "8rem" }}
                   >
-                    {customer.contact}
+                    {customer.status}
                   </Button>
                 </StyledTableCell>
                 <StyledTableCell align="center">
@@ -174,6 +206,7 @@ export default function Dashboard() {
           </TableBody>
         </Table>
       </TableContainer>
+      </Paper>
       <TablePagination
         rowsPerPageOptions={[5, 10, 25, 50, 100]}
         component="div"

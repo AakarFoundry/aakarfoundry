@@ -13,11 +13,12 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import NavBar from "../Components/NavBar";
 import { useEffect,useState } from 'react';
+import { Navigate,useNavigate } from 'react-router-dom';
 
 const defaultTheme = createTheme();
 
 const UserRegistration = () => {
-
+  const navigate = useNavigate();
   const handleEvent = (e) => {
     setForm({ ...formData, [e.target.name]: e.target.value });
   };
@@ -99,6 +100,7 @@ const UserRegistration = () => {
       console.log(formData);
       uploadData(URL, formData);
       alert("Register Successful");
+      navigate("/approval");
       setForm({
         name: "",
         email: "",

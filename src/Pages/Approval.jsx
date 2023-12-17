@@ -192,6 +192,7 @@ async function deletingData(URL, data) {
                 <StyledTableCell align="center">Email-Id</StyledTableCell>
                 <StyledTableCell align="center">Contact No</StyledTableCell>
                 <StyledTableCell align="center">Department</StyledTableCell>
+                <StyledTableCell align="center">Position</StyledTableCell>
                 <StyledTableCell align="center">Reset Password</StyledTableCell>
                 <StyledTableCell align="center">Delete User</StyledTableCell>
 
@@ -209,6 +210,9 @@ async function deletingData(URL, data) {
                 <StyledTableCell align="center">{users.number}</StyledTableCell>
                 <StyledTableCell align="center">
                     {users.department}
+                </StyledTableCell>
+                <StyledTableCell align="center">
+                    {users.role}
                 </StyledTableCell>
                 <StyledTableCell align="center">
                   <Button

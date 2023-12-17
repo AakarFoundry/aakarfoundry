@@ -39,7 +39,7 @@ function NavBar() {
     settings = ["Change Password", "Logout"];
   } else {
     pages = [];
-    settings = ["Change Password", "Approval", "Logout"];
+    settings = ["Change Password", "Logout"];
   }
   const handleCloseUserMenu = (selectedSetting) => () => {
     setAnchorElUser(null);
