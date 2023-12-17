@@ -4,9 +4,13 @@ import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 import { Typography, Select, MenuItem } from "@mui/material";
 import Button from "@mui/material/Button";
-const NewProductDev = (props) => {
+import { useContext } from "react";
+import { UserContext } from "./UserContext";
 
-  const { npdDetails,setNpdDetails} = props;
+const NewProductDev = (props) => {
+  const { userInfo } = useContext(UserContext);
+  const flag = (userInfo.userDepartment === 'Marketing');
+  const { npdDetails, setNpdDetails } = props;
   const handleInputChange = (e) => {
     const { name, value } = e.target;
 
@@ -48,7 +52,7 @@ const NewProductDev = (props) => {
                 padding: "0.3rem",
               }}
             >
-              
+
               Capital Investment For Machines <span style={{ color: "red" }}>*</span>
             </Typography>
 
@@ -59,40 +63,42 @@ const NewProductDev = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              disabled={flag}
               value={npdDetails?.investment}
               onChange={handleInputChange}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
-          <Typography
-            variant="subtitle1"
-            sx={{
-              textAlign: "left",
-              color: "#054470",
-              fontWeight: "650",
-              fontSize: "1.2rem",
-              padding: "0.3rem",
-            }}
-          >
-           Feasibility Conclusion <span style={{ color: "red" }}>*</span>
-          </Typography>
+            <Typography
+              variant="subtitle1"
+              sx={{
+                textAlign: "left",
+                color: "#054470",
+                fontWeight: "650",
+                fontSize: "1.2rem",
+                padding: "0.3rem",
+              }}
+            >
+              Feasibility Conclusion <span style={{ color: "red" }}>*</span>
+            </Typography>
 
-          <Select
-            name="partFeasible"
-            id="partFeasible"
-            label="Enter Details"
-            variant="outlined"
-            fullWidth
-            size="small"
-            onChange={handleInputChange}
-            defaultValue=''
-            value = {npdDetails?.partFeasible}
-          >
-          <MenuItem value='Feasible With Changes'>Feasible With Changes</MenuItem>
-          <MenuItem value='Part Feasible'>Part Feasible</MenuItem>
-          <MenuItem value='Part Not Feasible'>Part Not Feasible</MenuItem>
-          </Select>
-        </Grid>
+            <Select
+              name="partFeasible"
+              id="partFeasible"
+              label="Enter Details"
+              variant="outlined"
+              fullWidth
+              size="small"
+              disabled={flag}
+              onChange={handleInputChange}
+              defaultValue=''
+              value={npdDetails?.partFeasible}
+            >
+              <MenuItem value='Feasible With Changes'>Feasible With Changes</MenuItem>
+              <MenuItem value='Part Feasible'>Part Feasible</MenuItem>
+              <MenuItem value='Part Not Feasible'>Part Not Feasible</MenuItem>
+            </Select>
+          </Grid>
           <Grid item xs={12} sm={12}>
             <Typography
               variant="subtitle1"
@@ -103,7 +109,7 @@ const NewProductDev = (props) => {
                 fontSize: "1.2rem",
               }}
             >
-              
+
               Remarks
             </Typography>
             <TextField
@@ -113,19 +119,20 @@ const NewProductDev = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              disabled={flag}
               value={npdDetails?.remarks}
               onChange={handleInputChange}
             />
           </Grid>
-    <Button
-      variant="contained"
-      color="primary"
-      size="large"
-      textAlign="centre"
-      sx={{ margin: "auto", marginTop: 2 }}
-    >
-      Approve
-    </Button>  
+          <Button
+            variant="contained"
+            color="primary"
+            size="large"
+            textAlign="centre"
+            sx={{ margin: "auto", marginTop: 2 }}
+          >
+            Approve
+          </Button>
         </Grid>
       </Box>
     </Container>

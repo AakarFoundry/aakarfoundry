@@ -3,10 +3,15 @@ import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 import { Menu, MenuItem, Select, Typography } from "@mui/material";
+import { useContext } from "react";
+import { UserContext } from "../Pages/UserContext";
 const CustomerName = (props) => {
-  
-  const { selectedOption, handleOptionChange, details, setDetails } = props;
 
+  const { selectedOption, handleOptionChange, details, setDetails } = props;
+  const { setUserInfo, userInfo } = useContext(UserContext);
+  const flag = !(userInfo.userDepartment == 'Marketing');
+  console.log(flag);
+  // console.log('Customer',userInfo.userDepartment)
   const handleInputChange = (e) => {
     const { name, value } = e.target;
 
@@ -65,9 +70,9 @@ const CustomerName = (props) => {
               variant="outlined"
               fullWidth
               size="small"
-              value = {details?.customerName}
+              value={details?.customerName}
               onChange={handleInputChange}
-
+              disabled={flag}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -93,7 +98,8 @@ const CustomerName = (props) => {
               size="small"
               value={details?.customerReference}
               onChange={handleInputChange}
-              // defaultValue=""
+              disabled={flag}
+            // defaultValue=""
             >
               <MenuItem value='Existing'>Existing</MenuItem>
               <MenuItem value='New'>New</MenuItem>
@@ -122,7 +128,7 @@ const CustomerName = (props) => {
               size="small"
               value={details?.contact}
               onChange={handleInputChange}
-
+              disabled={flag}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -148,7 +154,7 @@ const CustomerName = (props) => {
               size="small"
               value={details?.delivery}
               onChange={handleInputChange}
-
+              disabled={flag}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -174,7 +180,7 @@ const CustomerName = (props) => {
               size="small"
               onChange={handleInputChange}
               value={details?.enquiryDate}
-
+              disabled={flag}
             />
           </Grid>
 
@@ -201,7 +207,7 @@ const CustomerName = (props) => {
               size="small"
               onChange={handleInputChange}
               value={details?.path}
-
+              disabled={flag}
             />
           </Grid>
 
@@ -229,6 +235,7 @@ const CustomerName = (props) => {
               size="small"
               value={details?.category}
               onChange={handleSelectChange}
+              disabled={flag}
               defaultValue=""
             >
               <MenuItem value="RFQ">Request For Quotation</MenuItem>

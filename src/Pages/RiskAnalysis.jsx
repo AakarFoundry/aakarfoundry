@@ -11,42 +11,13 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
-import { useState } from "react";
-
+import { useState, useContext } from "react";
+import { UserContext } from "./UserContext";
 const RiskAnalysis = (props) => {
 
-  // const [selectedValue1, setSelectedValue1] = useState('');
-  // const [selectedValue2, setSelectedValue2] = useState('');
-  // const [selectedValue3, setSelectedValue3] = useState('');
-  // const [selectedValue4, setSelectedValue4] = useState('');
-  // const [selectedValue5, setSelectedValue5] = useState('');
-  // const [selectedValue6, setSelectedValue6] = useState('');
-
-  // const handleRadioChange1 = (event) => {
-  //   setSelectedValue1(event.target.value);
-  // };
-
-  // const handleRadioChange2 = (event) => {
-  //   setSelectedValue2(event.target.value);
-  // };
-
-  // const handleRadioChange3 = (event) => {
-  //   setSelectedValue3(event.target.value);
-  // };
-
-  // const handleRadioChange4 = (event) => {
-  //   setSelectedValue4(event.target.value);
-  // };
-
-  // const handleRadioChange5 = (event) => {
-  //   setSelectedValue5(event.target.value);
-  // };
-
-  // const handleRadioChange6 = (event) => {
-  //   setSelectedValue6(event.target.value);
-  // };
-
   const { riskDetails, setRiskDetails } = props;
+  const { userInfo } = useContext(UserContext);
+  const flag = (userInfo.userDepartment === 'Marketing');
   const handleInputChange = (e) => {
     const { name, value } = e.target;
 
@@ -100,6 +71,7 @@ const RiskAnalysis = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              disabled={flag}
               value={riskDetails?.risk}
               onChange={handleInputChange}
             />
@@ -125,6 +97,7 @@ const RiskAnalysis = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              disabled={flag}
               value={riskDetails?.requirement}
               onChange={handleInputChange}
             />
@@ -150,6 +123,7 @@ const RiskAnalysis = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              disabled={flag}
               value={riskDetails?.application}
               onChange={handleInputChange}
             />
@@ -174,6 +148,7 @@ const RiskAnalysis = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              disabled={flag}
               value={riskDetails?.internal}
               onChange={handleInputChange}
             />
@@ -209,11 +184,12 @@ const RiskAnalysis = (props) => {
                 row
                 aria-labelledby="demo-row-radio-buttons-group-label"
                 name="environment"
+                disabled={flag}
                 value={riskDetails?.environment}
                 onChange={handleInputChange}
               >
-                <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
-                <FormControlLabel value="NO" control={<Radio />} label="No" />
+                <FormControlLabel value="Yes" control={<Radio />} label="Yes" disabled={flag} />
+                <FormControlLabel value="NO" control={<Radio />} label="No" disabled={flag} />
               </RadioGroup>
             </FormControl>
 
@@ -224,6 +200,7 @@ const RiskAnalysis = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              disabled={flag}
               value={riskDetails?.environment_remarks}
               onChange={handleInputChange}
 
@@ -248,8 +225,8 @@ const RiskAnalysis = (props) => {
                 value={riskDetails?.investment}
                 onChange={handleInputChange}
               >
-                <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
-                <FormControlLabel value="NO" control={<Radio />} label="No" />
+                <FormControlLabel value="Yes" control={<Radio />} label="Yes" disabled={flag} />
+                <FormControlLabel value="NO" control={<Radio />} label="No" disabled={flag} />
               </RadioGroup>
             </FormControl>
             <TextField
@@ -259,6 +236,7 @@ const RiskAnalysis = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              disabled={flag}
               value={riskDetails?.investment_remarks}
               onChange={handleInputChange}
             />
@@ -283,8 +261,8 @@ const RiskAnalysis = (props) => {
                 value={riskDetails?.manufacturing}
                 onChange={handleInputChange}
               >
-                <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
-                <FormControlLabel value="NO" control={<Radio />} label="No" />
+                <FormControlLabel value="Yes" control={<Radio />} label="Yes" disabled={flag} />
+                <FormControlLabel value="NO" control={<Radio />} label="No" disabled={flag} />
               </RadioGroup>
             </FormControl>
             <TextField
@@ -294,6 +272,7 @@ const RiskAnalysis = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              disabled={flag}
               value={riskDetails?.manufacturing_remarks}
               onChange={handleInputChange}
             />
@@ -332,8 +311,8 @@ const RiskAnalysis = (props) => {
                 value={riskDetails?.technical}
                 onChange={handleInputChange}
               >
-                <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
-                <FormControlLabel value="NO" control={<Radio />} label="No" />
+                <FormControlLabel value="Yes" control={<Radio />} label="Yes" disabled={flag} />
+                <FormControlLabel value="NO" control={<Radio />} label="No" disabled={flag} />
               </RadioGroup>
             </FormControl>
 
@@ -344,6 +323,7 @@ const RiskAnalysis = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              disabled={flag}
               value={riskDetails?.technical_remarks}
               onChange={handleInputChange}
             />
@@ -367,8 +347,8 @@ const RiskAnalysis = (props) => {
                 value={riskDetails?.estimation}
                 onChange={handleInputChange}
               >
-                <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
-                <FormControlLabel value="NO" control={<Radio />} label="No" />
+                <FormControlLabel value="Yes" control={<Radio />} label="Yes" disabled={flag} />
+                <FormControlLabel value="NO" control={<Radio />} label="No" disabled={flag} />
               </RadioGroup>
             </FormControl>
             <TextField
@@ -378,6 +358,7 @@ const RiskAnalysis = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              disabled={flag}
               value={riskDetails?.estimation_remarks}
               onChange={handleInputChange}
             />
@@ -402,8 +383,8 @@ const RiskAnalysis = (props) => {
                 value={riskDetails?.regret}
                 onChange={handleInputChange}
               >
-                <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
-                <FormControlLabel value="NO" control={<Radio />} label="No" />
+                <FormControlLabel value="Yes" control={<Radio />} label="Yes" disabled={flag} />
+                <FormControlLabel value="NO" control={<Radio />} label="No" disabled={flag} />
               </RadioGroup>
             </FormControl>
             <TextField
@@ -413,6 +394,7 @@ const RiskAnalysis = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              disabled={flag}
               value={riskDetails?.regret_remarks}
               onChange={handleInputChange}
             />
@@ -437,6 +419,7 @@ const RiskAnalysis = (props) => {
               variant="outlined"
               fullWidth
               size="small"
+              disabled={flag}
               value={riskDetails?.remarks}
               onChange={handleInputChange}
             />

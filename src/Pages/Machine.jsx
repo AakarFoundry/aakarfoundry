@@ -10,11 +10,14 @@ import AddIcon from "@mui/icons-material/Add";
 import { Stack } from "@mui/material";
 import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 import Button from "@mui/material/Button";
+import { useContext } from "react";
+import { UserContext } from "./UserContext";
 
 const Machine = (props) => {
   const [entityCount, setEntityCount] = useState(1);
   const { machineDetails, setMachineDetails, updateMachineDetails } = props;
-
+  const { userInfo } = useContext(UserContext);
+  const flag = !(userInfo.userDepartment === 'Machine');
   useEffect(() => {
     setEntityCount(machineDetails.machine.length);
   }, [machineDetails]);
@@ -37,13 +40,13 @@ const Machine = (props) => {
   };
   const renderPlusIcon = entityCount < 7;
   const renderMinusIcon = entityCount > 1;
-const handleInputChange = (e) => {
-  const value  = e.target;
-  setMachineDetails({
-    ...machineDetails,
-    remarks: value
-  });
-}
+  const handleInputChange = (e) => {
+    const value = e.target;
+    setMachineDetails({
+      ...machineDetails,
+      remarks: value
+    });
+  }
   return (
 
     <Container
@@ -85,6 +88,7 @@ const handleInputChange = (e) => {
                   variant="outlined"
                   fullWidth
                   size="small"
+                  disabled={flag}
                   value={machineDetails?.machine[index]?.machineType || ""}
                   onChange={(e) => updateMachineDetails(index, "machineType", e.target.value)}
                 >
@@ -113,6 +117,7 @@ const handleInputChange = (e) => {
                   variant="outlined"
                   fullWidth
                   size="small"
+                  disabled={flag}
                   value={machineDetails?.machine[index]?.cycleTime}
                   onChange={(e) => updateMachineDetails(index, "cycleTime", e.target.value)}
                 />
@@ -136,6 +141,7 @@ const handleInputChange = (e) => {
                   variant="outlined"
                   fullWidth
                   size="small"
+                  disabled={flag}
                   value={machineDetails?.machine[index]?.fixtureCost || ""}
                   onChange={(e) => updateMachineDetails(index, "fixtureCost", e.target.value)}
                 />
@@ -172,18 +178,19 @@ const handleInputChange = (e) => {
               variant="outlined"
               fullWidth
               size="small"
+              disabled={flag}
               onChange={handleInputChange}
             />
           </Grid>
-    <Button
-      variant="contained"
-      color="primary"
-      size="large"
-      textAlign="centre"
-      sx={{ margin: "auto", marginTop: 2 }}
-    >
-      Approve
-    </Button>  
+          <Button
+            variant="contained"
+            color="primary"
+            size="large"
+            textAlign="centre"
+            sx={{ margin: "auto", marginTop: 2 }}
+          >
+            Approve
+          </Button>
         </Grid>
       </Box>
     </Container>

@@ -9,10 +9,14 @@ import IconButton from "@mui/material/IconButton";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 import Button from "@mui/material/Button";
-
-
+import { useContext } from "react";
+import { UserContext } from "./UserContext";
+import React from "react";
 const Rfq = (props) => {
   const { inputDetails, setInputDetails, handleInputChange, updateRfqDetails } = props
+  const { userInfo } = useContext(UserContext);
+  const flag = !(userInfo.userDepartment === 'Marketing');
+  // console.log(flag,userInfo.userDepartment,userInfo);
   useEffect(() => {
     if (inputDetails.finishWeight && inputDetails.quantity) {
       const calculatedTonnage = (inputDetails.finishWeight * inputDetails.quantity) / 1000;
@@ -85,7 +89,7 @@ const Rfq = (props) => {
       setInputDetails((prevDetails) => {
         const updatedRfq = [...prevDetails.surfaceTreatment];
         updatedRfq.pop();
-        return { ...prevDetails, machine: updatedRfq };
+        return { ...prevDetails, surfaceTreatment: updatedRfq };
       });
     }
   };
@@ -134,6 +138,7 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                disabled={flag}
                 value={inputDetails?.name}
                 onChange={handleInputChange}
               />
@@ -156,10 +161,11 @@ const Rfq = (props) => {
 
                 name="partMach"
                 id="partMach"
-                label="Enter Details  "
+                label="Enter Details"
                 variant="outlined"
                 fullWidth
                 size="small"
+                disabled={flag}
                 value={inputDetails?.partMach}
                 onChange={handleInputChange}
               />
@@ -187,6 +193,7 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                disabled={flag}
                 value={inputDetails?.partCast}
                 onChange={handleInputChange}
               />
@@ -213,9 +220,10 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                disabled={flag}
                 value={inputDetails?.finishWeight}
                 onChange={handleFinishWeightChange}
-                type="number"  
+                type="number"
                 inputProps={{ step: "0.01" }}
               />
             </Grid>
@@ -241,6 +249,7 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                disabled={flag}
                 value={inputDetails?.castingWeight}
                 onChange={handleInputChange}
               />
@@ -267,6 +276,7 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                disabled={flag}
                 value={inputDetails?.details}
                 onChange={handleInputChange}
               />
@@ -319,9 +329,10 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                disabled={flag}
                 value={inputDetails?.quantity}
                 onChange={handleQuantityChange}
-                type="number"  
+                type="number"
                 inputProps={{ step: "0.01" }}
               />
             </Grid>
@@ -349,6 +360,7 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                disabled={flag}
                 value={inputDetails?.life}
                 onChange={handleInputChange}
               />
@@ -375,6 +387,7 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                disabled={flag}
                 onChange={handleInputChange}
                 value={inputDetails?.processRequired}
               >
@@ -405,6 +418,7 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                disabled={flag}
                 value={inputDetails?.alloy}
                 onChange={handleInputChange}
               />
@@ -423,12 +437,13 @@ const Rfq = (props) => {
                 Requirements(Raw/Machined) <span style={{ color: "red" }}>*</span>
               </Typography>
               <TextField
-               name="machined"
+                name="machined"
                 id="machined"
                 label=" Enter Details"
                 variant="outlined"
                 fullWidth
                 size="small"
+                disabled={flag}
                 value={inputDetails?.machined}
                 onChange={handleInputChange}
                 defaultValue=''
@@ -457,6 +472,7 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                disabled={flag}
                 value={inputDetails?.blasting}
                 onChange={handleInputChange}
               />
@@ -483,13 +499,14 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                disabled={flag}
                 value={inputDetails?.productQc}
                 onChange={handleInputChange}
               />
             </Grid>
             {[...Array(entityCount)].map((_, index) => (
-              <Grid container spacing={4} key={index} sx={{ml:'12'}}>
-                <Grid item xs={12} sm={4}>
+              <React.Fragment key={index}>
+                <Grid item xs={12} sm={6}>
                   <Typography
                     variant="subtitle1"
                     sx={{
@@ -507,6 +524,7 @@ const Rfq = (props) => {
                     variant="outlined"
                     fullWidth
                     size="small"
+                    disabled={flag}
                     value={inputDetails?.surfaceTreatment[index]?.treatment || ""}
                     onChange={(e) => updateRfqDetails(index, "treatment", e.target.value)}
                   >
@@ -516,7 +534,7 @@ const Rfq = (props) => {
                     <MenuItem value='Other'>Other</MenuItem>
                   </Select>
                 </Grid>
-                <Grid item xs={12} sm={4}>
+                <Grid item xs={12} sm={6}>
                   <Typography
                     variant="subtitle1"
                     sx={{
@@ -535,11 +553,12 @@ const Rfq = (props) => {
                     variant="outlined"
                     fullWidth
                     size="small"
+                    disabled={flag}
                     value={inputDetails?.surfaceTreatment[index]?.specification || ""}
                     onChange={(e) => updateRfqDetails(index, "specification", e.target.value)}
                   />
                 </Grid>
-              </Grid>
+              </React.Fragment>
             ))}
             <Grid item xs={12} sm={12}>
               <Stack direction="row" spacing={2} sx={{ justifyContent: 'center' }}>
@@ -575,6 +594,7 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                disabled={flag}
                 value={inputDetails?.materials}
                 onChange={handleInputChange}
               />
@@ -601,6 +621,7 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                disabled={flag}
                 value={inputDetails?.pressure}
                 onChange={handleInputChange}
               />
@@ -626,6 +647,7 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                disabled={flag}
                 value={inputDetails?.impregnation}
                 onChange={handleInputChange}
               />
@@ -652,6 +674,7 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                disabled={flag}
                 value={inputDetails?.treatment}
                 onChange={handleInputChange}
               />
@@ -678,6 +701,7 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                disabled={flag}
                 onChange={handleInputChange}
                 value={inputDetails?.packaging}
               >
@@ -710,6 +734,7 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                disabled={flag}
                 value={inputDetails?.custom}
                 onChange={handleInputChange}
               />
@@ -737,6 +762,7 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                disabled={flag}
                 value={inputDetails?.delivery}
                 onChange={handleInputChange}
               />
@@ -763,6 +789,7 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                disabled={flag}
                 onChange={handleInputChange}
                 value={inputDetails?.works}
               >
@@ -833,19 +860,20 @@ const Rfq = (props) => {
                 variant="outlined"
                 fullWidth
                 size="small"
+                disabled={flag}
                 value={inputDetails?.remarks}
                 onChange={handleInputChange}
               />
-            </Grid> 
-      <Button
-      variant="contained"
-      color="primary"
-      size="large"
-      textAlign="centre"
-      sx={{ margin: "auto", marginTop: 2 }}
-    >
-      Approve
-    </Button>  
+            </Grid>
+            <Button
+              variant="contained"
+              color="primary"
+              size="large"
+              textAlign="centre"
+              sx={{ margin: "auto", marginTop: 2 }}
+            >
+              Approve
+            </Button>
           </Grid>
         </Box>
       </Container>
