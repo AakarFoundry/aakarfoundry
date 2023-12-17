@@ -8,7 +8,7 @@ import { Stack } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
-
+import Button from "@mui/material/Button";
 
 
 const Rfq = (props) => {
@@ -82,6 +82,11 @@ const Rfq = (props) => {
   const handleRemoveEntity = () => {
     if (entityCount > 1) {
       setEntityCount(entityCount - 1);
+      setInputDetails((prevDetails) => {
+        const updatedRfq = [...prevDetails.surfaceTreatment];
+        updatedRfq.pop();
+        return { ...prevDetails, machine: updatedRfq };
+      });
     }
   };
   const renderPlusIcon = entityCount < 4;

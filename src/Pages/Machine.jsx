@@ -13,7 +13,7 @@ import Button from "@mui/material/Button";
 
 const Machine = (props) => {
   const [entityCount, setEntityCount] = useState(1);
-  const { machineDetails, updateMachineDetails } = props;
+  const { machineDetails, setMachineDetails, updateMachineDetails } = props;
 
   useEffect(() => {
     setEntityCount(machineDetails.machine.length);
@@ -28,11 +28,22 @@ const Machine = (props) => {
   const handleRemoveEntity = () => {
     if (entityCount > 1) {
       setEntityCount(entityCount - 1);
+      setMachineDetails((prevDetails) => {
+        const updatedMachine = [...prevDetails.machine];
+        updatedMachine.pop();
+        return { ...prevDetails, machine: updatedMachine };
+      });
     }
   };
   const renderPlusIcon = entityCount < 7;
   const renderMinusIcon = entityCount > 1;
-
+const handleInputChange = (e) => {
+  const value  = e.target;
+  setMachineDetails({
+    ...machineDetails,
+    remarks: value
+  });
+}
   return (
 
     <Container
@@ -161,7 +172,7 @@ const Machine = (props) => {
               variant="outlined"
               fullWidth
               size="small"
-              onChange={(e) => updateMachineDetails(index, "fixtureCost", e.target.value)}
+              onChange={handleInputChange}
             />
           </Grid>
     <Button

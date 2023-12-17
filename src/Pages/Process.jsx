@@ -515,6 +515,7 @@ const Process = (props) => {
         {activeStep === 4 &&
           <Machine
             machineDetails={machineDetails}
+            setMachineDetails={setMachineDetails}
             updateMachineDetails={updateMachineDetails}
           />}
         {activeStep === 5 && (
