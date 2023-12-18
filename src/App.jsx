@@ -7,7 +7,7 @@ import Approval from './Pages/Approval';
 import ChangePassword from './Pages/ChangePassword';
 import Summary from './Pages/Summary';
 import { UserContextProvider } from './Pages/UserContext';
-import { Test2 } from './Pages/Test2';
+
 import Done from "./Pages/test";
 import UserRegistration from './Pages/UserRegistration';
 function App() {
@@ -23,7 +23,6 @@ function App() {
           <Route path="/summary" element={<Summary />} />
           <Route path="/user" element={<UserRegistration />} />
           <Route path="/test/:id" element={<Done />} />
-          <Route path="/test2" element={<Test2 />} />
           <Route path="/changepassword" element={<ChangePassword />} />
         </Routes>
       </UserContextProvider>
