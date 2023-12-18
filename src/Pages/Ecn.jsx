@@ -193,7 +193,7 @@ const Ecn = ({ inputDetails, setInputDetails, handleInputChange }) => {
                 onChange={handleInputChange}
               />
             </Grid>
-            <Button
+            {/* <Button
               variant="contained"
               color="primary"
               size="large"
@@ -201,7 +201,7 @@ const Ecn = ({ inputDetails, setInputDetails, handleInputChange }) => {
               sx={{ margin: "auto", marginTop: 2 }}
             >
               Approve
-            </Button>
+            </Button> */}
           </Grid>
         </Box>
       </Container>

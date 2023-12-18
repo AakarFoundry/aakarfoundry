@@ -17,6 +17,7 @@ import { useNavigate } from "react-router-dom";
 import { UserContext } from "./UserContext";
 import SearchBar from "material-ui-search-bar";
 
+
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: "#054470",
@@ -83,7 +84,6 @@ export default function Dashboard() {
       const data = await fetchCustomerData();
       setCustomers(data);
       setOriginalData(data); // Save original data
-
     }
     fetchData();
   }, []);
@@ -97,6 +97,15 @@ export default function Dashboard() {
     navigate(`/details/${id}`);
   };
 
+  const handleDownloadForm = (id) => {
+    console.log("View Form for ID:", id);
+    navigate(`/test/${encodeURIComponent(id)}`);
+  };
+  
+  // Example usage:
+  // Assuming 'id' is declared somewhere in your code
+  // Example: handleDownloadForm('exampleId');
+  
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
@@ -162,7 +171,7 @@ export default function Dashboard() {
                   <StyledTableCell align="center">Customer ID</StyledTableCell>
                   <StyledTableCell align="center">Status</StyledTableCell>
                   <StyledTableCell align="center">Details</StyledTableCell>
-                  <StyledTableCell align="center">Download PDF</StyledTableCell>
+                  <StyledTableCell align="center">Preview PDF</StyledTableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -202,10 +211,10 @@ export default function Dashboard() {
                       <Button
                         variant="contained"
                         style={{ background: "#3E5C72D9", minWidth: "100px" }}
-                        onClick={() => handleViewForm(customer.enquiry)}
+                        onClick={() => handleDownloadForm(customer.enquiry)}
                         disabled={customer.status !== "Success"}
                       >
-                        Download
+                        Preview
                       </Button>
                     </StyledTableCell>
                   </StyledTableRow>
@@ -235,6 +244,7 @@ export default function Dashboard() {
           nextIconButtonText="Next Page"
         />
       </Container>
+      
     </div>
   );
 }
