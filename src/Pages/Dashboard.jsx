@@ -43,21 +43,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-// function createData(name, id, status, views) {
-//   return { name, id, status, views };
-// }
 
-// const rows = [
-//   createData("Customer 1", "12345", "Approved"),
-//   createData("Customer 2", "67890", "Pending"),
-//   createData("Customer 3", "54321", "Incomplete"),
-//   createData("Customer 4", "98765", "Rejected"),
-//   createData("Customer 5", "11111", "Approved"),
-//   createData("Customer 6", "11431", "Rejected"),
-//   createData("Customer 7", "54646", "Pending"),
-//   createData("Customer 8", "64566", "Incomplete"),
-//   createData("Customer 9", "23424", "Approved"),
-// ];
 async function fetchCustomerData() {
   try {
     const response = await fetch('http://localhost:4000/dashboard');
@@ -102,9 +88,6 @@ export default function Dashboard() {
     navigate(`/test/${encodeURIComponent(id)}`);
   };
   
-  // Example usage:
-  // Assuming 'id' is declared somewhere in your code
-  // Example: handleDownloadForm('exampleId');
   
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -135,8 +118,8 @@ export default function Dashboard() {
   };
 
   const cancelSearch = () => {
-    setCustomers(originalData); // Reset to original data
-    fetchData(); // Restore original data
+    setCustomers(originalData); 
+    fetchData(); 
 
   };
 
@@ -157,7 +140,6 @@ export default function Dashboard() {
       >
         <Paper>
           <SearchBar
-
             value={''}
             onChange={(searchVal) => requestSearch(searchVal)}
             onCancelSearch={() => cancelSearch()}
@@ -185,7 +167,6 @@ export default function Dashboard() {
                       <Button
                         variant="contained"
                         color={
-
                           customer.status === "Success"
                             ? "success"
                             : customer.status === "Rejected"

@@ -295,17 +295,16 @@ const Done = (props) => {
             const canvas = await captureDocument();
             const imgData = canvas.toDataURL('image/png');
             pdf.addImage(imgData, 'PNG', 0, 0, pdf.internal.pageSize.getWidth(), pdf.internal.pageSize.getHeight());
-            // pdf.addPage();
+           
         };
 
         await addPage();
-        // add more pages if needed
-
-        // Use setTimeout to wait for the last asynchronous operation to complete
+       
         setTimeout(() => {
             pdf.save(`${id}.pdf`);
+            navigate("/dash");
             setLoader(false);
-        }, 1000); // Adjust the timeout value as needed
+        }, 1000); 
     };
 
 
