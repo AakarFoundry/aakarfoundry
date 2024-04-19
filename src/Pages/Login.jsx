@@ -56,6 +56,7 @@ export const Login = () => {
       }
     } catch (e) {
       console.log("Error:", e);
+      toast.error("Invalid Login");
     }
   }
   
