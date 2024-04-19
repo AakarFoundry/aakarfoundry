@@ -13,6 +13,8 @@ import NewProductDev from "./NewProduct";
 import Quality from "./Quality";
 import Summary from "./Summary";
 import NavBar from "../Components/NavBar";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Process = (props) => {
@@ -406,7 +408,10 @@ const Process = (props) => {
             ...npdDetails,
             enquiry: enquiry
           });
-        })
+        }).catch(error => {
+          console.error("Error:", error);
+          toast.error("Network response failed"); // Notify user of network error
+        });
       } else {
         fetch(`http://localhost:4000/${name}/new`, {
           method: 'POST',
@@ -415,7 +420,10 @@ const Process = (props) => {
           },
           body: JSON.stringify(stepDetails),
           credentials: 'include',
-        })
+        }).catch(error => {
+          console.error("Error:", error);
+          toast.error("Network response failed"); // Notify user of network error
+        });
       }
 
       let newSkipped = skipped;
@@ -429,7 +437,7 @@ const Process = (props) => {
       setSkipped(newSkipped);
     } else {
       console.log(riskDetails)
-      alert("Please fill all fields.")
+      toast.error("Please fill all fields.");
     }
   };
 
@@ -580,9 +588,13 @@ const Process = (props) => {
                 </Button>
               </Stack>
             </React.Fragment>
+           
           </div>
         )}
+        
       </div>
+      
+
     </div>
   );
 };

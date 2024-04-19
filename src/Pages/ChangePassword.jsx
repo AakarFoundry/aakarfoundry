@@ -10,6 +10,9 @@ import NavBar from "../Components/NavBar";
 import IconButton from "@mui/material/IconButton";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const ChangePassword = () => {
  
   const [showNote, setShowNote] = useState(false);
@@ -32,8 +35,8 @@ const ChangePassword = () => {
 
   function isPass(val) {
     const isValid = val.trim().length > 0;
-  setIsPassValid(isValid);
-  return isValid;
+    setIsPassValid(isValid);
+    return isValid;
   }
   function isNew(val) {
     var regex = /^[a-zA-Z0-9!@#$%^&*]{8,16}$/;
@@ -48,7 +51,7 @@ const ChangePassword = () => {
     return isValid;
   }
 
-  const URL = "http://localhost:4000/updatepassword ";
+  const URL = "http://localhost:4000/updatepassword";
   async function uploadingData(url, data) {
     try {
       const respones = await fetch(url, {
@@ -81,11 +84,17 @@ const ChangePassword = () => {
     if (pass && newpass && repass) {
       console.log(formData);
       uploadingData(URL, formData);
+      toast.success(" Password Changed Successfully  ");
+
       
      } else {
       console.log(formData);
       console.log("Fail");
-      alert("Update Unsuccessful");
+      toast.error(" Length must be between (8) to (16) characters.\n• ");
+      toast.error(" Must include minimum of one special character.\n• ");
+      toast.error(" Must include minimum one uppercase character.\n• ");
+      toast.error(" Must include minimum of one numeric character.\n• ");
+
     }
   };
 
@@ -144,7 +153,6 @@ const ChangePassword = () => {
                     "& > fieldset": { border: 0.5, borderColor: "#18234F" },
                   },
                 }}
-                // margin="normal"
                 fullWidth
                 id="oldPassword"
                 name="oldPassword"
@@ -166,8 +174,6 @@ const ChangePassword = () => {
               />
             </Typography>
 
-
-
             <Typography
               variant="subtitle1"
               sx={{
@@ -187,15 +193,13 @@ const ChangePassword = () => {
                     "& > fieldset": { border: 0.5, borderColor: "#18234F" },
                   },
                 }}
-
-
                 fullWidth
                 name="newPassword"
                 id="newPassword"
                 onChange={handleEvent}
                 onClick={toggleNote}
                 type={newshowPassword ? "text" : "Password"}
-                helperText={isNewValid ? "" : "Password not matching certeria"}
+                helperText={isNewValid ? "" : "Password not matching criteria"}
                 error={!isNewValid}
                 InputProps={{
                   endAdornment: (
@@ -232,7 +236,7 @@ const ChangePassword = () => {
                 name="confirm_password"
                 id="confirm_password"
                 onChange={handleEvent}
-                helperText={IsRePassValid ? "" : "Password doesnt match with new password"}
+                helperText={IsRePassValid ? "" : "Password doesn't match with new password"}
                 error={!IsRePassValid}
                 type={conshowPassword ? "text" : "Password"}
                 InputProps={{
@@ -249,11 +253,11 @@ const ChangePassword = () => {
             </Typography>
             {showNote && (
               <div style={{ marginTop: 10, color: "red" }}>
-                Password Policy * <br />
-                • Length must be between (8) to (16) characters. <br />
-                • Must include minimum one uppercase character <br />
-                • Must include minimum of one special character <br />
-                • Must include minimum of one numeric character
+                {/* Password Policy */}
+                {/* Length must be between (8) to (16) characters. <br />
+                Must include minimum one uppercase character <br />
+                Must include minimum of one special character <br />
+                Must include minimum of one numeric character */}
               </div>
             )}
 
@@ -272,7 +276,6 @@ const ChangePassword = () => {
           </Box>
         </Box>
       </Container>
-
     </div>
   );
 };

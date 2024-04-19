@@ -17,6 +17,13 @@ import { useNavigate } from "react-router-dom";
 import { UserContext } from "./UserContext";
 import SearchBar from "material-ui-search-bar";
 
+import {
+  
+  
+  Typography,
+  Box,
+} from '@mui/joy';
+
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -60,7 +67,12 @@ async function fetchCustomerData() {
   }
 }
 
+
+
 export default function Dashboard() {
+  const [open, setOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+
   const [customers, setCustomers] = useState([]);
   const { setUserInfo, userInfo } = useContext(UserContext);
   const [originalData, setOriginalData] = useState([]);
@@ -123,109 +135,116 @@ export default function Dashboard() {
 
   };
 
+
   return (
     <div>
-      <NavBar />
-      <Container
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          minHeight: "100vh",
-          justifyContent: "center",
-          mt: "5rem",
-          position: "relative"
-
-        }}
-      >
-        <Paper>
+    <NavBar />
+    <Container
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        minHeight: "100vh",
+        justifyContent: "center",
+        mt: "5rem",
+        position: "relative",
+      }}
+    >
+      <Paper>
+        <Box style={{ display: "flex", flexDirection: "column", marginLeft: "20px"}}>
+          <Typography variant="h6">Search for Orders:</Typography>
           <SearchBar
-            value={''}
+            value={""}
             onChange={(searchVal) => requestSearch(searchVal)}
             onCancelSearch={() => cancelSearch()}
-            style={{ margin: "20px" }}
+            style={{ marginLeft: "0px" , marginRight: "20px" }}
           />
-          <TableContainer component={Paper}>
-            <Table sx={{ minWidth: 1000 }} aria-label="customized table">
-              <TableHead>
-                <TableRow>
-                  <StyledTableCell align="center">Customer Name</StyledTableCell>
-                  <StyledTableCell align="center">Customer ID</StyledTableCell>
-                  <StyledTableCell align="center">Status</StyledTableCell>
-                  <StyledTableCell align="center">Details</StyledTableCell>
-                  <StyledTableCell align="center">Preview PDF</StyledTableCell>
+        </Box>
+
+        <TableContainer component={Paper}>
+          <Table sx={{ minWidth: 1000 }} aria-label="customized table">
+            <TableHead>
+              <TableRow>
+                <StyledTableCell align="center">
+                  Customer Name
+                </StyledTableCell>
+                <StyledTableCell align="center">Customer ID</StyledTableCell>
+                <StyledTableCell align="center">Status</StyledTableCell>
+                <StyledTableCell align="center">Details</StyledTableCell>
+                <StyledTableCell align="center">Preview PDF</StyledTableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {slicedRows.map((customer) => (
+                <StyledTableRow key={customer.customerName}>
+                  <StyledTableCell component="th" scope="row">
+                    {customer.customerName}
+                  </StyledTableCell>
+                  <StyledTableCell align="center">
+                    {customer.enquiry}
+                  </StyledTableCell>
+                  <StyledTableCell align="center">
+                    <Button
+                      variant="contained"
+                      color={
+                        customer.status === "Success"
+                          ? "success"
+                          : customer.status === "Rejected"
+                          ? "error"
+                          : "primary"
+                      }
+                      style={{ minWidth: "8rem" }}
+                    >
+                      {customer.status}
+                    </Button>
+                  </StyledTableCell>
+                  <StyledTableCell align="center">
+                    <Button
+                      variant="contained"
+                      style={{ background: "#3E5C72D9", minWidth: "100px" }}
+                      onClick={() => handleViewForm(customer.enquiry)}
+                      disabled={customer.status === "Rejected"}
+                    >
+                      View Form
+                    </Button>
+                  </StyledTableCell>
+                  <StyledTableCell align="center">
+                    <Button
+                      variant="contained"
+                      style={{ background: "#D4AC0D  ", minWidth: "100px" }}
+                      onClick={() => handleDownloadForm(customer.enquiry)}
+                      disabled={customer.status !== "Success"}
+                    >
+                      Preview
+                    </Button>
+                  </StyledTableCell>
+                </StyledTableRow>
+              ))}
+              {emptyRows > 0 && (
+                <TableRow style={{ height: 53 * emptyRows }}>
+                  <StyledTableCell colSpan={4} />
                 </TableRow>
-              </TableHead>
-              <TableBody>
-                {slicedRows.map((customer) => (
-                  <StyledTableRow key={customer.customerName}>
-                    <StyledTableCell component="th" scope="row">
-                      {customer.customerName}
-                    </StyledTableCell>
-                    <StyledTableCell align="center">{customer.enquiry}</StyledTableCell>
-                    <StyledTableCell align="center">
-                      <Button
-                        variant="contained"
-                        color={
-                          customer.status === "Success"
-                            ? "success"
-                            : customer.status === "Rejected"
-                              ? "error"
-                              : "primary"
-                        }
-                        style={{ minWidth: "8rem" }}
-                      >
-                        {customer.status}
-                      </Button>
-                    </StyledTableCell>
-                    <StyledTableCell align="center">
-                      <Button
-                        variant="contained"
-                        style={{ background: "#3E5C72D9", minWidth: "100px" }}
-                        onClick={() => handleViewForm(customer.enquiry)}
-                        disabled={customer.status === "Rejected"}
-                      >
-                        View Form
-                      </Button>
-                    </StyledTableCell>
-                    <StyledTableCell align="center">
-                      <Button
-                        variant="contained"
-                        style={{ background: "#D4AC0D  ", minWidth: "100px" }}
-                        onClick={() => handleDownloadForm(customer.enquiry)}
-                        disabled={customer.status !== "Success"}
-                      >
-                        Preview
-                      </Button>
-                    </StyledTableCell>
-                  </StyledTableRow>
-                ))}
-                {emptyRows > 0 && (
-                  <TableRow style={{ height: 53 * emptyRows }}>
-                    <StyledTableCell colSpan={4} />
-                  </TableRow>
-                )}
-              </TableBody>
-            </Table>
-          </TableContainer>
-        </Paper>
-        <TablePagination
-          rowsPerPageOptions={[5, 10, 25, 50, 100]}
-          component="div"
-          count={customers.length}
-          rowsPerPage={rowsPerPage}
-          page={page}
-          onPageChange={handleChangePage}
-          onRowsPerPageChange={handleChangeRowsPerPage}
-          labelRowsPerPage="Rows per page"
-          labelDisplayedRows={({ from, to, count }) =>
-            `${from}-${to} of ${count}`
-          }
-          backIconButtonText="Previous Page"
-          nextIconButtonText="Next Page"
-        />
-      </Container>
-      
-    </div>
+              )}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Paper>
+      <TablePagination
+        rowsPerPageOptions={[5, 10, 25, 50, 100]}
+        component="div"
+        count={customers.length}
+        rowsPerPage={rowsPerPage}
+        page={page}
+        onPageChange={handleChangePage}
+        onRowsPerPageChange={handleChangeRowsPerPage}
+        labelRowsPerPage="Rows per page"
+        labelDisplayedRows={({ from, to, count }) =>
+          `${from}-${to} of ${count}`
+        }
+        backIconButtonText="Previous Page"
+        nextIconButtonText="Next Page"
+      />
+    </Container>
+  </div>
   );
 }

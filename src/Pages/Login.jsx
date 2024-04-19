@@ -13,6 +13,8 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { useNavigate,Navigate } from "react-router-dom";
 import { UserContext } from "./UserContext";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const Login = () => {
 
@@ -42,14 +44,14 @@ export const Login = () => {
         console.log(userInfo);
         console.log(userData.userEmail);
         if (userData.userEmail === "admin123") {
-          alert("Login Successful as Admin!!");
+          toast.success("Login Successful as Admin!!");
           navigate("/approval");
         } else {
-          alert("Login Successful!!");
+          toast.success("Login Successful!!");
           navigate("/dash");
         }
       } else {
-        alert("Invalid Login");
+        toast.error("Invalid Login");
         console.log("Invalid");
       }
     } catch (e) {
@@ -182,3 +184,4 @@ export const Login = () => {
   );
 };
 
+    
